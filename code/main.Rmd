@@ -1,6 +1,10 @@
 ---
-title: "R Notebook"
+title: "Avaliação de Técnicas de Fracionamento de Amostras de Enxurrada"
+author: |
+  | Alessandro Samuel-Rosa, Jean Michel Moura-Bueno, Ricardo Simão Diniz Dalmolin
+  | Universidade Federal de Santa Maria
 output: html_notebook
+bibliography: [biblio.bib]
 ---
 
 
