@@ -31,6 +31,11 @@ Uma das alternativas é a construção de curvas de calibração [@TodiscoEtAl20
 
 O experimento foi realizado utilizando suspensões com sedimento criadas em laboratório. As suspensões foram produzidas utilizando material do solo coletado da parte superficial (0--20 cm de profundidade) do horizonte Ap de perfil do solo localizado a latitude -29°42'47,01"N e longitude -53°42'43.36"E, classificado como Argissolo Vermelho-Amarelo (COMPLETAR CLASSIFICAÇÃO), segundo o Sistema Brasileiro de Classificação de Solos [CITAÇÃO], representante da unidade de mapeamento São Pedro do levantamento de solos do Rio Grande do Sul [@LemosEtAl1973].
 
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+unidades <- readr::read_csv("../data/camada.csv",  n_max = 1)
+dados <- readr::read_csv("../data/camada.csv",  na = "-", comment = "unidade", locale = readr::locale(decimal_mark = ","))
+```
+
 O material do solo foi seco ao ar, destorroado e passado em peneira com malha com abertura de dois milímetros. A distribuição do tamanho de partículas do material de solo consta de: areia (0,053--2,00 mm) = 583 g kg-1; silte (0.002 – 0.053 mm) = 329 g kg-1; argila (<0.002 mm) = 89 g kg^-1^. Três concentrações de sedimento foram testadas (2, 10 e 50 g L^-1^) em cinco repetições cada.
 
 O método tradicional de obtenção de subamostras de enxurrada constitui aquele descrito por (Cogo, 1978). Os testes foram realizados utilizando recipientes plásticos com capacidade para 10 L, dentro dos quais adicionamos 3 L de água destilada e a quantidade apropriada de material de solo para atingir as concentrações de sedimento desejadas. As subamostras foram analisadas quanto ao seu volume e concentração total de sedimento.
