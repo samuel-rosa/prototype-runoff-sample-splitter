@@ -1,5 +1,5 @@
 observacao_id,objeto_id,amostra_codigo,profund_sup,profund_inf,solidos_totais,volume_agua,areia_total,argila_total
--,-,-,cm,cm,g/L,mL,g/kg,g/kg
+unidade,-,-,cm,cm,g/L,mL,g/kg,g/kg
 convencional,suspensão,Entrada: 2g/L; Repetição: 1,-,-,"1,16",-,-,-
 convencional,suspensão,Entrada: 2g/L; Repetição: 2,-,-,"1,18",-,-,-
 convencional,suspensão,Entrada: 2g/L; Repetição: 3,-,-,"1,36",-,-,-
