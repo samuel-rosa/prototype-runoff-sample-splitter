@@ -34,9 +34,17 @@ Uma das alternativas é a construção de curvas de calibração [@TodiscoEtAl20
 
 # MATERIAL E MÉTODOS
 
-O experimento foi realizado utilizando suspensões com sedimento criadas em laboratório. As suspensões foram produzidas utilizando material do solo coletado da parte superficial (0--20 cm de profundidade) do horizonte A de perfil do solo derivado de LITOLOGIA, sem uso antrópico aparente, localizado no *campus* da Universidade Federal de Santa Maria a latitude -29°42'47,01"N e longitude -53°42'43.36"E. Esse perfil fora classificado por @Lauermann2007, segundo o Sistema Brasileiro de Classificação de Solos [@SantosEtAl2006], como Argissolo Vermelho-Amarelo Distrófico típico, classe essa representante da unidade de mapeamento São Pedro do levantamento de solos do Rio Grande do Sul [@LemosEtAl1973]. O perfil possui uma sequência de horizontes A-E-Bt-C, com conteúdo de argila muito baixo em superfície, mas que aumenta consideravelmente em profundidade -- com efeito direto sobre a densidade e a porosidade do solo. O baixo conteúdo de cátions básicos, fósforo e matéria orgânica refletem a pobreza de nutrientes no material de origem (Tabela \@ref{tab:perfil-do-solo}).
+O experimento foi realizado utilizando suspensões com sedimento criadas em laboratório. As suspensões foram produzidas utilizando material do solo coletado da parte superficial (0--20 cm de profundidade) do horizonte A de perfil do solo derivado de LITOLOGIA, sem uso antrópico aparente, localizado no *campus* da Universidade Federal de Santa Maria a latitude -29°42'47,01"N e longitude -53°42'43.36"E. Esse perfil fora classificado por @Lauermann2007, segundo o Sistema Brasileiro de Classificação de Solos [@SantosEtAl2006], como Argissolo Vermelho-Amarelo Distrófico típico, classe essa representante da unidade de mapeamento São Pedro do levantamento de solos do Rio Grande do Sul [@LemosEtAl1973]. O perfil possui uma sequência de horizontes A-E-Bt-C, com conteúdo de argila muito baixo em superfície, mas que aumenta consideravelmente em profundidade -- com efeito direto sobre a densidade e a porosidade do solo. O baixo conteúdo de cátions básicos, fósforo e matéria orgânica refletem a pobreza de nutrientes no material de origem (Tabela \@ref(tab:perfil-do-solo)).
 
 ```{r perfil-do-solo, echo=FALSE, message=FALSE, warning=FALSE}
+# Se necessário, instalar pacote febr
+if (!require(febr)) {
+  if (!require(devtools)) {
+    install.packages("devtools")
+  }
+  devtools::install_github("samuel-rosa/febr")
+}
+
 perfil <- febr::layers("ctb0013", progress = FALSE)
 str(perfil)
 # dplyr::select(perfil, "camada_nome", "profund_sup", "profund_inf") %>% 
