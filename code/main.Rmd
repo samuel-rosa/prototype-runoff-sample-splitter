@@ -1,9 +1,8 @@
 ---
 title: "Avaliação de Técnicas de Fracionamento de Amostras de Enxurrada"
 author: "Alessandro Samuel-Rosa, Jean Michel Moura-Bueno, Ricardo Simão Diniz Dalmolin"
-output:
-  html_document:
-    df_print: paged
+output: bookdown::html_document2
+# https://bookdown.org/yihui/bookdown/a-single-document.html
 bibliography: biblio.bib
 ---
 
