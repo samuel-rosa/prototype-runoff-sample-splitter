@@ -34,6 +34,8 @@ Uma das alternativas é a construção de curvas de calibração [@TodiscoEtAl20
 
 # MATERIAL E MÉTODOS
 
+## Material do solo
+
 O experimento foi realizado utilizando suspensões criadas em laboratório. As suspensões foram produzidas utilizando material do solo coletado da parte superficial (0--20 cm de profundidade) do horizonte A de perfil do solo derivado de LITOLOGIA, sem uso antrópico aparente, localizado no *campus* da Universidade Federal de Santa Maria a latitude -29°42'47,01"N e longitude -53°42'43.36"E. Esse perfil fora classificado por @Lauermann2007, segundo o Sistema Brasileiro de Classificação de Solos [@SantosEtAl2006], como Argissolo Vermelho-Amarelo Distrófico típico, classe essa representante da unidade de mapeamento São Pedro do levantamento de solos do Rio Grande do Sul [@LemosEtAl1973]. O perfil possui uma sequência de horizontes A-E-Bt-C, com conteúdo de argila muito baixo em superfície, mas que aumenta consideravelmente em profundidade -- com efeito direto sobre a densidade e a porosidade do solo. O baixo conteúdo de cátions básicos, fósforo e matéria orgânica refletem a pobreza de nutrientes no material de origem (Tabela \@ref(tab:perfil-do-solo)).
 
 ```{r perfil-do-solo, echo=FALSE, message=FALSE, warning=FALSE}
@@ -46,16 +48,20 @@ if (!require(febr)) {
 }
 
 perfil <- febr::layers("ctb0013", progress = FALSE)
-str(perfil)
+# str(perfil)
 # dplyr::select(perfil, "camada_nome", "profund_sup", "profund_inf") %>% 
   # knitr::kable(
     # booktabs = TRUE,
     # caption = 'Variáveis físicas e químicas do perfil do solo usado como fonte de material para desenvolvimento dos experimentos de laboratório [@Lauermann2007].')
 ```
 
+O material coletado do solo foi caracterizado quanto à distribuição do tamanho de partículas. Para isso ele foi seco ao ar, destorroado e passado em peneira com malha com abertura de dois milímetros. A conteúdo de argila da fração terra fina seca ao ar (TFSA) resultante foi estimado usando o método da pipeta após dispersão química de 20 g de TFSA com hidróxido de sódio (NaOH) -- na concentração de 1 mol L^-1^ -- e desagregação mecânica -- usando duas esferas de nylon (diâmetro de 1,71 cm, massa de 3,04 g, densidade de 1,11 g cm^-1^) e agitação horizontal por 4 horas a 120 ciclos por minuto. Já o conteúdo de areia foi determinado via tamizamento úmido.
+
+## Método tradicional
+
 A primeiro teste realizado foi quanto à capacidade do método tradicional produzir amostras que possuam a mesma concentração de sólidos totais (sedimentos) que a suspensão (enxurrada) de onde foi obtida, ou seja, se a amostra gerada é representativa da suspensão. Para isso foram utilizados recipientes plásticos com capacidade para 10 L, dentro dos quais foram adicionados 3 L de água destilada e a quantidade de TFSA necessária para atingir as concentrações de 2, 10 e 50 g L^-1^ de sólidos totais. Para cada concentração foram preparadas cinco repetições (baldes). Em cada balde, uma pessoa homogeneizou a suspensão com uma das mãos. Após 20 segundos, sem parar a homogeneização, outra pessoa coletou uma amostra mergulhando, no seio da suspensão, um copo de Beaker de 250 mL. A concentração de sólidos totais nas amostras de cada suspensão foi determinada em função do seu volume e da massa de sólidos totais mensurada após secagem em estufa à temperatuda de 105°C até completa evaporação da água. 
 
-O material coletado do solo foi seco ao ar, destorroado e passado em peneira com malha com abertura de dois milímetros. A conteúdo de argila da fração terra fina seca ao ar (TFSA) resultante foi estimado usando o método da pipeta após dispersão química de 20 g de TFSA com hidróxido de sódio (NaOH) -- na concentração de 1 mol L^-1^ -- e desagregação mecânica -- usando duas esferas de nylon (diâmetro de 1,71 cm, massa de 3,04 g, densidade de 1,11 g cm^-1^) e agitação horizontal por 4 horas a 120 ciclos por minuto. Já o conteúdo de areia foi determinado via tamizamento úmido.
+## Equipamento fracionador
 
 O equipamento fracionador que apresentamos é construído com peças de PVC (Figura \@ref(fig:sample-splitter)). Ele é composto de um reservatório na parte superior, constituído por um cano de 300 mm de comprimento e 75 mm de diâmetro com capacidade para 1 L, o qual possui um fundo no formato de funil para direcionar a amostra a um cano de 300 mm de comprimento e 15 mm de diâmetro. A função desse cano é dirigir a suspensão em um fluxo contínuo até o dispositivo fracionador com formato de Y invertido, o qual está localizado na sua parte inferior. Todas as peças são fixadas utilizando material adesivo específico para PVC. Como o fracionador possui duas saídas ele produz duas subamostras a cada operação de fracionamento. O equipamento fica instalado sobre uma plataforma de madeira nivelada com o plano horizontal.
 
