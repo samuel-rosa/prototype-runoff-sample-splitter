@@ -45,16 +45,7 @@ str(perfil)
     # caption = 'Variáveis físicas e químicas do perfil do solo usado como fonte de material para desenvolvimento dos experimentos de laboratório [@Lauermann2007].')
 ```
 
-
-
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
-unidades <- readr::read_csv("../data/camada.csv",  n_max = 1)
-dados <- readr::read_csv("../data/camada.csv",  na = "-", comment = "unidade", locale = readr::locale(decimal_mark = ","))
-```
-
-O material do solo foi seco ao ar, destorroado e passado em peneira com malha com abertura de dois milímetros. 
-
-A distribuição do tamanho de partículas do material de solo consta de: areia (0,053--2,00 mm) = `r dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = mean(areia_total)) %>% round()` g kg^-1^; argila (<0.002 mm) = `r dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = mean(argila_total)) %>% round()` g kg^-1^.
+O material coletado do solo foi seco ao ar, destorroado e passado em peneira com malha com abertura de dois milímetros. A conteúdo de argila da fração terra fina seca ao ar (TFSA) resultante foi estimado usando o método da pipeta após dispersão química de 20 g de TFSA com hidróxido de sódio (NaOH) -- na concentração de 1 mol L^-1^ -- e desagregação mecânica -- usando duas esferas de nylon (diâmetro de 1,71 cm, massa de 3,04 g, densidade de 1,11 g cm^-1^) e agitação horizontal por 4 horas a 120 ciclos por minuto. Já o conteúdo de areia foi determinado via tamizamento úmido.
 
 Três concentrações de sedimento foram testadas (2, 10 e 50 g L^-1^) em cinco repetições cada.
 
@@ -71,6 +62,13 @@ Dois testes foram realizados com o fracionador para definir o volume da amostra 
 Os resultados completos de todos os testes são apresentados juntamente com algumas estatísticas descritivas (média, desvio padrão, coeficiente de variação e erro percentual). O teste t foi utilizado para testar se o volume e a concentração de sedimento das subamostras são estatisticamente iguais aos valores esperados. O teste t para amostras pareadas foi utilizado para testar se o volume e a concentração de sedimento das subamostras produzidas pelas duas saídas do fracionador são estatisticamente iguais. Todas as análises foram realizadas utilizando o pacote stats no R (R Development Core Team, 2011).
 
 # RESULTADOS E DISCUSSÃO
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+unidades <- readr::read_csv("../data/camada.csv",  n_max = 1)
+dados <- readr::read_csv("../data/camada.csv",  na = "-", comment = "unidade", locale = readr::locale(decimal_mark = ","))
+```
+
+A distribuição do tamanho de partículas do material de solo consta de: areia (0,053--2,00 mm) = `r dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = mean(areia_total)) %>% round()` g kg^-1^; argila (<0.002 mm) = `r dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = mean(argila_total)) %>% round()` g kg^-1^.
 
 Os resultados mostram que o método tradicional descrito por Cogo (1978) não proporciona a obtenção de subamostras representativas da enxurrada (Tabela 1). Em todas as três concentrações testadas observamos um erro negativo de 30% ou mais. Esse erro é significativo e prejudica a consistência do método, indicando que as estimativas anuais de erosão do solo em áreas agrícolas podem ser muito inferiores ao real. Os 500 milhões de toneladas de solo erodidos anualmente no Brasil segundo Bertoni & Lombardi Neto (1999) podem ser, na verdade, de 650 a 750 milhões de toneladas.
 
