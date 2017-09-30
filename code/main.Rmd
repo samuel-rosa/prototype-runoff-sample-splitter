@@ -132,11 +132,27 @@ knitr::include_graphics("../images/sample-splitter.jpg")
 
 Três testes foram realizados com o equipamento fracionador. O primeiro dele teve como objetivo avaliar se a capacidade do equipamento fracionador produzir subamostras de volume equivalente é influenciada pelo volume da amostra sendo fracionada. Quatro volumes de água destilada foram avaliados, 100, 300, 500 e 1000 mL, em cinco repetições. Em cada repetição, o respectivo volume total de água destilada foi vertido de uma só vez no reservatório do equipamento fracionador. As duas subamostras produzidas foram coletadas em copos de Beaker e o seu volume determinado usando provetas graduadas previamente calibradas.
 
-O segundo teste consistiu na avaliação da capacidade do equipamento fracionador produzir subamostras com a mesma concentração de sólidos totais equivalente àquela encontrada na suspensão sendo fracionada. As mesmas concentrações usadas para avaliar o método tradicional foram usadas, também com cinco repetições cada uma. A suspensão foi preparada em [ONDE FOI PREPARADA?] com um volume total de [QUANTOS ML?], agitada vigorosamente por 10 segundos e vertida no reservatório do fracionador de uma só vez. O fracionador foi lavado com água destilada após cada repetiação. As duas subamostras (A e B) produzidas em cada repetição foram coletadas em copos de Beaker de 250 mL e em seguida determinada a concentração de sólidos totais conforme descrito acimpa para o método tradicional.
+O segundo teste consistiu na avaliação da capacidade do equipamento fracionador produzir subamostras com a mesma concentração de sólidos totais equivalente àquela encontrada na suspensão sendo fracionada. As mesmas concentrações usadas para avaliar o método tradicional foram usadas, também com cinco repetições cada uma. A suspensão foi preparada em [ONDE FOI PREPARADA? QUE RECIPIENTE USAMOS?] com um volume total de [QUANTOS ML?], agitada vigorosamente por 10 segundos e vertida no reservatório do fracionador de uma só vez. O fracionador foi lavado com água destilada após cada repetiação. As duas subamostras (A e B) produzidas em cada repetição foram coletadas em copos de Beaker de 250 mL e em seguida determinada a concentração de sólidos totais conforme descrito acimpa para o método tradicional.
 
 Finalmente, os sólidos totais foram analisado quanto à distribuição do tamanho de partículas enpregando o mesmo método descrito acima para a análise do material do solo utilizado para produzir as suspensões. O objetivo desse teste foi avaliar a capacidade do equipamento fracionador produzir subamostras cuja distribuição do tamanho de partículas dos sólidos totais sejam equivalentes à distribuição do tamanho de partículas da suspensão sendo fracionada.
 
 ## Análises estatísticas
+
+Os dados de todos os testes foram submetidos à análise estatítica descritiva, sendo calculados a média, desvio padrão, coeficiente de variação e erro percentual. O erro percentual consiste na 
+
+```{r}
+filter(dados, observacao_id == 'convencional') %>% 
+  select(solidos_totais, amostra_codigo) %>% 
+  mutate(entrada = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 1]) %>%
+  mutate(entrada = gsub("Entrada: ", "", entrada)) %>% 
+  mutate(entrada = gsub("g/L", "", entrada)) %>%
+  mutate(entrada = as.numeric(entrada)) %>%
+  select(-amostra_codigo) %>% 
+  mutate(erro = (entrada - solidos_totais) / entrada * 100) %>% 
+  group_by(entrada) %>% 
+  summarise(mean = mean(erro), sd = sd(erro))
+```
+
 
 Os resultados completos de todos os testes são apresentados juntamente com algumas estatísticas descritivas (média, desvio padrão, coeficiente de variação e erro percentual). O teste t foi utilizado para testar se o volume e a concentração de sedimento das subamostras são estatisticamente iguais aos valores esperados. O teste t para amostras pareadas foi utilizado para testar se o volume e a concentração de sedimento das subamostras produzidas pelas duas saídas do fracionador são estatisticamente iguais. Todas as análises foram realizadas utilizando o pacote stats no R (R Development Core Team, 2011).
 
