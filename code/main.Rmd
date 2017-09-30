@@ -84,7 +84,7 @@ pander::pander(perfil_qui, caption = 'Variáveis químicas dos horizontes do per
 ```
 
 
-```{r solos-do-rs, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Área do estado do Rio Grande do Sul com camada superficial do solo de textura similar ao material do solo usado neste estudo.", fig.align='center'}
+```{r solos-do-rs, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Área do estado do Rio Grande do Sul com camada superficial do solo de textura similar ao material do solo usado neste estudo.", fig.align='center', dpi=150, out.width='8cm', out.height='8cm', fig.asp=1}
 rs <- raster::shapefile("../data/solo_res_2005.shp", stringsAsFactors = TRUE) %>% 
   sp::spTransform(sp::CRS("+proj=longlat +ellps=WGS84"))
 rs$col <- "gray95"
@@ -95,6 +95,7 @@ rs$col <- "gray95"
 # maior é o número de critérios ao qual um polígono atende.
 idx <- 
   grepl("Argissolo", rs$SOLO_EMBRA) +
+  grepl("Bruno", rs$SOLO_EMBRA) +
   grepl("Planossolo", rs$SOLO_EMBRA) +
   grepl("aren", rs$MAT_ORIGEM) +
   grepl("arenosa", rs$TEXTURA) +
@@ -112,8 +113,8 @@ sp::spplot(
   panel = function (...) {
     sp::panel.polygonsplot(...)
     lattice::panel.grid(v = -1, h = -1)
-    lattice::panel.points(-53.790215, -29.657668, pch = 4, col = "black")
-    lattice::panel.text(-53.790215, -29.657668, "Santa Maria", pos = 3)
+    # lattice::panel.points(-53.790215, -29.657668, pch = 4, col = "black")
+    # lattice::panel.text(-53.790215, -29.657668, "Santa Maria", pos = 3)
   })
 ```
 
