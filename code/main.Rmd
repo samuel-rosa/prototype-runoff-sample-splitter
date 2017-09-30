@@ -14,6 +14,9 @@ editor_options:
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(magrittr)
+library(dplyr)
+library(pander)
+source("helper.R")
 ```
 
 
@@ -144,20 +147,6 @@ Finalmente, os sólidos totais foram analisado quanto à distribuição do taman
 
 Os dados de todos os testes foram submetidos à análise estatítica descritiva, sendo calculados a média, desvio padrão, coeficiente de variação e erro percentual. O erro percentual consiste na 
 
-```{r}
-filter(dados, observacao_id == 'convencional') %>% 
-  select(solidos_totais, amostra_codigo) %>% 
-  mutate(entrada = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 1]) %>%
-  mutate(entrada = gsub("Entrada: ", "", entrada)) %>% 
-  mutate(entrada = gsub("g/L", "", entrada)) %>%
-  mutate(entrada = as.numeric(entrada)) %>%
-  select(-amostra_codigo) %>% 
-  mutate(erro = (entrada - solidos_totais) / entrada * 100) %>% 
-  group_by(entrada) %>% 
-  summarise(mean = mean(erro), sd = sd(erro))
-```
-
-
 Os resultados completos de todos os testes são apresentados juntamente com algumas estatísticas descritivas (média, desvio padrão, coeficiente de variação e erro percentual). O teste t foi utilizado para testar se o volume e a concentração de sedimento das subamostras são estatisticamente iguais aos valores esperados. O teste t para amostras pareadas foi utilizado para testar se o volume e a concentração de sedimento das subamostras produzidas pelas duas saídas do fracionador são estatisticamente iguais. Todas as análises foram realizadas utilizando o pacote stats no R (R Development Core Team, 2011).
 
 # RESULTADOS E DISCUSSÃO
@@ -166,6 +155,42 @@ Os resultados completos de todos os testes são apresentados juntamente com algu
 unidades <- readr::read_csv("../data/camada.csv",  n_max = 1)
 dados <- readr::read_csv("../data/camada.csv",  na = "-", comment = "unidade", locale = readr::locale(decimal_mark = ","))
 ```
+
+```{r, echo=FALSE}
+# Preparar dados
+d <- 
+  filter(dados, observacao_id == 'convencional') %>% 
+  select(solidos_totais, amostra_codigo) %>% 
+  mutate(entrada = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 1]) %>%
+  mutate(entrada = gsub("Entrada: ", "", entrada)) %>% 
+  mutate(entrada = gsub("g/L", "", entrada)) %>%
+  mutate(repeticao = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 2]) %>%
+  mutate(repeticao = gsub("Repetição: ", "", repeticao)) %>%
+  select(-amostra_codigo) %>% 
+  mutate(entrada = as.numeric(entrada)) %>%
+  mutate(erro = solidos_totais - entrada)
+# Erro médio
+e <- 
+  mutate(d, erro = erro / entrada * 100) %>% 
+  group_by(entrada) %>% 
+  summarise('Média (g L^-1^)' = mean(solidos_totais), 'DP (g L^-1^)' = sd(solidos_totais), 'CV (%)' = sd(solidos_totais) / mean(solidos_totais) * 100, 
+            'EMR (%)' = mean(erro), 'EP~EMR~ (%)' = sd(erro) / sqrt(5))
+# Teste t para uma amostra
+t <- 
+  group_by(d, entrada) %>% 
+  summarise('*t*' = t.test(erro, mu = 0, alternative = "less")$statistic,
+            '*P*' = t.test(erro, mu = 0, alternative = "less")$p.value)
+# Preparar tabela
+d <- select(d, -erro) %>% tidyr::spread(entrada, solidos_totais)
+d <- rbind(d, my_reshape(e, d), my_reshape(t, d))
+colnames(d)[2:4] <- glue::glue("**{colnames(d)[2:4]} (g L^-1^)**")
+colnames(d)[1] <- " "
+rownames(d) <- NULL
+panderOptions('digits', c(1, 3, 2, 2))
+panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
+pander(d, caption = 'Dados e estatísticas da concentração de sólidos totais nas amostras obtidas usando o método do mergulho de três suspensões com concentração conhecida de sólidos totais de 2, 10 e 50 g L^-1^.')
+```
+
 
 A distribuição do tamanho de partículas do material de solo consta de: areia (0,053--2,00 mm) = `r dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = mean(areia_total)) %>% round()` g kg^-1^; argila (<0.002 mm) = `r dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = mean(argila_total)) %>% round()` g kg^-1^.
 
