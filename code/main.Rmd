@@ -85,36 +85,34 @@ pander::pander(perfil_qui, caption = 'Variáveis químicas dos horizontes do per
 
 
 ```{r solos-do-rs, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Área do estado do Rio Grande do Sul com camada superficial do solo de textura similar ao material do solo usado neste estudo.", fig.align='center', dpi=150, out.width='8cm', out.height='8cm', fig.asp=1}
-rs <- raster::shapefile("../data/solo_res_2005.shp", stringsAsFactors = TRUE) %>% 
-  sp::spTransform(sp::CRS("+proj=longlat +ellps=WGS84"))
-rs$col <- "gray95"
+rs <- raster::shapefile("../data/solo-rs.shp")
 
-# Avaliação dos polígonos
-# A função 'grepl' retorna '1' quando atende ao critério, e '0' caso contrário.
-# Assim, somamos os resultados para agregar os dados. Quanto maior o valor final,
-# maior é o número de critérios ao qual um polígono atende.
+# Criar variável do tipo fator para construção do gráfico. Cada polígono recebe um valor único.
+rs$id <- 1:nrow(rs) %>% as.factor()
+
+# Avaliação dos polígonos. A função 'grepl' retorna '1' quando atende ao critério, e '0' caso contrário.
+# Assim, somamos os resultados para agregar os dados. Quanto maior o valor final, maior é o número de 
+# critérios ao qual um polígono atende.
+# as.factor(rs$SOLO_EMBRA) %>% levels
 idx <- 
-  grepl("Argissolo", rs$SOLO_EMBRA) +
-  grepl("Bruno", rs$SOLO_EMBRA) +
-  grepl("Planossolo", rs$SOLO_EMBRA) +
-  grepl("aren", rs$MAT_ORIGEM) +
-  grepl("arenosa", rs$TEXTURA) +
-  grepl("com", rs$GRADIE_TEX) +
-  # Critérios a descontar
-  grepl("abrupto", rs$GRADIE_TEX) -
-  grepl("basalt", rs$MAT_ORIGEM) -
-  grepl("argil", rs$MAT_ORIGEM)
+  grepl("Argissolo", rs$SOLO_EMBRA) + grepl("Planossolo", rs$SOLO_EMBRA) + grepl("Gleissolo", rs$SOLO_EMBRA) + 
+  grepl("areia", rs$TEXTURA) + grepl("silt/arenito", rs$MAT_ORIGEM) + 
+  grepl("siltito/argilito", rs$MAT_ORIGEM) + grepl("siltito", rs$MAT_ORIGEM) + grepl("arenito", rs$MAT_ORIGEM) +
+  grepl("arenosa", rs$TEXTURA) - grepl("gnaissse", rs$MAT_ORIGEM) - grepl("granito", rs$MAT_ORIGEM) - 
+  grepl("xisto", rs$MAT_ORIGEM) - grepl("riolito", rs$MAT_ORIGEM) - grepl("basalt", rs$MAT_ORIGEM) - 
+  grepl("andesito", rs$MAT_ORIGEM) - grepl("lacustre", rs$MAT_ORIGEM) - grepl("Luvisssolo", rs$SOLO_EMBRA) -
+  grepl("Espodossolo", rs$SOLO_EMBRA) - grepl("Neossolo", rs$SOLO_EMBRA) - grepl("Cambissolo", rs$SOLO_EMBRA)
 
 # Número mínimo de critérios aos quais um polígono precisa atender
-rs$col[idx > 3] <- "gray25"
+rs$col <- "gray95"
+rs$col[idx >= 2] <- "gray25"
 sp::spplot(
-  rs, "SOLO_EMBRA", grid = TRUE, col.regions = colorRampPalette(rs$col)(length(rs$col)), col = NA, 
+  rs, "id", grid = TRUE, col = NA, col.regions = rs$col,
   colorkey = FALSE, scales = list(draw = TRUE), ylab = "Latitude", xlab = "Longitude",
   panel = function (...) {
     sp::panel.polygonsplot(...)
     lattice::panel.grid(v = -1, h = -1)
-    # lattice::panel.points(-53.790215, -29.657668, pch = 4, col = "black")
-    # lattice::panel.text(-53.790215, -29.657668, "Santa Maria", pos = 3)
+    lattice::panel.points(-53.71327, -29.71289, pch = 20, col = "red")
   })
 ```
 
