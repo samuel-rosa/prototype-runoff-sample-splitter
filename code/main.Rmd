@@ -37,7 +37,8 @@ Uma das alternativas é a construção de curvas de calibração [@TodiscoEtAl20
 
 ## Material do solo
 
-O experimento foi realizado utilizando suspensões criadas em laboratório. As suspensões foram produzidas utilizando material do solo coletado da parte superficial (0--20 cm de profundidade) do horizonte A de perfil do solo derivado de LITOLOGIA, sem uso antrópico aparente, localizado no *campus* da Universidade Federal de Santa Maria a latitude -29°42'47,01"N e longitude -53°42'43.36"E. Esse perfil fora classificado por @Lauermann2007, segundo o Sistema Brasileiro de Classificação de Solos [@SantosEtAl2006], como Argissolo Vermelho-Amarelo Distrófico típico, classe essa representante da unidade de mapeamento São Pedro do levantamento de solos do Rio Grande do Sul [@LemosEtAl1973]. O perfil possui uma sequência de horizontes A-E-Bt-C, com conteúdo de argila muito baixo em superfície, mas que aumenta consideravelmente em profundidade -- com efeito direto sobre a densidade e a porosidade do solo. O baixo conteúdo de cátions básicos, fósforo e matéria orgânica refletem a pobreza de nutrientes no material de origem (Tabelas \@ref(tab:perfil-do-solo-fisica) e \@ref(tab:perfil-do-solo-quimica)).
+O experimento foi realizado utilizando suspensões criadas em laboratório. As suspensões foram produzidas utilizando material do solo coletado da parte superficial (0--20 cm de profundidade) do horizonte A de perfil do solo derivado de LITOLOGIA, sem uso antrópico aparente, localizado no *campus* da Universidade Federal de Santa Maria a latitude -29°42'47,01"N e longitude -53°42'43.36"E. Esse perfil fora classificado por @Lauermann2007, segundo o Sistema Brasileiro de Classificação de Solos [@SantosEtAl2006], como Argissolo Vermelho-Amarelo Distrófico típico. O perfil possui uma sequência de horizontes A-E-Bt-C, com conteúdo de argila muito baixo em superfície, mas que aumenta consideravelmente em profundidade -- com efeito direto sobre a densidade e a porosidade do solo. O baixo conteúdo de cátions básicos, fósforo e matéria orgânica refletem a pobreza de nutrientes no material de origem (Tabelas \@ref(tab:perfil-do-solo-fisica) e \@ref(tab:perfil-do-solo-quimica)). Características similares são encontradas no solo de grande parte da região da Depressão Central do estado do Rio Grande do Sul (Figura \@ref(fig:solos-do-rs)) [@StreckEtAl2008].
+<!-- ASR: Jean, precisamos da fonte do mapa! -->
 
 ```{r perfil-do-solo-fisica, echo=FALSE, message=FALSE, warning=FALSE}
 # (Des)Carregar dados do febr e preparar unidades
@@ -82,7 +83,6 @@ pander::panderOptions('keep.trailing.zeros', TRUE)
 pander::panderOptions('table.split.cells', rep(100 / ncol(perfil_qui), ncol(perfil_qui)))
 pander::pander(perfil_qui, caption = 'Variáveis químicas dos horizontes do perfil do solo [@Lauermann2007].')
 ```
-
 
 ```{r solos-do-rs, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Área do estado do Rio Grande do Sul com camada superficial do solo de textura similar ao material do solo usado neste estudo.", fig.align='center', dpi=150, out.width='8cm', out.height='8cm', fig.asp=1}
 rs <- raster::shapefile("../data/solo-rs.shp")
