@@ -57,8 +57,7 @@ attr(perfil, 'units') <- glue::glue("({attr(perfil, 'units')})")
 idx <- c(4, 23, 9:15)
 perfil_fis <- perfil[, idx]
 col_nam <- c('ID', 'Limites', 'Areia grossa', 'Areia fina', 'Argila total', 'Densidade do solo', 'Densidade de particula', 'Macro-porosidade', 'Micro-porosidade')
-col_nam <- glue::glue("{col_nam} {attr(perfil, 'units')[idx]}")
-colnames(perfil_fis) <- col_nam
+colnames(perfil_fis) <- glue::glue("**{col_nam} {attr(perfil, 'units')[idx]}**")
 pander::panderOptions('digits', c(0, 0, 0, 0, 0, 3, 3, 4, 4))
 pander::panderOptions('decimal.mark', ',')
 pander::panderOptions('table.split.table', Inf)
@@ -74,8 +73,7 @@ pander::pander(perfil_fis, caption = 'Variáveis físicas dos horizontes do perf
 idx <- c(4, 23, 16:22)
 perfil_qui <- perfil[, idx]
 col_nam <- c('ID', 'Limites', 'pH', "Ca^2+^", "Mg^2+^", "K^+^", "H+Al", "P~2~O~5~", "Matéria orgânica")
-col_nam <- glue::glue("{col_nam} {attr(perfil, 'units')[idx]}")
-colnames(perfil_qui) <- col_nam
+colnames(perfil_qui) <- glue::glue("**{col_nam} {attr(perfil, 'units')[idx]}**")
 pander::panderOptions('digits', c(0, 0, 1, 2, 2, 2, 2, 2, 1))
 pander::panderOptions('decimal.mark', ',')
 pander::panderOptions('table.split.table', Inf)
