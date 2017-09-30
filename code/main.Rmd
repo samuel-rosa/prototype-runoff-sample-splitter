@@ -12,7 +12,6 @@ bibliography: biblio.bib
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(magrittr)
-library(dplyr)
 ```
 
 
@@ -38,9 +37,9 @@ Uma das alternativas é a construção de curvas de calibração [@TodiscoEtAl20
 
 ## Material do solo
 
-O experimento foi realizado utilizando suspensões criadas em laboratório. As suspensões foram produzidas utilizando material do solo coletado da parte superficial (0--20 cm de profundidade) do horizonte A de perfil do solo derivado de LITOLOGIA, sem uso antrópico aparente, localizado no *campus* da Universidade Federal de Santa Maria a latitude -29°42'47,01"N e longitude -53°42'43.36"E. Esse perfil fora classificado por @Lauermann2007, segundo o Sistema Brasileiro de Classificação de Solos [@SantosEtAl2006], como Argissolo Vermelho-Amarelo Distrófico típico, classe essa representante da unidade de mapeamento São Pedro do levantamento de solos do Rio Grande do Sul [@LemosEtAl1973]. O perfil possui uma sequência de horizontes A-E-Bt-C, com conteúdo de argila muito baixo em superfície, mas que aumenta consideravelmente em profundidade -- com efeito direto sobre a densidade e a porosidade do solo. O baixo conteúdo de cátions básicos, fósforo e matéria orgânica refletem a pobreza de nutrientes no material de origem (Tabela \@ref(tab:perfil-do-solo)).
+O experimento foi realizado utilizando suspensões criadas em laboratório. As suspensões foram produzidas utilizando material do solo coletado da parte superficial (0--20 cm de profundidade) do horizonte A de perfil do solo derivado de LITOLOGIA, sem uso antrópico aparente, localizado no *campus* da Universidade Federal de Santa Maria a latitude -29°42'47,01"N e longitude -53°42'43.36"E. Esse perfil fora classificado por @Lauermann2007, segundo o Sistema Brasileiro de Classificação de Solos [@SantosEtAl2006], como Argissolo Vermelho-Amarelo Distrófico típico, classe essa representante da unidade de mapeamento São Pedro do levantamento de solos do Rio Grande do Sul [@LemosEtAl1973]. O perfil possui uma sequência de horizontes A-E-Bt-C, com conteúdo de argila muito baixo em superfície, mas que aumenta consideravelmente em profundidade -- com efeito direto sobre a densidade e a porosidade do solo. O baixo conteúdo de cátions básicos, fósforo e matéria orgânica refletem a pobreza de nutrientes no material de origem (Tabelas \@ref(tab:perfil-do-solo-fisica) e \@ref(tab:perfil-do-solo-quimica)).
 
-```{r perfil-do-solo, echo=FALSE, message=FALSE, warning=FALSE}
+```{r perfil-do-solo-fisica, echo=FALSE, message=FALSE, warning=FALSE}
 # Se necessário, instalar pacote febr
 if (!require(febr)) {
   if (!require(devtools)) {
@@ -49,44 +48,47 @@ if (!require(febr)) {
   devtools::install_github("samuel-rosa/febr")
 }
 
-# Descarregar dados do febr
+# Descarregar dados do febr e preparar unidades
 perfil <- febr::layers("ctb0013", which.cols = "all", progress = FALSE)[[1]]
+perfil$Profundidade <- glue::glue("{perfil$profund_sup}-{perfil$profund_inf}")
+attr(perfil, 'units') <- c(attr(perfil, 'units'), "cm")
+attr(perfil, 'units') <- gsub("unitless", "-", attr(perfil, 'units'))
+attr(perfil, 'units') <- gsub("^3", "^3^", attr(perfil, 'units'), fixed = TRUE)
+attr(perfil, 'units') <- gsub("^2", "^2^", attr(perfil, 'units'), fixed = TRUE)
+attr(perfil, 'units') <- gsub("cmolc", "cmol~c~", attr(perfil, 'units'), fixed = TRUE)
+attr(perfil, 'units') <- glue::glue("({attr(perfil, 'units')})")
 
 # Preparar tabela com dados físicos perfil
-perfil$d <- glue::glue("{perfil$profund_sup}-{perfil$profund_inf}")
-perfil_fis <- select(
-  perfil, 
-  Horizonte = camada_nome, Profundidade = d, 'Areia grossa' = areia_grossa, 'Areia fina' = areia_fina, 
-  'Argila total' = argila_total, 'Densidade do solo' = densidade_aparente, 
-  'Densidade de partícula' = densidade_particula, 'Macroporosidade' = macroporosidade, 
-  'Microporosidade' = microporosidade)
-idx <- c(4, ncol(perfil), 9:15)
-unidades <- attr(perfil, 'units')[idx]
-unidades <- gsub("^3", "^3^", unidades, fixed = TRUE)
-unidades[1:2] <- c("", "cm")
-colnames(perfil_fis) <- glue::glue("{colnames(perfil_fis)}<br>{unidades}")
-
-# Preparar tabela com dados químicos perfil
-perfil_qui <- dplyr::select(
-  perfil, 
-  camada_nome, d, ph_agua, ca_trocavel, mg_trocavel, k_trocavel, acidez_potencial, p_assimilavel, 
-  materia_organica)
-colnames_qui <- c(colnames(perfil_fis)[1:2], "pH", "Ca^2+^", "Mg^2+^", "K^+^", "H+Al", "P", "MO")
-idx <- c(4, ncol(perfil), 16:22)
-unidades <- attr(perfil, 'units')[idx]
-unidades <- gsub("^2", "^2^", unidades, fixed = TRUE)
-unidades <- gsub("cmolc", "cmol~c~", unidades, fixed = TRUE)
-unidades[1:3] <- ""
-colnames_qui[-c(1:2)] <- glue::glue("{colnames_qui[-c(1:2)]}<br>{unidades[-c(1:2)]}")
-colnames_qui <- glue::glue("**{colnames_qui}**")
-colnames(perfil_qui) <- colnames(perfil_fis)
-
-# Tabela
-rbind(perfil_fis, colnames_qui, perfil_qui) %>% 
-  knitr::kable(
-    booktabs = TRUE,
-    caption = 'Variáveis físicas e químicas do perfil do solo usado como fonte de material para desenvolvimento dos experimentos de laboratório [@Lauermann2007].')
+# colnames(perfil)
+idx <- c(4, 23, 9:15)
+perfil_fis <- perfil[, idx]
+col_nam <- c('ID', 'Limites', 'Areia grossa', 'Areia fina', 'Argila total', 'Densidade do solo', 'Densidade de particula', 'Macro-porosidade', 'Micro-porosidade')
+col_nam <- glue::glue("{col_nam} {attr(perfil, 'units')[idx]}")
+colnames(perfil_fis) <- col_nam
+pander::panderOptions('digits', c(0, 0, 0, 0, 0, 3, 3, 4, 4))
+pander::panderOptions('decimal.mark', ',')
+pander::panderOptions('table.split.table', Inf)
+pander::panderOptions('keep.trailing.zeros', TRUE)
+pander::panderOptions('table.split.cells', rep(100 / ncol(perfil_fis), ncol(perfil_fis)))
+pander::pander(perfil_fis, caption = 'Variáveis físicas dos horizontes do perfil do solo [@Lauermann2007].')
 ```
+
+```{r perfil-do-solo-quimica, echo=FALSE, message=FALSE, warning=FALSE}
+# Preparar tabela com dados químicos perfil
+# colnames(perfil)
+idx <- c(4, 23, 16:22)
+perfil_qui <- perfil[, idx]
+col_nam <- c('ID', 'Limites', 'pH', "Ca^2+^", "Mg^2+^", "K^+^", "H+Al", "P~2~O~5~", "Matéria orgânica")
+col_nam <- glue::glue("{col_nam} {attr(perfil, 'units')[idx]}")
+colnames(perfil_qui) <- col_nam
+pander::panderOptions('digits', c(0, 0, 1, 2, 2, 2, 2, 2, 1))
+pander::panderOptions('decimal.mark', ',')
+pander::panderOptions('table.split.table', Inf)
+pander::panderOptions('keep.trailing.zeros', TRUE)
+pander::panderOptions('table.split.cells', rep(100 / ncol(perfil_qui), ncol(perfil_qui)))
+pander::pander(perfil_qui, caption = 'Variáveis químicas dos horizontes do perfil do solo [@Lauermann2007].')
+```
+
 
 ```{r solos-do-rs, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Área do estado do Rio Grande do Sul com camada superficial do solo de textura similar ao material do solo usado neste estudo.", fig.align='center'}
 rs <- raster::shapefile("../data/solo_res_2005.shp", stringsAsFactors = TRUE) %>% 
