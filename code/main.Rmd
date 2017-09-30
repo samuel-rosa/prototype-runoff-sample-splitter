@@ -10,7 +10,7 @@ bibliography: biblio.bib
 <!-- http://revistas.ufpr.br/agraria/about/editorialPolicies#custom-0  -->
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-require(magrittr)
+library(magrittr)
 library(dplyr)
 ```
 
@@ -87,6 +87,39 @@ rbind(perfil_fis, colnames_qui, perfil_qui) %>%
     caption = 'Variáveis físicas e químicas do perfil do solo usado como fonte de material para desenvolvimento dos experimentos de laboratório [@Lauermann2007].')
 ```
 
+```{r solos-do-rs, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Área do estado do Rio Grande do Sul com camada superficial do solo de textura similar ao material do solo usado neste estudo.", fig.align='center'}
+rs <- raster::shapefile("../data/solo_res_2005.shp", stringsAsFactors = TRUE) %>% 
+  sp::spTransform(sp::CRS("+proj=longlat +ellps=WGS84"))
+rs$col <- "gray95"
+
+# Avaliação dos polígonos
+# A função 'grepl' retorna '1' quando atende ao critério, e '0' caso contrário.
+# Assim, somamos os resultados para agregar os dados. Quanto maior o valor final,
+# maior é o número de critérios ao qual um polígono atende.
+idx <- 
+  grepl("Argissolo", rs$SOLO_EMBRA) +
+  grepl("Planossolo", rs$SOLO_EMBRA) +
+  grepl("aren", rs$MAT_ORIGEM) +
+  grepl("arenosa", rs$TEXTURA) +
+  grepl("com", rs$GRADIE_TEX) +
+  # Critérios a descontar
+  grepl("abrupto", rs$GRADIE_TEX) -
+  grepl("basalt", rs$MAT_ORIGEM) -
+  grepl("argil", rs$MAT_ORIGEM)
+
+# Número mínimo de critérios aos quais um polígono precisa atender
+rs$col[idx > 3] <- "gray25"
+sp::spplot(
+  rs, "SOLO_EMBRA", grid = TRUE, col.regions = colorRampPalette(rs$col)(length(rs$col)), col = NA, 
+  colorkey = FALSE, scales = list(draw = TRUE), ylab = "Latitude", xlab = "Longitude",
+  panel = function (...) {
+    sp::panel.polygonsplot(...)
+    lattice::panel.grid(v = -1, h = -1)
+    lattice::panel.points(-53.790215, -29.657668, pch = 4, col = "black")
+    lattice::panel.text(-53.790215, -29.657668, "Santa Maria", pos = 3)
+  })
+```
+
 O material coletado do solo foi caracterizado quanto à distribuição do tamanho de partículas. Para isso ele foi seco ao ar, destorroado e passado em peneira com malha com abertura de dois milímetros. A conteúdo de argila da fração terra fina seca ao ar (TFSA) resultante foi estimado usando o método da pipeta após dispersão química de 20 g de TFSA com hidróxido de sódio (NaOH) -- na concentração de 1 mol L^-1^ -- e desagregação mecânica -- usando duas esferas de nylon (diâmetro de 1,71 cm, massa de 3,04 g, densidade de 1,11 g cm^-1^) e agitação horizontal por 4 horas a 120 ciclos por minuto. Já o conteúdo de areia foi determinado via tamizamento úmido.
 
 ## Método tradicional
@@ -99,7 +132,7 @@ O equipamento fracionador foi construído com peças de PVC (Figura \@ref(fig:sa
 
 O equipamento fracionador que apresentamos é construído com peças de PVC (Figura \@ref(fig:sample-splitter)). Ele é composto de um reservatório na parte superior, constituído por um cano de 300 mm de comprimento e 75 mm de diâmetro com capacidade para 1 L, o qual possui um fundo no formato de funil para direcionar a amostra a um cano de 300 mm de comprimento e 15 mm de diâmetro. A função desse cano é dirigir a suspensão em um fluxo contínuo até o dispositivo fracionador com formato de Y invertido, o qual está localizado na sua parte inferior. Todas as peças são fixadas utilizando material adesivo específico para PVC. Como o fracionador possui duas saídas ele produz duas subamostras a cada operação de fracionamento. O equipamento fica instalado sobre uma plataforma de madeira nivelada com o plano horizontal.
 
-```{r sample-splitter, echo=FALSE, fig.cap="Equipamento fracionador de amostras de enxurrada."}
+```{r sample-splitter, echo=FALSE, fig.cap="Equipamento fracionador de amostras de enxurrada.", fig.align='center'}
 knitr::include_graphics("../images/sample-splitter.jpg")
 ```
 
