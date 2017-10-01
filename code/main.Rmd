@@ -175,7 +175,7 @@ e <-
   group_by(entrada) %>% 
   summarise('Média (g L^-1^)' = mean(solidos_totais), 'DP (g L^-1^)' = sd(solidos_totais), 
             'CV (%)' = sd(solidos_totais) / mean(solidos_totais) * 100, 'EM (%)' = mean(erro))
-# Teste t para uma amostra
+# Teste t para a média de uma amostra
 t <- 
   group_by(d, entrada) %>% 
   summarise('*t*' = t.test(erro, mu = 0, alternative = "less")$statistic,
@@ -191,6 +191,50 @@ panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
 pander(d, caption = 'Dados e estatísticas da concentração de sólidos totais nas amostras obtidas usando o método do mergulho de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^.')
 ```
 
+
+```{r, echo=FALSE}
+# Preparar dados
+d <- 
+  filter(dados, observacao_id == 'fracionador' & objeto_id == 'água') %>% 
+  select(volume_agua, amostra_codigo) %>%
+  mutate(entrada = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 1]) %>%
+  mutate(entrada = gsub("Entrada: ", "", entrada)) %>% 
+  mutate(entrada = gsub("mL", "", entrada)) %>% 
+  mutate(saida = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 2]) %>%
+  mutate(saida = gsub("Saída: ", "", saida)) %>% 
+  mutate(repeticao = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 3]) %>%
+  mutate(repeticao = gsub("Repetição: ", "", repeticao)) %>%
+  select(-amostra_codigo) %>% 
+  mutate(entrada = as.numeric(entrada) / 2) %>%
+  mutate(erro = volume_agua - entrada)
+# Erro médio
+e <- 
+  mutate(d, erro = erro / entrada * 100) %>% 
+  group_by(entrada, saida) %>% 
+  summarise('Média (g L^-1^)' = mean(volume_agua), 'DP (g L^-1^)' = sd(volume_agua), 
+            'CV (%)' = sd(volume_agua) / mean(volume_agua) * 100, 'EM (%)' = mean(erro))
+# Teste t para a média de uma amostra
+t1 <- 
+  group_by(d, entrada, saida) %>% 
+  summarise('*t*' = t.test(erro, mu = 0, alternative = "less")$statistic,
+            '*P*' = t.test(erro, mu = 0, alternative = "less")$p.value)
+# Teste t para a média de duas amostra
+teste_t2 <-
+  function (x = d, y = 300) {
+    tmp <- 
+      filter(x, entrada == y / 2) %>% 
+      tidyr::spread(entrada, erro) %>% 
+      select(repeticao, saida, as.character(y/2)) %>% 
+      tidyr::spread(saida, as.character(y/2))
+    names(tmp) <- gsub(" ", "", names(tmp))
+    summarise(tmp,
+              '*t*' = t.test(A, B, mu = 0, alternative = "two.sided")$statistic,
+              '*P*' = t.test(A, B, mu = 0, alternative = "two.sided")$p.value)
+  }
+i <- d %>% select(entrada) %>% unique() * 2
+t2 <- sapply(i[[1]], function (i) teste_t2(d, i))
+t2
+```
 
 A distribuição do tamanho de partículas do material de solo consta de: areia (0,053--2,00 mm) = `r dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = mean(areia_total)) %>% round()` g kg^-1^; argila (<0.002 mm) = `r dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = mean(argila_total)) %>% round()` g kg^-1^.
 
