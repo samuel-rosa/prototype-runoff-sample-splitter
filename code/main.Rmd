@@ -1,7 +1,9 @@
 ---
 title: "Avaliação de Técnicas de Fracionamento de Amostras de Enxurrada"
 author: "Alessandro Samuel-Rosa, Jean Michel Moura-Bueno, Ricardo Simão Diniz Dalmolin"
-output: html_notebook
+output: 
+  bookdown::word_document2:
+    reference_docx: ../docs/template.docx
 bibliography: biblio.bib
 editor_options: 
   chunk_output_type: inline
@@ -9,6 +11,14 @@ editor_options:
 
 <!-- Revista Scientia Agraria -->
 <!-- http://revistas.ufpr.br/agraria/about/editorialPolicies#custom-0  -->
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(magrittr)
+library(dplyr)
+library(pander)
+source("helper.R")
+```
+
 
 # RESUMO
 
@@ -32,23 +42,201 @@ Neste contexto, a melhor alternativa para parece ser o uso de fracionadores como
 
 # MATERIAL E MÉTODOS
 
-O experimento foi realizado utilizando suspensões com sedimento criadas em laboratório. As suspensões foram produzidas utilizando material do solo coletado da parte superficial (0--20 cm de profundidade) do horizonte Ap de perfil do solo localizado a latitude -29°42'47,01"N e longitude -53°42'43.36"E, classificado como Argissolo Vermelho-Amarelo (COMPLETAR CLASSIFICAÇÃO), segundo o Sistema Brasileiro de Classificação de Solos [CITAÇÃO], representante da unidade de mapeamento São Pedro do levantamento de solos do Rio Grande do Sul [@LemosEtAl1973].
+## Material do solo
 
-O material do solo foi seco ao ar, destorroado e passado em peneira com malha com abertura de dois milímetros. A distribuição do tamanho de partículas do material de solo consta de: areia (0,053--2,00 mm) = 583 g kg-1; silte (0.002 – 0.053 mm) = 329 g kg-1; argila (<0.002 mm) = 89 g kg^-1^. Três concentrações de sedimento foram testadas (2, 10 e 50 g L^-1^) em cinco repetições cada.
+O experimento foi realizado utilizando suspensões criadas em laboratório. As suspensões foram produzidas utilizando material do solo coletado da parte superficial (0--20 cm de profundidade) do horizonte A de perfil do solo derivado de LITOLOGIA, sem uso antrópico aparente, localizado no *campus* da Universidade Federal de Santa Maria a latitude -29°42'47,01"N e longitude -53°42'43.36"E. Esse perfil fora classificado por @Lauermann2007, segundo o Sistema Brasileiro de Classificação de Solos [@SantosEtAl2006], como Argissolo Vermelho-Amarelo Distrófico típico. O perfil possui uma sequência de horizontes A-E-Bt-C, com conteúdo de argila muito baixo em superfície, mas que aumenta consideravelmente em profundidade -- com efeito direto sobre a densidade e a porosidade do solo. O baixo conteúdo de cátions básicos, fósforo e matéria orgânica refletem a pobreza de nutrientes no material de origem (Tabelas \@ref(tab:perfil-do-solo-fisica) e \@ref(tab:perfil-do-solo-quimica)). Características similares são encontradas no solo de grande parte da região da Depressão Central do estado do Rio Grande do Sul (Figura \@ref(fig:solos-do-rs)) [@StreckEtAl2008].
+<!-- ASR: Jean, precisamos da fonte do mapa! -->
 
-O método tradicional de obtenção de subamostras de enxurrada constitui aquele descrito por (Cogo, 1978). Os testes foram realizados utilizando recipientes plásticos com capacidade para 10 L, dentro dos quais adicionamos 3 L de água destilada e a quantidade apropriada de material de solo para atingir as concentrações de sedimento desejadas. As subamostras foram analisadas quanto ao seu volume e concentração total de sedimento.
+```{r perfil-do-solo-fisica, echo=FALSE, message=FALSE, warning=FALSE}
+# (Des)Carregar dados do febr e preparar unidades
+# perfil <- febr::layers("ctb0013", which.cols = "all", progress = FALSE)[[1]]
+# save(perfil, file = '../data/perfil.rda')
+load('../data/perfil.rda')
+perfil$Profundidade <- glue::glue("{perfil$profund_sup}-{perfil$profund_inf}")
+attr(perfil, 'units') <- c(attr(perfil, 'units'), "cm")
+attr(perfil, 'units') <- gsub("unitless", "-", attr(perfil, 'units'))
+attr(perfil, 'units') <- gsub("^3", "^3^", attr(perfil, 'units'), fixed = TRUE)
+attr(perfil, 'units') <- gsub("^2", "^2^", attr(perfil, 'units'), fixed = TRUE)
+attr(perfil, 'units') <- gsub("cmolc", "cmol~c~", attr(perfil, 'units'), fixed = TRUE)
+attr(perfil, 'units') <- glue::glue("({attr(perfil, 'units')})")
 
-O equipamento fracionador que apresentamos é construído com peças de PVC (Figura \@ref(fig:sample-splitter)). Ele é composto de um reservatório na parte superior, constituído por um cano de 300 mm de comprimento e 75 mm de diâmetro com capacidade para 1 L, o qual possui um fundo no formato de funil para direcionar a amostra a um cano de 300 mm de comprimento e 15 mm de diâmetro. A função desse cano é dirigir a suspensão em um fluxo contínuo até o dispositivo fracionador com formato de Y invertido, o qual está localizado na sua parte inferior. Todas as peças são fixadas utilizando material adesivo específico para PVC. Como o fracionador possui duas saídas ele produz duas subamostras a cada operação de fracionamento. O equipamento fica instalado sobre uma plataforma de madeira nivelada com o plano horizontal.
+# Preparar tabela com dados físicos perfil
+# colnames(perfil)
+idx <- c(4, 23, 9:15)
+perfil_fis <- perfil[, idx]
+col_nam <- c('ID', 'Limites', 'Areia grossa', 'Areia fina', 'Argila total', 'Densidade do solo', 'Densidade de particula', 'Macro-porosidade', 'Micro-porosidade')
+colnames(perfil_fis) <- glue::glue("**{col_nam} {attr(perfil, 'units')[idx]}**")
+pander::panderOptions('digits', c(0, 0, 0, 0, 0, 3, 3, 4, 4))
+pander::panderOptions('decimal.mark', ',')
+pander::panderOptions('table.split.table', Inf)
+pander::panderOptions('keep.trailing.zeros', TRUE)
+pander::panderOptions('table.alignment.default', 'left')
+pander::panderOptions('table.split.cells', rep(100 / ncol(perfil_fis), ncol(perfil_fis)))
+pander::pander(perfil_fis, caption = 'Variáveis físicas dos horizontes do perfil do solo [@Lauermann2007].')
+```
 
-```{r sample-splitter, echo=FALSE, fig.cap="Equipamento fracionador de amostras de enxurrada."}
+```{r perfil-do-solo-quimica, echo=FALSE, message=FALSE, warning=FALSE}
+# Preparar tabela com dados químicos perfil
+# colnames(perfil)
+idx <- c(4, 23, 16:22)
+perfil_qui <- perfil[, idx]
+col_nam <- c('ID', 'Limites', 'pH', "Ca^2+^", "Mg^2+^", "K^+^", "H+Al", "P~2~O~5~", "Matéria orgânica")
+colnames(perfil_qui) <- glue::glue("**{col_nam} {attr(perfil, 'units')[idx]}**")
+pander::panderOptions('digits', c(0, 0, 1, 2, 2, 2, 2, 2, 1))
+pander::panderOptions('decimal.mark', ',')
+pander::panderOptions('table.split.table', Inf)
+pander::panderOptions('table.alignment.default', 'left')
+pander::panderOptions('keep.trailing.zeros', TRUE)
+pander::panderOptions('table.split.cells', rep(100 / ncol(perfil_qui), ncol(perfil_qui)))
+pander::pander(perfil_qui, caption = 'Variáveis químicas dos horizontes do perfil do solo [@Lauermann2007].')
+```
+
+```{r solos-do-rs, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Área do estado do Rio Grande do Sul com camada superficial do solo de textura similar ao material do solo usado neste estudo.", fig.align='center', dpi=150, out.width='8cm', out.height='8cm', fig.asp=1}
+rs <- raster::shapefile("../data/solo-rs.shp")
+
+# Criar variável do tipo fator para construção do gráfico. Cada polígono recebe um valor único.
+rs$id <- 1:nrow(rs) %>% as.factor()
+
+# Avaliação dos polígonos. A função 'grepl' retorna '1' quando atende ao critério, e '0' caso contrário.
+# Assim, somamos os resultados para agregar os dados. Quanto maior o valor final, maior é o número de 
+# critérios ao qual um polígono atende.
+# as.factor(rs$SOLO_EMBRA) %>% levels
+idx <- 
+  grepl("Argissolo", rs$SOLO_EMBRA) + grepl("Planossolo", rs$SOLO_EMBRA) + grepl("Gleissolo", rs$SOLO_EMBRA) + 
+  grepl("areia", rs$TEXTURA) + grepl("silt/arenito", rs$MAT_ORIGEM) + 
+  grepl("siltito/argilito", rs$MAT_ORIGEM) + grepl("siltito", rs$MAT_ORIGEM) + grepl("arenito", rs$MAT_ORIGEM) +
+  grepl("arenosa", rs$TEXTURA) - grepl("gnaissse", rs$MAT_ORIGEM) - grepl("granito", rs$MAT_ORIGEM) - 
+  grepl("xisto", rs$MAT_ORIGEM) - grepl("riolito", rs$MAT_ORIGEM) - grepl("basalt", rs$MAT_ORIGEM) - 
+  grepl("andesito", rs$MAT_ORIGEM) - grepl("lacustre", rs$MAT_ORIGEM) - grepl("Luvisssolo", rs$SOLO_EMBRA) -
+  grepl("Espodossolo", rs$SOLO_EMBRA) - grepl("Neossolo", rs$SOLO_EMBRA) - grepl("Cambissolo", rs$SOLO_EMBRA)
+
+# Número mínimo de critérios aos quais um polígono precisa atender
+rs$col <- "gray95"
+rs$col[idx >= 2] <- "gray25"
+sp::spplot(
+  rs, "id", grid = TRUE, col = NA, col.regions = rs$col,
+  colorkey = FALSE, scales = list(draw = TRUE), ylab = "Latitude", xlab = "Longitude",
+  panel = function (...) {
+    sp::panel.polygonsplot(...)
+    lattice::panel.grid(v = -1, h = -1)
+    lattice::panel.points(-53.71327, -29.71289, pch = 20, col = "red")
+  })
+```
+
+O material coletado do solo foi caracterizado quanto à distribuição do tamanho de partículas. Para isso ele foi seco ao ar, destorroado e passado em peneira com malha com abertura de dois milímetros. A conteúdo de argila da fração terra fina seca ao ar (TFSA) resultante foi estimado usando o método da pipeta após dispersão química de 20 g de TFSA com hidróxido de sódio (NaOH) -- na concentração de 1 mol L^-1^ -- e desagregação mecânica -- usando duas esferas de nylon (diâmetro de 1,71 cm, massa de 3,04 g, densidade de 1,11 g cm^-1^) e agitação horizontal por 4 horas a 120 ciclos por minuto. Já o conteúdo de areia foi determinado via tamizamento úmido.
+
+## Método tradicional
+
+A primeiro teste realizado foi quanto à capacidade do método tradicional produzir amostras que possuam a mesma concentração de sólidos totais (sedimentos) que a suspensão (enxurrada) de onde foi obtida, ou seja, se a amostra gerada é representativa da suspensão. Para isso foram utilizados recipientes plásticos com capacidade para 10 L, dentro dos quais foram adicionados 3 L de água destilada e a quantidade de TFSA necessária para atingir as concentrações de 2, 10 e 50 g L^-1^ de sólidos totais. Para cada concentração foram preparadas cinco repetições (baldes). Em cada balde, uma pessoa homogeneizou a suspensão com uma das mãos. Após 10 segundos, sem parar a homogeneização, outra pessoa coletou uma amostra mergulhando, no seio da suspensão, um copo de Beaker de 250 mL. A concentração de sólidos totais nas amostras de cada suspensão foi determinada em função do seu volume e da massa de sólidos totais mensurada após secagem em estufa à temperatuda de 105°C até completa evaporação da água. 
+
+## Equipamento fracionador
+
+O equipamento fracionador foi construído com peças de PVC (Figura \@ref(fig:sample-splitter)). Ele é composto de um reservatório para a suspensão na parte superior, o qual consiste num cano de 300 mm de comprimento e 75 mm de diâmetro, com capacidade para 1 L de suspensão. O fundo do reservatório possui formato de funil para direcionar a suspensão a um cano conectado à sua extremidade inferior, cano esse que possui 300 mm de comprimento e 15 mm de diâmetro. A função desse cano de menor diâmetro é dirigir a suspensão em fluxo contínuo até o dispositivo fracionador da suspensão, que possui formato de Y invertido e que está conectado à extremidade do primeiro. Todas as peças são fixadas utilizando material adesivo específico para PVC. Como o equipamento fracionador possui duas saídas (A e B), ele produz duas subamostras da suspensão a cada operação de fracionamento. O nivelamento do equipamento fracionador com os planos horizontal e vertical é feito usando usando uma plataforma de madeira. O investimento necessário para construção do equipamento fracionador é de aproximadamente [R$ VALOR].
+
+```{r sample-splitter, echo=FALSE, fig.cap="Equipamento fracionador de amostras de enxurrada.", fig.align='center'}
 knitr::include_graphics("../images/sample-splitter.jpg")
 ```
 
-Dois testes foram realizados com o fracionador para definir o volume da amostra e a concentração de sedimento abaixo do qual o equipamento apresenta desvios inaceitáveis e, portando, não deve ser utilizado. No primeiro caso utilizamos diferentes volumes de água (100, 300, 500 e 1000 mL) em cinco repetições. As duas subamostras produzidas foram coletadas em copos de Beaker e o seu volume determinado. No segundo caso utilizamos suspensões contendo a mesma concentração daquelas utilizadas para avaliar o método tradicional. O material foi agitado vigorosamente e vertido no reservatório do fracionador, sendo lavado com água destilada entre cada fracionamento. As duas subamostras foram coletadas em copos de Beaker de 250 mL e analisadas quanto ao seu volume e concentração total de sedimento. O sedimento foi analisado quanto à distribuição do tamanho de partículas através do método da pipeta. O objetivo foi testar o efeito do fracionamento na distribuição do tamanho de partículas nas subamostras produzidas por cada saída do fracionador.
+Três testes foram realizados com o equipamento fracionador. O primeiro dele teve como objetivo avaliar se a capacidade do equipamento fracionador produzir subamostras de volume equivalente é influenciada pelo volume da amostra sendo fracionada. Quatro volumes de água destilada foram avaliados, 100, 300, 500 e 1000 mL, em cinco repetições. Em cada repetição, o respectivo volume total de água destilada foi vertido de uma só vez no reservatório do equipamento fracionador. As duas subamostras produzidas foram coletadas em copos de Beaker e o seu volume determinado usando provetas graduadas previamente calibradas.
+
+O segundo teste consistiu na avaliação da capacidade do equipamento fracionador produzir subamostras com a mesma concentração de sólidos totais equivalente àquela encontrada na suspensão sendo fracionada. As mesmas concentrações usadas para avaliar o método tradicional foram usadas, também com cinco repetições cada uma. A suspensão foi preparada em [ONDE FOI PREPARADA? QUE RECIPIENTE USAMOS?] com um volume total de [QUANTOS ML?], agitada vigorosamente por 10 segundos e vertida no reservatório do fracionador de uma só vez. O fracionador foi lavado com água destilada após cada repetiação. As duas subamostras (A e B) produzidas em cada repetição foram coletadas em copos de Beaker de 250 mL e em seguida determinada a concentração de sólidos totais conforme descrito acimpa para o método tradicional.
+
+Finalmente, os sólidos totais foram analisado quanto à distribuição do tamanho de partículas enpregando o mesmo método descrito acima para a análise do material do solo utilizado para produzir as suspensões. O objetivo desse teste foi avaliar a capacidade do equipamento fracionador produzir subamostras cuja distribuição do tamanho de partículas dos sólidos totais sejam equivalentes à distribuição do tamanho de partículas da suspensão sendo fracionada.
+
+## Análises estatísticas
+
+Os dados de todos os testes foram submetidos à análise estatítica descritiva, sendo calculados a média, desvio padrão, coeficiente de variação e erro percentual. O erro percentual consiste na 
 
 Os resultados completos de todos os testes são apresentados juntamente com algumas estatísticas descritivas (média, desvio padrão, coeficiente de variação e erro percentual). O teste t foi utilizado para testar se o volume e a concentração de sedimento das subamostras são estatisticamente iguais aos valores esperados. O teste t para amostras pareadas foi utilizado para testar se o volume e a concentração de sedimento das subamostras produzidas pelas duas saídas do fracionador são estatisticamente iguais. Todas as análises foram realizadas utilizando o pacote stats no R (R Development Core Team, 2011).
 
 # RESULTADOS E DISCUSSÃO
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+unidades <- readr::read_csv("../data/camada.csv",  n_max = 1)
+dados <- readr::read_csv("../data/camada.csv",  na = "-", comment = "unidade", locale = readr::locale(decimal_mark = ","))
+```
+
+```{r, echo=FALSE}
+# Preparar dados
+d <- 
+  filter(dados, observacao_id == 'convencional') %>% 
+  select(solidos_totais, amostra_codigo) %>% 
+  mutate(entrada = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 1]) %>%
+  mutate(entrada = gsub("Entrada: ", "", entrada)) %>% 
+  mutate(entrada = gsub("g/L", "", entrada)) %>%
+  mutate(repeticao = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 2]) %>%
+  mutate(repeticao = gsub("Repetição: ", "", repeticao)) %>%
+  select(-amostra_codigo) %>% 
+  mutate(entrada = as.numeric(entrada)) %>%
+  mutate(erro = solidos_totais - entrada)
+# Erro médio
+e <- 
+  mutate(d, erro = erro / entrada * 100) %>% 
+  group_by(entrada) %>% 
+  summarise('Média (g L^-1^)' = mean(solidos_totais), 'DP (g L^-1^)' = sd(solidos_totais), 
+            'CV (%)' = sd(solidos_totais) / mean(solidos_totais) * 100, 'EM (%)' = mean(erro))
+# Teste t para a média de uma amostra
+t <- 
+  group_by(d, entrada) %>% 
+  summarise('*t*' = t.test(erro, mu = 0, alternative = "less")$statistic,
+            '*P*' = t.test(erro, mu = 0, alternative = "less")$p.value)
+# Preparar tabela
+d <- select(d, -erro) %>% tidyr::spread(entrada, solidos_totais)
+d <- rbind(d, my_reshape(e, d), my_reshape(t, d))
+colnames(d)[2:4] <- glue::glue("**{colnames(d)[2:4]} (g L^-1^)**")
+colnames(d)[1] <- ""
+rownames(d) <- NULL
+panderOptions('digits', c(1, 3, 2, 2))
+panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
+pander(d, caption = 'Dados e estatísticas da concentração de sólidos totais nas amostras obtidas usando o método do mergulho de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^.')
+```
+
+
+```{r, echo=FALSE}
+# Preparar dados
+d <- 
+  filter(dados, observacao_id == 'fracionador' & objeto_id == 'água') %>% 
+  select(volume_agua, amostra_codigo) %>%
+  mutate(entrada = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 1]) %>%
+  mutate(entrada = gsub("Entrada: ", "", entrada)) %>% 
+  mutate(entrada = gsub("mL", "", entrada)) %>% 
+  mutate(saida = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 2]) %>%
+  mutate(saida = gsub("Saída: ", "", saida)) %>% 
+  mutate(repeticao = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 3]) %>%
+  mutate(repeticao = gsub("Repetição: ", "", repeticao)) %>%
+  select(-amostra_codigo) %>% 
+  mutate(entrada = as.numeric(entrada) / 2) %>%
+  mutate(erro = volume_agua - entrada)
+# Erro médio
+e <- 
+  mutate(d, erro = erro / entrada * 100) %>% 
+  group_by(entrada, saida) %>% 
+  summarise('Média (g L^-1^)' = mean(volume_agua), 'DP (g L^-1^)' = sd(volume_agua), 
+            'CV (%)' = sd(volume_agua) / mean(volume_agua) * 100, 'EM (%)' = mean(erro))
+# Teste t para a média de uma amostra
+t1 <- 
+  group_by(d, entrada, saida) %>% 
+  summarise('*t*' = t.test(erro, mu = 0, alternative = "less")$statistic,
+            '*P*' = t.test(erro, mu = 0, alternative = "less")$p.value)
+# Teste t para a média de duas amostra
+teste_t2 <-
+  function (x = d, y = 300) {
+    tmp <- 
+      filter(x, entrada == y / 2) %>% 
+      tidyr::spread(entrada, erro) %>% 
+      select(repeticao, saida, as.character(y/2)) %>% 
+      tidyr::spread(saida, as.character(y/2))
+    names(tmp) <- gsub(" ", "", names(tmp))
+    summarise(tmp,
+              '*t*' = t.test(A, B, mu = 0, alternative = "two.sided")$statistic,
+              '*P*' = t.test(A, B, mu = 0, alternative = "two.sided")$p.value)
+  }
+i <- d %>% select(entrada) %>% unique() * 2
+t2 <- sapply(i[[1]], function (i) teste_t2(d, i))
+t2
+```
+
+A distribuição do tamanho de partículas do material de solo consta de: areia (0,053--2,00 mm) = `r dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = mean(areia_total)) %>% round()` g kg^-1^; argila (<0.002 mm) = `r dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = mean(argila_total)) %>% round()` g kg^-1^.
 
 Os resultados mostram que o método tradicional descrito por Cogo (1978) não proporciona a obtenção de subamostras representativas da enxurrada (Tabela 1). Em todas as três concentrações testadas observamos um erro negativo de 30% ou mais. Esse erro é significativo e prejudica a consistência do método, indicando que as estimativas anuais de erosão do solo em áreas agrícolas podem ser muito inferiores ao real. Os 500 milhões de toneladas de solo erodidos anualmente no Brasil segundo Bertoni & Lombardi Neto (1999) podem ser, na verdade, de 650 a 750 milhões de toneladas.
 

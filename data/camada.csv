@@ -1,0 +1,120 @@
+observacao_id,objeto_id,amostra_codigo,profund_sup,profund_inf,solidos_totais,volume_agua,areia_total,argila_total
+unidade,-,-,cm,cm,g/L,mL,g/kg,g/kg
+convencional,suspensão,Entrada: 2g/L; Repetição: 1,-,-,"1,16",-,-,-
+convencional,suspensão,Entrada: 2g/L; Repetição: 2,-,-,"1,18",-,-,-
+convencional,suspensão,Entrada: 2g/L; Repetição: 3,-,-,"1,36",-,-,-
+convencional,suspensão,Entrada: 2g/L; Repetição: 4,-,-,"2,01",-,-,-
+convencional,suspensão,Entrada: 2g/L; Repetição: 5,-,-,"0,98",-,-,-
+convencional,suspensão,Entrada: 10g/L; Repetição: 1,-,-,"4,06",-,-,-
+convencional,suspensão,Entrada: 10g/L; Repetição: 2,-,-,"6,68",-,-,-
+convencional,suspensão,Entrada: 10g/L; Repetição: 3,-,-,"4,81",-,-,-
+convencional,suspensão,Entrada: 10g/L; Repetição: 4,-,-,"4,26",-,-,-
+convencional,suspensão,Entrada: 10g/L; Repetição: 5,-,-,"4,62",-,-,-
+convencional,suspensão,Entrada: 50g/L; Repetição: 1,-,-,"25,55",-,-,-
+convencional,suspensão,Entrada: 50g/L; Repetição: 2,-,-,"58,65",-,-,-
+convencional,suspensão,Entrada: 50g/L; Repetição: 3,-,-,"44,73",-,-,-
+convencional,suspensão,Entrada: 50g/L; Repetição: 4,-,-,"32,36",-,-,-
+convencional,suspensão,Entrada: 50g/L; Repetição: 5,-,-,"16,98",-,-,-
+fracionador,água,Entrada: 100mL; Saída: A; Repetição: 1,-,-,-,"48,00",-,-
+fracionador,água,Entrada: 100mL; Saída: A; Repetição: 2,-,-,-,"44,00",-,-
+fracionador,água,Entrada: 100mL; Saída: A; Repetição: 3,-,-,-,"47,00",-,-
+fracionador,água,Entrada: 100mL; Saída: A; Repetição: 4,-,-,-,"45,50",-,-
+fracionador,água,Entrada: 100mL; Saída: A; Repetição: 5,-,-,-,"42,00",-,-
+fracionador,água,Entrada: 100mL; Saída: B; Repetição: 1,-,-,-,"50,00",-,-
+fracionador,água,Entrada: 100mL; Saída: B; Repetição: 2,-,-,-,"54,00",-,-
+fracionador,água,Entrada: 100mL; Saída: B; Repetição: 3,-,-,-,"51,50",-,-
+fracionador,água,Entrada: 100mL; Saída: B; Repetição: 4,-,-,-,"53,00",-,-
+fracionador,água,Entrada: 100mL; Saída: B; Repetição: 5,-,-,-,"57,00",-,-
+fracionador,água,Entrada: 300mL; Saída: A; Repetição: 1,-,-,-,"155,00",-,-
+fracionador,água,Entrada: 300mL; Saída: A; Repetição: 2,-,-,-,"144,00",-,-
+fracionador,água,Entrada: 300mL; Saída: A; Repetição: 3,-,-,-,"153,00",-,-
+fracionador,água,Entrada: 300mL; Saída: A; Repetição: 4,-,-,-,"150,00",-,-
+fracionador,água,Entrada: 300mL; Saída: A; Repetição: 5,-,-,-,"146,00",-,-
+fracionador,água,Entrada: 300mL; Saída: B; Repetição: 1,-,-,-,"145,00",-,-
+fracionador,água,Entrada: 300mL; Saída: B; Repetição: 2,-,-,-,"156,00",-,-
+fracionador,água,Entrada: 300mL; Saída: B; Repetição: 3,-,-,-,"146,00",-,-
+fracionador,água,Entrada: 300mL; Saída: B; Repetição: 4,-,-,-,"150,00",-,-
+fracionador,água,Entrada: 300mL; Saída: B; Repetição: 5,-,-,-,"154,00",-,-
+fracionador,água,Entrada: 500mL; Saída: A; Repetição: 1,-,-,-,"245,00",-,-
+fracionador,água,Entrada: 500mL; Saída: A; Repetição: 2,-,-,-,"261,00",-,-
+fracionador,água,Entrada: 500mL; Saída: A; Repetição: 3,-,-,-,"248,50",-,-
+fracionador,água,Entrada: 500mL; Saída: A; Repetição: 4,-,-,-,"256,00",-,-
+fracionador,água,Entrada: 500mL; Saída: A; Repetição: 5,-,-,-,"249,50",-,-
+fracionador,água,Entrada: 500mL; Saída: B; Repetição: 1,-,-,-,"254,00",-,-
+fracionador,água,Entrada: 500mL; Saída: B; Repetição: 2,-,-,-,"239,00",-,-
+fracionador,água,Entrada: 500mL; Saída: B; Repetição: 3,-,-,-,"251,00",-,-
+fracionador,água,Entrada: 500mL; Saída: B; Repetição: 4,-,-,-,"244,00",-,-
+fracionador,água,Entrada: 500mL; Saída: B; Repetição: 5,-,-,-,"250,00",-,-
+fracionador,água,Entrada: 1000mL; Saída: A; Repetição: 1,-,-,-,"507,00",-,-
+fracionador,água,Entrada: 1000mL; Saída: A; Repetição: 2,-,-,-,"457,00",-,-
+fracionador,água,Entrada: 1000mL; Saída: A; Repetição: 3,-,-,-,"492,50",-,-
+fracionador,água,Entrada: 1000mL; Saída: A; Repetição: 4,-,-,-,"512,50",-,-
+fracionador,água,Entrada: 1000mL; Saída: A; Repetição: 5,-,-,-,"525,50",-,-
+fracionador,água,Entrada: 1000mL; Saída: B; Repetição: 1,-,-,-,"484,50",-,-
+fracionador,água,Entrada: 1000mL; Saída: B; Repetição: 2,-,-,-,"534,50",-,-
+fracionador,água,Entrada: 1000mL; Saída: B; Repetição: 3,-,-,-,"498,00",-,-
+fracionador,água,Entrada: 1000mL; Saída: B; Repetição: 4,-,-,-,"477,50",-,-
+fracionador,água,Entrada: 1000mL; Saída: B; Repetição: 5,-,-,-,"464,00",-,-
+fracionador,sedimento,Entrada: 2g/L; Saída: A; Repetição: 1,-,-,-,-,"341,73",-
+fracionador,sedimento,Entrada: 2g/L; Saída: A; Repetição: 2,-,-,-,-,"366,56",-
+fracionador,sedimento,Entrada: 2g/L; Saída: A; Repetição: 3,-,-,-,-,"319,67",-
+fracionador,sedimento,Entrada: 2g/L; Saída: A; Repetição: 4,-,-,-,-,"316,32",-
+fracionador,sedimento,Entrada: 2g/L; Saída: A; Repetição: 5,-,-,-,-,"293,59",-
+fracionador,sedimento,Entrada: 2g/L; Saída: B; Repetição: 1,-,-,-,-,"299,39",-
+fracionador,sedimento,Entrada: 2g/L; Saída: B; Repetição: 2,-,-,-,-,"267,59",-
+fracionador,sedimento,Entrada: 2g/L; Saída: B; Repetição: 3,-,-,-,-,"326,59",-
+fracionador,sedimento,Entrada: 2g/L; Saída: B; Repetição: 4,-,-,-,-,"293,35",-
+fracionador,sedimento,Entrada: 2g/L; Saída: B; Repetição: 5,-,-,-,-,"311,49",-
+fracionador,sedimento,Entrada: 10g/L; Saída: A; Repetição: 1,-,-,-,-,"550,02","68,22"
+fracionador,sedimento,Entrada: 10g/L; Saída: A; Repetição: 2,-,-,-,-,"515,43","71,64"
+fracionador,sedimento,Entrada: 10g/L; Saída: A; Repetição: 3,-,-,-,-,"577,46","59,90"
+fracionador,sedimento,Entrada: 10g/L; Saída: A; Repetição: 4,-,-,-,-,"538,41","83,91"
+fracionador,sedimento,Entrada: 10g/L; Saída: A; Repetição: 5,-,-,-,-,"585,43","83,26"
+fracionador,sedimento,Entrada: 10g/L; Saída: B; Repetição: 1,-,-,-,-,"514,82","78,42"
+fracionador,sedimento,Entrada: 10g/L; Saída: B; Repetição: 2,-,-,-,-,"574,75","59,92"
+fracionador,sedimento,Entrada: 10g/L; Saída: B; Repetição: 3,-,-,-,-,"533,53","91,16"
+fracionador,sedimento,Entrada: 10g/L; Saída: B; Repetição: 4,-,-,-,-,"574,14","60,23"
+fracionador,sedimento,Entrada: 10g/L; Saída: B; Repetição: 5,-,-,-,-,"525,42","82,63"
+fracionador,sedimento,Entrada: 50g/L; Saída: A; Repetição: 1,-,-,-,-,"522,86","87,45"
+fracionador,sedimento,Entrada: 50g/L; Saída: A; Repetição: 2,-,-,-,-,"588,13","90,36"
+fracionador,sedimento,Entrada: 50g/L; Saída: A; Repetição: 3,-,-,-,-,"593,46","90,80"
+fracionador,sedimento,Entrada: 50g/L; Saída: A; Repetição: 4,-,-,-,-,"589,55","92,07"
+fracionador,sedimento,Entrada: 50g/L; Saída: A; Repetição: 5,-,-,-,-,"596,89","83,15"
+fracionador,sedimento,Entrada: 50g/L; Saída: B; Repetição: 1,-,-,-,-,"580,50","93,41"
+fracionador,sedimento,Entrada: 50g/L; Saída: B; Repetição: 2,-,-,-,-,"591,56","94,22"
+fracionador,sedimento,Entrada: 50g/L; Saída: B; Repetição: 3,-,-,-,-,"578,87","88,65"
+fracionador,sedimento,Entrada: 50g/L; Saída: B; Repetição: 4,-,-,-,-,"606,02","78,25"
+fracionador,sedimento,Entrada: 50g/L; Saída: B; Repetição: 5,-,-,-,-,"576,03","84,99"
+solo,TFSA,1,0,20,-,-,"578,35","88,65"
+solo,TFSA,2,0,20,-,-,"583,58","87,83"
+solo,TFSA,3,0,20,-,-,"586,22","89,03"
+fracionador,suspensão,Entrada: 2g/L; Saída: A; Repetição: 1,-,-,"1,97",-,-,-
+fracionador,suspensão,Entrada: 2g/L; Saída: A; Repetição: 2,-,-,"1,99",-,-,-
+fracionador,suspensão,Entrada: 2g/L; Saída: A; Repetição: 3,-,-,"1,95",-,-,-
+fracionador,suspensão,Entrada: 2g/L; Saída: A; Repetição: 4,-,-,"2,03",-,-,-
+fracionador,suspensão,Entrada: 2g/L; Saída: A; Repetição: 5,-,-,"2,01",-,-,-
+fracionador,suspensão,Entrada: 2g/L; Saída: B; Repetição: 1,-,-,"1,98",-,-,-
+fracionador,suspensão,Entrada: 2g/L; Saída: B; Repetição: 2,-,-,"2,01",-,-,-
+fracionador,suspensão,Entrada: 2g/L; Saída: B; Repetição: 3,-,-,"1,93",-,-,-
+fracionador,suspensão,Entrada: 2g/L; Saída: B; Repetição: 4,-,-,"1,91",-,-,-
+fracionador,suspensão,Entrada: 2g/L; Saída: B; Repetição: 5,-,-,"1,96",-,-,-
+fracionador,suspensão,Entrada: 10g/L; Saída: A; Repetição: 1,-,-,"9,99",-,-,-
+fracionador,suspensão,Entrada: 10g/L; Saída: A; Repetição: 2,-,-,"9,75",-,-,-
+fracionador,suspensão,Entrada: 10g/L; Saída: A; Repetição: 3,-,-,"9,90",-,-,-
+fracionador,suspensão,Entrada: 10g/L; Saída: A; Repetição: 4,-,-,"9,84",-,-,-
+fracionador,suspensão,Entrada: 10g/L; Saída: A; Repetição: 5,-,-,"9,96",-,-,-
+fracionador,suspensão,Entrada: 10g/L; Saída: B; Repetição: 1,-,-,"9,99",-,-,-
+fracionador,suspensão,Entrada: 10g/L; Saída: B; Repetição: 2,-,-,"9,82",-,-,-
+fracionador,suspensão,Entrada: 10g/L; Saída: B; Repetição: 3,-,-,"9,71",-,-,-
+fracionador,suspensão,Entrada: 10g/L; Saída: B; Repetição: 4,-,-,"9,70",-,-,-
+fracionador,suspensão,Entrada: 10g/L; Saída: B; Repetição: 5,-,-,"9,90",-,-,-
+fracionador,suspensão,Entrada: 50g/L; Saída: A; Repetição: 1,-,-,"48,52",-,-,-
+fracionador,suspensão,Entrada: 50g/L; Saída: A; Repetição: 2,-,-,"49,43",-,-,-
+fracionador,suspensão,Entrada: 50g/L; Saída: A; Repetição: 3,-,-,"49,57",-,-,-
+fracionador,suspensão,Entrada: 50g/L; Saída: A; Repetição: 4,-,-,"50,40",-,-,-
+fracionador,suspensão,Entrada: 50g/L; Saída: A; Repetição: 5,-,-,"49,61",-,-,-
+fracionador,suspensão,Entrada: 50g/L; Saída: B; Repetição: 1,-,-,"47,84",-,-,-
+fracionador,suspensão,Entrada: 50g/L; Saída: B; Repetição: 2,-,-,"48,72",-,-,-
+fracionador,suspensão,Entrada: 50g/L; Saída: B; Repetição: 3,-,-,"48,59",-,-,-
+fracionador,suspensão,Entrada: 50g/L; Saída: B; Repetição: 4,-,-,"48,11",-,-,-
+fracionador,suspensão,Entrada: 50g/L; Saída: B; Repetição: 5,-,-,"49,39",-,-,-
