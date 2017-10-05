@@ -147,12 +147,6 @@ O segundo teste conduzido com o método do fracionador foi o mesmo aplicado ao m
 
 Finalmente, os sólidos totais contidos nas amostras produzidas pelas saídas A e B do fracionador foram analisados quanto à distribuição do tamanho de partículas. Para isso fora empregado o mesmo método descrito acima para a análise do material do solo utilizado para produzir as suspensões. O objetivo desse teste foi avaliar a capacidade do fracionador produzir amostras onde os sólidos totais possuam distribuição do tamanho de aproximadamente equivalente àquela observada nos sólidos totais da suspensão fracionada. O teste *t* bicaudal para a média de uma amostra e o teste *t* bicaudal para a média de duas amostras pareadas foram empregados para avaliar os erros de estimação do conteúdo de argila e areia.
 
-## Análises estatísticas
-
-Os dados de todos os testes foram submetidos à análise estatítica descritiva, sendo calculados a média, desvio padrão, coeficiente de variação e erro percentual. O erro percentual consiste na 
-
-Os resultados completos de todos os testes são apresentados juntamente com algumas estatísticas descritivas (média, desvio padrão, coeficiente de variação e erro percentual). O teste t foi utilizado para testar se o volume e a concentração de sedimento das subamostras são estatisticamente iguais aos valores esperados. O teste t para amostras pareadas foi utilizado para testar se o volume e a concentração de sedimento das subamostras produzidas pelas duas saídas do fracionador são estatisticamente iguais. Todas as análises foram realizadas utilizando o pacote stats no R (R Development Core Team, 2011).
-
 # RESULTADOS E DISCUSSÃO
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
