@@ -129,7 +129,7 @@ O material coletado do solo foi caracterizado quanto à distribuição do tamanh
 
 O primeiro teste realizado foi quanto à capacidade do método do mergulho produzir um amostra representativa da suspensão, ou seja, que possua concentração de sólidos totais (sedimentos) aproximadamente equivalente àquela da suspensão (enxurrada) de onde foi obtida. Para isso foram utilizados recipientes plásticos com capacidade para 10 L, dentro dos quais foram adicionados 3 L de água destilada e a quantidade de TFSA necessária para atingir as concentrações de 2, 10 e 50 g L^-1^ de sólidos totais. Para cada concentração foram preparadas cinco repetições (baldes). Em cada balde, uma pessoa homogeneizou a suspensão com uma das mãos. Após 10 segundos, sem parar a homogeneização, outra pessoa coletou uma amostra mergulhando, no seio da suspensão, um copo de Beaker de 250 mL. A concentração de sólidos totais nas amostras de cada suspensão foi determinada em função do seu volume e da massa de sólidos totais mensurada após secagem em estufa à temperatuda de 105°C até completa evaporação da água.
 
-A diferença entre o valor real/conhecido, *y*, e estimado por uma amostra *i*, *ŷ~i~*, da concentração de sólidos totais numa suspensão *j*, foi definido como sendo o erro de estimação, *e~ij~* = *ŷ~ij~* - *y~j~*. A partir do erro de estimação, calculou-se a razão *e~ij~*/*y~j~* que, multiplicada por 100, informa a magnitude percentual do erro de estimação em relação ao valor real da concentração de sólidos totais numa suspensão. Finalmente, os erros de estimação foram submetidos ao teste *t* unicaudal para a média de uma amostra, onde a hipótese alternativa testada foi de que a média verdadeira seria menor do que zero.
+A diferença entre o valor real/conhecido, *y*, e estimado por uma amostra *i*, *ŷ~i~*, da concentração de sólidos totais numa suspensão *j*, foi definido como sendo o erro de estimação, *e~ij~* = *ŷ~ij~* - *y~j~*. A partir do erro de estimação, calculou-se a razão *e~ij~*/*y~j~* que, multiplicada por 100, informa a magnitude percentual do erro de estimação em relação ao valor real da concentração de sólidos totais numa suspensão. Finalmente, os erros de estimação foram submetidos ao teste *t* bicaudal para a média de uma amostra, onde a hipótese alternativa testada foi de que a média verdadeira seria diferente de zero.
 
 ## Método do fracionador
 
@@ -140,7 +140,9 @@ O equipamento utilizado no método do fracionador -- doravante chamado simplesme
 knitr::include_graphics("../images/sample-splitter.jpg")
 ```
 
-Três testes foram realizados com o equipamento fracionador. O primeiro dele teve como objetivo avaliar se a capacidade do equipamento fracionador produzir subamostras de volume equivalente é influenciada pelo volume da amostra sendo fracionada. Quatro volumes de água destilada foram avaliados, 100, 300, 500 e 1000 mL, em cinco repetições. Em cada repetição, o respectivo volume total de água destilada foi vertido de uma só vez no reservatório do equipamento fracionador. As duas subamostras produzidas foram coletadas em copos de Beaker e o seu volume determinado usando provetas graduadas previamente calibradas.
+O método do fracionador foi submetido à três testes. O primeiro dele teve como objetivo avaliar se o volume da suspensão sendo fracionada afeta o desempenho do fracionador, especificamente, sua capacidade de produzir pares de amostras com volumes aproximadamentes equivalentes. Quatro volumes de água destilada foram avaliados, 100, 300, 500 e 1000 mL, em cinco repetições. Em cada repetição, o respectivo volume total de água destilada foi vertido de uma só vez no reservatório do fracionador. As duas amostras produzidas foram coletadas em copos de Beaker e o seu volume determinado usando provetas graduadas previamente calibradas. O erro de estimação e sua razão em relação ao valor real, ambos definidos acima, foram calculados para cada uma das saídas do fracionador em todas as repetições dos quatro volumes testados. Também como descrito acima, os erros de estimação foram submetidos ao teste *t* bicaudal.
+
+
 
 O segundo teste consistiu na avaliação da capacidade do equipamento fracionador produzir subamostras com a mesma concentração de sólidos totais equivalente àquela encontrada na suspensão sendo fracionada. As mesmas concentrações usadas para avaliar o método tradicional foram usadas, também com cinco repetições cada uma. A suspensão foi preparada em [ONDE FOI PREPARADA? QUE RECIPIENTE USAMOS?] com um volume total de [QUANTOS ML?], agitada vigorosamente por 10 segundos e vertida no reservatório do fracionador de uma só vez. O fracionador foi lavado com água destilada após cada repetiação. As duas subamostras (A e B) produzidas em cada repetição foram coletadas em copos de Beaker de 250 mL e em seguida determinada a concentração de sólidos totais conforme descrito acimpa para o método tradicional.
 
@@ -181,8 +183,8 @@ e <-
 # Teste t para a média de uma amostra
 t <- 
   group_by(d, entrada) %>% 
-  summarise('*t*' = t.test(erro, mu = 0, alternative = "less")$statistic,
-            '*P*' = t.test(erro, mu = 0, alternative = "less")$p.value)
+  summarise('*t*' = t.test(erro, mu = 0, alternative = "two.sided")$statistic,
+            '*P*' = t.test(erro, mu = 0, alternative = "two.sided")$p.value)
 # Preparar tabela
 d <- select(d, -erro) %>% tidyr::spread(entrada, solidos_totais)
 d <- rbind(d, my_reshape(e, d), my_reshape(t, d))
@@ -219,8 +221,8 @@ e <-
 # Teste t para a média de uma amostra
 t1 <- 
   group_by(d, entrada, saida) %>% 
-  summarise('*t*' = t.test(erro, mu = 0, alternative = "less")$statistic,
-            '*P*' = t.test(erro, mu = 0, alternative = "less")$p.value)
+  summarise('*t*' = t.test(erro, mu = 0, alternative = "two.sided")$statistic,
+            '*P*' = t.test(erro, mu = 0, alternative = "two.sided")$p.value)
 # Teste t para a média de duas amostra
 teste_t2 <-
   function (x = d, y = 300) {
