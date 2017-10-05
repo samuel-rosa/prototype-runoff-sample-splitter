@@ -140,9 +140,7 @@ O equipamento utilizado no método do fracionador -- doravante chamado simplesme
 knitr::include_graphics("../images/sample-splitter.jpg")
 ```
 
-O método do fracionador foi submetido à três testes. O primeiro dele teve como objetivo avaliar se o volume da suspensão sendo fracionada afeta o desempenho do fracionador, especificamente, sua capacidade de produzir pares de amostras com volumes aproximadamentes equivalentes. Quatro volumes de água destilada foram avaliados, 100, 300, 500 e 1000 mL, em cinco repetições. Em cada repetição, o respectivo volume total de água destilada foi vertido de uma só vez no reservatório do fracionador. As duas amostras produzidas foram coletadas em copos de Beaker e o seu volume determinado usando provetas graduadas previamente calibradas. O erro de estimação e sua razão em relação ao valor real, ambos definidos acima, foram calculados para cada uma das saídas do fracionador em todas as repetições dos quatro volumes testados. Também como descrito acima, os erros de estimação foram submetidos ao teste *t* bicaudal.
-
-
+O método do fracionador foi submetido à três testes. O primeiro dele teve como objetivo avaliar se o volume da suspensão sendo fracionada afeta o desempenho do fracionador, especificamente, sua capacidade de produzir pares de amostras com volumes aproximadamentes equivalentes. Quatro volumes de água destilada foram avaliados, 100, 300, 500 e 1000 mL, em cinco repetições. Em cada repetição, o respectivo volume total de água destilada foi vertido de uma só vez no reservatório do fracionador. As duas amostras produzidas foram coletadas em copos de Beaker e o seu volume determinado usando provetas graduadas previamente calibradas. O erro de estimação e sua razão em relação ao valor real, ambos definidos acima, foram calculados para cada uma das saídas do fracionador em todas as repetições dos quatro volumes testados. Também como descrito acima, os erros de estimação foram submetidos ao teste *t* bicaudal. Adicionalmente, os erros de estimação das saídas A e B para cada um dos quatro volumes testdos foram comparados usando o teste *t* bicaudal para a média de duas amostras pareadas. A hipótese alternativa testada foi de que a diferença verdadeira entre as médias das duas amostras seria diferente de zero.
 
 O segundo teste consistiu na avaliação da capacidade do equipamento fracionador produzir subamostras com a mesma concentração de sólidos totais equivalente àquela encontrada na suspensão sendo fracionada. As mesmas concentrações usadas para avaliar o método tradicional foram usadas, também com cinco repetições cada uma. A suspensão foi preparada em [ONDE FOI PREPARADA? QUE RECIPIENTE USAMOS?] com um volume total de [QUANTOS ML?], agitada vigorosamente por 10 segundos e vertida no reservatório do fracionador de uma só vez. O fracionador foi lavado com água destilada após cada repetiação. As duas subamostras (A e B) produzidas em cada repetição foram coletadas em copos de Beaker de 250 mL e em seguida determinada a concentração de sólidos totais conforme descrito acimpa para o método tradicional.
 
@@ -233,8 +231,8 @@ teste_t2 <-
       tidyr::spread(saida, as.character(y/2))
     names(tmp) <- gsub(" ", "", names(tmp))
     summarise(tmp,
-              '*t*' = t.test(A, B, mu = 0, alternative = "two.sided")$statistic,
-              '*P*' = t.test(A, B, mu = 0, alternative = "two.sided")$p.value)
+              '*t*' = t.test(A, B, mu = 0, alternative = "two.sided", paired = TRUE)$statistic,
+              '*P*' = t.test(A, B, mu = 0, alternative = "two.sided", paired = TRUE)$p.value)
   }
 i <- d %>% select(entrada) %>% unique() * 2
 t2 <- sapply(i[[1]], function (i) teste_t2(d, i))
