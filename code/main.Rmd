@@ -5,6 +5,7 @@ output:
   bookdown::word_document2:
     reference_docx: ../docs/template.docx
 bibliography: biblio.bib
+lang: pt
 editor_options: 
   chunk_output_type: inline
 ---
