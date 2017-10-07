@@ -207,29 +207,42 @@ d <-
   mutate(erro = volume_agua - entrada)
 # Erro médio
 e <- 
-  mutate(d, erro = erro / entrada * 100) %>% 
+  mutate(d, erro = erro / entrada * 100) %>%
   group_by(entrada, saida) %>% 
-  summarise('Média (g L^-1^)' = mean(volume_agua), 'DP (g L^-1^)' = sd(volume_agua), 
+  summarise('Média (mL)' = mean(volume_agua), 'DP (mL)' = sd(volume_agua), 
             'CV (%)' = sd(volume_agua) / mean(volume_agua) * 100, 'EM (%)' = mean(erro))
 # Teste t para a média de uma amostra
-t1 <- teste_t_uma(d)
+t1 <- teste_t1(d)
   
-# Teste t para a média de duas amostra
-teste_t2 <-
-  function (x = d, y = 300) {
-    tmp <- 
-      filter(x, entrada == y / 2) %>% 
-      tidyr::spread(entrada, erro) %>% 
-      select(repeticao, saida, as.character(y/2)) %>% 
-      tidyr::spread(saida, as.character(y/2))
-    names(tmp) <- gsub(" ", "", names(tmp))
-    summarise(tmp,
-              '*t*' = t.test(A, B, mu = 0, alternative = "two.sided", paired = TRUE)$statistic,
-              '*P*' = t.test(A, B, mu = 0, alternative = "two.sided", paired = TRUE)$p.value)
-  }
+# Teste t para a média de duas amostras pareadas
 i <- d %>% select(entrada) %>% unique() * 2
 t2 <- sapply(i[[1]], function (i) teste_t2(d, i))
-t2
+t2 <- t2[, rep(1:4, each = 2)] %>% 
+  apply(2, as.numeric) %>% 
+  as.data.frame()
+t2 <- cbind(r = c('*t*', '*P*'), t2)
+
+# Preparar tabela
+d <- 
+  select(d, -erro) %>% 
+  mutate(entrada = entrada * 2) %>% 
+  tidyr::unite(ent_sai, entrada, saida) %>%
+  tidyr::spread(ent_sai, volume_agua) %>% 
+  select(1, 4:9, 2:3)
+colnames(t2) <- colnames(d)
+d <- rbind(
+  d,
+  my_reshape(e, d) %>% filter(repeticao != 'saida'),
+  my_reshape(t1, d) %>% filter(repeticao != 'saida'),
+  t2)
+d[, -1] <- apply(d[, -1], 2, as.numeric)
+colnames(d) <- gsub('_ ', ' mL\n', colnames(d), fixed = TRUE)
+colnames(d) <- glue::glue("**{colnames(d)}**")
+colnames(d)[1] <- ""
+rownames(d) <- NULL
+panderOptions('digits', c(1, rep(3, 8)))
+panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
+pander(d, caption = 'Dados e estatísticas do volume de água das amostras produzidas por cada saída, A e B, do fracionador para volumes iniciais de 100, 300, 500 e 1000 mL. Estatísticas: DP -- devio padrão, CV -- coeficiente de variação, EM -- erro médio, *t* -- estatística do teste *t*, *p* -- valor *p* do teste *t*.')
 ```
 
 A distribuição do tamanho de partículas do material de solo consta de: areia (0,053--2,00 mm) = `r dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = mean(areia_total)) %>% round()` g kg^-1^; argila (<0.002 mm) = `r dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = mean(argila_total)) %>% round()` g kg^-1^.
