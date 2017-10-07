@@ -212,10 +212,8 @@ e <-
   summarise('Média (g L^-1^)' = mean(volume_agua), 'DP (g L^-1^)' = sd(volume_agua), 
             'CV (%)' = sd(volume_agua) / mean(volume_agua) * 100, 'EM (%)' = mean(erro))
 # Teste t para a média de uma amostra
-t1 <- 
-  group_by(d, entrada, saida) %>% 
-  summarise('*t*' = t.test(erro, mu = 0, alternative = "two.sided")$statistic,
-            '*P*' = t.test(erro, mu = 0, alternative = "two.sided")$p.value)
+t1 <- teste_t_uma(d)
+  
 # Teste t para a média de duas amostra
 teste_t2 <-
   function (x = d, y = 300) {
