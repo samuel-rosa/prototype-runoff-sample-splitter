@@ -157,9 +157,7 @@ dados <- readr::read_csv("../data/camada.csv",  na = "-", comment = "unidade", l
 
 ## Método do mergulho
 
-O teste realizado com o método do mergulho mostrou que o mesmo não proporciona a obtenção de amostras representativas da enxurrada (Tabela \@ref(tab:mergulho-solidos)). Em todas as três concentrações testadas observamos um erro negativo de 30% ou mais. Esse erro é significativo e prejudica a consistência do método, indicando que as estimativas anuais de erosão do solo em áreas agrícolas podem ser muito inferiores ao real. Os 500 milhões de toneladas de solo erodidos anualmente no Brasil segundo Bertoni & Lombardi Neto (1999) podem ser, na verdade, de 650 a 750 milhões de toneladas.
-
-Como o método tradicional subestima a erosão do solo devido à amostragem seletiva das partículas mais finas, a distribuição do tamanho de partículas e a composição química do sedimento das subamostras devem ser significativamente diversas da amostra da enxurrada. Não realizamos testes para avaliar essas propriedades do sedimento por entendermos que o erro apresentado pelo método já é suficiente para confirmar sua inconsistência (Lang, 1992; Zöbisch et al., 1996; Todisco et al., 2012).
+O teste realizado com o método do mergulho mostrou que o mesmo não proporcionou a obtenção de amostras representativas das suspensões usadas (Tabela \@ref(tab:mergulho-solidos)). Uma subestimativa estatisticamente significativa de 30% ou mais da concentração de sólidos totais foi observada em todas as três concentrações avaliadas. Além disso, uma variação considerável entre as repetições foi observada. Esses resultados corroboram a suspeita inicial, a qual fora levantada com base nos resultados obtidos em trabalhos realizados em outras condições ambientais [@Lang1992; @ZoebischEtAl1996; @CiesiolkaEtAl2006; @TodiscoEtAl2012; @Kinnell2016].
 
 ```{r mergulho-solidos, echo=FALSE}
 # Preparar dados
@@ -196,6 +194,10 @@ panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
 pander(d, caption = '(\\#tab:mergulho-solidos) Dados e estatísticas da concentração de sólidos totais nas amostras obtidas usando o método do mergulho de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- devio padrão, CV -- coeficiente de variação, EM -- erro médio, *t* -- estatística do teste *t*, *p* -- valor *p* do teste *t*.')
 ```
 
+Uma subestimativa significativa da concentração de sólidos totais reflete a limitada consistência do método do mergulho na amostragem de enxurrada. Isso ocorre porque, devido à sedimentação diferencial, marcada pela rápida decantação das partículas de areia, ocorre a amostragem seletiva das partículas mais finas, nesse caso silte e argila. Isso sugere que as estimativas de perda de solo anual em áreas com solo de granulometria grosseira podem ser até 30% inferiores às perdas reais. Ademais, é de se esperar que a distribuição do tamanho de partículas e a composição química do sedimento das amostras sejam significativamente diversas da enxurrada.
+<!-- ASR: Precisamos avaliar as estimativas de perda de solo obtidas nos trabalhos de monitoramento citados na introdução. -->
+
+## Método do fracionador
 
 ```{r fracionador-agua, echo=FALSE}
 # Preparar dados
