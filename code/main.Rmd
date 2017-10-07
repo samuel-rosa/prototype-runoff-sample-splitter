@@ -197,7 +197,7 @@ pander(d, caption = '(\\#tab:mergulho-solidos) Dados e estatísticas da concentr
 ```
 
 
-```{r, echo=FALSE}
+```{r fracionador-agua, echo=FALSE}
 # Preparar dados
 d <- 
   filter(dados, observacao_id == 'fracionador' & objeto_id == 'água') %>% 
@@ -249,7 +249,7 @@ colnames(d)[1] <- ""
 rownames(d) <- NULL
 panderOptions('digits', c(1, rep(3, 8)))
 panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
-pander(d, caption = 'Dados e estatísticas do volume de água das amostras produzidas por cada saída, A e B, do fracionador para volumes iniciais de 100, 300, 500 e 1000 mL. Estatísticas: DP -- devio padrão, CV -- coeficiente de variação, EM -- erro médio, *t* -- estatística do teste *t*, *p* -- valor *p* do teste *t*.')
+pander(d, caption = '(\\#tab:fracionador-agua) Dados e estatísticas do volume de água das amostras produzidas por cada saída, A e B, do fracionador para volumes iniciais de 100, 300, 500 e 1000 mL. Estatísticas: DP -- devio padrão, CV -- coeficiente de variação, EM -- erro médio, *t* -- estatística do teste *t*, *p* -- valor *p* do teste *t*.')
 ```
 
 A distribuição do tamanho de partículas do material de solo consta de: areia (0,053--2,00 mm) = `r dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = mean(areia_total)) %>% round()` g kg^-1^; argila (<0.002 mm) = `r dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = mean(argila_total)) %>% round()` g kg^-1^.
