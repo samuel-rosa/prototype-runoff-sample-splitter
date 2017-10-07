@@ -44,10 +44,10 @@ Uma solução elegante para o problema da amostragem de enxurrada com sedimento 
 
 ## Material do solo
 
-Os dois métodos de fracionamento -- método do mergulho e método do fracionador -- foram avaliados usando um experimento laboratorial que utilizou suspensões compostas de água destilada e material do solo. O material do solo foi coletado da parte superficial (0--20 cm de profundidade) do horizonte A de perfil do solo derivado de [LITOLOGIA], sem uso antrópico aparente, localizado no *campus* da Universidade Federal de Santa Maria a latitude -29°42'47,01"N e longitude -53°42'43.36"E. Esse perfil fora classificado como um Argissolo Vermelho-Amarelo Distrófico típico da edição de 2006 do Sistema Brasileiro de Classificação de Solos [@Lauermann2007]. Ele possui uma sequência de horizontes A-E-Bt-C, com conteúdo de argila muito baixo em superfície, mas que aumenta consideravelmente em profundidade -- com efeito direto sobre a densidade e a porosidade do solo. O baixo conteúdo de cátions básicos, fósforo e matéria orgânica refletem a pobreza de nutrientes no material de origem (Tabelas \@ref(tab:perfil-do-solo-fisica) e \@ref(tab:perfil-do-solo-quimica)). Características similares são encontradas na camada superficial do solo de grande parte da região da Depressão Central do estado do Rio Grande do Sul (Figura \@ref(fig:solos-do-rs)) [@StreckEtAl2008], tendo sido alvo de muitos estudos de monitoramento da erosão [@CogoEtAl1984; @EltzEtAl2001; @AmadoEtAl2002a; @VolkEtAl2009].
+Os dois métodos de fracionamento -- método do mergulho e método do fracionador -- foram avaliados usando um experimento laboratorial que utilizou suspensões compostas de água destilada e material do solo. O material do solo foi coletado da parte superficial (0--20 cm de profundidade) do horizonte A de perfil do solo derivado de [LITOLOGIA], sem uso antrópico aparente, localizado no *campus* da Universidade Federal de Santa Maria a latitude -29°42'47,01"N e longitude -53°42'43.36"E. Esse perfil fora classificado como um Argissolo Vermelho-Amarelo Distrófico típico da edição de 2006 do Sistema Brasileiro de Classificação de Solos [@Lauermann2007]. Ele possui uma sequência de horizontes A-E-Bt-C, com conteúdo de argila muito baixo em superfície, mas que aumenta consideravelmente em profundidade -- com efeito direto sobre a densidade e a porosidade do solo. O baixo conteúdo de cátions básicos, fósforo e matéria orgânica refletem a pobreza de nutrientes no material de origem (Tabelas \@ref(tab:perfil-fisica) e \@ref(tab:perfil-quimica)). Características similares são encontradas na camada superficial do solo de grande parte da região da Depressão Central do estado do Rio Grande do Sul (Figura \@ref(fig:solos-do-rs)) [@StreckEtAl2008], tendo sido alvo de muitos estudos de monitoramento da erosão [@CogoEtAl1984; @EltzEtAl2001; @AmadoEtAl2002a; @VolkEtAl2009].
 <!-- ASR: precisamos da especificação do material de origem e da fonte do mapa pedológico -->
 
-```{r perfil-do-solo-fisica, echo=FALSE, message=FALSE, warning=FALSE}
+```{r perfil-fisica, echo=FALSE, message=FALSE, warning=FALSE}
 # (Des)Carregar dados do febr e preparar unidades
 # perfil <- febr::layers("ctb0013", which.cols = "all", progress = FALSE)[[1]]
 # save(perfil, file = '../data/perfil.rda')
@@ -72,10 +72,10 @@ pander::panderOptions('table.split.table', Inf)
 pander::panderOptions('keep.trailing.zeros', TRUE)
 pander::panderOptions('table.alignment.default', 'left')
 pander::panderOptions('table.split.cells', rep(100 / ncol(perfil_fis), ncol(perfil_fis)))
-pander::pander(perfil_fis, caption = 'Variáveis físicas dos horizontes do perfil do solo [@Lauermann2007].')
+pander::pander(perfil_fis, caption = '(\\#tab:perfil-fisica) Variáveis físicas dos horizontes do perfil do solo [@Lauermann2007].')
 ```
 
-```{r perfil-do-solo-quimica, echo=FALSE, message=FALSE, warning=FALSE}
+```{r perfil-quimica, echo=FALSE, message=FALSE, warning=FALSE}
 # Preparar tabela com dados químicos perfil
 # colnames(perfil)
 idx <- c(4, 23, 16:22)
@@ -88,7 +88,7 @@ pander::panderOptions('table.split.table', Inf)
 pander::panderOptions('table.alignment.default', 'left')
 pander::panderOptions('keep.trailing.zeros', TRUE)
 pander::panderOptions('table.split.cells', rep(100 / ncol(perfil_qui), ncol(perfil_qui)))
-pander::pander(perfil_qui, caption = 'Variáveis químicas dos horizontes do perfil do solo [@Lauermann2007].')
+pander::pander(perfil_qui, caption = '(\\#tab:perfil-quimica) Variáveis químicas dos horizontes do perfil do solo [@Lauermann2007].')
 ```
 
 ```{r solos-do-rs, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Área do estado do Rio Grande do Sul com camada superficial do solo de textura similar ao material do solo usado neste estudo.", fig.align='center', dpi=150, out.width='8cm', out.height='8cm', fig.asp=1}
@@ -154,7 +154,13 @@ unidades <- readr::read_csv("../data/camada.csv",  n_max = 1)
 dados <- readr::read_csv("../data/camada.csv",  na = "-", comment = "unidade", locale = readr::locale(decimal_mark = ","))
 ```
 
-```{r, echo=FALSE}
+## Método do mergulho
+
+O teste realizado com o método do mergulho mostrou que o mesmo não proporciona a obtenção de amostras representativas da enxurrada (Tabela \@ref(tab:mergulho-solidos)). Em todas as três concentrações testadas observamos um erro negativo de 30% ou mais. Esse erro é significativo e prejudica a consistência do método, indicando que as estimativas anuais de erosão do solo em áreas agrícolas podem ser muito inferiores ao real. Os 500 milhões de toneladas de solo erodidos anualmente no Brasil segundo Bertoni & Lombardi Neto (1999) podem ser, na verdade, de 650 a 750 milhões de toneladas.
+
+Como o método tradicional subestima a erosão do solo devido à amostragem seletiva das partículas mais finas, a distribuição do tamanho de partículas e a composição química do sedimento das subamostras devem ser significativamente diversas da amostra da enxurrada. Não realizamos testes para avaliar essas propriedades do sedimento por entendermos que o erro apresentado pelo método já é suficiente para confirmar sua inconsistência (Lang, 1992; Zöbisch et al., 1996; Todisco et al., 2012).
+
+```{r mergulho-solidos, echo=FALSE}
 # Preparar dados
 d <- 
   filter(dados, observacao_id == 'convencional') %>% 
@@ -186,7 +192,7 @@ colnames(d)[1] <- ""
 rownames(d) <- NULL
 panderOptions('digits', c(1, 3, 2, 2))
 panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
-pander(d, caption = 'Dados e estatísticas da concentração de sólidos totais nas amostras obtidas usando o método do mergulho de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- devio padrão, CV -- coeficiente de variação, EM -- erro médio, *t* -- estatística do teste *t*, *p* -- valor *p* do teste *t*.')
+pander(d, caption = '(\\#tab:mergulho-solidos) Dados e estatísticas da concentração de sólidos totais nas amostras obtidas usando o método do mergulho de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- devio padrão, CV -- coeficiente de variação, EM -- erro médio, *t* -- estatística do teste *t*, *p* -- valor *p* do teste *t*.')
 ```
 
 
@@ -246,10 +252,6 @@ pander(d, caption = 'Dados e estatísticas do volume de água das amostras produ
 ```
 
 A distribuição do tamanho de partículas do material de solo consta de: areia (0,053--2,00 mm) = `r dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = mean(areia_total)) %>% round()` g kg^-1^; argila (<0.002 mm) = `r dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = mean(argila_total)) %>% round()` g kg^-1^.
-
-Os resultados mostram que o método tradicional descrito por Cogo (1978) não proporciona a obtenção de subamostras representativas da enxurrada (Tabela 1). Em todas as três concentrações testadas observamos um erro negativo de 30% ou mais. Esse erro é significativo e prejudica a consistência do método, indicando que as estimativas anuais de erosão do solo em áreas agrícolas podem ser muito inferiores ao real. Os 500 milhões de toneladas de solo erodidos anualmente no Brasil segundo Bertoni & Lombardi Neto (1999) podem ser, na verdade, de 650 a 750 milhões de toneladas.
-
-Como o método tradicional subestima a erosão do solo devido à amostragem seletiva das partículas mais finas, a distribuição do tamanho de partículas e a composição química do sedimento das subamostras devem ser significativamente diversas da amostra da enxurrada. Não realizamos testes para avaliar essas propriedades do sedimento por entendermos que o erro apresentado pelo método já é suficiente para confirmar sua inconsistência (Lang, 1992; Zöbisch et al., 1996; Todisco et al., 2012).
 
 No que diz respeito ao fracionador modelo UFSM-1, os resultados mostram que o mesmo é eficiente na obtenção de subamostras de água pura (Tabela 2). Ambas as saídas produziram subamostras com volumes similares. Entretanto, o processo de fracionamento se torna menos eficiente para volumes pequenos de amostra (100 mL). Os maiores erros percentuais (negativo ou positivo) observados quando o volume de amostra é pequeno, são resultado do efeito turbilhão da água no interior do cano de 15 mm de diâmetro localizado abaixo do reservatório. A função desse cano é dirigir a água em um fluxo constante até o dispositivo fracionador. Mas parece que esse objetivo só é atingido quando o volume da amostra é superior a 250-300 mL. Assim, recomendamos o uso do fracionador apenas com amostras de volume superior a 250-300 mL.
 
