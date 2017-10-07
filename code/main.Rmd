@@ -137,7 +137,7 @@ O equipamento utilizado no método do fracionador foi construído com peças de 
 <!-- ASR: Precisamos de uma estivativa do curto do equipamento. -->
 
 ```{r sample-splitter, echo=FALSE, fig.cap="Equipamento fracionador de amostras de enxurrada.", fig.align='center'}
-knitr::include_graphics("../images/sample-splitter.jpg")
+knitr::include_graphics("../images/fracionador-a.jpg")
 ```
 
 O método do fracionador foi submetido a três testes. O primeiro dele teve como objetivo avaliar se o volume da suspensão sendo fracionada afeta o desempenho do fracionador, especificamente, sua capacidade de produzir pares de amostras com volumes aproximadamente equivalentes. Quatro volumes de água destilada foram avaliados, 100, 300, 500 e 1000 mL, em cinco repetições. Em cada repetição, o respectivo volume total de água destilada foi vertido de uma só vez no reservatório do fracionador. As duas amostras produzidas foram coletadas em copos de béquer e o seu volume determinado usando provetas graduadas previamente calibradas. O erro de estimação e sua razão em relação ao valor real, ambos definidos acima, foram calculados para cada uma das saídas do fracionador em todas as repetições dos quatro volumes testados. Também como descrito acima, os erros de estimação foram submetidos ao teste *t* bicaudal. Adicionalmente, os erros de estimação das saídas A e B para cada um dos quatro volumes testados foram comparados usando o teste *t* bicaudal para a média de duas amostras pareadas. A hipótese alternativa testada foi de que a diferença verdadeira entre as médias das duas amostras seria diferente de zero.
