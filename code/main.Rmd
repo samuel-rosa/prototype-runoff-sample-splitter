@@ -157,7 +157,7 @@ dados <- readr::read_csv("../data/camada.csv",  na = "-", comment = "unidade", l
 
 ## Método do mergulho
 
-O teste realizado com o método do mergulho mostrou que o mesmo não proporcionou a obtenção de amostras representativas das suspensões usadas (Tabela \@ref(tab:mergulho-solidos)). Uma subestimativa estatisticamente significativa de 30% ou mais da concentração de sólidos totais foi observada em todas as três concentrações avaliadas. Além disso, uma variação considerável entre as repetições foi observada. Esses resultados corroboram a suspeita inicial, a qual fora levantada com base nos resultados obtidos em trabalhos realizados em outras condições ambientais [@Lang1992; @ZoebischEtAl1996; @CiesiolkaEtAl2006; @TodiscoEtAl2012; @Kinnell2016].
+O teste realizado com o método do mergulho mostrou que as amostras obtidas não foram representativas das suspensões usadas (Tabela \@ref(tab:mergulho-solidos)). Uma subestimativa estatisticamente significativa de 30% ou mais da concentração de sólidos totais foi observada em todas as três concentrações avaliadas. Além disso, observamos uma variação considerável entre as repetições cinco repetições. Esses resultados corroboram a hipótese inicial levantada a partir dos relatos apresentados em trabalhos similares desenvolvidos em outras partes do mundo [@Lang1992; @ZoebischEtAl1996; @CiesiolkaEtAl2006; @TodiscoEtAl2012; @Kinnell2016].
 
 ```{r mergulho-solidos, echo=FALSE}
 # Preparar dados
