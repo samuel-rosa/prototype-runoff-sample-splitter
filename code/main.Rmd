@@ -200,6 +200,8 @@ A partir dos resultados obtidos, pode-se hipotetizar que as perdas anuais de sol
 
 ## Método do fracionador
 
+Os resultados do primeiro teste realizado com o protótipo que desenvolvemos mostraram que a eficiência do mesmo não é afetada pelo volume de água (Tabela \@ref(tab:fracionador-agua)). Ambas as saídas A e B produziram amostras com volumes similares. Contudo, o processo de fracionamento parece tornar-se menos eficiente com a diminuição do volume de água. Aparentemente, os maiores erros percentuais (negativos ou positivos) observados quando o volume de amostra era pequeno, foram resultado do efeito turbilhão da água no interior do cano de 15 mm de diâmetro localizado abaixo do reservatório. A função desse cano é dirigir a água em um fluxo constante até o dispositivo fracionador. Parece-nos que esse objetivo só foi efetivamente atingido quando o volume de água era superior a 100 mL. Assim, é razoável que o protórito seja utlizado apenas para fracionar suspensões de volume superior a 250-300 mL.
+
 ```{r fracionador-agua, echo=FALSE}
 # Preparar dados
 d <- 
@@ -257,7 +259,7 @@ pander(d, caption = '(\\#tab:fracionador-agua) Dados e estatísticas do volume d
 
 A distribuição do tamanho de partículas do material de solo consta de: areia (0,053--2,00 mm) = `r dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = mean(areia_total)) %>% round()` g kg^-1^; argila (<0.002 mm) = `r dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = mean(argila_total)) %>% round()` g kg^-1^.
 
-No que diz respeito ao fracionador modelo UFSM-1, os resultados mostram que o mesmo é eficiente na obtenção de subamostras de água pura (Tabela 2). Ambas as saídas produziram subamostras com volumes similares. Entretanto, o processo de fracionamento se torna menos eficiente para volumes pequenos de amostra (100 mL). Os maiores erros percentuais (negativo ou positivo) observados quando o volume de amostra é pequeno, são resultado do efeito turbilhão da água no interior do cano de 15 mm de diâmetro localizado abaixo do reservatório. A função desse cano é dirigir a água em um fluxo constante até o dispositivo fracionador. Mas parece que esse objetivo só é atingido quando o volume da amostra é superior a 250-300 mL. Assim, recomendamos o uso do fracionador apenas com amostras de volume superior a 250-300 mL.
+
 
 Ao testar o uso do fracionador modelo UFSM-1 com amostras de enxurrada com concentração de sedimento entre 2,00 e 50,00 g L-1, verificamos mais uma vez que o mesmo é eficiente em produzir subamostras representativas (Tabela 3). Os erros percentuais não são significativos e sua tendência negativa é resultado do processo envolvido no vertimento da amostra de enxurrada dentro do reservatório do fracionador. Partículas de areia podem permanecer no interior do reservatório onde a amostra estava armazenada se o mesmo não for agitado vigorosamente e o material vertido rapidamente. Como consequência pode haver uma subestimativa da concentração de sedimento na enxurrada e, portando, da erosão do solo.
 
