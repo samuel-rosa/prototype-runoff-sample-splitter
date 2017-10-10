@@ -19,7 +19,7 @@ teste_t1 <-
     }
   }
 # Função para computar o teste t para a média de duas amostras pareadas
-teste_t2 <-
+.teste_t2 <-
   function (x = d, y = 2) {
     tmp <- 
       filter(x, entrada == y) %>% 
@@ -30,6 +30,15 @@ teste_t2 <-
     summarise(tmp,
               '*t*' = t.test(A, B, mu = 0, alternative = "two.sided", paired = TRUE)$statistic %>% round(3),
               '*P*' = t.test(A, B, mu = 0, alternative = "two.sided", paired = TRUE)$p.value %>% round(4))
+  }
+teste_t2 <-
+  function (x = d) {
+    i <- x %>% select(entrada) %>% unique()
+    t2 <- sapply(i[[1]], function (i) .teste_t2(x, i))
+    t2 <- t2[, rep(1:nrow(i), each = 2)] %>% 
+      apply(2, as.numeric) %>% 
+      as.data.frame()
+    cbind(r = c('*t*', '*P*'), t2)
   }
 # Função auxiliar para preparar dados para análise
 preparar_dados <- 
