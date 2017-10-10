@@ -167,32 +167,32 @@ O teste realizado com o método do mergulho mostrou que as amostras obtidas não
 d <- 
   filter(dados, observacao_id == 'convencional') %>% 
   select(solidos_totais, amostra_codigo) %>% 
-  mutate(entrada = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 1]) %>%
-  mutate(entrada = gsub("Entrada: ", "", entrada)) %>% 
-  mutate(entrada = gsub("g/L", "", entrada)) %>%
-  mutate(repeticao = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 2]) %>%
-  mutate(repeticao = gsub("Repetição: ", "", repeticao)) %>%
-  select(-amostra_codigo) %>% 
-  mutate(entrada = as.numeric(entrada)) %>%
+  preparar_dados(fracionador = FALSE) %>% 
   mutate(erro = solidos_totais - entrada)
+
 # Erro médio
 e <- 
   mutate(d, erro = erro / entrada * 100) %>% 
   group_by(entrada) %>% 
-  summarise('Média (g L^-1^)' = mean(solidos_totais), 'DP (g L^-1^)' = sd(solidos_totais), 
-            'CV (%)' = sd(solidos_totais) / mean(solidos_totais) * 100, 'EM (%)' = mean(erro))
+  summarise('Média (g L^-1^)' = mean(solidos_totais) %>% round(2), 
+            'DP (g L^-1^)' = sd(solidos_totais) %>% round(2), 
+            'CV (%)' = (sd(solidos_totais) / mean(solidos_totais) * 100) %>% round(2), 
+            'EM (%)' = mean(erro) %>% round(2))
+
 # Teste t para a média de uma amostra
 t <- 
   group_by(d, entrada) %>% 
   summarise('*t*' = t.test(erro, mu = 0, alternative = "two.sided")$statistic,
             '*P*' = t.test(erro, mu = 0, alternative = "two.sided")$p.value)
+
 # Preparar tabela
 d <- select(d, -erro) %>% tidyr::spread(entrada, solidos_totais)
+d[, -1] <- round(d[, -1], 2)
 d <- rbind(d, my_reshape(e, d), my_reshape(t, d))
 colnames(d)[2:4] <- glue::glue("**{colnames(d)[2:4]} (g L^-1^)**")
 colnames(d)[1] <- ""
 rownames(d) <- NULL
-panderOptions('digits', c(1, 3, 2, 2))
+panderOptions('round', rep(4, ncol(d)))
 panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
 pander(d, caption = '(\\#tab:mergulho-solidos) Dados e estatísticas da concentração de sólidos totais nas amostras obtidas usando o método do mergulho de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- devio padrão, CV -- coeficiente de variação, EM -- erro médio, *t* -- estatística do teste *t*, *p* -- valor *p* do teste *t*.')
 ```
@@ -210,22 +210,19 @@ Os resultados do primeiro teste realizado com o protótipo do equipamento fracio
 d <- 
   filter(dados, observacao_id == 'fracionador' & objeto_id == 'água') %>% 
   select(volume_agua, amostra_codigo) %>%
-  mutate(entrada = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 1]) %>%
-  mutate(entrada = gsub("Entrada: ", "", entrada)) %>% 
-  mutate(entrada = gsub("mL", "", entrada)) %>% 
-  mutate(saida = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 2]) %>%
-  mutate(saida = gsub("Saída: ", "", saida)) %>% 
-  mutate(repeticao = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 3]) %>%
-  mutate(repeticao = gsub("Repetição: ", "", repeticao)) %>%
-  select(-amostra_codigo) %>% 
-  mutate(entrada = as.numeric(entrada) / 2) %>%
+  preparar_dados(unidade = 'mL') %>%
+  mutate(entrada = entrada / 2) %>% 
   mutate(erro = volume_agua - entrada)
+
 # Erro médio
 e <- 
   mutate(d, erro = erro / entrada * 100) %>%
   group_by(entrada, saida) %>% 
-  summarise('Média (mL)' = mean(volume_agua), 'DP (mL)' = sd(volume_agua), 
-            'CV (%)' = sd(volume_agua) / mean(volume_agua) * 100, 'EM (%)' = mean(erro))
+  summarise('Média (mL)' = mean(volume_agua) %>% round(2), 
+            'DP (mL)' = sd(volume_agua) %>% round(2), 
+            'CV (%)' = (sd(volume_agua) / mean(volume_agua) * 100) %>% round(2), 
+            'EM (%)' = mean(erro) %>% round(2))
+
 # Teste t para a média de uma amostra
 t1 <- teste_t1(d)
   
@@ -255,7 +252,7 @@ colnames(d) <- gsub('_ ', ' mL\n', colnames(d), fixed = TRUE)
 colnames(d) <- glue::glue("**{colnames(d)}**")
 colnames(d)[1] <- ""
 rownames(d) <- NULL
-panderOptions('digits', c(1, rep(3, 8)))
+panderOptions('round', rep(4, ncol(d)))
 panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
 pander(d, caption = '(\\#tab:fracionador-agua) Dados e estatísticas do volume de água das amostras produzidas por cada saída, A e B, do fracionador para volumes iniciais de 100, 300, 500 e 1000 mL. Estatísticas: DP -- devio padrão, CV -- coeficiente de variação, EM -- erro médio, *t* -- estatística do teste *t*, *p* -- valor *p* do teste *t*.')
 ```
@@ -267,22 +264,18 @@ O teste do fracionador usando suspensões com diferentes concentrações de sól
 d <- 
   filter(dados, observacao_id == 'fracionador' & objeto_id == 'suspensão') %>% 
   select(solidos_totais, amostra_codigo) %>%
-  mutate(entrada = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 1]) %>%
-  mutate(entrada = gsub("Entrada: ", "", entrada)) %>% 
-  mutate(entrada = gsub("g/L", "", entrada)) %>% 
-  mutate(saida = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 2]) %>%
-  mutate(saida = gsub("Saída: ", "", saida)) %>% 
-  mutate(repeticao = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 3]) %>%
-  mutate(repeticao = gsub("Repetição: ", "", repeticao)) %>%
-  select(-amostra_codigo) %>% 
-  mutate(entrada = as.numeric(entrada)) %>%
+  preparar_dados() %>% 
   mutate(erro = solidos_totais - entrada)
+
 # Erro médio
 e <- 
   mutate(d, erro = erro / entrada * 100) %>%
   group_by(entrada, saida) %>% 
-  summarise('Média (g L^-1^)' = mean(solidos_totais), 'DP (g L^-1^)' = sd(solidos_totais), 
-            'CV (%)' = sd(solidos_totais) / mean(solidos_totais) * 100, 'EM (%)' = mean(erro))
+  summarise('Média (g L^-1^)' = mean(solidos_totais) %>% round(2), 
+            'DP (g L^-1^)' = sd(solidos_totais) %>% round(2), 
+            'CV (%)' = (sd(solidos_totais) / mean(solidos_totais) * 100) %>% round(2), 
+            'EM (%)' = mean(erro) %>% round(2))
+
 # Teste t para a média de uma amostra
 t1 <- teste_t1(d)
 
@@ -301,6 +294,7 @@ d <-
   tidyr::spread(ent_sai, solidos_totais) %>% 
   select(1, 4:5, 2:3, 6:7)
 colnames(t2) <- colnames(d)
+d[, -1] <- round(d[, -1], 2)
 d <- rbind(
   d,
   my_reshape(e, d) %>% filter(repeticao != 'saida'),
@@ -311,7 +305,7 @@ colnames(d) <- gsub('_ ', ' g L^-1^\n', colnames(d), fixed = TRUE)
 colnames(d) <- glue::glue("**{colnames(d)}**")
 colnames(d)[1] <- ""
 rownames(d) <- NULL
-panderOptions('digits', c(1, rep(3, 6)))
+panderOptions('digits', rep(4, ncol(d)))
 panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
 pander(d, caption = '(\\#tab:fracionador-solidos) Dados e estatísticas da concentração de sólidos totais nas amostras obtidas usando o método do fracionador de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- devio padrão, CV -- coeficiente de variação, EM -- erro médio, *t* -- estatística do teste *t*, *p* -- valor *p* do teste *t*.')
 ```
@@ -321,16 +315,9 @@ pander(d, caption = '(\\#tab:fracionador-solidos) Dados e estatísticas da conce
 d <- 
   filter(dados, observacao_id == 'fracionador' & objeto_id == 'sedimento') %>% 
   select(areia_total, amostra_codigo) %>%
-  mutate(entrada = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 1]) %>%
-  mutate(entrada = gsub("Entrada: ", "", entrada)) %>%
-  mutate(entrada = gsub("g/L", "", entrada)) %>%
-  mutate(saida = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 2]) %>%
-  mutate(saida = gsub("Saída: ", "", saida)) %>% 
-  mutate(repeticao = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 3]) %>%
-  mutate(repeticao = gsub("Repetição: ", "", repeticao)) %>%
-  select(-amostra_codigo) %>% 
-  mutate(entrada = as.numeric(entrada)) %>%
+  preparar_dados() %>% 
   mutate(erro = areia_total - areia[[1]])
+
 # Erro médio
 e <- 
   mutate(d, erro = erro / areia[[1]] * 100) %>%

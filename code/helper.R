@@ -39,15 +39,26 @@ teste_t2 <-
   }
 # Função auxiliar para preparar dados para análise
 preparar_dados <- 
-  function (x, unidade = 'g/L') {
-    x %>% 
-      mutate(entrada = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 1]) %>%
-      mutate(entrada = gsub("Entrada: ", "", entrada)) %>% 
-      mutate(entrada = gsub(unidade, "", entrada)) %>% 
-      mutate(saida = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 2]) %>%
-      mutate(saida = gsub("Saída: ", "", saida)) %>% 
-      mutate(repeticao = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 3]) %>%
-      mutate(repeticao = gsub("Repetição: ", "", repeticao)) %>%
-      select(-amostra_codigo) %>% 
-      mutate(entrada = as.numeric(entrada))
+  function (x, unidade = 'g/L', fracionador = TRUE) {
+    if (fracionador) {
+      x %>% 
+        mutate(entrada = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 1]) %>%
+        mutate(entrada = gsub("Entrada: ", "", entrada)) %>% 
+        mutate(entrada = gsub(unidade, "", entrada)) %>% 
+        mutate(saida = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 2]) %>%
+        mutate(saida = gsub("Saída: ", "", saida)) %>% 
+        mutate(repeticao = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 3]) %>%
+        mutate(repeticao = gsub("Repetição: ", "", repeticao)) %>%
+        select(-amostra_codigo) %>% 
+        mutate(entrada = as.numeric(entrada))  
+    } else {
+      x %>%
+        mutate(entrada = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 1]) %>%
+        mutate(entrada = gsub("Entrada: ", "", entrada)) %>% 
+        mutate(entrada = gsub(unidade, "", entrada)) %>%
+        mutate(repeticao = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 2]) %>%
+        mutate(repeticao = gsub("Repetição: ", "", repeticao)) %>%
+        select(-amostra_codigo) %>% 
+        mutate(entrada = as.numeric(entrada)) 
+    }
   }
