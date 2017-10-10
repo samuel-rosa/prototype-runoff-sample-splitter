@@ -9,19 +9,31 @@ my_reshape <- function (x, y) {
 teste_t1 <- 
   function (d, alternative = "two.sided") {
     group_by(d, entrada, saida) %>% 
-      summarise('*t*' = t.test(erro, mu = 0, alternative = alternative)$statistic,
-                '*P*' = t.test(erro, mu = 0, alternative = alternative)$p.value)
+      summarise('*t*' = t.test(erro, mu = 0, alternative = alternative)$statistic %>% round(3),
+                '*P*' = t.test(erro, mu = 0, alternative = alternative)$p.value %>% round(4))
   }
 # Função para computar o teste t para a média de duas amostras pareadas
+# teste_t2 <-
+#   function (x = d, y = 300) {
+#     tmp <- 
+#       filter(x, entrada == y / 2) %>% 
+#       tidyr::spread(entrada, erro) %>% 
+#       select(repeticao, saida, as.character(y/2)) %>% 
+#       tidyr::spread(saida, as.character(y/2))
+#     names(tmp) <- gsub(" ", "", names(tmp))
+#     summarise(tmp,
+#               '*t*' = t.test(A, B, mu = 0, alternative = "two.sided", paired = TRUE)$statistic,
+#               '*P*' = t.test(A, B, mu = 0, alternative = "two.sided", paired = TRUE)$p.value)
+#   }
 teste_t2 <-
-  function (x = d, y = 300) {
+  function (x = d, y = 2) {
     tmp <- 
-      filter(x, entrada == y / 2) %>% 
+      filter(x, entrada == y) %>% 
       tidyr::spread(entrada, erro) %>% 
-      select(repeticao, saida, as.character(y/2)) %>% 
-      tidyr::spread(saida, as.character(y/2))
+      select(repeticao, saida, as.character(y)) %>% 
+      tidyr::spread(saida, as.character(y))
     names(tmp) <- gsub(" ", "", names(tmp))
     summarise(tmp,
-              '*t*' = t.test(A, B, mu = 0, alternative = "two.sided", paired = TRUE)$statistic,
-              '*P*' = t.test(A, B, mu = 0, alternative = "two.sided", paired = TRUE)$p.value)
+              '*t*' = t.test(A, B, mu = 0, alternative = "two.sided", paired = TRUE)$statistic %>% round(3),
+              '*P*' = t.test(A, B, mu = 0, alternative = "two.sided", paired = TRUE)$p.value %>% round(4))
   }
