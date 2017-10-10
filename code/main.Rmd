@@ -180,10 +180,7 @@ e <-
             'EM (%)' = mean(erro) %>% round(2))
 
 # Teste t para a média de uma amostra
-t <- 
-  group_by(d, entrada) %>% 
-  summarise('*t*' = t.test(erro, mu = 0, alternative = "two.sided")$statistic,
-            '*P*' = t.test(erro, mu = 0, alternative = "two.sided")$p.value)
+t <- teste_t1(d, fracionador = FALSE)
 
 # Preparar tabela
 d <- select(d, -erro) %>% tidyr::spread(entrada, solidos_totais)
