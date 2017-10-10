@@ -58,9 +58,11 @@ load('../data/perfil.rda')
 perfil$Profundidade <- glue::glue("{perfil$profund_sup}-{perfil$profund_inf}")
 attr(perfil, 'units') <- c(attr(perfil, 'units'), "cm")
 attr(perfil, 'units') <- gsub("unitless", "-", attr(perfil, 'units'))
-attr(perfil, 'units') <- gsub("^3", "^3^", attr(perfil, 'units'), fixed = TRUE)
-attr(perfil, 'units') <- gsub("^2", "^2^", attr(perfil, 'units'), fixed = TRUE)
-attr(perfil, 'units') <- gsub("cmolc", "cmol~c~", attr(perfil, 'units'), fixed = TRUE)
+attr(perfil, 'units') <- gsub("g/cm^3", "g cm^-3^", attr(perfil, 'units'), fixed = TRUE)
+attr(perfil, 'units') <- gsub("m^3/m^3", "m^3 m^-3^", attr(perfil, 'units'), fixed = TRUE)
+attr(perfil, 'units') <- gsub("g/kg", "g kg^-1^", attr(perfil, 'units'), fixed = TRUE)
+attr(perfil, 'units') <- gsub("cmolc/kg", "cmol~c~ kg^-1^", attr(perfil, 'units'), fixed = TRUE)
+attr(perfil, 'units') <- gsub("mg/L", "mg L^-1^", attr(perfil, 'units'), fixed = TRUE)
 attr(perfil, 'units') <- glue::glue("({attr(perfil, 'units')})")
 
 # Preparar tabela com dados físicos perfil
@@ -94,7 +96,7 @@ pander::panderOptions('table.split.cells', rep(100 / ncol(perfil_qui), ncol(perf
 pander::pander(perfil_qui, caption = '(\\#tab:perfil-quimica) Variáveis químicas dos horizontes do perfil do solo [@Lauermann2007].')
 ```
 
-```{r solos-do-rs, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Área do estado do Rio Grande do Sul com camada superficial do solo de textura similar ao material do solo usado neste estudo.", fig.align='center', dpi=150, out.width='8cm', out.height='8cm', fig.asp=1}
+```{r solos-do-rs, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Área do estado do Rio Grande do Sul com camada superficial do solo de textura similar ao material do solo usado neste estudo.", fig.align='center', dpi=600, fig.asp=1}
 rs <- raster::shapefile("../data/solo-rs.shp")
 
 # Criar variável do tipo fator para construção do gráfico. Cada polígono recebe um valor único.
