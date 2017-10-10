@@ -297,6 +297,8 @@ panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
 pander(d, caption = '(\\#tab:fracionador-solidos) Dados e estatísticas da concentração de sólidos totais nas amostras obtidas usando o método do fracionador de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- devio padrão, CV -- coeficiente de variação, EM -- erro médio, *t* -- estatística do teste *t*, *p* -- valor *p* do teste *t*.')
 ```
 
+A produção de amostras com concentração de sólidos totais virtualmente equivalente àquela da suspensão fracionada esteve relacionada à reprodução do conteúdo de areia no sedimento das amostras (Tabela \@ref(tab:fracionador-areia)). Isso ocorreu de maneira independente da saída do fracionador. A exceção foi a suspensão com a concetração mais baixa de sólidos totais, 2 g L^-1^, para a qual a magnitude do erro percentual na estimativa do conteúdo de areia foi excessivamente grande. Para as cinco repetições, em média, o conteúdo de areia foi subestimado em cerca de 50%. Note, contudo, que essa subestimativa não deveu-se ao processo de fracionamento em si, mas sim à dificuldade relatada acima, onde partículas de maior diâmetro tendem a permanecer no interior do recipiente onde a suspensão estava armazenada.
+
 ```{r fracionador-areia, echo=FALSE}
 # Preparar dados
 d <- 
@@ -344,6 +346,9 @@ pander(d, caption = '(\\#tab:fracionador-areia) Dados e estatísticas do conteú
 ```
 
 
+Tabela \@ref(tab:fracionador-argila)
+
+
 ```{r fracionador-argila, echo=FALSE}
 # Preparar dados
 d <- 
@@ -386,14 +391,9 @@ colnames(d)[1] <- ""
 rownames(d) <- NULL
 panderOptions('digits', rep(4, ncol(d)))
 panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
-pander(d, caption = '(\\#tab:fracionador-areia) Dados e estatísticas do conteúdo de argila nos sólidos totais das amostras obtidas usando o método do fracionador de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- devio padrão, CV -- coeficiente de variação, EM -- erro médio, *t* -- estatística do teste *t*, *p* -- valor *p* do teste *t*.')
+pander(d, caption = '(\\#tab:fracionador-argila) Dados e estatísticas do conteúdo de argila nos sólidos totais das amostras obtidas usando o método do fracionador de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- devio padrão, CV -- coeficiente de variação, EM -- erro médio, *t* -- estatística do teste *t*, *p* -- valor *p* do teste *t*.')
 ```
 
-
-
-
-
-Dado que o fracionador modelo UFSM-1 produz subamostras com concentração de sedimento estatisticamente idêntica àquela da amostra de enxurrada, não há alteração significativa da distribuição do tamanho de partículas do sedimento (Tabelas 4 e 5). Da mesma maneira, as duas saídas (A e B) do equipamento possuem desempenho equivalente. A exceção é para as amostras de enxurrada contendo pequena concentração de sedimento (2 g L-1), para as quais um erro percentual significativo é observado. Contudo, esse resultado não se deve ao processo de fracionamento, mas sim ao problema descrito acima, em que partículas de areia podem permanecer no interior do reservatório onde a amostra de enxurrada estava armazenada.
 
 No caso da argila observamos que o erro percentual é superior ao da areia. Com isso, o conteúdo de argila nas subamostras obtidas da suspensão com concentração de sedimento de 2,00 g L-1 é inferior ao limite de detecção do método analítico utilizado. Novamente o erro percentual negativo deve ser resultado da permanência de resíduos do sedimento no interior do recipiente em que a amostra de enxurrada estava armazenada. Quando a concentração de sedimento é maior o erro percentual não é significativo, podendo o mesmo ser esperado para sedimentos contendo maior conteúdo de argila.
 
