@@ -124,7 +124,7 @@ sp::spplot(
   })
 ```
 
-O material coletado do solo foi caracterizado quanto à distribuição do tamanho de partículas. Para isso ele foi seco ao ar, destorroado e passado em peneira com malha de dois milímetros de abertura. O conteúdo de argila (diâmetro < 0,002 mm) na fração terra fina seca ao ar (TFSA) resultante foi estimado usando o método da pipeta após dispersão química de ~20 g de TFSA com hidróxido de sódio (NaOH) -- na concentração de 1 mol L^-1^ -- e desagregação mecânica -- usando duas esferas de náilon (diâmetro do 1,71 cm, massa de 3,04 g, densidade de 1,11 g cm^-1^) e agitação horizontal por 4 horas a 120 ciclos por minuto. Já o conteúdo de areia (diâmetro entre 0,053 e 2,00 mm) foi determinado via tamisamento úmido.
+O material coletado do solo foi caracterizado quanto à distribuição do tamanho de partículas. Para isso ele foi seco ao ar, destorroado e passado em peneira com malha de dois milímetros de abertura. O conteúdo de argila (diâmetro < 0,002 mm) na fração terra fina seca ao ar (TFSA) resultante foi estimado usando o método da pipeta após dispersão química de ~20 g de TFSA com hidróxido de sódio (NaOH) -- na concentração de 1 mol L^-1^ -- e desagregação mecânica -- usando duas esferas de náilon (diâmetro do 1,71 cm, massa de 3,04 g, densidade de 1,11 g cm^-1^) e agitação horizontal por 4 horas a 120 ciclos por minuto. Já o conteúdo de areia (diâmetro entre 0,053 e 2,00 mm) foi determinado via tamisamento úmido. Segundo essas análises, a distribuição do tamanho de partículas do material de solo consta de `r dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = mean(areia_total)) %>% round()` g kg^-1^ de areia e `r dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = mean(argila_total)) %>% round()` g kg^-1^ de argila.
 
 ## Método do mergulho
 
@@ -313,7 +313,10 @@ panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
 pander(d, caption = '(\\#tab:fracionador-solidos) Dados e estatísticas da concentração de sólidos totais nas amostras obtidas usando o método do fracionador de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- devio padrão, CV -- coeficiente de variação, EM -- erro médio, *t* -- estatística do teste *t*, *p* -- valor *p* do teste *t*.')
 ```
 
-A distribuição do tamanho de partículas do material de solo consta de: areia (0,053--2,00 mm) = `r dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = mean(areia_total)) %>% round()` g kg^-1^; argila (<0.002 mm) = `r dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = mean(argila_total)) %>% round()` g kg^-1^.
+
+
+
+
 
 
 
