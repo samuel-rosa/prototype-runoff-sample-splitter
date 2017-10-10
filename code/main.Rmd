@@ -8,6 +8,8 @@ bibliography: biblio.bib
 lang: pt
 editor_options: 
   chunk_output_type: inline
+knit: (function(inputFile, encoding) {
+  rmarkdown::render(inputFile, encoding = encoding, output_dir = "../docs") })
 ---
 
 <!-- Revista Scientia Agraria -->
