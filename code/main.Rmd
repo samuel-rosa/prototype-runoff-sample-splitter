@@ -1,12 +1,16 @@
 ---
-title: "Avaliação de Técnicas de Fracionamento de Amostras de Enxurrada"
+title: "Avaliação de Métodos de Amostragem de Enxurrada"
 author: "Alessandro Samuel-Rosa, Jean Michel Moura-Bueno, Ricardo Simão Diniz Dalmolin"
 output: 
   bookdown::word_document2:
     reference_docx: ../docs/template.docx
 bibliography: biblio.bib
+csl: abnt.csl
+lang: pt
 editor_options: 
   chunk_output_type: inline
+knit: (function(inputFile, encoding) {
+  rmarkdown::render(inputFile, encoding = encoding, output_dir = "../docs") })
 ---
 
 <!-- Revista Scientia Agraria -->
@@ -32,22 +36,22 @@ Title
 
 # INTRODUÇÃO
 
-A erosão do solo constitui uma das maiores preocupações da ciência moderna [@PanagosEtAl2017]. Por esse motivo, milhares de parcelas de monitoramento de erosão estão distribuídas ao redor do globo [García-Ruiz et al., 2015 (doi.org/10.1016/j.geomorph.2015.03.008); Anache et al., 2017 (doi.org/10.1016/j.catena.2017.01.003)]. Essas parcelas apresentam em geral dimensões de 22,1 x 3,5 m (77,35 m^2) e declividade de 0,09 m m^-1. São parcelas-padrões utilizadas em projetos de monitoramento da erosão do solo em escala global, sob diferentes tipos de solo e usos da terra. Isso possibilita gerar um grande volume de informações. De posse desse volume de dados é possível observar que existe uma grande variação nas taxas de erosão medidas [@Boix-FayosEtAl2006; García-Ruiz et al., 2015], as quais se devem tanto a variabilidade natural como das medições [@NearingEtAl1999]. Contudo, essa variação raramente é quantificada e as suas causas não são explicitadas, o que dificulta a avaliação de modelos de erosão do solo e o delineamento de experimentos de monitoramento da erosão do solo.
+A erosão do solo constitui, há muitas décadas, uma das maiores preocupações dos cientistas do solo [@PanagosEtAl2017]. Prova disso são as milhares de parcelas de monitoramento da erosão, instaladas sob os mais diferentes tipos de solo e usos da terra, distribuídas ao redor de todo o planeta [@Garcia-RuizEtAl2015; @AnacheEtAl2017]. Uma das principais dificuldades encontradas na pesquisa em erosão do solo é a grande variabilidade dos dados [@NearingEtAl1999]. Essa variabilidade advém da diversidade de métodos e estratégias de monitoramento utilizados [@Boix-FayosEtAl2006; @Garcia-RuizEtAl2015]. Pesa negativamente também a falta de recursos para condução do monitoramento por período de tempo maior do que 5-10 anos necessário para obtenção de dados mais consistentes [@AnacheEtAl2017]. Distúrbios indesejados causado no solo durante a instalação e/ou condução do monitoramento da erosão são uma fonte de variação difícil de identificar [@Boix-FayosEtAl2006; @Kinnell2016]. Finalmente, há a complexidade do processo erosivo e a interação dos fatores determinantes que estão completamente fora do controle devido a limitações operacionais e de conhecimento [@Boix-FayosEtAl2006]. Na prática, quanto maior a variabilidade dos dados, maior a nossa incerteza sobre a magnitude das perdas de solo [@Garcia-RuizEtAl2015]. 
 
-Uma fonte potencial de variação é o método usado na coleta de subamostras da enxurrada coletada nas parcelas de monitoramento. O método consiste em “homogeneizar bem, com uma das mãos, a enxurrada no balde de concentração do sedimento e, com a outra mão, sem parar a homogeneização, retirar uma amostra mergulhando um frasco de volume conhecido e de boca larga no seio da suspensão” [@Cogo1978; @VeigaEtAl1993]. Esse método é adotado em grande parte dos trabalhos de quantificaçao de perda de solo e água no Brasil, em especial na região sul e sudeste, onde se enocontram 67% do total de parcelas de monitoramento [Anache et al., 2017]. Os inconvenientes desse método estão relacionados à impossibilidade do procedimento ser repetido por diferentes indivíduos e à incapacidade de se obter uma amostra homogênea dentro do tanque de concentração do sedimento [@TodiscoEtAl2012]. Como consequência, ocorre uma subestimativa da concentração de sedimento na enxurrada coletada [@Lang1992; @ZoebischEtAl1996]. Apesar disso, esse método de subamostragem da enxurrada é adotado na grande maioria dos projetos de monitoramento da erosão do solo, inclusive naqueles utilizados para a construção dos modelos de erosão do solo como a Equação Universal de Perda de Solo (EUPS) (Wischmeier; Smith, 1978) e sua versão revisada RUSLE (Renard et al., 1997).
+Uma outra importante fonte de variabilidade nos dados de perda do solo é o método usado para obtenção das amostras da enxurrada coletada das parcelas de monitoramento [@Kinnell2016]. Isso porque, para que a amostra seja a mais próxima o possível da realidade, a amostragem requer que a enxurrada coletada seja o mais perfeitamente homogeneizada. Tal homogeneidade é difícil de alcançar quando partículas de diferentes tamanhos estão presentes no sedimento, haja vista a atuação do processo de sedimentação diferencial [@CiesiolkaEtAl2006; @TodiscoEtAl2012; @Kinnell2016]. Os métodos baseados na homogeneização e amostragem manual da enxurrada coletada estão entre os que mais sofrem com esse problema [@ZoebischEtAl1996]. O resultado é que as amostras da enxurrada coletada tendem a subestimar a concentração de sedimento, sendo a magnitude da subestimativa proporcional à concentração de partículas de maior diâmetro [@Lang1992; @ZoebischEtAl1996; @CiesiolkaEtAl2006]. Esse seria o caso do método do mergulho, comumente usado no Brasil [@Cogo1978; @VeigaEtAl1993; @AmadoEtAl2002a; @SilvaEtAl2005; @Guth2010].
 
-No Brasil as estimativas de perda anual de solo, com base nas unidades de monitoramento, podem alcançar 500 milhões de toneladas [Bertoni e Lombardi Neto, 2010]. No entanto, se o método de amostragem da enxurrada pode subestimar a concentração de sedimentos coletada, as estimativas podem ser muito maiores, sendo isso desconsiderado em grade parte dos trabalhos. Uma das alternativas para esse problrma é a construção de curvas de calibração [@TodiscoEtAl2012]. A enxurrada é homogeneizada e coletada em diferentes profundidades no tanque de sedimentação, sendo os dados utilizados para construção de um perfil de sedimentação. Após a integração da curva do perfil de sedimentação, calcula-se a concentração média, que é corrigida em função da curva de calibração, sendo esta função da altura da lâmina d’água. Mas o maior problema desse método continua sendo a fase de homogeneização da amostra de enxurrada, ainda mais difícil se a concentração de sedimento (e de areia grossa neste) for grande [@TodiscoEtAl2012]. A presença de frações mais grosseira no sedimento é observada em locais de monitoramento da erosão com a presença de solos com camada superficial de textura areia franca e francoarenosa. Essas texturas são observadas na maioria dos Argissolos do Brasil, sendo alvo de muitos estudos de monitoramento da erosão [Cogo et al 1984] (doi:10.2136/sssaj1984.03615995004800020029x); Eltz et al., 2001 (doi.org/10.1590/S0100-06832001000200024); Amado et al., 2002 (doi.org/10.1590/S0100-06832002000300028); Volk e Cogo, 2009 (doi.org/10.1590/S0100-06832009000500036); Oliveira et al., 2010 (doi.org/10.1590/S1415-43662010000200004)].
+Estima-se que o volume de solo perdido anualmente no Brasil seja da ordem de 500 milhões de toneladas [@BertoniEtAl2012], com taxas médias de perda de solo que variam entre 0,1 e 136 Mg ha^-1^ ano^-1^ [@AnacheEtAl2017]. No caso de solo de textura arenosa, estima-se que as taxas de perda de solo possam facilmente chegar à mais 150 Mg ha^-1^ ano^-1^ [@LanzanovaEtAl2013]. No entanto, como parte considerável das estimativas brasileiras baseia-se no método do mergulho para amostragem da enxurrada coletada, é possível que as perdas de solo sejam ainda maiores. Isso é especialmente preocupante no caso das áreas com solo de textura arenosa, haja vista a grande pressão de uso exercida pelo setor agropecuário-industrial. Nesse sentido, o primeiro objetivo desse estudo foi avaliar se o método do mergulho subestima as perdas de solo em área com solo de textura grosseira e, em sendo verificada essa tendência, quantificar sua magnitude.
 
-Neste contexto, a melhor alternativa para parece ser o uso de fracionadores como o ‘churn splitter’ e o ‘cone splitter’ adotados pelo U.S. Geological Survey. Esses fracionadores dispensam a fase de homogeneização da amostra, garantindo a repetibilidade do procedimento e a produção de subamostras com constituição similar à amostra fracionada [@HorowitzEtAl2001]. Contudo, esses fracionadores não estão disponíveis no mercado brasileiro e apresentam um elevado custo para aquisição e importação (o ‘churn splitter’ custa US$ 5.587,00 e o ‘cone splitter’ custa US$ 1.175,00 (Rickly Hydrological Company®, 2011)). Isso inviabiliza a aquisição de tais equipamentos por muitos grupos de pesquisa. Assim, nosso objetivo foi apresentar um fracionador que pode ser construído com materiais facilmente encontrados no mercado a um baixo custo. Além disso, mostramos que esse equipamento permite a obtenção de subamostras representativas de amostras de enxurrada, com desempenho superior ao método tradicional de coleta.
+Uma solução elegante para o problema da amostragem de enxurrada com sedimento contendo partículas de diferentes diâmetros foi proposta por @TodiscoEtAl2012. Nesse método, a enxurrada coletada é homogeneizada e amostrada em diferentes profundidades do tanque de sedimentação, sendo os dados utilizados para construção de um perfil de sedimentação. Após a integração da curva do perfil de sedimentação, calcula-se a concentração média, que é corrigida em função de uma curva de calibração, sendo esta função da altura da lâmina d’água e dependente da granulometria do sedimento. Além da possível necessidade de construir a curva de calibração a cada evento pluviométrico, o método continua sendo dependente da homogeneização da enxurrada coletada, o que é ainda mais difícil se a concentração de sedimento for grande [@TodiscoEtAl2012]. Uma alternativa razoável consiste em utilizar equipamentos fracionadores, como aqueles do tipo cone (*cone splitter*) e batedeira (*churn splitter*), amplamente utilizados para a amostragem de água e suspensões com pequena concentração de sólidos totais [@CapelEtAl1995; @HorowitzEtAl2001]. Seja pela sua arquitetura, seja pelo seu modo de funcionamento, esses equipamentos produzem amostras com constituição muito similar à suspensão fracionada. Nesse contexto, o segundo objetivo desse estudo foi desenvolver e testar o protótipo de um equipamento fracionador de suspensões com grande concentração de sólidos totais, característica de enxurradas coletadas em parcelas de monitoramento da erosão.
 
 # MATERIAL E MÉTODOS
 
 ## Material do solo
 
-O experimento foi realizado utilizando suspensões criadas em laboratório. As suspensões foram produzidas utilizando material do solo coletado da parte superficial (0--20 cm de profundidade) do horizonte A de perfil do solo derivado de LITOLOGIA, sem uso antrópico aparente, localizado no *campus* da Universidade Federal de Santa Maria a latitude -29°42'47,01"N e longitude -53°42'43.36"E. Esse perfil fora classificado por @Lauermann2007, segundo o Sistema Brasileiro de Classificação de Solos [@SantosEtAl2006], como Argissolo Vermelho-Amarelo Distrófico típico. O perfil possui uma sequência de horizontes A-E-Bt-C, com conteúdo de argila muito baixo em superfície, mas que aumenta consideravelmente em profundidade -- com efeito direto sobre a densidade e a porosidade do solo. O baixo conteúdo de cátions básicos, fósforo e matéria orgânica refletem a pobreza de nutrientes no material de origem (Tabelas \@ref(tab:perfil-do-solo-fisica) e \@ref(tab:perfil-do-solo-quimica)). Características similares são encontradas no solo de grande parte da região da Depressão Central do estado do Rio Grande do Sul (Figura \@ref(fig:solos-do-rs)) [@StreckEtAl2008].
-<!-- ASR: Jean, precisamos da fonte do mapa! -->
+Os dois métodos de fracionamento -- método do mergulho e método do fracionador -- foram avaliados usando um experimento laboratorial que utilizou suspensões compostas de água destilada e material do solo. O material do solo foi coletado da parte superficial (0--20 cm de profundidade) do horizonte A de perfil do solo derivado de [LITOLOGIA], sem uso antrópico aparente, localizado no *campus* da Universidade Federal de Santa Maria a latitude -29°42'47,01"N e longitude -53°42'43.36"E. Esse perfil fora classificado como um Argissolo Vermelho-Amarelo Distrófico típico da edição de 2006 do Sistema Brasileiro de Classificação de Solos [@Lauermann2007]. Ele possui uma sequência de horizontes A-E-Bt-C, com conteúdo de argila muito baixo em superfície, mas que aumenta consideravelmente em profundidade -- com efeito direto sobre a densidade e a porosidade do solo. O baixo conteúdo de cátions básicos, fósforo e matéria orgânica refletem a pobreza de nutrientes no material de origem (Tabelas \@ref(tab:perfil-fisica) e \@ref(tab:perfil-quimica)). Características similares são encontradas na camada superficial do solo de grande parte da região da Depressão Central do estado do Rio Grande do Sul (Figura \@ref(fig:solos-do-rs)) [@StreckEtAl2008], tendo sido alvo de muitos estudos de monitoramento da erosão [@CogoEtAl1984; @EltzEtAl2001; @AmadoEtAl2002a; @VolkEtAl2009].
+<!-- ASR: precisamos da especificação do material de origem e da fonte do mapa pedológico -->
 
-```{r perfil-do-solo-fisica, echo=FALSE, message=FALSE, warning=FALSE}
+```{r perfil-fisica, echo=FALSE, message=FALSE, warning=FALSE}
 # (Des)Carregar dados do febr e preparar unidades
 # perfil <- febr::layers("ctb0013", which.cols = "all", progress = FALSE)[[1]]
 # save(perfil, file = '../data/perfil.rda')
@@ -55,9 +59,11 @@ load('../data/perfil.rda')
 perfil$Profundidade <- glue::glue("{perfil$profund_sup}-{perfil$profund_inf}")
 attr(perfil, 'units') <- c(attr(perfil, 'units'), "cm")
 attr(perfil, 'units') <- gsub("unitless", "-", attr(perfil, 'units'))
-attr(perfil, 'units') <- gsub("^3", "^3^", attr(perfil, 'units'), fixed = TRUE)
-attr(perfil, 'units') <- gsub("^2", "^2^", attr(perfil, 'units'), fixed = TRUE)
-attr(perfil, 'units') <- gsub("cmolc", "cmol~c~", attr(perfil, 'units'), fixed = TRUE)
+attr(perfil, 'units') <- gsub("g/cm^3", "g cm^-3^", attr(perfil, 'units'), fixed = TRUE)
+attr(perfil, 'units') <- gsub("m^3/m^3", "m^3 m^-3^", attr(perfil, 'units'), fixed = TRUE)
+attr(perfil, 'units') <- gsub("g/kg", "g kg^-1^", attr(perfil, 'units'), fixed = TRUE)
+attr(perfil, 'units') <- gsub("cmolc/kg", "cmol~c~ kg^-1^", attr(perfil, 'units'), fixed = TRUE)
+attr(perfil, 'units') <- gsub("mg/L", "mg L^-1^", attr(perfil, 'units'), fixed = TRUE)
 attr(perfil, 'units') <- glue::glue("({attr(perfil, 'units')})")
 
 # Preparar tabela com dados físicos perfil
@@ -72,10 +78,10 @@ pander::panderOptions('table.split.table', Inf)
 pander::panderOptions('keep.trailing.zeros', TRUE)
 pander::panderOptions('table.alignment.default', 'left')
 pander::panderOptions('table.split.cells', rep(100 / ncol(perfil_fis), ncol(perfil_fis)))
-pander::pander(perfil_fis, caption = 'Variáveis físicas dos horizontes do perfil do solo [@Lauermann2007].')
+pander::pander(perfil_fis, caption = '(\\#tab:perfil-fisica) Variáveis físicas dos horizontes do perfil do solo [@Lauermann2007].')
 ```
 
-```{r perfil-do-solo-quimica, echo=FALSE, message=FALSE, warning=FALSE}
+```{r perfil-quimica, echo=FALSE, message=FALSE, warning=FALSE}
 # Preparar tabela com dados químicos perfil
 # colnames(perfil)
 idx <- c(4, 23, 16:22)
@@ -88,10 +94,10 @@ pander::panderOptions('table.split.table', Inf)
 pander::panderOptions('table.alignment.default', 'left')
 pander::panderOptions('keep.trailing.zeros', TRUE)
 pander::panderOptions('table.split.cells', rep(100 / ncol(perfil_qui), ncol(perfil_qui)))
-pander::pander(perfil_qui, caption = 'Variáveis químicas dos horizontes do perfil do solo [@Lauermann2007].')
+pander::pander(perfil_qui, caption = '(\\#tab:perfil-quimica) Variáveis químicas dos horizontes do perfil do solo [@Lauermann2007].')
 ```
 
-```{r solos-do-rs, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Área do estado do Rio Grande do Sul com camada superficial do solo de textura similar ao material do solo usado neste estudo.", fig.align='center', dpi=150, out.width='8cm', out.height='8cm', fig.asp=1}
+```{r solos-do-rs, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Área do estado do Rio Grande do Sul com camada superficial do solo de textura similar ao material do solo usado neste estudo, coletado no local indicado pelo ponto vermelho.", fig.align='center', dpi=600, fig.asp=1}
 rs <- raster::shapefile("../data/solo-rs.shp")
 
 # Criar variável do tipo fator para construção do gráfico. Cada polígono recebe um valor único.
@@ -123,140 +129,279 @@ sp::spplot(
   })
 ```
 
-O material coletado do solo foi caracterizado quanto à distribuição do tamanho de partículas. Para isso ele foi seco ao ar, destorroado e passado em peneira com malha com abertura de dois milímetros. A conteúdo de argila da fração terra fina seca ao ar (TFSA) resultante foi estimado usando o método da pipeta após dispersão química de 20 g de TFSA com hidróxido de sódio (NaOH) -- na concentração de 1 mol L^-1^ -- e desagregação mecânica -- usando duas esferas de nylon (diâmetro de 1,71 cm, massa de 3,04 g, densidade de 1,11 g cm^-1^) e agitação horizontal por 4 horas a 120 ciclos por minuto. Já o conteúdo de areia foi determinado via tamizamento úmido.
-
-## Método tradicional
-
-A primeiro teste realizado foi quanto à capacidade do método tradicional produzir amostras que possuam a mesma concentração de sólidos totais (sedimentos) que a suspensão (enxurrada) de onde foi obtida, ou seja, se a amostra gerada é representativa da suspensão. Para isso foram utilizados recipientes plásticos com capacidade para 10 L, dentro dos quais foram adicionados 3 L de água destilada e a quantidade de TFSA necessária para atingir as concentrações de 2, 10 e 50 g L^-1^ de sólidos totais. Para cada concentração foram preparadas cinco repetições (baldes). Em cada balde, uma pessoa homogeneizou a suspensão com uma das mãos. Após 10 segundos, sem parar a homogeneização, outra pessoa coletou uma amostra mergulhando, no seio da suspensão, um copo de Beaker de 250 mL. A concentração de sólidos totais nas amostras de cada suspensão foi determinada em função do seu volume e da massa de sólidos totais mensurada após secagem em estufa à temperatuda de 105°C até completa evaporação da água. 
-
-## Equipamento fracionador
-
-O equipamento fracionador foi construído com peças de PVC (Figura \@ref(fig:sample-splitter)). Ele é composto de um reservatório para a suspensão na parte superior, o qual consiste num cano de 300 mm de comprimento e 75 mm de diâmetro, com capacidade para 1 L de suspensão. O fundo do reservatório possui formato de funil para direcionar a suspensão a um cano conectado à sua extremidade inferior, cano esse que possui 300 mm de comprimento e 15 mm de diâmetro. A função desse cano de menor diâmetro é dirigir a suspensão em fluxo contínuo até o dispositivo fracionador da suspensão, que possui formato de Y invertido e que está conectado à extremidade do primeiro. Todas as peças são fixadas utilizando material adesivo específico para PVC. Como o equipamento fracionador possui duas saídas (A e B), ele produz duas subamostras da suspensão a cada operação de fracionamento. O nivelamento do equipamento fracionador com os planos horizontal e vertical é feito usando usando uma plataforma de madeira. O investimento necessário para construção do equipamento fracionador é de aproximadamente [R$ VALOR].
-
-```{r sample-splitter, echo=FALSE, fig.cap="Equipamento fracionador de amostras de enxurrada.", fig.align='center'}
-knitr::include_graphics("../images/sample-splitter.jpg")
-```
-
-Três testes foram realizados com o equipamento fracionador. O primeiro dele teve como objetivo avaliar se a capacidade do equipamento fracionador produzir subamostras de volume equivalente é influenciada pelo volume da amostra sendo fracionada. Quatro volumes de água destilada foram avaliados, 100, 300, 500 e 1000 mL, em cinco repetições. Em cada repetição, o respectivo volume total de água destilada foi vertido de uma só vez no reservatório do equipamento fracionador. As duas subamostras produzidas foram coletadas em copos de Beaker e o seu volume determinado usando provetas graduadas previamente calibradas.
-
-O segundo teste consistiu na avaliação da capacidade do equipamento fracionador produzir subamostras com a mesma concentração de sólidos totais equivalente àquela encontrada na suspensão sendo fracionada. As mesmas concentrações usadas para avaliar o método tradicional foram usadas, também com cinco repetições cada uma. A suspensão foi preparada em [ONDE FOI PREPARADA? QUE RECIPIENTE USAMOS?] com um volume total de [QUANTOS ML?], agitada vigorosamente por 10 segundos e vertida no reservatório do fracionador de uma só vez. O fracionador foi lavado com água destilada após cada repetiação. As duas subamostras (A e B) produzidas em cada repetição foram coletadas em copos de Beaker de 250 mL e em seguida determinada a concentração de sólidos totais conforme descrito acimpa para o método tradicional.
-
-Finalmente, os sólidos totais foram analisado quanto à distribuição do tamanho de partículas enpregando o mesmo método descrito acima para a análise do material do solo utilizado para produzir as suspensões. O objetivo desse teste foi avaliar a capacidade do equipamento fracionador produzir subamostras cuja distribuição do tamanho de partículas dos sólidos totais sejam equivalentes à distribuição do tamanho de partículas da suspensão sendo fracionada.
-
-## Análises estatísticas
-
-Os dados de todos os testes foram submetidos à análise estatítica descritiva, sendo calculados a média, desvio padrão, coeficiente de variação e erro percentual. O erro percentual consiste na 
-
-Os resultados completos de todos os testes são apresentados juntamente com algumas estatísticas descritivas (média, desvio padrão, coeficiente de variação e erro percentual). O teste t foi utilizado para testar se o volume e a concentração de sedimento das subamostras são estatisticamente iguais aos valores esperados. O teste t para amostras pareadas foi utilizado para testar se o volume e a concentração de sedimento das subamostras produzidas pelas duas saídas do fracionador são estatisticamente iguais. Todas as análises foram realizadas utilizando o pacote stats no R (R Development Core Team, 2011).
-
-# RESULTADOS E DISCUSSÃO
-
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 unidades <- readr::read_csv("../data/camada.csv",  n_max = 1)
 dados <- readr::read_csv("../data/camada.csv",  na = "-", comment = "unidade", locale = readr::locale(decimal_mark = ","))
+areia <- dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = mean(areia_total)) %>% round()
+argila <- dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = mean(argila_total)) %>% round()
 ```
 
-```{r, echo=FALSE}
+O material coletado do solo foi caracterizado quanto à distribuição do tamanho de partículas. Para isso ele foi seco ao ar, destorroado e passado em peneira com malha de dois milímetros de abertura. O conteúdo de argila (diâmetro < 0,002 mm) na fração terra fina seca ao ar (TFSA) resultante foi estimado usando o método da pipeta após dispersão química de ~20 g de TFSA com hidróxido de sódio (NaOH) -- na concentração de 1 mol L^-1^ -- e desagregação mecânica -- usando duas esferas de náilon (diâmetro do 1,71 cm, massa de 3,04 g, densidade de 1,11 g cm^-1^) e agitação horizontal por 4 horas a 120 ciclos por minuto. Já o conteúdo de areia (diâmetro entre 0,053 e 2,00 mm) foi determinado via tamisamento úmido. Segundo essas análises, a distribuição do tamanho de partículas do material de solo consta de `r areia[[1]]` g kg^-1^ de areia e `r argila[[1]]` g kg^-1^ de argila.
+
+## Método do mergulho
+
+O primeiro teste realizado foi quanto à capacidade do método do mergulho produzir um amostra representativa da suspensão, ou seja, que possua concentração de sólidos totais (sedimentos) aproximadamente equivalente àquela da suspensão (enxurrada) de onde foi obtida. Para isso foram utilizados recipientes plásticos com capacidade para 10 L, dentro dos quais foram adicionados 3 L de água destilada e a quantidade de TFSA necessária para atingir as concentrações de 2, 10 e 50 g L^-1^ de sólidos totais. Para cada concentração foram preparadas cinco repetições (baldes). Em cada balde, uma pessoa homogeneizou a suspensão com uma das mãos. Após 10 segundos, sem parar a homogeneização, outra pessoa coletou uma amostra mergulhando, no seio da suspensão, um béquer de 250 mL. A concentração de sólidos totais nas amostras de cada suspensão foi determinada em função do seu volume e da massa de sólidos totais mensurada após secagem em estufa à temperatura de 105°C até completa evaporação da água.
+
+A diferença entre o valor real/conhecido, *y*, e estimado por uma amostra *i*, *ŷ~i~*, da concentração de sólidos totais numa suspensão *j*, foi definido como sendo o erro de estimação, *e~ij~* = *ŷ~ij~* - *y~j~*. A partir do erro de estimação, calculou-se a razão *e~ij~*/*y~j~* que, multiplicada por 100, informa a magnitude percentual do erro de estimação em relação ao valor real da concentração de sólidos totais numa suspensão. Finalmente, os erros de estimação foram submetidos ao teste *t* bicaudal para a média de uma amostra, onde a hipótese alternativa testada foi de que a média verdadeira seria diferente de zero.
+
+## Método do fracionador
+
+O equipamento utilizado no método do fracionador foi construído com peças de policloreto de polivinila (PVC, do inglês *polyvinyl chloride*) (Figura \@ref(fig:sample-splitter)). O fracionador é composto de um reservatório para a suspensão, localizado na parte superior, o qual consiste num cano de 300 mm de comprimento e 75 mm de diâmetro, com capacidade para 1 L de suspensão. O fundo desse reservatório possui formato de funil para direcionar a suspensão a um cano de conectado à sua extremidade inferior, cano esse que possui 300 mm de comprimento e 15 mm de diâmetro. A função desse cano de menor diâmetro é dirigir a suspensão em fluxo contínuo e concentrado até o dispositivo fracionador da suspensão, que possui formato de Y invertido e que está conectado à extremidade inferior do primeiro. Todas as peças são fixadas umas às outras utilizando material adesivo específico para PVC. Como o fracionador possui duas saídas, A e B, ele produz duas amostras da suspensão a cada operação de fracionamento. O nivelamento do equipamento fracionador com os planos horizontal e vertical é feito via fixação em plataforma de madeira. O investimento necessário para construção do equipamento fracionador é de aproximadamente [R$ VALOR].
+<!-- ASR: Precisamos de uma estivativa do curto do equipamento. -->
+
+```{r sample-splitter, echo=FALSE, fig.cap="Equipamento fracionador de amostras de enxurrada.", fig.align='center'}
+knitr::include_graphics("../images/fracionador-a.jpg")
+```
+
+O método do fracionador foi submetido a três testes. O primeiro dele teve como objetivo avaliar se o volume da suspensão sendo fracionada afeta o desempenho do fracionador, especificamente, sua capacidade de produzir pares de amostras com volumes aproximadamente equivalentes. Quatro volumes de água destilada foram avaliados, 100, 300, 500 e 1000 mL, em cinco repetições. Em cada repetição, o respectivo volume total de água destilada foi vertido de uma só vez no reservatório do fracionador. As duas amostras produzidas foram coletadas em copos de béquer e o seu volume determinado usando provetas graduadas previamente calibradas. O erro de estimação e sua razão em relação ao valor real, ambos definidos acima, foram calculados para cada uma das saídas do fracionador em todas as repetições dos quatro volumes testados. Também como descrito acima, os erros de estimação foram submetidos ao teste *t* bicaudal. Adicionalmente, os erros de estimação das saídas A e B para cada um dos quatro volumes testados foram comparados usando o teste *t* bicaudal para a média de duas amostras pareadas. A hipótese alternativa testada foi de que a diferença verdadeira entre as médias das duas amostras seria diferente de zero.
+
+O segundo teste conduzido com o método do fracionador foi o mesmo aplicado ao método do mergulho, qual seja, a capacidade do método do fracionador produzir um amostra representativa da suspensão. As mesmas concentrações usadas para avaliar o método do mergulho foram usadas, também com cinco repetições cada uma. As suspensões foram preparadas em [ONDE FOI PREPARADA? QUE RECIPIENTE USAMOS?] com um volume total de [QUANTOS ML?], agitada vigorosamente por 10 segundos e vertida no reservatório do fracionador de uma só vez. O fracionador foi lavado com água destilada após cada repetição. As duas amostras, A e B, produzidas em cada repetição foram coletadas em copos de béquer de 250 mL e em seguida determinada a concentração de sólidos totais conforme descrito para o método do mergulho. Os erros de estimação foram submetidos ao teste *t* bicaudal para a média de uma amostra e ao teste *t* bicaudal para a média de duas amostras pareadas.
+<!-- ASR: Precisamos descrever melhor o método de preparo das suspensões. -->
+
+Finalmente, os sólidos totais contidos nas amostras produzidas pelas saídas A e B do fracionador foram analisados quanto à distribuição do tamanho de partículas. Para isso fora empregado o mesmo método descrito acima para a análise do material do solo utilizado para produzir as suspensões. O objetivo desse teste foi avaliar a capacidade do fracionador produzir amostras onde os sólidos totais possuam distribuição do tamanho de aproximadamente equivalente àquela observada nos sólidos totais da suspensão fracionada. O teste *t* bicaudal para a média de uma amostra e o teste *t* bicaudal para a média de duas amostras pareadas foram empregados para avaliar os erros de estimação do conteúdo de argila e areia.
+
+# RESULTADOS E DISCUSSÃO
+
+## Método do mergulho
+
+O teste realizado com o método do mergulho mostrou que as amostras obtidas não foram representativas das suspensões usadas (Tabela \@ref(tab:mergulho-solidos)). Uma subestimativa estatisticamente significativa de 30% ou mais da concentração de sólidos totais foi observada em todas as três concentrações avaliadas. Além disso, observamos uma variação considerável entre as cinco repetições. Esses resultados corroboram a hipótese inicial sobre a inconsistência do método do mergulho levantada a partir dos relatos apresentados em trabalhos similares desenvolvidos em outras partes do mundo [@Lang1992; @ZoebischEtAl1996; @CiesiolkaEtAl2006; @TodiscoEtAl2012; @Kinnell2016].
+
+```{r mergulho-solidos, echo=FALSE}
 # Preparar dados
 d <- 
   filter(dados, observacao_id == 'convencional') %>% 
   select(solidos_totais, amostra_codigo) %>% 
-  mutate(entrada = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 1]) %>%
-  mutate(entrada = gsub("Entrada: ", "", entrada)) %>% 
-  mutate(entrada = gsub("g/L", "", entrada)) %>%
-  mutate(repeticao = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 2]) %>%
-  mutate(repeticao = gsub("Repetição: ", "", repeticao)) %>%
-  select(-amostra_codigo) %>% 
-  mutate(entrada = as.numeric(entrada)) %>%
+  preparar_dados(fracionador = FALSE) %>% 
   mutate(erro = solidos_totais - entrada)
+
 # Erro médio
 e <- 
   mutate(d, erro = erro / entrada * 100) %>% 
   group_by(entrada) %>% 
-  summarise('Média (g L^-1^)' = mean(solidos_totais), 'DP (g L^-1^)' = sd(solidos_totais), 
-            'CV (%)' = sd(solidos_totais) / mean(solidos_totais) * 100, 'EM (%)' = mean(erro))
+  summarise('Média (g L^-1^)' = mean(solidos_totais) %>% round(2), 
+            'DP (g L^-1^)' = sd(solidos_totais) %>% round(2), 
+            'CV (%)' = (sd(solidos_totais) / mean(solidos_totais) * 100) %>% round(2), 
+            'EM (%)' = mean(erro) %>% round(2))
+
 # Teste t para a média de uma amostra
-t <- 
-  group_by(d, entrada) %>% 
-  summarise('*t*' = t.test(erro, mu = 0, alternative = "less")$statistic,
-            '*P*' = t.test(erro, mu = 0, alternative = "less")$p.value)
+t <- teste_t1(d, fracionador = FALSE)
+
 # Preparar tabela
 d <- select(d, -erro) %>% tidyr::spread(entrada, solidos_totais)
+d[, -1] <- round(d[, -1], 2)
 d <- rbind(d, my_reshape(e, d), my_reshape(t, d))
 colnames(d)[2:4] <- glue::glue("**{colnames(d)[2:4]} (g L^-1^)**")
 colnames(d)[1] <- ""
 rownames(d) <- NULL
-panderOptions('digits', c(1, 3, 2, 2))
+panderOptions('round', rep(4, ncol(d)))
 panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
-pander(d, caption = 'Dados e estatísticas da concentração de sólidos totais nas amostras obtidas usando o método do mergulho de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^.')
+pander(d, caption = '(\\#tab:mergulho-solidos) Dados e estatísticas da concentração de sólidos totais nas amostras obtidas usando o método do mergulho de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- desvio padrão, CV -- coeficiente de variação, EM -- erro médio, *t* -- estatística do teste *t*, *p* -- valor *p* do teste *t*.')
 ```
 
+A subestimativa da concentração de sólidos totais deve ter ocorrido principalmente devido ao fenômeno da sedimentação diferencial, marcada pela rápida decantação das partículas de areia e, assim, levando à amostragem seletiva das partículas mais finas, nesse caso, silte e argila [@CiesiolkaEtAl2006]. Durante a realização do teste, observamos que, por mais cuidado que fosse tomado, a homogeneização manual não resultava em uma suspensão visualmente homogênea, com as partículas de areia sedimentando rapidamente. Ademais, também verificamos que movimentos circulares durante a homogeneização faziam com que, devido à força centrífuga, as partículas de areia fossem arremessadas na direção das paredes laterais do recipiente. Assim sendo, é razoável supor que a distribuição do tamanho de partículas e, consequentemente, a composição química do sedimento das amostras obtidas via método do mergulho, sejam consideravelmente diversas da suspensão amostrada.
 
-```{r, echo=FALSE}
+A partir dos resultados obtidos, pode-se supor que as perdas anuais de solo em áreas com solo de granulometria similar àquela estudada sejam até 30% superiores aos valores encontrados na literatura. Por exemplo, segundo @LanzanovaEtAl2013, após 16 anos de monitoramento, foram perdidos cerca de 2,5 Gg ha ^-1^ de solo de uma parcela (largura = 3,5 m; comprimento = 22 m; declividade = 0.055 m m^-1^) com solo exposto, localizada próximo do local onde coletamos o material do solo para esse estudo. Com base em nossos resultados, a quantidade de solo perdida nessa parcela seria de cerca de 3,5 Gg ha ^-1^. Contudo, há que se atentar para o fato de que nosso resultado baseia-se numa amostragem realizada por uma única pessoa, o que tente a produzir repetições similares. Em comparação, @ZoebischEtAl1996 avaliou cinco profissionais experientes em amostragem de enxurrada e observou erros na estimativa de perda de solo entre 5 e 83%.
+
+## Método do fracionador
+
+Os resultados do primeiro teste realizado com o protótipo do equipamento fracionador que desenvolvemos mostraram que a eficiência do mesmo não é afetada pelo volume de água (Tabela \@ref(tab:fracionador-agua)). Ambas as saídas A e B produziram amostras com volumes similares. Contudo, o processo de fracionamento parece tornar-se menos eficiente com a diminuição do volume de água. Os maiores erros percentuais, (negativos ou positivos) observados quando o volume de amostra era pequeno (100 mL), possivelmente resultaram do efeito turbilhão da água no interior do cano de 15 mm de diâmetro localizado abaixo do reservatório. A função desse cano é dirigir a água em um fluxo constante até o dispositivo fracionador. Aparentemente esse objetivo só foi efetivamente atingido quando o volume de água era superior a 100 mL. Assim, é razoável que o fracionador seja utilizado apenas com suspensões de volume superior a 250-300 mL.
+
+```{r fracionador-agua, echo=FALSE}
 # Preparar dados
 d <- 
   filter(dados, observacao_id == 'fracionador' & objeto_id == 'água') %>% 
   select(volume_agua, amostra_codigo) %>%
-  mutate(entrada = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 1]) %>%
-  mutate(entrada = gsub("Entrada: ", "", entrada)) %>% 
-  mutate(entrada = gsub("mL", "", entrada)) %>% 
-  mutate(saida = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 2]) %>%
-  mutate(saida = gsub("Saída: ", "", saida)) %>% 
-  mutate(repeticao = stringr::str_split_fixed(amostra_codigo, ";", Inf)[, 3]) %>%
-  mutate(repeticao = gsub("Repetição: ", "", repeticao)) %>%
-  select(-amostra_codigo) %>% 
-  mutate(entrada = as.numeric(entrada) / 2) %>%
+  preparar_dados(unidade = 'mL') %>%
+  mutate(entrada = entrada / 2) %>% 
   mutate(erro = volume_agua - entrada)
+
 # Erro médio
 e <- 
-  mutate(d, erro = erro / entrada * 100) %>% 
+  mutate(d, erro = erro / entrada * 100) %>%
   group_by(entrada, saida) %>% 
-  summarise('Média (g L^-1^)' = mean(volume_agua), 'DP (g L^-1^)' = sd(volume_agua), 
-            'CV (%)' = sd(volume_agua) / mean(volume_agua) * 100, 'EM (%)' = mean(erro))
+  summarise('Média (mL)' = mean(volume_agua) %>% round(2), 
+            'DP (mL)' = sd(volume_agua) %>% round(2), 
+            'CV (%)' = (sd(volume_agua) / mean(volume_agua) * 100) %>% round(2), 
+            'EM (%)' = mean(erro) %>% round(2))
+
 # Teste t para a média de uma amostra
-t1 <- 
-  group_by(d, entrada, saida) %>% 
-  summarise('*t*' = t.test(erro, mu = 0, alternative = "less")$statistic,
-            '*P*' = t.test(erro, mu = 0, alternative = "less")$p.value)
-# Teste t para a média de duas amostra
-teste_t2 <-
-  function (x = d, y = 300) {
-    tmp <- 
-      filter(x, entrada == y / 2) %>% 
-      tidyr::spread(entrada, erro) %>% 
-      select(repeticao, saida, as.character(y/2)) %>% 
-      tidyr::spread(saida, as.character(y/2))
-    names(tmp) <- gsub(" ", "", names(tmp))
-    summarise(tmp,
-              '*t*' = t.test(A, B, mu = 0, alternative = "two.sided")$statistic,
-              '*P*' = t.test(A, B, mu = 0, alternative = "two.sided")$p.value)
-  }
-i <- d %>% select(entrada) %>% unique() * 2
-t2 <- sapply(i[[1]], function (i) teste_t2(d, i))
-t2
+t1 <- teste_t1(d)
+  
+# Teste t para a média de duas amostras pareadas
+t2 <- teste_t2(d)
+
+# Preparar tabela
+d <- 
+  select(d, -erro) %>% 
+  mutate(entrada = entrada * 2) %>% 
+  tidyr::unite(ent_sai, entrada, saida) %>%
+  tidyr::spread(ent_sai, volume_agua) %>% 
+  select(1, 4:9, 2:3)
+colnames(t2) <- colnames(d)
+d[, -1] <- round(d[, -1], 1)
+d <- rbind(
+  d,
+  my_reshape(e, d) %>% filter(repeticao != 'saida'),
+  my_reshape(t1, d) %>% filter(repeticao != 'saida'),
+  t2)
+d[, -1] <- apply(d[, -1], 2, as.numeric)
+colnames(d) <- gsub('_ ', ' mL\n', colnames(d), fixed = TRUE)
+colnames(d) <- glue::glue("**{colnames(d)}**")
+colnames(d)[1] <- ""
+rownames(d) <- NULL
+panderOptions('round', rep(4, ncol(d)))
+panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
+pander(d, caption = '(\\#tab:fracionador-agua) Dados e estatísticas do volume de água das amostras produzidas por cada saída, A e B, do fracionador para volumes iniciais de 100, 300, 500 e 1000 mL. Estatísticas: DP -- desvio padrão, CV -- coeficiente de variação, EM -- erro médio, *t* -- estatística do teste *t*, *p* -- valor *p* do teste *t*.')
 ```
 
-A distribuição do tamanho de partículas do material de solo consta de: areia (0,053--2,00 mm) = `r dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = mean(areia_total)) %>% round()` g kg^-1^; argila (<0.002 mm) = `r dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = mean(argila_total)) %>% round()` g kg^-1^.
+O teste do fracionador usando suspensões com diferentes concentrações de sólidos totais mostrou que, independente da saída A ou B, o mesmo foi eficiente em produzir amostras representativas da suspensão fracionada (Tabela \@ref(tab:fracionador-solidos)). Comparado ao método do mergulho, os erros percentuais absolutos são consideravelmente pequenos (EM < |5%|), assim como a variação entre as repetições (CV < 3%). A existência de uma tendência consistente e estável de erros negativos, indicada inclusive nas estatísticas do teste *t*, significa que é possível corrigir as estimativas da concentração de sólidos totais com elevado grau de confiança. Ademais, essa subestimativa pode ser evitada ou minimizada via adoção de cuidados durante o fracionamento. Segundo verificamos, durante o vertimento da suspensão para dentro do reservatório do fracionador, partículas de maior diâmetro tendem a permanecer no interior do recipiente onde a suspensão estava armazenada. Para evitar ou minimizar isso é preciso agitar vigorosamente o recipiente e verter a suspensão rapidamente. Uma solução adicional é realizar a lavagem do recipiente usando volume de água conhecido e então verter a nova suspensão no fracionador.
 
-Os resultados mostram que o método tradicional descrito por Cogo (1978) não proporciona a obtenção de subamostras representativas da enxurrada (Tabela 1). Em todas as três concentrações testadas observamos um erro negativo de 30% ou mais. Esse erro é significativo e prejudica a consistência do método, indicando que as estimativas anuais de erosão do solo em áreas agrícolas podem ser muito inferiores ao real. Os 500 milhões de toneladas de solo erodidos anualmente no Brasil segundo Bertoni & Lombardi Neto (1999) podem ser, na verdade, de 650 a 750 milhões de toneladas.
+```{r fracionador-solidos, echo=FALSE}
+# Preparar dados
+d <- 
+  filter(dados, observacao_id == 'fracionador' & objeto_id == 'suspensão') %>% 
+  select(solidos_totais, amostra_codigo) %>%
+  preparar_dados() %>% 
+  mutate(erro = solidos_totais - entrada)
 
-Como o método tradicional subestima a erosão do solo devido à amostragem seletiva das partículas mais finas, a distribuição do tamanho de partículas e a composição química do sedimento das subamostras devem ser significativamente diversas da amostra da enxurrada. Não realizamos testes para avaliar essas propriedades do sedimento por entendermos que o erro apresentado pelo método já é suficiente para confirmar sua inconsistência (Lang, 1992; Zöbisch et al., 1996; Todisco et al., 2012).
+# Erro médio
+e <- 
+  mutate(d, erro = erro / entrada * 100) %>%
+  group_by(entrada, saida) %>% 
+  summarise('Média (g L^-1^)' = mean(solidos_totais) %>% round(2), 
+            'DP (g L^-1^)' = sd(solidos_totais) %>% round(2), 
+            'CV (%)' = (sd(solidos_totais) / mean(solidos_totais) * 100) %>% round(2), 
+            'EM (%)' = mean(erro) %>% round(2))
 
-No que diz respeito ao fracionador modelo UFSM-1, os resultados mostram que o mesmo é eficiente na obtenção de subamostras de água pura (Tabela 2). Ambas as saídas produziram subamostras com volumes similares. Entretanto, o processo de fracionamento se torna menos eficiente para volumes pequenos de amostra (100 mL). Os maiores erros percentuais (negativo ou positivo) observados quando o volume de amostra é pequeno, são resultado do efeito turbilhão da água no interior do cano de 15 mm de diâmetro localizado abaixo do reservatório. A função desse cano é dirigir a água em um fluxo constante até o dispositivo fracionador. Mas parece que esse objetivo só é atingido quando o volume da amostra é superior a 250-300 mL. Assim, recomendamos o uso do fracionador apenas com amostras de volume superior a 250-300 mL.
+# Teste t para a média de uma amostra
+t1 <- teste_t1(d)
 
-Ao testar o uso do fracionador modelo UFSM-1 com amostras de enxurrada com concentração de sedimento entre 2,00 e 50,00 g L-1, verificamos mais uma vez que o mesmo é eficiente em produzir subamostras representativas (Tabela 3). Os erros percentuais não são significativos e sua tendência negativa é resultado do processo envolvido no vertimento da amostra de enxurrada dentro do reservatório do fracionador. Partículas de areia podem permanecer no interior do reservatório onde a amostra estava armazenada se o mesmo não for agitado vigorosamente e o material vertido rapidamente. Como consequência pode haver uma subestimativa da concentração de sedimento na enxurrada e, portando, da erosão do solo.
+# Teste t para a média de duas amostras pareadas
+t2 <- teste_t2(d)
 
-Dado que o fracionador modelo UFSM-1 produz subamostras com concentração de sedimento estatisticamente idêntica àquela da amostra de enxurrada, não há alteração significativa da distribuição do tamanho de partículas do sedimento (Tabelas 4 e 5). Da mesma maneira, as duas saídas (A e B) do equipamento possuem desempenho equivalente. A exceção é para as amostras de enxurrada contendo pequena concentração de sedimento (2 g L-1), para as quais um erro percentual significativo é observado. Contudo, esse resultado não se deve ao processo de fracionamento, mas sim ao problema descrito acima, em que partículas de areia podem permanecer no interior do reservatório onde a amostra de enxurrada estava armazenada.
+# Preparar tabela
+d <- 
+  select(d, -erro) %>% 
+  tidyr::unite(ent_sai, entrada, saida) %>%
+  tidyr::spread(ent_sai, solidos_totais) %>% 
+  select(1, 4:5, 2:3, 6:7)
+colnames(t2) <- colnames(d)
+d[, -1] <- round(d[, -1], 2)
+d <- rbind(
+  d,
+  my_reshape(e, d) %>% filter(repeticao != 'saida'),
+  my_reshape(t1, d) %>% filter(repeticao != 'saida'),
+  t2)
+d[, -1] <- apply(d[, -1], 2, as.numeric)
+colnames(d) <- gsub('_ ', ' g L^-1^\n', colnames(d), fixed = TRUE)
+colnames(d) <- glue::glue("**{colnames(d)}**")
+colnames(d)[1] <- ""
+rownames(d) <- NULL
+panderOptions('digits', rep(4, ncol(d)))
+panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
+pander(d, caption = '(\\#tab:fracionador-solidos) Dados e estatísticas da concentração de sólidos totais nas amostras obtidas usando o método do fracionador de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- desvio padrão, CV -- coeficiente de variação, EM -- erro médio, *t* -- estatística do teste *t*, *p* -- valor *p* do teste *t*.')
+```
 
-No caso da argila observamos que o erro percentual é superior ao da areia. Com isso, o conteúdo de argila nas subamostras obtidas da suspensão com concentração de sedimento de 2,00 g L-1 é inferior ao limite de detecção do método analítico utilizado. Novamente o erro percentual negativo deve ser resultado da permanência de resíduos do sedimento no interior do recipiente em que a amostra de enxurrada estava armazenada. Quando a concentração de sedimento é maior o erro percentual não é significativo, podendo o mesmo ser esperado para sedimentos contendo maior conteúdo de argila.
+A produção de amostras com concentração de sólidos totais virtualmente equivalente àquela da suspensão fracionada esteve relacionada à reprodução do conteúdo de areia no sedimento das amostras (Tabela \@ref(tab:fracionador-areia)). Isso ocorreu de maneira independente da saída do fracionador. A exceção foi a suspensão com a concentração mais baixa de sólidos totais, 2 g L^-1^, para a qual a magnitude do erro percentual na estimativa do conteúdo de areia foi excessivamente grande. Para as cinco repetições, em média, o conteúdo de areia foi subestimado em cerca de 50%. Note, contudo, que essa subestimativa não deveu-se ao processo de fracionamento em si, mas sim à dificuldade relatada acima, onde partículas de maior diâmetro tendem a permanecer no interior do recipiente onde a suspensão estava armazenada.
 
-Em resumo, o método tradicional de coleta de subamostras de enxurrada é inadequado porque subestima a concentração de sedimento. Além disso, ele é fonte de variação nos resultados de erosão do solo. Por isso, acreditamos que seja necessário quantificar esse efeito como forma de determinar a incerteza associada às funções utilizadas para estimar a erodibilidade do solo (fator K da EUPS), bem como dos modelos de estimativa da erosão do solo. Infelizmente a incerteza associada a funções e modelos matemáticos foi negligenciada durante muito tempo (McBratney et al., 2011). Mas atualmente essa informação se tornou essencial (Finke, 2012). Ênfase deve ser dada a EUPS, modelo de estimativa de erosão mais utilizado por cientistas do solo e tomadores de decisão.
+```{r fracionador-areia, echo=FALSE}
+# Preparar dados
+d <- 
+  filter(dados, observacao_id == 'fracionador' & objeto_id == 'sedimento') %>% 
+  select(areia_total, amostra_codigo) %>%
+  preparar_dados() %>% 
+  mutate(erro = areia_total - areia[[1]])
 
-Por outro lado, o equipamento fracionador modelo UFSM-1 é eficiente em produzir subamostras de enxurrada sem alterar a distribuição do tamanho de partículas do sedimento. Com isso, acreditamos que não deva ocorrer qualquer alteração significativa nas propriedades químicas do sedimento. Mas para que isso seja possível as amostras de enxurrada devem possuir volume superior a 250-300 mL e concentração de sedimento superior a 2 g L-1. Futuras avaliações do fracionador devem envolver um intervalo maior de concentração de sedimentos e distribuição do tamanho de partículas, bem como o potencial de contaminação das subamostras por constituintes orgânicos e inorgânicos.
+# Erro médio
+e <- 
+  mutate(d, erro = erro / areia[[1]] * 100) %>%
+  group_by(entrada, saida) %>% 
+  summarise('Média (g kg^-1^)' = mean(areia_total) %>% round(2), 
+            'DP (g kg^-1^)' = sd(areia_total) %>% round(2), 
+            'CV (%)' = (sd(areia_total) / mean(areia_total) * 100) %>% round(2), 
+            'EM (%)' = mean(erro) %>% round(2))
 
-Apesar dos resultados positivos, reconhecemos que o uso do fracionador modelo UFSM-1 pode ser de difícil operacionalização para volumes grandes de amostra de enxurrada (>100 L). Nesse sentido, torna-se necessário avaliar a possibilidade de desenvolver um equipamento com maior capacidade de processamento e desempenho semelhante. Se o monitoramento da erosão do solo constitui tarefa fundamental dos cientistas do solo, devemos contar com equipamentos que permitam a obtenção de dados com a maior acurácia possível.
+# Teste t para a média de uma amostra
+t1 <- teste_t1(d)
 
-# CONCLUSÕES
+# Teste t para a média de duas amostras pareadas
+t2 <- teste_t2(d)
+
+# Preparar tabela
+d <- 
+  select(d, -erro) %>% 
+  tidyr::unite(ent_sai, entrada, saida) %>%
+  tidyr::spread(ent_sai, areia_total) %>% 
+  select(1, 4:5, 2:3, 6:7)
+d[, -1] <- round(d[, -1])
+colnames(t2) <- colnames(d)
+d <- rbind(
+  d,
+  my_reshape(e, d) %>% filter(repeticao != 'saida'),
+  my_reshape(t1, d) %>% filter(repeticao != 'saida'),
+  t2)
+d[, -1] <- apply(d[, -1], 2, as.numeric)
+colnames(d) <- gsub('_ ', ' g kg^-1^\n', colnames(d), fixed = TRUE)
+colnames(d) <- glue::glue("**{colnames(d)}**")
+colnames(d)[1] <- ""
+rownames(d) <- NULL
+panderOptions('digits', rep(4, ncol(d)))
+panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
+pander(d, caption = '(\\#tab:fracionador-areia) Dados e estatísticas do conteúdo de areia nos sólidos totais das amostras obtidas usando o método do fracionador de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- desvio padrão, CV -- coeficiente de variação, EM -- erro médio, *t* -- estatística do teste *t*, *p* -- valor *p* do teste *t*.')
+```
+
+Já para a estimativa do conteúdo de argila nos sólidos totais das amostras obtidas com o fracionador, observamos que os erros são consideravelmente maiores aos apresentados pela estimativa do conteúdo de areia (Tabela \@ref(tab:fracionador-argila)). Os erros foram especialmente grandes nas amostras da suspensão com 2,00 g L^-1^ de sólidos totais, haja vista que, para o material do solo utilizado, o conteúdo de argila nas amostras resultantes é inferior ao limite de detecção do método analítico utilizado. Quando a concentração de sólidos totais foi maior (10 e 50 g L^-1^), o erro percentual foi menos, sua significância diminuindo a medida que aumentou a concentração de sólidos totais.
+
+```{r fracionador-argila, echo=FALSE}
+# Preparar dados
+d <- 
+  filter(dados, observacao_id == 'fracionador' & objeto_id == 'sedimento' & !is.na(argila_total)) %>% 
+  select(argila_total, amostra_codigo) %>%
+  preparar_dados() %>% 
+  mutate(erro = argila_total - argila[[1]])
+
+# Erro médio
+e <- 
+  mutate(d, erro = erro / argila[[1]] * 100) %>%
+  group_by(entrada, saida) %>% 
+  summarise('Média (g kg^-1^)' = mean(argila_total) %>% round(2), 
+            'DP (g kg^-1^)' = sd(argila_total) %>% round(2), 
+            'CV (%)' = (sd(argila_total) / mean(argila_total) * 100) %>% round(2), 
+            'EM (%)' = mean(erro) %>% round(2))
+
+# Teste t para a média de uma amostra
+t1 <- teste_t1(d)
+
+# Teste t para a média de duas amostras pareadas
+t2 <- teste_t2(d)
+
+# Preparar tabela
+d <- 
+  select(d, -erro) %>% 
+  tidyr::unite(ent_sai, entrada, saida) %>%
+  tidyr::spread(ent_sai, argila_total)
+d[, -1] <- round(d[, -1])
+colnames(t2) <- colnames(d)
+d <- rbind(
+  d,
+  my_reshape(e, d) %>% filter(repeticao != 'saida'),
+  my_reshape(t1, d) %>% filter(repeticao != 'saida'),
+  t2)
+d[, -1] <- apply(d[, -1], 2, as.numeric)
+colnames(d) <- gsub('_ ', ' g kg^-1^\n', colnames(d), fixed = TRUE)
+colnames(d) <- glue::glue("**{colnames(d)}**")
+colnames(d)[1] <- ""
+rownames(d) <- NULL
+panderOptions('digits', rep(4, ncol(d)))
+panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
+pander(d, caption = '(\\#tab:fracionador-argila) Dados e estatísticas do conteúdo de argila nos sólidos totais das amostras obtidas usando o método do fracionador de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- desvio padrão, CV -- coeficiente de variação, EM -- erro médio, *t* -- estatística do teste *t*, *p* -- valor *p* do teste *t*.')
+```
+
+# CONSIDERAÇÕES FINAIS
+
+Os testes que realizamos mostraram que o método do mergulho é inadequado para a amostragem de suspensões contendo sólidos totais com granulometria grosseira, especificamente, cerca de `r areia[[1]]` g kg^-1^ de areia e `r argila[[1]]` g kg^-1^ de argila. Além de subestimar o conteúdo de sólidos totais, há grande variação no valor estimado, o que significa que o método seja uma importante fonte de variação nos resultados dos trabalhos de monitoramento da erosão do solo. Essa variação soma-se à incerteza advinda de outras fontes já descritas na literatura sobre o tema [@NearingEtAl1999; @Boix-FayosEtAl2006; @Garcia-RuizEtAl2015; @Kinnell2016; @AnacheEtAl2017]. Nossa recomendação é que testes similares sejam conduzidos por outras equipes, haja vista que os resultados podem ser afetados pelo responsável pela amostragem da suspensão [@ZoebischEtAl1996]. 
+
+O protótipo de equipamento fracionador que desenvolvemos mostrou-se eficiente em produzir amostras de suspensões com concentração de sólidos totais diversas sem alterar a distribuição do tamanho de partículas. Essa eficiência foi clara e consistente principalmente para volumes de suspensão acima de 250-300 mL e concentração de sólidos totais superior a 2 g L^-1^. Assim, caso os problemas que identificamos no método do mergulho sejam encontrados também em outros estudo, o protótipo que desenvolvemos apresenta-se como uma alternativa bastante razoável. Avaliações adicionais do fracionador deverão ser realizadas usando um intervalo maior de concentração de sólidos totais e distribuição do tamanho de partículas a fim de verificar sua adequabilidade a condições diversas daquelas que avaliamos nesse estudo.
 
 # AGRADECIMENTOS
 
