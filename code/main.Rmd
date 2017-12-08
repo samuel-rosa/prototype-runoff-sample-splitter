@@ -9,9 +9,11 @@ csl: abnt.csl
 lang: pt
 editor_options: 
   chunk_output_type: inline
-knit: (function(inputFile, encoding) {
-  rmarkdown::render(inputFile, encoding = encoding, output_dir = "../docs") })
 ---
+
+```{r, eval=FALSE, echo=FALSE}
+rmarkdown::render('main.Rmd', encoding = 'UTF-8', output_dir = "../docs")
+```
 
 <!-- Revista Scientia Agraria -->
 <!-- http://revistas.ufpr.br/agraria/about/editorialPolicies#custom-0  -->
