@@ -26,15 +26,27 @@ source("helper.R")
 ```
 
 
-# RESUMO
+**RESUMO**: O método usado para obtenção das amostras de enxurrada coletada em parcelas de monitoramento da
+erosão do solo é uma importante fonte de variabilidade dos dados. Nesse estudo avaliamos o método manual de 
+amostragem usado no Brasil. Apresentamos como alternativa o protótipo de um equipamento fracionador de 
+suspensões com grande concentração de sólidos totais. Usando material do solo com 583 g k^-1^ de areia e 89 
+g k^-1^ de argila, o método manual e o fracionador foram testados quanto à sua capacidade de produzir amostras
+representativas de suspensões com concentração de 2, 10 e 50 g L^-1^ de sólidos totais. Uma subestimativa de 
+30% ou mais da concentração de sólidos totais foi observada usando o método manual, com variação de mesma 
+magnitude (CV entre 20 e 45%). Já o fracionador foi eficiente em produzir amostras representativas da suspensão
+fracionada -- inclusive sem alterar a granulometria dos sólidos totais. Tanto os erros percentuais absolutos 
+(EM < |5%|), como a variação entre as repetições (CV < 3%), foram pequenos. Os problemas com o método manual se
+devem a homogeneização ineficiente que facilita a sedimentação diferencial das partículas de diferentes tamanhos.
+Caso esses problemas sejam encontrados também em outros estudos, o protótipo que desenvolvemos apresenta-se 
+como uma alternativa bastante razoável.
 
-**PALAVRAS-CHAVE**
+**PALAVRAS-CHAVE** -- 
 
 Title
 
-# ABSTRACT
+**ABSTRACT**:
 
-**KEYWORDS**
+**KEYWORDS** --
 
 # INTRODUÇÃO
 
@@ -576,7 +588,7 @@ O protótipo de equipamento fracionador que desenvolvemos mostrou-se eficiente e
 com concentração de sólidos totais diversas sem alterar a distribuição do tamanho de partículas. Essa eficiência
 foi clara e consistente principalmente para volumes de suspensão acima de 250-300 mL e concentração de sólidos 
 totais superior a 2 g L^-1^. Assim, caso os problemas que identificamos no método manual sejam encontrados 
-também em outros estudo, o protótipo que desenvolvemos apresenta-se como uma alternativa bastante razoável. 
+também em outros estudos, o protótipo que desenvolvemos apresenta-se como uma alternativa bastante razoável. 
 Avaliações adicionais do fracionador deverão ser realizadas usando um intervalo maior de concentração de sólidos
 totais e distribuição do tamanho de partículas a fim de verificar sua adequabilidade a condições diversas 
 daquelas que avaliamos nesse estudo.
