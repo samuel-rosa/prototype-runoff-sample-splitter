@@ -36,13 +36,53 @@ Title
 
 # INTRODUÇÃO
 
-A erosão do solo constitui, há muitas décadas, uma das maiores preocupações dos cientistas do solo [@PanagosEtAl2017]. Prova disso são as milhares de parcelas de monitoramento da erosão, instaladas sob os mais diferentes tipos de solo e usos da terra, distribuídas ao redor de todo o planeta [@Garcia-RuizEtAl2015; @AnacheEtAl2017]. Uma das principais dificuldades encontradas na pesquisa em erosão do solo é a grande variabilidade dos dados [@NearingEtAl1999]. Essa variabilidade advém da diversidade de métodos e estratégias de monitoramento utilizados [@Boix-FayosEtAl2006; @Garcia-RuizEtAl2015]. Pesa negativamente também a falta de recursos para condução do monitoramento por período de tempo maior do que 5-10 anos necessário para obtenção de dados mais consistentes [@AnacheEtAl2017]. Distúrbios indesejados causado no solo durante a instalação e/ou condução do monitoramento da erosão são uma fonte de variação difícil de identificar [@Boix-FayosEtAl2006; @Kinnell2016]. Finalmente, há a complexidade do processo erosivo e a interação dos fatores determinantes que estão completamente fora do controle devido a limitações operacionais e de conhecimento [@Boix-FayosEtAl2006]. Na prática, quanto maior a variabilidade dos dados, maior a nossa incerteza sobre a magnitude das perdas de solo [@Garcia-RuizEtAl2015]. 
+A erosão do solo constitui, há muitas décadas, uma das maiores preocupações dos cientistas do solo 
+[@PanagosEtAl2017]. Prova disso são as milhares de parcelas de monitoramento da erosão, instaladas sob os mais
+diferentes tipos de solo e usos da terra, distribuídas ao redor de todo o planeta [@Garcia-RuizEtAl2015; 
+@AnacheEtAl2017]. Uma das principais dificuldades encontradas na pesquisa em erosão do solo é a grande 
+variabilidade dos dados [@NearingEtAl1999]. Essa variabilidade advém da diversidade de métodos e estratégias de
+monitoramento utilizados [@Boix-FayosEtAl2006; @Garcia-RuizEtAl2015]. Pesa negativamente também a falta de 
+recursos para condução do monitoramento por período de tempo maior do que 5-10 anos necessário para obtenção de
+dados mais consistentes [@AnacheEtAl2017]. Distúrbios indesejados causado no solo durante a instalação e/ou 
+condução do monitoramento da erosão são uma fonte de variação difícil de identificar [@Boix-FayosEtAl2006; 
+@Kinnell2016]. Finalmente, há a complexidade do processo erosivo e a interação dos fatores determinantes que 
+estão completamente fora do controle devido a limitações operacionais e de conhecimento [@Boix-FayosEtAl2006]. 
+Na prática, quanto maior a variabilidade dos dados, maior a nossa incerteza sobre a magnitude das perdas de 
+solo [@Garcia-RuizEtAl2015]. 
 
-Uma outra importante fonte de variabilidade nos dados de perda do solo é o método usado para obtenção das amostras da enxurrada coletada das parcelas de monitoramento [@Kinnell2016]. Isso porque, para que a amostra seja a mais próxima o possível da realidade, a amostragem requer que a enxurrada coletada seja o mais perfeitamente homogeneizada. Tal homogeneidade é difícil de alcançar quando partículas de diferentes tamanhos estão presentes no sedimento, haja vista a atuação do processo de sedimentação diferencial [@CiesiolkaEtAl2006; @TodiscoEtAl2012; @Kinnell2016]. Os métodos baseados na homogeneização e amostragem manual da enxurrada coletada estão entre os que mais sofrem com esse problema [@ZoebischEtAl1996]. O resultado é que as amostras da enxurrada coletada tendem a subestimar a concentração de sedimento, sendo a magnitude da subestimativa proporcional à concentração de partículas de maior diâmetro [@Lang1992; @ZoebischEtAl1996; @CiesiolkaEtAl2006]. Esse seria o caso do método manual, comumente usado no Brasil [@Cogo1978; @VeigaEtAl1993; @TengbergEtAl1997; @EltzEtAl2001; @AmadoEtAl2002a; @SilvaEtAl2005; @VolkEtAl2009; @CardosoEtAl2012; @Corr{\^{e}}aEtAl2016].
+Uma outra importante fonte de variabilidade nos dados de perda do solo é o método usado para obtenção das 
+amostras da enxurrada coletada nas parcelas de monitoramento [@Kinnell2016]. Isso porque, para que a amostra 
+seja a mais representativa o possível da realidade, o processo de amostragem requer que a enxurrada coletada 
+seja o mais perfeitamente homogeneizada. Tal homogeneidade é difícil de alcançar quando partículas de 
+diferentes tamanhos estão presentes no sedimento, haja vista a atuação do processo de sedimentação diferencial 
+[@CiesiolkaEtAl2006; @TodiscoEtAl2012; @Kinnell2016]. Os métodos baseados na homogeneização e amostragem manual 
+da enxurrada coletada estão entre os que mais sofrem com esse problema [@ZoebischEtAl1996]. O resultado é que 
+as amostras da enxurrada coletada tendem a subestimar a concentração de sedimento, sendo a magnitude da 
+subestimativa proporcional à concentração de partículas de maior diâmetro [@Lang1992; @ZoebischEtAl1996; 
+@CiesiolkaEtAl2006].
 
-Estima-se que o volume de solo perdido anualmente no Brasil seja da ordem de 500 milhões de toneladas [@BertoniEtAl2012], com taxas médias de perda de solo que variam entre 0,1 e 136 Mg ha^-1^ ano^-1^ [@AnacheEtAl2017]. No caso de solo de textura arenosa, estima-se que as taxas de perda de solo possam facilmente chegar à mais 150 Mg ha^-1^ ano^-1^ [@LanzanovaEtAl2013]. No entanto, como parte considerável das estimativas brasileiras baseia-se no método manual para amostragem da enxurrada coletada, é possível que as perdas de solo sejam ainda maiores. Isso é especialmente preocupante no caso das áreas com solo de textura arenosa, haja vista a grande pressão de uso exercida pelo setor agropecuário-industrial. Nesse sentido, o primeiro objetivo desse estudo foi avaliar se o método manual subestima as perdas de solo em área com solo de textura grosseira e, em sendo verificada essa tendência, quantificar sua magnitude.
+Estima-se que o volume de solo perdido anualmente no Brasil seja da ordem de 500 milhões de toneladas 
+[@BertoniEtAl2012], com taxas médias de perda de solo que variam entre 0,1 e 136 Mg ha^-1^ ano^-1^ 
+[@AnacheEtAl2017]. No caso de solo de textura arenosa, estima-se que as taxas de perda de solo possam 
+facilmente chegar a mais 150 Mg ha^-1^ ano^-1^ [@LanzanovaEtAl2013]. No entanto, como parte considerável das 
+estimativas brasileiras baseia-se no emprego de um método manual para amostragem da enxurrada coletada
+[@Cogo1978; @VeigaEtAl1993; @TengbergEtAl1997; @EltzEtAl2001; @AmadoEtAl2002a; @SilvaEtAl2005; @VolkEtAl2009; 
+@CardosoEtAl2012; @CorreaEtAl2016], é possível que as perdas de solo sejam ainda maiores. Isso é especialmente
+preocupante no caso das áreas com solo de textura arenosa, haja vista a grande pressão de uso exercida pelo 
+setor agropecuário-industrial. Nesse sentido, o primeiro objetivo desse estudo foi avaliar se o método manual 
+usado no Brasil subestima as perdas de solo em área com solo de textura grosseira e, em sendo verificada essa 
+tendência, quantificar sua magnitude.
 
-Uma solução elegante para o problema da amostragem de enxurrada com sedimento contendo partículas de diferentes diâmetros foi proposta por @TodiscoEtAl2012. Nesse método, a enxurrada coletada é homogeneizada e amostrada em diferentes profundidades do tanque de sedimentação, sendo os dados utilizados para construção de um perfil de sedimentação. Após a integração da curva do perfil de sedimentação, calcula-se a concentração média, que é corrigida em função de uma curva de calibração, sendo esta função da altura da lâmina d’água e dependente da granulometria do sedimento. Além da possível necessidade de construir a curva de calibração a cada evento pluviométrico, o método continua sendo dependente da homogeneização da enxurrada coletada, o que é ainda mais difícil se a concentração de sedimento for grande [@TodiscoEtAl2012]. Uma alternativa razoável consiste em utilizar equipamentos fracionadores, como aqueles do tipo cone (*cone splitter*) e batedeira (*churn splitter*), amplamente utilizados para a amostragem de água e suspensões com pequena concentração de sólidos totais [@CapelEtAl1995; @HorowitzEtAl2001]. Seja pela sua arquitetura, seja pelo seu modo de funcionamento, esses equipamentos produzem amostras com constituição muito similar à suspensão fracionada. Nesse contexto, o segundo objetivo desse estudo foi desenvolver e testar o protótipo de um equipamento fracionador de suspensões com grande concentração de sólidos totais, característica de enxurradas coletadas em parcelas de monitoramento da erosão.
+Uma solução elegante para o problema da amostragem de enxurrada com sedimento contendo partículas de diferentes
+diâmetros foi proposta por @TodiscoEtAl2012. Contudo, o método continua sendo dependente da homogeneização da 
+enxurrada coletada, o que é ainda mais difícil se a concentração de sedimento for grande [@TodiscoEtAl2012].
+Uma alternativa razoável consiste em utilizar equipamentos fracionadores, como aqueles do tipo cone 
+(*cone splitter*) e batedeira (*churn splitter*), amplamente utilizados para a amostragem de água e suspensões 
+com pequena concentração de sólidos totais [@CapelEtAl1995; @HorowitzEtAl2001]. Seja pela sua arquitetura, seja
+pelo seu modo de funcionamento, esses equipamentos produzem amostras com constituição muito similar à suspensão
+fracionada. Nesse contexto, o segundo objetivo desse estudo foi desenvolver e testar o protótipo de um 
+equipamento fracionador de suspensões com grande concentração de sólidos totais, característica de enxurradas 
+coletadas em parcelas de monitoramento da erosão.
 
 # MATERIAL E MÉTODOS
 
@@ -150,7 +190,7 @@ O equipamento utilizado no método do fracionador foi construído com peças de 
 <!-- ASR: Precisamos de uma estivativa do curto do equipamento. -->
 
 ```{r sample-splitter, echo=FALSE, fig.cap="Equipamento fracionador de amostras de enxurrada.", fig.align='center'}
-knitr::include_graphics("../images/fracionador-a.jpg")
+knitr::include_graphics("../images/fracionador-medidas.jpg")
 ```
 
 O método do fracionador foi submetido a três testes. O primeiro dele teve como objetivo avaliar se o volume da suspensão sendo fracionada afeta o desempenho do fracionador, especificamente, sua capacidade de produzir pares de amostras com volumes aproximadamente equivalentes. Quatro volumes de água destilada foram avaliados, 100, 300, 500 e 1000 mL, em cinco repetições. Em cada repetição, o respectivo volume total de água destilada foi vertido de uma só vez no reservatório do fracionador. As duas amostras produzidas foram coletadas em copos de béquer e o seu volume determinado usando provetas graduadas previamente calibradas. O erro de estimação e sua razão em relação ao valor real, ambos definidos acima, foram calculados para cada uma das saídas do fracionador em todas as repetições dos quatro volumes testados. Também como descrito acima, os erros de estimação foram submetidos ao teste *t* bicaudal. Adicionalmente, os erros de estimação das saídas A e B para cada um dos quatro volumes testados foram comparados usando o teste *t* bicaudal para a média de duas amostras pareadas. A hipótese alternativa testada foi de que a diferença verdadeira entre as médias das duas amostras seria diferente de zero.
