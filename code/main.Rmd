@@ -275,7 +275,13 @@ avaliar os erros de estimação do conteúdo de argila e areia.
 
 ## Método manual
 
-O teste realizado com o método manaul mostrou que as amostras obtidas não foram representativas das suspensões usadas (Tabela \@ref(tab:mergulho-solidos)). Uma subestimativa estatisticamente significativa de 30% ou mais da concentração de sólidos totais foi observada em todas as três concentrações avaliadas. Além disso, observamos uma variação considerável entre as cinco repetições. Esses resultados corroboram a hipótese inicial sobre a inconsistência do método manual levantada a partir dos relatos apresentados em trabalhos similares desenvolvidos em outras partes do mundo [@Lang1992; @ZoebischEtAl1996; @CiesiolkaEtAl2006; @TodiscoEtAl2012; @Kinnell2016].
+O teste realizado com o método manual mostrou que as amostras obtidas não foram representativas das suspensões 
+usadas (Tabela \@ref(tab:mergulho-solidos)). Uma subestimativa estatisticamente significativa de 30% ou mais da
+concentração de sólidos totais foi observada em todas as três concentrações avaliadas. Além disso, observamos 
+uma variação considerável entre as cinco repetições. Esses resultados corroboram a hipótese inicial sobre a 
+inconsistência do método manual usado Brasil que fora levantada a partir dos relatos apresentados em trabalhos 
+similares desenvolvidos em outras partes do mundo [@Lang1992; @ZoebischEtAl1996; @CiesiolkaEtAl2006; 
+@TodiscoEtAl2012; @Kinnell2016].
 
 ```{r mergulho-solidos, echo=FALSE}
 # Preparar dados
@@ -309,13 +315,37 @@ panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
 pander(d, caption = '(\\#tab:mergulho-solidos) Dados e estatísticas da concentração de sólidos totais nas amostras obtidas usando o método manual de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- desvio padrão, CV -- coeficiente de variação, EM -- erro médio, *t* -- estatística do teste *t*, *p* -- valor *p* do teste *t*.')
 ```
 
-A subestimativa da concentração de sólidos totais deve ter ocorrido principalmente devido ao fenômeno da sedimentação diferencial, marcada pela rápida decantação das partículas de areia e, assim, levando à amostragem seletiva das partículas mais finas, nesse caso, silte e argila [@CiesiolkaEtAl2006]. Durante a realização do teste, observamos que, por mais cuidado que fosse tomado, a homogeneização manual não resultava em uma suspensão visualmente homogênea, com as partículas de areia sedimentando rapidamente. Ademais, também verificamos que movimentos circulares durante a homogeneização faziam com que, devido à força centrífuga, as partículas de areia fossem arremessadas na direção das paredes laterais do recipiente. Assim sendo, é razoável supor que a distribuição do tamanho de partículas e, consequentemente, a composição química do sedimento das amostras obtidas via método manual, sejam consideravelmente diversas da suspensão amostrada.
+A subestimativa da concentração de sólidos totais deve ter ocorrido principalmente devido ao fenômeno da 
+sedimentação diferencial, marcada pela rápida decantação das partículas de areia e, assim, levando à amostragem
+seletiva das partículas mais finas, nesse caso, silte e argila [@CiesiolkaEtAl2006]. Durante a realização do 
+teste, observamos que, por mais cuidado que fosse tomado, a homogeneização manual não resultava em uma suspensão
+visualmente homogênea, com as partículas de areia sedimentando rapidamente. Ademais, também verificamos que 
+movimentos circulares durante a homogeneização faziam com que, devido à força centrífuga, as partículas de areia
+fossem arremessadas na direção das paredes laterais do recipiente. Assim sendo, é razoável supor que a 
+distribuição do tamanho de partículas e, consequentemente, a composição química do sedimento das amostras 
+obtidas via método manual, sejam consideravelmente diversas da suspensão amostrada.
 
-A partir dos resultados obtidos, pode-se supor que as perdas anuais de solo em áreas com solo de granulometria similar àquela estudada sejam até 30% superiores aos valores encontrados na literatura. Por exemplo, segundo @LanzanovaEtAl2013, após 16 anos de monitoramento, foram perdidos cerca de 2,5 Gg ha ^-1^ de solo de uma parcela (largura = 3,5 m; comprimento = 22 m; declividade = 0.055 m m^-1^) com solo exposto, localizada próximo do local onde coletamos o material do solo para esse estudo. Com base em nossos resultados, a quantidade de solo perdida nessa parcela seria de cerca de 3,5 Gg ha ^-1^. Contudo, há que se atentar para o fato de que nosso resultado baseia-se numa amostragem realizada por uma única pessoa, o que tente a produzir repetições similares. Em comparação, @ZoebischEtAl1996 avaliou cinco profissionais experientes em amostragem de enxurrada e observou erros na estimativa de perda de solo entre 5 e 83%.
+A partir dos resultados obtidos, pode-se supor que as perdas anuais de solo em áreas com solo de granulometria 
+similar àquela estudada sejam até 30% superiores aos valores encontrados na literatura. Por exemplo, segundo 
+@LanzanovaEtAl2013, após 16 anos de monitoramento, foram perdidos cerca de 2,5 Gg ha ^-1^ de solo de uma parcela
+(largura = 3,5 m; comprimento = 22 m; declividade = 0.055 m m^-1^) com solo exposto, localizada próximo do 
+local onde coletamos o material do solo para esse estudo. Com base em nossos resultados, a quantidade de solo 
+perdida nessa parcela seria de cerca de 3,5 Gg ha ^-1^. Contudo, há que se atentar para o fato de que nosso 
+resultado baseia-se numa amostragem realizada por uma única pessoa, o que tente a produzir repetições similares.
+Em comparação, @ZoebischEtAl1996 avaliou cinco profissionais experientes em amostragem de enxurrada e observou 
+erros na estimativa de perda de solo entre 5 e 83%.
 
 ## Método do fracionador
 
-Os resultados do primeiro teste realizado com o protótipo do equipamento fracionador que desenvolvemos mostraram que a eficiência do mesmo não é afetada pelo volume de água (Tabela \@ref(tab:fracionador-agua)). Ambas as saídas A e B produziram amostras com volumes similares. Contudo, o processo de fracionamento parece tornar-se menos eficiente com a diminuição do volume de água. Os maiores erros percentuais, (negativos ou positivos) observados quando o volume de amostra era pequeno (100 mL), possivelmente resultaram do efeito turbilhão da água no interior do cano de 15 mm de diâmetro localizado abaixo do reservatório. A função desse cano é dirigir a água em um fluxo constante até o dispositivo fracionador. Aparentemente esse objetivo só foi efetivamente atingido quando o volume de água era superior a 100 mL. Assim, é razoável que o fracionador seja utilizado apenas com suspensões de volume superior a 250-300 mL.
+Os resultados do primeiro teste realizado com o protótipo do equipamento fracionador que desenvolvemos mostraram
+que a eficiência do mesmo não é afetada pelo volume de água (Tabela \@ref(tab:fracionador-agua)). Ambas as 
+saídas A e B produziram amostras com volumes similares. Contudo, o processo de fracionamento parece tornar-se 
+menos eficiente com a diminuição do volume de água. Os maiores erros percentuais, (negativos ou positivos) 
+observados quando o volume de amostra era pequeno (100 mL), possivelmente resultaram do efeito turbilhão da 
+água no interior do cano de 15 mm de diâmetro localizado abaixo do reservatório. A função desse cano é dirigir 
+a água em um fluxo constante até o dispositivo fracionador. Aparentemente esse objetivo só foi efetivamente 
+atingido quando o volume de água era superior a 100 mL. Assim, é razoável que o fracionador seja utilizado 
+apenas com suspensões de volume superior a 250-300 mL.
 
 ```{r fracionador-agua, echo=FALSE}
 # Preparar dados
@@ -365,7 +395,17 @@ panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
 pander(d, caption = '(\\#tab:fracionador-agua) Dados e estatísticas do volume de água das amostras produzidas por cada saída, A e B, do fracionador para volumes iniciais de 100, 300, 500 e 1000 mL. Estatísticas: DP -- desvio padrão, CV -- coeficiente de variação, EM -- erro médio, *t* -- estatística do teste *t*, *p* -- valor *p* do teste *t*.')
 ```
 
-O teste do fracionador usando suspensões com diferentes concentrações de sólidos totais mostrou que, independente da saída A ou B, o mesmo foi eficiente em produzir amostras representativas da suspensão fracionada (Tabela \@ref(tab:fracionador-solidos)). Comparado ao método manual, os erros percentuais absolutos são consideravelmente pequenos (EM < |5%|), assim como a variação entre as repetições (CV < 3%). A existência de uma tendência consistente e estável de erros negativos, indicada inclusive nas estatísticas do teste *t*, significa que é possível corrigir as estimativas da concentração de sólidos totais com elevado grau de confiança. Ademais, essa subestimativa pode ser evitada ou minimizada via adoção de cuidados durante o fracionamento. Segundo verificamos, durante o vertimento da suspensão para dentro do reservatório do fracionador, partículas de maior diâmetro tendem a permanecer no interior do recipiente onde a suspensão estava armazenada. Para evitar ou minimizar isso é preciso agitar vigorosamente o recipiente e verter a suspensão rapidamente. Uma solução adicional é realizar a lavagem do recipiente usando volume de água conhecido e então verter a nova suspensão no fracionador.
+O teste do fracionador usando suspensões com diferentes concentrações de sólidos totais mostrou que, independente
+da saída A ou B, o mesmo foi eficiente em produzir amostras representativas da suspensão fracionada (Tabela
+\@ref(tab:fracionador-solidos)). Comparado ao método manual, os erros percentuais absolutos são consideravelmente
+pequenos (EM < |5%|), assim como a variação entre as repetições (CV < 3%). A existência de uma tendência 
+consistente e estável de erros negativos, indicada inclusive nas estatísticas do teste *t*, significa que 
+é possível corrigir as estimativas da concentração de sólidos totais com elevado grau de confiança. Ademais, 
+essa subestimativa pode ser evitada ou minimizada via adoção de cuidados durante o fracionamento. Segundo 
+verificamos, durante o vertimento da suspensão para dentro do reservatório do fracionador, partículas de maior 
+diâmetro tendem a permanecer no interior do recipiente onde a suspensão estava armazenada. Para evitar ou minimizar
+isso é preciso agitar vigorosamente o recipiente e verter a suspensão rapidamente. Uma solução adicional é 
+realizar a lavagem do recipiente usando volume de água conhecido e então verter a nova suspensão no fracionador.
 
 ```{r fracionador-solidos, echo=FALSE}
 # Preparar dados
@@ -413,7 +453,14 @@ panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
 pander(d, caption = '(\\#tab:fracionador-solidos) Dados e estatísticas da concentração de sólidos totais nas amostras obtidas usando o método do fracionador de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- desvio padrão, CV -- coeficiente de variação, EM -- erro médio, *t* -- estatística do teste *t*, *p* -- valor *p* do teste *t*.')
 ```
 
-A produção de amostras com concentração de sólidos totais virtualmente equivalente àquela da suspensão fracionada esteve relacionada à reprodução do conteúdo de areia no sedimento das amostras (Tabela \@ref(tab:fracionador-areia)). Isso ocorreu de maneira independente da saída do fracionador. A exceção foi a suspensão com a concentração mais baixa de sólidos totais, 2 g L^-1^, para a qual a magnitude do erro percentual na estimativa do conteúdo de areia foi excessivamente grande. Para as cinco repetições, em média, o conteúdo de areia foi subestimado em cerca de 50%. Note, contudo, que essa subestimativa não deveu-se ao processo de fracionamento em si, mas sim à dificuldade relatada acima, onde partículas de maior diâmetro tendem a permanecer no interior do recipiente onde a suspensão estava armazenada.
+A produção de amostras com concentração de sólidos totais virtualmente equivalente àquela da suspensão fracionada 
+esteve relacionada à reprodução do conteúdo de areia no sedimento das amostras (Tabela \@ref(tab:fracionador-areia)).
+Isso ocorreu de maneira independente da saída do fracionador. A exceção foi a suspensão com a concentração mais 
+baixa de sólidos totais, 2 g L^-1^, para a qual a magnitude do erro percentual na estimativa do conteúdo de areia 
+foi excessivamente grande. Para as cinco repetições, em média, o conteúdo de areia foi subestimado em cerca de 50%.
+Note, contudo, que essa subestimativa não deveu-se ao processo de fracionamento em si, mas sim à dificuldade 
+relatada acima, onde partículas de maior diâmetro tendem a permanecer no interior do recipiente onde a suspensão
+estava armazenada.
 
 ```{r fracionador-areia, echo=FALSE}
 # Preparar dados
@@ -461,7 +508,13 @@ panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
 pander(d, caption = '(\\#tab:fracionador-areia) Dados e estatísticas do conteúdo de areia nos sólidos totais das amostras obtidas usando o método do fracionador de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- desvio padrão, CV -- coeficiente de variação, EM -- erro médio, *t* -- estatística do teste *t*, *p* -- valor *p* do teste *t*.')
 ```
 
-Já para a estimativa do conteúdo de argila nos sólidos totais das amostras obtidas com o fracionador, observamos que os erros são consideravelmente maiores aos apresentados pela estimativa do conteúdo de areia (Tabela \@ref(tab:fracionador-argila)). Os erros foram especialmente grandes nas amostras da suspensão com 2,00 g L^-1^ de sólidos totais, haja vista que, para o material do solo utilizado, o conteúdo de argila nas amostras resultantes é inferior ao limite de detecção do método analítico utilizado. Quando a concentração de sólidos totais foi maior (10 e 50 g L^-1^), o erro percentual foi menos, sua significância diminuindo a medida que aumentou a concentração de sólidos totais.
+Já para a estimativa do conteúdo de argila nos sólidos totais das amostras obtidas com o fracionador, observamos
+que os erros são consideravelmente maiores aos apresentados pela estimativa do conteúdo de areia (Tabela
+\@ref(tab:fracionador-argila)). Os erros foram especialmente grandes nas amostras da suspensão com 2,00 g L^-1^ 
+de sólidos totais, haja vista que, para o material do solo utilizado, o conteúdo de argila nas amostras 
+resultantes é inferior ao limite de detecção do método analítico utilizado. Quando a concentração de sólidos 
+totais foi maior (10 e 50 g L^-1^), o erro percentual foi menor, sua significância diminuindo a medida que 
+aumentou a concentração de sólidos totais.
 
 ```{r fracionador-argila, echo=FALSE}
 # Preparar dados
