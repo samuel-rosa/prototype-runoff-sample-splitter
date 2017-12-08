@@ -563,10 +563,22 @@ pander(d, caption = '(\\#tab:fracionador-argila) Dados e estatísticas do conte�
 
 # CONSIDERAÇÕES FINAIS
 
-Os testes que realizamos mostraram que o método manual é inadequado para a amostragem de suspensões contendo sólidos totais com granulometria grosseira, especificamente, cerca de `r areia[[1]]` g kg^-1^ de areia e `r argila[[1]]` g kg^-1^ de argila. Além de subestimar o conteúdo de sólidos totais, há grande variação no valor estimado, o que significa que o método seja uma importante fonte de variação nos resultados dos trabalhos de monitoramento da erosão do solo. Essa variação soma-se à incerteza advinda de outras fontes já descritas na literatura sobre o tema [@NearingEtAl1999; @Boix-FayosEtAl2006; @Garcia-RuizEtAl2015; @Kinnell2016; @AnacheEtAl2017]. Nossa recomendação é que testes similares sejam conduzidos por outras equipes, haja vista que os resultados podem ser afetados pelo responsável pela amostragem da suspensão [@ZoebischEtAl1996]. 
+Os testes que realizamos mostraram que o método manual usado no Brasil é inadequado para a amostragem de 
+suspensões contendo sólidos totais com granulometria grosseira, especificamente, cerca de `r areia[[1]]` g kg^-1^
+de areia e `r argila[[1]]` g kg^-1^ de argila. Além de subestimar o conteúdo de sólidos totais, há grande 
+variação no valor estimado, o que significa que o método constitui numa importante fonte de variação nos resultados
+dos trabalhos de monitoramento da erosão do solo. Essa variação soma-se à incerteza advinda de outras fontes 
+já descritas na literatura sobre o tema [@NearingEtAl1999; @Boix-FayosEtAl2006; @Garcia-RuizEtAl2015; 
+@Kinnell2016; @AnacheEtAl2017]. Nossa recomendação é que testes similares sejam conduzidos por outras equipes, 
+haja vista que os resultados podem ser afetados pelo responsável pela amostragem da suspensão [@ZoebischEtAl1996].
 
-O protótipo de equipamento fracionador que desenvolvemos mostrou-se eficiente em produzir amostras de suspensões com concentração de sólidos totais diversas sem alterar a distribuição do tamanho de partículas. Essa eficiência foi clara e consistente principalmente para volumes de suspensão acima de 250-300 mL e concentração de sólidos totais superior a 2 g L^-1^. Assim, caso os problemas que identificamos no método manual sejam encontrados também em outros estudo, o protótipo que desenvolvemos apresenta-se como uma alternativa bastante razoável. Avaliações adicionais do fracionador deverão ser realizadas usando um intervalo maior de concentração de sólidos totais e distribuição do tamanho de partículas a fim de verificar sua adequabilidade a condições diversas daquelas que avaliamos nesse estudo.
-
-# AGRADECIMENTOS
+O protótipo de equipamento fracionador que desenvolvemos mostrou-se eficiente em produzir amostras de suspensões
+com concentração de sólidos totais diversas sem alterar a distribuição do tamanho de partículas. Essa eficiência
+foi clara e consistente principalmente para volumes de suspensão acima de 250-300 mL e concentração de sólidos 
+totais superior a 2 g L^-1^. Assim, caso os problemas que identificamos no método manual sejam encontrados 
+também em outros estudo, o protótipo que desenvolvemos apresenta-se como uma alternativa bastante razoável. 
+Avaliações adicionais do fracionador deverão ser realizadas usando um intervalo maior de concentração de sólidos
+totais e distribuição do tamanho de partículas a fim de verificar sua adequabilidade a condições diversas 
+daquelas que avaliamos nesse estudo.
 
 # REFERÊNCIAS
