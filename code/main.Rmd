@@ -202,25 +202,74 @@ argila.
 
 ## Método manual
 
-O primeiro teste realizado foi quanto à capacidade do método manual produzir um amostra representativa da suspensão, ou seja, que possua concentração de sólidos totais (sedimentos) aproximadamente equivalente àquela da suspensão (enxurrada) de onde foi obtida. Para isso foram utilizados recipientes plásticos com capacidade para 10 L, dentro dos quais foram adicionados 3 L de água destilada e a quantidade de TFSA necessária para atingir as concentrações de 2, 10 e 50 g L^-1^ de sólidos totais. Para cada concentração foram preparadas cinco repetições (baldes). Em cada balde, uma pessoa homogeneizou a suspensão com uma das mãos. Após 10 segundos, sem parar a homogeneização, outra pessoa coletou uma amostra mergulhando, no seio da suspensão, um béquer de 250 mL. A concentração de sólidos totais nas amostras de cada suspensão foi determinada em função do seu volume e da massa de sólidos totais mensurada após secagem em estufa à temperatura de 105°C até completa evaporação da água.
+O primeiro teste realizado foi quanto à capacidade do método manual produzir um amostra representativa da 
+suspensão (enxurrada), ou seja, que possua concentração de sólidos totais (sedimentos) aproximadamente 
+equivalente àquela da suspensão de onde foi obtida. Para isso foram utilizados recipientes plásticos com 
+capacidade para 10 L, dentro dos quais foram adicionados 3 L de água destilada e a quantidade de TFSA 
+necessária para atingir as concentrações de 2, 10 e 50 g L^-1^ de sólidos totais. Para cada concentração foram 
+preparadas cinco repetições (baldes). Em cada balde, uma pessoa homogeneizou a suspensão com uma das mãos. Após
+10 segundos, sem parar a homogeneização, outra pessoa coletou uma amostra mergulhando, no seio da suspensão, 
+um béquer de 250 mL. A concentração de sólidos totais nas amostras de cada suspensão foi determinada em função 
+do seu volume e da massa de sólidos totais mensurada após secagem em estufa à temperatura de 105°C até completa
+evaporação da água.
 
-A diferença entre o valor real/conhecido, *y*, e estimado por uma amostra *i*, *ŷ~i~*, da concentração de sólidos totais numa suspensão *j*, foi definido como sendo o erro de estimação, *e~ij~* = *ŷ~ij~* - *y~j~*. A partir do erro de estimação, calculou-se a razão *e~ij~*/*y~j~* que, multiplicada por 100, informa a magnitude percentual do erro de estimação em relação ao valor real da concentração de sólidos totais numa suspensão. Finalmente, os erros de estimação foram submetidos ao teste *t* bicaudal para a média de uma amostra, onde a hipótese alternativa testada foi de que a média verdadeira seria diferente de zero.
+A diferença entre o valor real/conhecido, *y*, e estimado por uma amostra *i*, *ŷ~i~*, da concentração de 
+sólidos totais numa suspensão *j*, foi definido como sendo o erro de estimação, *e~ij~* = *ŷ~ij~* - *y~j~*. A 
+partir do erro de estimação, calculou-se a razão *e~ij~*/*y~j~* que, multiplicada por 100, informa a magnitude
+percentual do erro de estimação em relação ao valor real da concentração de sólidos totais numa suspensão. 
+Finalmente, os erros de estimação foram submetidos ao teste *t* bicaudal para a média de uma amostra, onde a 
+hipótese alternativa testada foi de que a média verdadeira seria diferente de zero.
 
 ## Método do fracionador
 
-O equipamento utilizado no método do fracionador foi construído com peças de policloreto de polivinila (PVC, do inglês *polyvinyl chloride*) (Figura \@ref(fig:sample-splitter)). O fracionador é composto de um reservatório para a suspensão, localizado na parte superior, o qual consiste num cano de 300 mm de comprimento e 75 mm de diâmetro, com capacidade para 1 L de suspensão. O fundo desse reservatório possui formato de funil para direcionar a suspensão a um cano de conectado à sua extremidade inferior, cano esse que possui 300 mm de comprimento e 15 mm de diâmetro. A função desse cano de menor diâmetro é dirigir a suspensão em fluxo contínuo e concentrado até o dispositivo fracionador da suspensão, que possui formato de Y invertido e que está conectado à extremidade inferior do primeiro. Todas as peças são fixadas umas às outras utilizando material adesivo específico para PVC. Como o fracionador possui duas saídas, A e B, ele produz duas amostras da suspensão a cada operação de fracionamento. O nivelamento do equipamento fracionador com os planos horizontal e vertical é feito via fixação em plataforma de madeira. O investimento necessário para construção do equipamento fracionador é de aproximadamente [R$ VALOR].
-<!-- ASR: Precisamos de uma estivativa do curto do equipamento. -->
+O protótipo de equipamento utilizado no método do fracionador foi construído com peças de policloreto de polivinila
+(PVC, do inglês *polyvinyl chloride*) (Figura \@ref(fig:sample-splitter)). O fracionador é composto de um reservatório
+para a suspensão, localizado na parte superior, o qual consiste num cano de 300 mm de comprimento e 75 mm de 
+diâmetro, com capacidade para 1 L de suspensão. O fundo desse reservatório possui formato de funil para 
+direcionar a suspensão a um cano de conectado à sua extremidade inferior, cano esse que possui 300 mm de 
+comprimento e 15 mm de diâmetro. A função desse cano de menor diâmetro é dirigir a suspensão em fluxo contínuo 
+e concentrado até o dispositivo fracionador da suspensão, que possui formato de Y invertido e que está conectado
+à extremidade inferior do primeiro. Todas as peças são fixadas umas às outras utilizando material adesivo 
+específico para PVC. Como o fracionador possui duas saídas, A e B, ele produz duas amostras da suspensão a cada 
+operação de fracionamento. O nivelamento do equipamento fracionador com os planos horizontal e vertical é feito
+via fixação em plataforma de madeira. O investimento necessário para construção do equipamento fracionador é de
+aproximadamente [R$ VALOR].
+<!-- ASR: Precisamos de uma estivativa do custo do equipamento. -->
 
-```{r sample-splitter, echo=FALSE, fig.cap="Equipamento fracionador de amostras de enxurrada.", fig.align='center'}
+```{r sample-splitter, echo=FALSE, fig.cap="Protótipo de equipamento fracionador de amostras de enxurrada.", fig.align='center'}
 knitr::include_graphics("../images/fracionador-medidas.jpg")
 ```
 
-O método do fracionador foi submetido a três testes. O primeiro dele teve como objetivo avaliar se o volume da suspensão sendo fracionada afeta o desempenho do fracionador, especificamente, sua capacidade de produzir pares de amostras com volumes aproximadamente equivalentes. Quatro volumes de água destilada foram avaliados, 100, 300, 500 e 1000 mL, em cinco repetições. Em cada repetição, o respectivo volume total de água destilada foi vertido de uma só vez no reservatório do fracionador. As duas amostras produzidas foram coletadas em copos de béquer e o seu volume determinado usando provetas graduadas previamente calibradas. O erro de estimação e sua razão em relação ao valor real, ambos definidos acima, foram calculados para cada uma das saídas do fracionador em todas as repetições dos quatro volumes testados. Também como descrito acima, os erros de estimação foram submetidos ao teste *t* bicaudal. Adicionalmente, os erros de estimação das saídas A e B para cada um dos quatro volumes testados foram comparados usando o teste *t* bicaudal para a média de duas amostras pareadas. A hipótese alternativa testada foi de que a diferença verdadeira entre as médias das duas amostras seria diferente de zero.
+O método do fracionador foi submetido a três testes. O primeiro dele teve como objetivo avaliar se o volume da 
+suspensão sendo fracionada afeta o desempenho do fracionador, especificamente, sua capacidade de produzir pares
+de amostras com volumes aproximadamente equivalentes. Quatro volumes de água destilada foram avaliados, 100, 300,
+500 e 1000 mL, em cinco repetições. Em cada repetição, o respectivo volume total de água destilada foi vertido de
+uma só vez no reservatório do fracionador. As duas amostras produzidas foram coletadas em copos de béquer e o seu
+volume determinado usando provetas graduadas previamente calibradas. O erro de estimação e sua razão em relação
+ao valor real, ambos definidos acima, foram calculados para cada uma das saídas do fracionador em todas as 
+repetições dos quatro volumes testados. Também como descrito acima, os erros de estimação foram submetidos ao 
+teste *t* bicaudal. Adicionalmente, os erros de estimação das saídas A e B para cada um dos quatro volumes 
+testados foram comparados usando o teste *t* bicaudal para a média de duas amostras pareadas. A hipótese 
+alternativa testada foi de que a diferença verdadeira entre as médias das duas amostras seria diferente de zero.
 
-O segundo teste conduzido com o método do fracionador foi o mesmo aplicado ao método manual, qual seja, a capacidade do método do fracionador produzir um amostra representativa da suspensão. As mesmas concentrações usadas para avaliar o método manual foram usadas, também com cinco repetições cada uma. As suspensões foram preparadas em [ONDE FOI PREPARADA? QUE RECIPIENTE USAMOS?] com um volume total de [QUANTOS ML?], agitada vigorosamente por 10 segundos e vertida no reservatório do fracionador de uma só vez. O fracionador foi lavado com água destilada após cada repetição. As duas amostras, A e B, produzidas em cada repetição foram coletadas em copos de béquer de 250 mL e em seguida determinada a concentração de sólidos totais conforme descrito para o método manual. Os erros de estimação foram submetidos ao teste *t* bicaudal para a média de uma amostra e ao teste *t* bicaudal para a média de duas amostras pareadas.
+O segundo teste conduzido com o método do fracionador foi o mesmo aplicado ao método manual, qual seja, a 
+capacidade do método do fracionador produzir um amostra representativa da suspensão. As mesmas concentrações 
+usadas para avaliar o método manual foram usadas, também com cinco repetições cada uma. As suspensões foram 
+preparadas em [ONDE FOI PREPARADA? QUE RECIPIENTE USAMOS?] com um volume total de [QUANTOS ML?], agitada 
+vigorosamente por 10 segundos e vertida no reservatório do fracionador de uma só vez. O fracionador foi lavado 
+com água destilada após cada repetição. As duas amostras, A e B, produzidas em cada repetição foram coletadas 
+em copos de béquer de 250 mL e em seguida determinada a concentração de sólidos totais conforme descrito para 
+o método manual. Os erros de estimação foram submetidos ao teste *t* bicaudal para a média de uma amostra e 
+ao teste *t* bicaudal para a média de duas amostras pareadas conforme acima.
 <!-- ASR: Precisamos descrever melhor o método de preparo das suspensões. -->
 
-Finalmente, os sólidos totais contidos nas amostras produzidas pelas saídas A e B do fracionador foram analisados quanto à distribuição do tamanho de partículas. Para isso fora empregado o mesmo método descrito acima para a análise do material do solo utilizado para produzir as suspensões. O objetivo desse teste foi avaliar a capacidade do fracionador produzir amostras onde os sólidos totais possuam distribuição do tamanho de aproximadamente equivalente àquela observada nos sólidos totais da suspensão fracionada. O teste *t* bicaudal para a média de uma amostra e o teste *t* bicaudal para a média de duas amostras pareadas foram empregados para avaliar os erros de estimação do conteúdo de argila e areia.
+Finalmente, os sólidos totais contidos nas amostras produzidas pelas saídas A e B do fracionador foram analisados
+quanto à distribuição do tamanho de partículas. Para isso fora empregado o mesmo método descrito acima para a 
+análise do material do solo utilizado para produzir as suspensões. O objetivo desse teste foi avaliar a 
+capacidade do fracionador produzir amostras onde os sólidos totais possuam distribuição do tamanho de 
+aproximadamente equivalente àquela observada nos sólidos totais da suspensão fracionada. O teste *t* bicaudal 
+para a média de uma amostra e o teste *t* bicaudal para a média de duas amostras pareadas foram empregados para
+avaliar os erros de estimação do conteúdo de argila e areia.
 
 # RESULTADOS E DISCUSSÃO
 
