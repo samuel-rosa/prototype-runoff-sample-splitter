@@ -88,8 +88,22 @@ coletadas em parcelas de monitoramento da erosão.
 
 ## Material do solo
 
-Os dois métodos de fracionamento -- método manual e método do fracionador -- foram avaliados usando um experimento laboratorial que utilizou suspensões compostas de água destilada e material do solo. O material do solo foi coletado da parte superficial (0--20 cm de profundidade) do horizonte A de perfil do solo derivado de [LITOLOGIA], sem uso antrópico aparente, localizado no *campus* da Universidade Federal de Santa Maria a latitude -29°42'47,01"N e longitude -53°42'43.36"E. Esse perfil fora classificado como um Argissolo Vermelho-Amarelo Distrófico típico da edição de 2006 do Sistema Brasileiro de Classificação de Solos [@Lauermann2007]. Ele possui uma sequência de horizontes A-E-Bt-C, com conteúdo de argila muito baixo em superfície, mas que aumenta consideravelmente em profundidade -- com efeito direto sobre a densidade e a porosidade do solo. O baixo conteúdo de cátions básicos, fósforo e matéria orgânica refletem a pobreza de nutrientes no material de origem (Tabelas \@ref(tab:perfil-fisica) e \@ref(tab:perfil-quimica)). Características similares são encontradas na camada superficial do solo de grande parte da região da Depressão Central do estado do Rio Grande do Sul (Figura \@ref(fig:solos-do-rs)) [@StreckEtAl2008], tendo sido alvo de muitos estudos de monitoramento da erosão [@CogoEtAl1984; @EltzEtAl2001; @AmadoEtAl2002a; @VolkEtAl2009].
-<!-- ASR: precisamos da especificação do material de origem e da fonte do mapa pedológico -->
+Os dois métodos de fracionamento -- método manual e método do fracionador -- foram avaliados usando um 
+experimento laboratorial que utilizou suspensões compostas de água destilada e material do solo. O material do 
+solo foi coletado da parte superficial (0--20 cm de profundidade) do horizonte A de perfil do solo derivado de
+rochas sedimentares da Formação Santa Maria (Membro Alemoa), sem uso antrópico aparente, localizado no *campus*
+da Universidade Federal de Santa Maria a latitude -29°42'47,01"N e longitude -53°42'43.36"E. Esse perfil fora 
+classificado como um Argissolo Vermelho-Amarelo Distrófico típico da edição de 2006 do Sistema Brasileiro de 
+Classificação de Solos [@Lauermann2007]. Ele possui uma sequência de horizontes A-E-Bt-C, com conteúdo de 
+argila muito baixo em superfície, mas que aumenta consideravelmente em profundidade -- com efeito direto sobre 
+a densidade e a porosidade do solo. O baixo conteúdo de cátions básicos, fósforo e matéria orgânica refletem a 
+pobreza de nutrientes no material de origem (Tabelas \@ref(tab:perfil-fisica) e \@ref(tab:perfil-quimica)) -- 
+os dados analíticos estão disponíveis no Repositório Brasileiro Livre para Dados Abertos do Solo (febr), 
+conjunto de dados `ctb0013`. Características similares são encontradas na camada superficial do solo de grande 
+parte da região da Depressão Central do estado do Rio Grande do Sul (Figura \@ref(fig:solos-do-rs)) 
+[@StreckEtAl2008], tendo sido alvo de muitos estudos de monitoramento da erosão [@CogoEtAl1984; @EltzEtAl2001;
+@AmadoEtAl2002a; @VolkEtAl2009].
+<!-- ASR: precisamos da fonte do mapa pedológico -->
 
 ```{r perfil-fisica, echo=FALSE, message=FALSE, warning=FALSE}
 # (Des)Carregar dados do febr e preparar unidades
@@ -176,7 +190,15 @@ areia <- dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = m
 argila <- dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = mean(argila_total)) %>% round()
 ```
 
-O material coletado do solo foi caracterizado quanto à distribuição do tamanho de partículas. Para isso ele foi seco ao ar, destorroado e passado em peneira com malha de dois milímetros de abertura. O conteúdo de argila (diâmetro < 0,002 mm) na fração terra fina seca ao ar (TFSA) resultante foi estimado usando o método da pipeta após dispersão química de ~20 g de TFSA com hidróxido de sódio (NaOH) -- na concentração de 1 mol L^-1^ -- e desagregação mecânica -- usando duas esferas de náilon (diâmetro do 1,71 cm, massa de 3,04 g, densidade de 1,11 g cm^-1^) e agitação horizontal por 4 horas a 120 ciclos por minuto. Já o conteúdo de areia (diâmetro entre 0,053 e 2,00 mm) foi determinado via tamisamento úmido. Segundo essas análises, a distribuição do tamanho de partículas do material de solo consta de `r areia[[1]]` g kg^-1^ de areia e `r argila[[1]]` g kg^-1^ de argila.
+O material coletado do solo foi caracterizado quanto à distribuição do tamanho de partículas. Para isso ele foi
+seco ao ar, destorroado e passado em peneira com malha de dois milímetros de abertura. O conteúdo de argila 
+(diâmetro < 0,002 mm) na fração terra fina seca ao ar (TFSA) resultante foi estimado usando o método da pipeta 
+após dispersão química de ~20 g de TFSA com hidróxido de sódio (NaOH) -- na concentração de 1 mol L^-1^ -- e 
+desagregação mecânica -- usando duas esferas de náilon (diâmetro do 1,71 cm, massa de 3,04 g, densidade de 
+1,11 g cm^-1^) e agitação horizontal por 4 horas a 120 ciclos por minuto. Já o conteúdo de areia (diâmetro 
+entre 0,053 e 2,00 mm) foi determinado via tamisamento úmido. Segundo essas análises, a distribuição do tamanho
+de partículas do material de solo consta de `r areia[[1]]` g kg^-1^ de areia e `r argila[[1]]` g kg^-1^ de 
+argila.
 
 ## Método manual
 
