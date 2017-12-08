@@ -105,7 +105,6 @@ conjunto de dados `ctb0013`. Características similares são encontradas na cama
 parte da região da Depressão Central do estado do Rio Grande do Sul (Figura \@ref(fig:solos-do-rs)) 
 [@StreckEtAl2008], tendo sido alvo de muitos estudos de monitoramento da erosão [@CogoEtAl1984; @EltzEtAl2001;
 @AmadoEtAl2002a; @VolkEtAl2009].
-<!-- ASR: precisamos da fonte do mapa pedológico -->
 
 ```{r perfil-fisica, echo=FALSE, message=FALSE, warning=FALSE}
 # (Des)Carregar dados do febr e preparar unidades
@@ -224,19 +223,18 @@ hipótese alternativa testada foi de que a média verdadeira seria diferente de 
 
 ## Método do fracionador
 
-O protótipo de equipamento utilizado no método do fracionador foi construído com peças de policloreto de polivinila
-(PVC, do inglês *polyvinyl chloride*) (Figura \@ref(fig:sample-splitter)). O fracionador é composto de um reservatório
-para a suspensão, localizado na parte superior, o qual consiste num cano de 300 mm de comprimento e 75 mm de 
-diâmetro, com capacidade para 1 L de suspensão. O fundo desse reservatório possui formato de funil para 
-direcionar a suspensão a um cano de conectado à sua extremidade inferior, cano esse que possui 300 mm de 
-comprimento e 15 mm de diâmetro. A função desse cano de menor diâmetro é dirigir a suspensão em fluxo contínuo 
-e concentrado até o dispositivo fracionador da suspensão, que possui formato de Y invertido e que está conectado
-à extremidade inferior do primeiro. Todas as peças são fixadas umas às outras utilizando material adesivo 
-específico para PVC. Como o fracionador possui duas saídas, A e B, ele produz duas amostras da suspensão a cada 
-operação de fracionamento. O nivelamento do equipamento fracionador com os planos horizontal e vertical é feito
-via fixação em plataforma de madeira. O investimento necessário para construção do equipamento fracionador é de
-aproximadamente [R$ VALOR].
-<!-- ASR: Precisamos de uma estivativa do custo do equipamento. -->
+O protótipo de equipamento utilizado no método do fracionador foi construído com peças de policloreto de 
+polivinila (PVC, do inglês *polyvinyl chloride*) (Figura \@ref(fig:sample-splitter)). O fracionador é composto 
+de um reservatório para a suspensão, localizado na parte superior, o qual consiste num cano de 300 mm de 
+comprimento e 75 mm de diâmetro, com capacidade para 1 L de suspensão. O fundo desse reservatório possui 
+formato de funil para direcionar a suspensão a um cano de conectado à sua extremidade inferior, cano esse que
+possui 300 mm de comprimento e 15 mm de diâmetro. A função desse cano de menor diâmetro é dirigir a suspensão 
+em fluxo contínuo e concentrado até o dispositivo fracionador da suspensão, que possui formato de Y invertido e
+que está conectado à extremidade inferior do primeiro. Todas as peças são fixadas umas às outras utilizando
+material adesivo específico para PVC. Como o fracionador possui duas saídas, A e B, ele produz duas amostras da 
+suspensão a cada operação de fracionamento. O nivelamento do equipamento fracionador com os planos horizontal e 
+vertical é feito via fixação em plataforma de madeira. O investimento necessário para construção do equipamento 
+fracionador é de aproximadamente R$ 150,00.
 
 ```{r sample-splitter, echo=FALSE, fig.cap="Protótipo de equipamento fracionador de amostras de enxurrada.", fig.align='center'}
 knitr::include_graphics("../images/fracionador-medidas.jpg")
