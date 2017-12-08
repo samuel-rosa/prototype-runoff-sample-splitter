@@ -1,5 +1,5 @@
 ---
-title: "Avaliação de Métodos de Amostragem de Enxurrada"
+title: "ACURÁCIA E VARIABILIDADE DE AMOSTRAS DE ENXURRADA"
 author: "Alessandro Samuel-Rosa, Jean Michel Moura-Bueno, Ricardo Simão Diniz Dalmolin"
 output: 
   bookdown::word_document2:
@@ -26,7 +26,7 @@ source("helper.R")
 ```
 
 
-**RESUMO**: O método usado para obtenção das amostras de enxurrada coletada em parcelas de monitoramento da
+**RESUMO**: O método usado para obtenção das amostras de enxurrada coletada em estudos de monitoramento da
 erosão do solo é uma importante fonte de variabilidade dos dados. Nesse estudo avaliamos o método manual de 
 amostragem usado no Brasil. Apresentamos como alternativa o protótipo de um equipamento fracionador de 
 suspensões com grande concentração de sólidos totais. Usando material do solo com 583 g k^-1^ de areia e 89 
@@ -40,13 +40,13 @@ devem a homogeneização ineficiente que facilita a sedimentação diferencial d
 Caso esses problemas sejam encontrados também em outros estudos, o protótipo que desenvolvemos apresenta-se 
 como uma alternativa bastante razoável.
 
-**PALAVRAS-CHAVE** -- 
+**PALAVRAS-CHAVE** -- monitoramento da erosão, perda de solo, solo arenoso, fracionador amostral, incerteza.
 
-Title
+*Accuracy and variability of runoff samples*
 
-**ABSTRACT**:
+**ABSTRACT**: The method used to obtain runoff samples in soil erosion monitoring studies is an important source of data variability. In this study, we evaluated the manual sampling method used in Brazil. We present as an alternative the prototype of a sample splitter for suspensions with high concentration of total solids. Using soil material with 583 g kg^-1^ of sand and 89 g kg^-1^ of clay, the manual method and the sample splitter were tested for their ability to produce representative samples of suspensions with a concentration of 2, 10 and 50 g L ^-1^ of total solids. An underestimation of 30% or more of the total solids concentration was observed using the manual method, with a variation of the same magnitude (CV between 20 and 45%). The splitter was efficient in producing samples representative of the suspension -- even without altering the granulometry of the total solids. Both absolute percentage errors (|<5%|) and the variation between replicates (CV <3%) were small. The problems with the manual method are due to the inefficient homogenization that facilitates the differential sedimentation of the particles of different sizes. If these problems are also found in other studies, then the prototype that we developed is a reasonable alternative.
 
-**KEYWORDS** --
+**KEYWORDS** -- erosion monitoring, soil loss, sandy soil, sample splitter, uncertainty.
 
 # INTRODUÇÃO
 
