@@ -5,7 +5,7 @@ output:
   bookdown::word_document2:
     reference_docx: template.docx
 bibliography: biblio.bib
-csl: abnt-revista-cientia-agraria.csl
+csl: revista-cientia-agraria.csl
 lang: pt
 editor_options:
   chunk_output_type: inline
