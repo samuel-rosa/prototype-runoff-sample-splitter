@@ -14,8 +14,8 @@ teste_t1 <-
                   '*P*' = t.test(erro, mu = 0, alternative = alternative)$p.value %>% round(4))
     } else {
       group_by(d, entrada) %>% 
-        summarise('*t*' = t.test(erro, mu = 0, alternative = "two.sided")$statistic,
-                  '*P*' = t.test(erro, mu = 0, alternative = "two.sided")$p.value) 
+        summarise('*t*~1~' = t.test(erro, mu = 0, alternative = "two.sided")$statistic,
+                  '*P*~1~' = t.test(erro, mu = 0, alternative = "two.sided")$p.value) 
     }
   }
 # Função para computar o teste t para a média de duas amostras pareadas
@@ -28,8 +28,8 @@ teste_t1 <-
       tidyr::spread(saida, as.character(y))
     names(tmp) <- gsub(" ", "", names(tmp))
     summarise(tmp,
-              '*t*' = t.test(A, B, mu = 0, alternative = "two.sided", paired = TRUE)$statistic %>% round(3),
-              '*P*' = t.test(A, B, mu = 0, alternative = "two.sided", paired = TRUE)$p.value %>% round(4))
+              '*t*~2~' = t.test(A, B, mu = 0, alternative = "two.sided", paired = TRUE)$statistic %>% round(3),
+              '*P*~2~' = t.test(A, B, mu = 0, alternative = "two.sided", paired = TRUE)$p.value %>% round(4))
   }
 teste_t2 <-
   function (x = d) {
@@ -38,7 +38,7 @@ teste_t2 <-
     t2 <- t2[, rep(1:nrow(i), each = 2)] %>% 
       apply(2, as.numeric) %>% 
       as.data.frame()
-    cbind(r = c('*t*', '*P*'), t2)
+    cbind(r = c('*t*~2~', '*P*~2~'), t2)
   }
 # Função auxiliar para preparar dados para análise
 preparar_dados <- 

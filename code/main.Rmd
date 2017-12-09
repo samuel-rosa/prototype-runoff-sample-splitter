@@ -172,7 +172,7 @@ idx <- c(4, 23, 16:22)
 perfil_qui <- perfil[, idx]
 col_nam <- c('ID', 'Limites', 'pH', "Ca^2+^", "Mg^2+^", "K^+^", "H+Al", "P~2~O~5~", "Matéria orgânica")
 colnames(perfil_qui) <- glue::glue("**{col_nam} {attr(perfil, 'units')[idx]}**")
-pander::panderOptions('digits', c(0, 0, 1, 2, 2, 2, 2, 2, 1))
+pander::panderOptions('digits', c(0, 0, 2, 3, 2, 2, 3, 3, 1))
 pander::panderOptions('table.split.cells', rep(100 / ncol(perfil_qui), ncol(perfil_qui)))
 pander::pander(perfil_qui, caption = '(\\#tab:perfil-quimica) Variáveis químicas dos horizontes do perfil do solo [@Lauermann2007].')
 ```
@@ -343,13 +343,13 @@ t <- teste_t1(d, fracionador = FALSE)
 d <- select(d, -erro) %>% tidyr::spread(entrada, solidos_totais)
 d[, -1] <- round(d[, -1], 2)
 d <- rbind(d, my_reshape(e, d), my_reshape(t, d))
-colnames(d)[2:4] <- glue::glue("**{colnames(d)[2:4]} (g L^-1^)**")
+colnames(d)[2:4] <- glue::glue("**{colnames(d)[2:4]} g L^-1^**")
 colnames(d)[1] <- ""
 rownames(d) <- NULL
 panderOptions('round', rep(4, ncol(d)))
 panderOptions('digits', rep(4, ncol(d)))
 panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
-pander(d, caption = '(\\#tab:mergulho-solidos) Dados e estatísticas da concentração de sólidos totais nas amostras obtidas usando o método manual de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- desvio padrão, CV -- coeficiente de variação, EM -- erro médio, *t* -- estatística do teste *t*, *P* -- valor *P* do teste *t*.')
+pander(d, caption = '(\\#tab:mergulho-solidos) Concentração de sólidos totais nas amostras obtidas, usando o método manual, de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- desvio padrão, CV -- coeficiente de variação, EM -- erro médio, *t*~1~ -- estatística do teste *t* para uma amostra, *P*~1~ -- valor *P* do teste *t*~1~.')
 ```
 
 A partir dos resultados obtidos, pode-se supor que as perdas anuais de solo em áreas com solo de granulometria 
@@ -455,7 +455,7 @@ rownames(d) <- NULL
 panderOptions('round', rep(4, ncol(d)))
 panderOptions('digits', rep(4, ncol(d)))
 panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
-pander(d, caption = '(\\#tab:fracionador-agua) Dados e estatísticas do volume de água das amostras produzidas pelas saídas A e B do fracionador para volumes iniciais de 100, 300, 500 e 1000 mL. Estatísticas: DP -- desvio padrão, CV -- coeficiente de variação, EM -- erro médio, *t* -- estatística do teste *t*, *P* -- valor *P* do teste *t*.')
+pander(d, caption = '(\\#tab:fracionador-agua) Volume de água das amostras produzidas pelas saídas A e B do fracionador para volumes iniciais de 100, 300, 500 e 1000 mL. Estatísticas: DP -- desvio padrão, CV -- coeficiente de variação, EM -- erro médio, *t*~1~ e *t*~2~ -- estatística do teste *t* para uma amostra e duas amostras pareadas, *P*~1~ e *P*~2~ -- valor *P* do teste *t*~1~ e *t*~2~.')
 ```
 
 ```{r fracionador-solidos, echo=FALSE}
@@ -502,7 +502,7 @@ rownames(d) <- NULL
 panderOptions('round', rep(4, ncol(d)))
 panderOptions('digits', rep(4, ncol(d)))
 panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
-pander(d, caption = '(\\#tab:fracionador-solidos) Dados e estatísticas da concentração de sólidos totais nas amostras obtidas usando o método do fracionador de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- desvio padrão, CV -- coeficiente de variação, EM -- erro médio, *t* -- estatística do teste *t*, *p* -- valor *p* do teste *t*.')
+pander(d, caption = '(\\#tab:fracionador-solidos) Concentração de sólidos totais nas amostras obtidas, usando o fracionador, de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- desvio padrão, CV -- coeficiente de variação, EM -- erro médio, *t*~1~ e *t*~2~ -- estatística do teste *t* para uma amostra e duas amostras pareadas, *P*~1~ e *P*~2~ -- valor *P* do teste *t*~1~ e *t*~2~.')
 ```
 
 ```{r fracionador-areia, echo=FALSE}
@@ -549,7 +549,7 @@ rownames(d) <- NULL
 panderOptions('round', rep(4, ncol(d)))
 panderOptions('digits', rep(4, ncol(d)))
 panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
-pander(d, caption = '(\\#tab:fracionador-areia) Dados e estatísticas do conteúdo de areia nos sólidos totais das amostras obtidas usando o método do fracionador de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- desvio padrão, CV -- coeficiente de variação, EM -- erro médio, *t* -- estatística do teste *t*, *p* -- valor *p* do teste *t*.')
+pander(d, caption = '(\\#tab:fracionador-areia) Conteúdo de areia nos sólidos totais das amostras obtidas, usando o fracionador, de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- desvio padrão, CV -- coeficiente de variação, EM -- erro médio, *t*~1~ e *t*~2~ -- estatística do teste *t* para uma amostra e duas amostras pareadas, *P*~1~ e *P*~2~ -- valor *P* do teste *t*~1~ e *t*~2~.')
 ```
 
 ```{r fracionador-argila, echo=FALSE}
@@ -595,7 +595,7 @@ rownames(d) <- NULL
 panderOptions('round', rep(4, ncol(d)))
 panderOptions('digits', rep(4, ncol(d)))
 panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
-pander(d, caption = '(\\#tab:fracionador-argila) Dados e estatísticas do conteúdo de argila nos sólidos totais das amostras obtidas usando o método do fracionador de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- desvio padrão, CV -- coeficiente de variação, EM -- erro médio, *t* -- estatística do teste *t*, *p* -- valor *p* do teste *t*.')
+pander(d, caption = '(\\#tab:fracionador-argila) Conteúdo de argila nos sólidos totais das amostras obtidas, usando o fracionador, de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- desvio padrão, CV -- coeficiente de variação, EM -- erro médio, *t*~1~ e *t*~2~ -- estatística do teste *t* para uma amostra e duas amostras pareadas, *P*~1~ e *P*~2~ -- valor *P* do teste *t*~1~ e *t*~2~.')
 ```
 
 # CONCLUSÕES
