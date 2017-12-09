@@ -1,6 +1,6 @@
 ---
 title: "ACURÁCIA E VARIABILIDADE DE MÉTODOS DE AMOSTRAGEM DE ENXURRADA"
-author: "Alessandro Samuel-Rosa, Jean Michel Moura-Bueno, Ricardo Simão Diniz Dalmolin"
+# author: "Alessandro Samuel-Rosa, Jean Michel Moura-Bueno, Ricardo Simão Diniz Dalmolin"
 output: 
   bookdown::word_document2:
     reference_docx: ../docs/template.docx
@@ -24,7 +24,6 @@ library(dplyr)
 library(pander)
 source("helper.R")
 ```
-
 
 **RESUMO**: O método usado para obtenção das amostras de enxurrada coletada em estudos de monitoramento da
 erosão do solo é uma importante fonte de variabilidade dos dados. Nesse estudo avaliamos o método manual de 
@@ -573,7 +572,7 @@ panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
 pander(d, caption = '(\\#tab:fracionador-argila) Dados e estatísticas do conteúdo de argila nos sólidos totais das amostras obtidas usando o método do fracionador de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- desvio padrão, CV -- coeficiente de variação, EM -- erro médio, *t* -- estatística do teste *t*, *p* -- valor *p* do teste *t*.')
 ```
 
-# CONSIDERAÇÕES FINAIS
+# CONCLUSÕES
 
 Os testes que realizamos mostraram que o método manual usado no Brasil é inadequado para a amostragem de 
 suspensões contendo sólidos totais com granulometria grosseira, especificamente, cerca de `r areia[[1]]` g kg^-1^
