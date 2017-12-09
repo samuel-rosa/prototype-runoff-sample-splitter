@@ -1,6 +1,5 @@
 ---
 title: "ACURÁCIA E VARIABILIDADE DE MÉTODOS DE AMOSTRAGEM DE ENXURRADA"
-# author: "Alessandro Samuel-Rosa, Jean Michel Moura-Bueno, Ricardo Simão Diniz Dalmolin"
 output: 
   bookdown::word_document2:
     reference_docx: ../docs/template.docx
