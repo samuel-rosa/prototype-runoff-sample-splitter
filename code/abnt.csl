@@ -72,13 +72,14 @@
       </term>
     </terms>
   </locale>
+  
   <!--A macro 'container-contribuitor' e responsavel por mostrar os nomes dos editores, serao apresentados SOBRENOME, INICIAIS PRENOMES 
 tendo as inicias separadas por ponto.-->
   <macro name="container-contributors">
     <choose>
       <if type="chapter">
         <names variable="container-author" delimiter=", ">
-          <name name-as-sort-order="all" sort-separator=", " initialize-with=". " delimiter="; " delimiter-precedes-last="always">
+          <name name-as-sort-order="all" sort-separator=", " initialize-with="." delimiter="; " delimiter-precedes-last="always">
             <name-part name="family" text-case="uppercase"/>
             <name-part name="given" text-case="uppercase"/>
           </name>
@@ -91,6 +92,7 @@ tendo as inicias separadas por ponto.-->
       </if>
     </choose>
   </macro>
+  
   <!--A macro 'secundary-contribuitor' e responsavel por mostrar os nomes dos organizadores, serao apresentados SOBRENOME, INICIAIS PRENOMES
 tendo as inicias separadas por ponto.-->
   <macro name="secondary-contributors">
@@ -103,6 +105,7 @@ tendo as inicias separadas por ponto.-->
       </if>
     </choose>
   </macro>
+  
   <!--A macro 'translator' e responsavel por mostrar os nomes dos tradutores, serao apresentados SOBRENOME, INICIAIS PRENOMES
 tendo as inicias separadas por ponto. -->
   <macro name="translator">
@@ -114,12 +117,14 @@ tendo as inicias separadas por ponto. -->
       </name>
     </names>
   </macro>
-  <!--A macro 'author' e responsavel por mostrar os nomes dos autores na bibliografia, serao no formato SOBRENOME, INICIAIS PRENOMES, tendo 
-as inicias separadas por ponto. Quando houver mais de tres autores, somente o primeiro sera mostrado e no lugar dos outros
-aparecera a expess o 'et. al.'. Na regra da ABNT essa expressao deve aparecer em fonte normal-->
+  
+  <!--A macro 'author' é responsavel por mostrar os nomes dos autores na bibliografia, serao no formato 
+  SOBRENOME, INICIAIS PRENOMES, tendo as inicias separadas por ponto. Quando houver mais de três autores, 
+  somente o primeiro será mostrado e no lugar dos outros aparecerá a expessão 'et. al.'. Na regra da Revista
+  Scientia Agricola essa expressão deve aparecer em fonte normal-->
   <macro name="author">
     <names variable="author">
-      <name name-as-sort-order="all" sort-separator=", " initialize-with=". " delimiter="; " delimiter-precedes-last="always">
+      <name name-as-sort-order="all" sort-separator=", " initialize-with="." delimiter="; " delimiter-precedes-last="always">
         <name-part name="family" text-case="uppercase"/>
         <name-part name="given" text-case="uppercase"/>
       </name>
@@ -131,11 +136,13 @@ aparecera a expess o 'et. al.'. Na regra da ABNT essa expressao deve aparecer em
       </substitute>
     </names>
   </macro>
-  <!--A macro 'author-short' e responsavel por mostrar os nomes dos autores na citacao (no meio do texto). Nela aparecera apenas o ultimo nome
-do autor. Na regra da ABNT o sobrenome deve aparecer com todas as letras em caixa alta-->
+  
+  <!--A macro 'author-short' é responsavel por mostrar os nomes dos autores na citação (no meio do texto). Nela
+  aparecerá apenas o último nome do autor. Na regra da Revista Scientia Agraria o sobrenome deve aparecer com 
+  todas as letras em caixa alta-->
   <macro name="author-short">
     <names variable="author">
-      <name form="short" name-as-sort-order="all" sort-separator=", " initialize-with=". " delimiter="; " delimiter-precedes-last="never">
+      <name form="short" name-as-sort-order="all" sort-separator=", " initialize-with="." delimiter="; " delimiter-precedes-last="never">
         <name-part name="family" text-case="uppercase"/>
         <name-part name="given" text-case="uppercase"/>
       </name>
@@ -153,6 +160,7 @@ do autor. Na regra da ABNT o sobrenome deve aparecer com todas as letras em caix
       </substitute>
     </names>
   </macro>
+  
   <!--A macro 'access' e utilizada em arquivos de paginas da web. Ela e responsavel por mostrar a URL do site pesquisado e a data do acesso-->
   <macro name="access">
     <text variable="URL" prefix="Disponível em: &lt;" suffix="&gt;"/>
@@ -360,8 +368,10 @@ em caixa alta. Utiliza-se antes do nome da conferencia a expressao "In". Segundo
       <text variable="archive" prefix=" "/>
     </group>
   </macro>
-  <!--Citacao-->
-  <!--et al. aparece a partir de 04 autores-->
+  
+  <!--Citacao
+  Quando houver três ou mais autores, no texto será citado apenas o primeiro autor seguido de et al.,
+  sem italico-->
   <citation et-al-min="4" et-al-use-first="1" collapse="year" disambiguate-add-year-suffix="true">
     <sort>
       <key macro="author"/>
@@ -379,9 +389,10 @@ em caixa alta. Utiliza-se antes do nome da conferencia a expressao "In". Segundo
       </group>
     </layout>
   </citation>
+  
   <!--Bibliografia-->
-  <!--et al. aparece a partir de 04 autores-->
-  <bibliography hanging-indent="false" et-al-min="4" et-al-use-first="1" entry-spacing="1">
+  <!--Todos os autores são listados-->
+  <bibliography hanging-indent="false" et-al-min="4000" et-al-use-first="1" entry-spacing="1">
     <sort>
       <key macro="author"/>
       <!--Puxa o autor primeiro-->
