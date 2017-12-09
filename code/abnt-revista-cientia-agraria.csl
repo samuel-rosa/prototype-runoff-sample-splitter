@@ -36,6 +36,10 @@
       <name>Mario José</name>
       <email>gnumario [at-mark] gmail [dot-mark] com</email>
     </contributor>
+    <contributor>
+      <name>Alessandro Samuel-Rosa</name>
+      <email>alessandrosamuelrosa@gmail.com</email>
+    </contributor>
     <category citation-format="author-date"/>
     <category field="generic-base"/>
     <summary>The Brazilian Standard Style in accordance with ABNT-NBR 10520.2002 and ABNT-NBR 6023.2002</summary>
@@ -57,7 +61,9 @@
       <term name="month-10" form="short">out.</term>
       <term name="month-11" form="short">nov.</term>
       <term name="month-12" form="short">dez.</term>
-      <!--Os termos abaixo serao utilizados quando houverem nomes de editores. Apos a citacao dos nomes, eles irao aparecer entre parenteses.-->
+      
+      <!--Os termos abaixo serao utilizados quando houverem nomes de editores. Apos a citacao dos nomes, eles 
+      irao aparecer entre parenteses.-->
       <term name="editor" form="short">
         <single>ed</single>
         <multiple>eds</multiple>
@@ -73,8 +79,8 @@
     </terms>
   </locale>
   
-  <!--A macro 'container-contribuitor' e responsavel por mostrar os nomes dos editores, serao apresentados SOBRENOME, INICIAIS PRENOMES 
-tendo as inicias separadas por ponto.-->
+  <!--A macro 'container-contribuitor' e responsavel por mostrar os nomes dos editores, serao apresentados 
+  SOBRENOME, INICIAIS PRENOMES tendo as inicias separadas por ponto.-->
   <macro name="container-contributors">
     <choose>
       <if type="chapter">
@@ -93,8 +99,8 @@ tendo as inicias separadas por ponto.-->
     </choose>
   </macro>
   
-  <!--A macro 'secundary-contribuitor' e responsavel por mostrar os nomes dos organizadores, serao apresentados SOBRENOME, INICIAIS PRENOMES
-tendo as inicias separadas por ponto.-->
+  <!--A macro 'secundary-contribuitor' e responsavel por mostrar os nomes dos organizadores, serao apresentados
+  SOBRENOME, INICIAIS PRENOMES tendo as inicias separadas por ponto.-->
   <macro name="secondary-contributors">
     <choose>
       <if type="chapter" match="none">
@@ -106,8 +112,8 @@ tendo as inicias separadas por ponto.-->
     </choose>
   </macro>
   
-  <!--A macro 'translator' e responsavel por mostrar os nomes dos tradutores, serao apresentados SOBRENOME, INICIAIS PRENOMES
-tendo as inicias separadas por ponto. -->
+  <!--A macro 'translator' e responsavel por mostrar os nomes dos tradutores, serao apresentados SOBRENOME, 
+  INICIAIS PRENOMES tendo as inicias separadas por ponto. -->
   <macro name="translator">
     <text value="Traducao "/>
     <names variable="translator" delimiter="; ">
@@ -118,10 +124,8 @@ tendo as inicias separadas por ponto. -->
     </names>
   </macro>
   
-  <!--A macro 'author' é responsavel por mostrar os nomes dos autores na bibliografia, serao no formato 
-  SOBRENOME, INICIAIS PRENOMES, tendo as inicias separadas por ponto. Quando houver mais de três autores, 
-  somente o primeiro será mostrado e no lugar dos outros aparecerá a expessão 'et. al.'. Na regra da Revista
-  Scientia Agricola essa expressão deve aparecer em fonte normal-->
+  <!--A macro 'author' é responsavel por mostrar os nomes dos autores na bibliografia, que serão no formato 
+  SOBRENOME, INICIAIS PRENOMES, tendo as inicias separadas por ponto sem espaço.-->
   <macro name="author">
     <names variable="author">
       <name name-as-sort-order="all" sort-separator=", " initialize-with="." delimiter="; " delimiter-precedes-last="always">
@@ -137,9 +141,11 @@ tendo as inicias separadas por ponto. -->
     </names>
   </macro>
   
-  <!--A macro 'author-short' é responsavel por mostrar os nomes dos autores na citação (no meio do texto). Nela
-  aparecerá apenas o último nome do autor. Na regra da Revista Scientia Agraria o sobrenome deve aparecer com 
-  todas as letras em caixa alta-->
+  <!--A macro 'author-short' é responsável por mostrar os nomes dos autores na citação direta e indireta no 
+  texto. Nela aparecerá apenas o último nome do autor, até três autores. Na regra da Revista Scientia Agraria 
+  o sobrenome deve aparecer com todas as letras em caixa alta quando citação indireta (entre parênteses), e
+  com apenas a primeira letra maiúscula quando citação direta.
+  O código para o último caso não está implementado e precisa ser ajustado manualmente no texto.-->
   <macro name="author-short">
     <names variable="author">
       <name form="short" name-as-sort-order="all" sort-separator=", " initialize-with="." delimiter="; " delimiter-precedes-last="never">
@@ -161,7 +167,8 @@ tendo as inicias separadas por ponto. -->
     </names>
   </macro>
   
-  <!--A macro 'access' e utilizada em arquivos de paginas da web. Ela e responsavel por mostrar a URL do site pesquisado e a data do acesso-->
+  <!--A macro 'access' e utilizada em arquivos de paginas da web. Ela e responsavel por mostrar a URL do site
+   pesquisado e a data do acesso-->
   <macro name="access">
     <text variable="URL" prefix="Disponível em: &lt;" suffix="&gt;"/>
     <date variable="accessed" prefix=". Acesso em: ">
@@ -170,8 +177,10 @@ tendo as inicias separadas por ponto. -->
       <date-part name="year"/>
     </date>
   </macro>
-  <!--A macro 'title' e responsavel por mostrar o titulo principal do arquivo. Em todos os tipos ele aparecera em negrito logo apos os nomes dos
-autores, exceto em arquivos do tipo 'artigo de jornal, artigo de revista, artigo de periodico', nesses arquivos eles irao aparecer em fonte normal.-->
+  <!--A macro 'title' e responsavel por mostrar o titulo principal do arquivo. Em todos os tipos ele 
+  aparecera em negrito logo apos os nomes dos
+autores, exceto em arquivos do tipo 'artigo de jornal, artigo de revista, artigo de periodico', nesses 
+arquivos eles irao aparecer em fonte normal.-->
   <macro name="title">
     <choose>
       <if type="chapter bill" match="any">
@@ -201,6 +210,7 @@ autores, exceto em arquivos do tipo 'artigo de jornal, artigo de revista, artigo
       </else>
     </choose>
   </macro>
+  
   <!--A macro 'publisher' e responsavel por mostrar o nome da editora responsavel pela publicacao-->
   <macro name="publisher">
     <choose>
@@ -230,6 +240,7 @@ autores, exceto em arquivos do tipo 'artigo de jornal, artigo de revista, artigo
       </else>
     </choose>
   </macro>
+  
   <!--A macro 'event' sera utilizada em arquivos do tipo Evento/Conferencia. Ela e responsavel por mostrar o nome da conferencia, que tera formatacao
 em caixa alta. Utiliza-se antes do nome da conferencia a expressao "In". Segundo a regra da ABNT ela deve ser em fonte normal-->
   <macro name="event">
@@ -251,6 +262,7 @@ em caixa alta. Utiliza-se antes do nome da conferencia a expressao "In". Segundo
       </if>
     </choose>
   </macro>
+  
   <!--A macro 'issued' e utilizada quando devemos mostrar a data completa exemplo: 03 mar. 2011.-->
   <macro name="issued">
     <choose>
@@ -274,6 +286,7 @@ em caixa alta. Utiliza-se antes do nome da conferencia a expressao "In". Segundo
       </else>
     </choose>
   </macro>
+  
   <!--A macro 'issued' e utilizada quando desejamos que apareca apenas o ano-->
   <macro name="issued-year">
     <choose>
@@ -287,6 +300,7 @@ em caixa alta. Utiliza-se antes do nome da conferencia a expressao "In". Segundo
       </else>
     </choose>
   </macro>
+  
   <!--A macro 'edition' e responsavel por mostrar o numero da edicao.-->
   <macro name="edition">
     <choose>
@@ -369,21 +383,19 @@ em caixa alta. Utiliza-se antes do nome da conferencia a expressao "In". Segundo
     </group>
   </macro>
   
-  <!--Citacao
+  <!--
+  Citação
   Quando houver três ou mais autores, no texto será citado apenas o primeiro autor seguido de et al.,
-  sem italico-->
+  sem italico.
+  -->
   <citation et-al-min="4" et-al-use-first="1" collapse="year" disambiguate-add-year-suffix="true">
     <sort>
-      <key macro="author"/>
-      <!--Puxa o autor primeiro-->
-      <key variable="issued"/>
-      <!--Depois o ano-->
+      <key macro="author"/> <!--Puxa o autor primeiro-->
+      <key variable="issued"/> <!--Depois o ano-->
     </sort>
-    <layout prefix="(" suffix=")" delimiter="; ">
-      <!--Entre parenteses separando os autores com ponto-e-virgula-->
+    <layout prefix="(" suffix=")" delimiter="; "> <!--Entre parenteses, autores separados c/ ponto-e-virgula-->
       <group>
-        <text suffix=", " macro="author-short"/>
-        <!--Seperando os autores das datas usando virgula-->
+        <text suffix=", " macro="author-short"/> <!--Seperando os autores das datas usando virgula-->
         <text macro="issued-year"/>
         <text prefix=", " macro="citation-locator"/>
       </group>
