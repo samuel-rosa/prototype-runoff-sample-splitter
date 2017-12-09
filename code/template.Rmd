@@ -1,9 +1,10 @@
 ---
 title: "Untitled"
+subtitle: "Untitled"
 author: "Alessandro Samuel-Rosa"
 output: 
   bookdown::word_document2:
-    reference_docx: ../docs/template.docx
+    reference_docx: template.docx
 ---
 
 ```{r setup, include=FALSE}
