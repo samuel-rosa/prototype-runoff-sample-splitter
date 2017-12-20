@@ -125,7 +125,7 @@ coletadas em parcelas de monitoramento da erosão.
 Os dois métodos de fracionamento -- método manual e método do fracionador -- foram avaliados usando um 
 experimento laboratorial que utilizou suspensões compostas de água destilada e material do solo. O material do 
 solo foi coletado da parte superficial (0--20 cm de profundidade) do horizonte A de perfil do solo derivado de
-rochas sedimentares da Formação Santa Maria (Membro Alemoa), sem uso antrópico aparente, localizado no *campus*
+rochas sedimentares da Formação Santa Maria, sem uso antrópico aparente, localizado no *campus*
 da Universidade Federal de Santa Maria a latitude -29°42'47,01"N e longitude -53°42'43.36"E. Esse perfil fora 
 classificado como um Argissolo Vermelho-Amarelo Distrófico típico da edição de 2006 do Sistema Brasileiro de 
 Classificação de Solos [@Lauermann2007]. Ele possui uma sequência de horizontes A-E-Bt-C, com conteúdo de 
