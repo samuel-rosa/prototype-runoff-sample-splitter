@@ -1,24 +1,49 @@
 ---
-title: "ACURÁCIA E VARIABILIDADE DE MÉTODOS DE AMOSTRAGEM DE ENXURRADA"
-subtitle: "Accuracy and variability of runoff sampling methods"
+# title: "ACURÁCIA E VARIABILIDADE DE MÉTODOS DE AMOSTRAGEM DE ENXURRADA"
+# subtitle: "Accuracy and variability of runoff sampling methods"
+title: ""
 output: 
   bookdown::word_document2:
-    reference_docx: template.docx
+    reference_docx: ../docs/template.docx
 bibliography: biblio.bib
-csl: revista-cientia-agraria.csl
-lang: pt
+# csl: revista-cientia-agraria.csl
+# lang: pt
 editor_options:
   chunk_output_type: inline
 ---
 
-```{r, eval=FALSE, echo=FALSE}
+<!-- ====================================================================================================== -->
+<!-- DOCUMENT SETUP ======================================================================================= -->
+<!-- ====================================================================================================== -->
+<!-- ATTENTION: DO NOT USE THE 'KNIT' BUTTON TO RENDER THIS FILE! ========================================= -->
+<!-- The following code chunk will render the document using rmarkdown::render(). ========================= -->
+<!-- ====================================================================================================== -->
+```{r render, eval=FALSE, echo=FALSE}
 rmarkdown::render('main.Rmd', encoding = 'UTF-8', output_dir = "../docs")
 ```
+<!-- ====================================================================================================== -->
+<!-- The following code chunk will update the exiting document on Google Drive. =========================== -->
+<!-- ====================================================================================================== -->
+```{r googledocs, eval=FALSE, echo=FALSE}
+id <- "1l09a5x98YTJmME1DMojzlkXqkAZjCiLy1rKzFCe5sgU"
+googledrive::drive_update(file = googledrive::as_id(id), media = "../docs/main.docx")
+```
+<!-- ====================================================================================================== -->
+<!-- ====================================================================================================== -->
 
+<!-- Primeira versão: -->
+<!-- Revista Brasileira de Ciência do Solo -->
+<!-- https://www.rbcsjournal.org/ -->
+
+<!-- Segunda versão: -->
 <!-- Revista Scientia Agraria -->
 <!-- http://revistas.ufpr.br/agraria/about/editorialPolicies#custom-0  -->
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+<!-- Terceira versão (atual): -->
+<!-- Scientia Agricola -->
+<!-- http://www.esalq.usp.br/scientia/ -->
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
 library(magrittr)
 library(dplyr)
 library(pander)
@@ -44,6 +69,7 @@ a$fontfamily <- "serif"
 trellis.par.set(name = 'par.ylab.text', value = a)
 ```
 
+<!-- 
 **RESUMO**: O método usado para obtenção das amostras de enxurrada coletada em estudos de monitoramento da
 erosão do solo é uma importante fonte de variabilidade dos dados. Nesse estudo avaliamos o método manual de 
 amostragem usado no Brasil. Apresentamos como alternativa o protótipo de um equipamento fracionador de 
@@ -60,14 +86,46 @@ Caso esses problemas sejam encontrados também em outros estudos, o protótipo q
 como uma alternativa bastante razoável.
 
 **PALAVRAS-CHAVE** -- monitoramento da erosão, perda de solo, solo arenoso, fracionador amostral, incerteza.
+ -->
 
-**ABSTRACT**: The method used to obtain runoff samples in soil erosion monitoring studies is an important source of data variability. In this study, we evaluated the manual sampling method used in Brazil. We present as an alternative the prototype of a sample splitter for suspensions with high concentration of total solids. Using soil material with 583 g kg^-1^ of sand and 89 g kg^-1^ of clay, the manual method and the sample splitter were tested for their ability to produce representative samples of suspensions with a concentration of 2, 10 and 50 g L ^-1^ of total solids. An underestimation of 30% or more of the total solids concentration was observed using the manual method, with a variation of the same magnitude (CV between 20 and 45%). The splitter was efficient in producing samples representative of the suspension -- even without altering the granulometry of the total solids. Both absolute percentage errors (|<5%|) and the variation between replicates (CV <3%) were small. The problems with the manual method are due to the inefficient homogenization that facilitates the differential sedimentation of the particles of different sizes. If these problems are also found in other studies, then the prototype that we developed is a reasonable alternative.
+__Running title:__ Accuracy of runoff sampling methods
 
-**KEYWORDS** -- erosion monitoring, soil loss, sandy soil, sample splitter, uncertainty.
+__Manuscript category:__ Soils and Plant Nutrition
+
+<br>
+
+__Accuracy and variability of runoff sampling methods__
+
+<br>
+
+Alessandro Samuel-Rosa^1<code>&ast;</code>^, Jean Michel Moura-Bueno^2^, Ricardo Simão Diniz Dalmolin^3^
+
+<br>
+
+^1^ Universidade Tecnológica Federal do Paraná -- Curso de Agronomia -- Prolongamento da Rua Cerejeira, s/n --
+85892-000 -- Santa Helena, PR -- Brasil.
+
+^2^
+
+^3^ Universidade Federal de Santa Maria -- Departamento de Solos -- Av. Roraima 1000, Prédio 42, Sala 3309 --
+97105-900 -- Santa Maria, RS -- Brasil.
+
+<code>&ast;</code> Corresponding author <alessandrorosa@utfpr.edu.br>
+
+<br>
+PAGEBREAK
+
+__ACCURACY AND VARIABILITY OF RUNOFF SAMPLING METHODS__
+
+# ABSTRACT (maximum of 250 words)
+
+The method used to obtain runoff samples in soil erosion monitoring studies is an important source of data variability. In this study, we evaluated the manual sampling method used in Brazil. We present as an alternative the prototype of a sample splitter for suspensions with high concentration of total solids. Using soil material with 583 g kg^-1^ of sand and 89 g kg^-1^ of clay, the manual method and the sample splitter were tested for their ability to produce representative samples of suspensions with a concentration of 2, 10 and 50 g L ^-1^ of total solids. An underestimation of 30% or more of the total solids concentration was observed using the manual method, with a variation of the same magnitude (CV between 20 and 45%). The splitter was efficient in producing samples representative of the suspension -- even without altering the granulometry of the total solids. Both absolute percentage errors (|<5%|) and the variation between replicates (CV <3%) were small. The problems with the manual method are due to the inefficient homogenization that facilitates the differential sedimentation of the particles of different sizes. If these problems are also found in other studies, then the prototype that we developed is a reasonable alternative.
+
+__Keywords:__ Erosion monitoring, Soil loss, Sandy soil, Sample splitter, Uncertainty.
 
 PAGEBREAK
 
-# INTRODUÇÃO
+# INTRODUCTION (30 lines)
 
 A erosão do solo constitui, há muitas décadas, uma das maiores preocupações dos cientistas do solo 
 [@PanagosEtAl2017]. Prova disso são as milhares de parcelas de monitoramento da erosão, instaladas sob os mais
@@ -81,7 +139,7 @@ condução do monitoramento da erosão são uma fonte de variação difícil de 
 @Kinnell2016]. Finalmente, há a complexidade do processo erosivo e a interação dos fatores determinantes que 
 estão completamente fora do controle devido a limitações operacionais e de conhecimento [@Boix-FayosEtAl2006]. 
 Na prática, quanto maior a variabilidade dos dados, maior a nossa incerteza sobre a magnitude das perdas de 
-solo [@Garcia-RuizEtAl2015]. 
+solo [@Garcia-RuizEtAl2015].
 
 Uma outra importante fonte de variabilidade nos dados de perda do solo é o método usado para obtenção das 
 amostras da enxurrada coletada nas parcelas de monitoramento [@Kinnell2016]. Isso porque, para que a amostra 
@@ -118,9 +176,9 @@ fracionada. Nesse contexto, o segundo objetivo desse estudo foi desenvolver e te
 equipamento fracionador de suspensões com grande concentração de sólidos totais, característica de enxurradas 
 coletadas em parcelas de monitoramento da erosão.
 
-# MATERIAL E MÉTODOS
+# MATERIAL AND METHODS
 
-## Material do solo
+## Soil material
 
 Os dois métodos de fracionamento -- método manual e método do fracionador -- foram avaliados usando um 
 experimento laboratorial que utilizou suspensões compostas de água destilada e material do solo. O material do 
@@ -297,7 +355,7 @@ avaliar os erros de estimação do conteúdo de argila e areia.
 knitr::include_graphics("../images/fracionador-medidas.jpg")
 ```
 
-# RESULTADOS E DISCUSSÃO
+# RESULTS AND DISCUSSION
 
 ## Método manual
 
@@ -598,7 +656,7 @@ panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
 pander(d, caption = '(\\#tab:fracionador-argila) Conteúdo de argila nos sólidos totais das amostras obtidas, usando o fracionador, de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- desvio padrão, CV -- coeficiente de variação, EM -- erro médio, *t*~1~ e *t*~2~ -- estatística do teste *t* para uma amostra e duas amostras pareadas, *P*~1~ e *P*~2~ -- valor *P* do teste *t*~1~ e *t*~2~.')
 ```
 
-# CONCLUSÕES
+# CONCLUSION
 
 Os testes que realizamos mostraram que o método manual usado no Brasil é inadequado para a amostragem de 
 suspensões contendo sólidos totais com granulometria grosseira, especificamente, cerca de `r areia[[1]]` g 
@@ -618,4 +676,8 @@ Avaliações adicionais do fracionador deverão ser realizadas usando um interva
 totais e distribuição do tamanho de partículas a fim de verificar sua adequabilidade a condições diversas 
 daquelas que avaliamos nesse estudo.
 
-# REFERÊNCIAS
+# FIGURES
+
+# TABLES
+
+# REFERENCES
