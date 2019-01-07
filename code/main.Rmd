@@ -6,7 +6,8 @@ output:
   bookdown::word_document2:
     reference_docx: ../docs/template.docx
 bibliography: biblio.bib
-# csl: cientia-agraria.csl
+# csl: scientia-agraria.csl
+csl: /home/alessandrorosa/projects/RefBib/csl/scientia-agricola.csl
 # lang: pt
 editor_options:
   chunk_output_type: inline
@@ -412,15 +413,13 @@ pander(d, caption = '(\\#tab:mergulho-solidos) Concentração de sólidos totais
 
 A partir dos resultados obtidos, pode-se supor que as perdas anuais de solo em áreas com solo de granulometria 
 similar àquela estudada sejam até 30% superiores aos valores encontrados na literatura. Por exemplo, segundo 
-Lanzanova et al. [-@LanzanovaEtAl2013],
-após 16 anos de monitoramento, foram perdidos cerca de 2,5 Gg ha^-1^ de solo de uma parcela
+@LanzanovaEtAl2013, após 16 anos de monitoramento, foram perdidos cerca de 2,5 Gg ha^-1^ de solo de uma parcela
 (largura = 3,5 m; comprimento = 22 m; declividade = 0.055 m m^-1^) com solo exposto, localizada próximo do 
 local onde coletamos o material do solo para esse estudo. Com base em nossos resultados, a quantidade de solo 
 perdida nessa parcela seria de cerca de 3,5 Gg ha^-1^. Contudo, há que se atentar para o fato de que nosso 
 resultado se baseia numa amostragem realizada por uma única pessoa, o que tente a produzir repetições similares.
-Em comparação, Zöbisch, Klingspor e Oduor
-[-@ZoebischEtAl1996] avaliaram cinco profissionais experientes em amostragem de enxurrada e observaram 
-erros na estimativa de perda de solo entre 5 e 83%.
+Em comparação, @ZoebischEtAl1996 avaliaram cinco profissionais experientes em amostragem de enxurrada e
+observaram erros na estimativa de perda de solo entre 5 e 83%.
 
 ## Método do fracionador
 
