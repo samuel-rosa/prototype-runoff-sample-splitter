@@ -2,10 +2,10 @@
 <style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="in-text" demote-non-dropping-particle="never" default-locale="pt-BR">
   <!--Em caso de sobrenome composto, este nao sera desmontado para a montagem da citacao ou bibliografia como no caso de L. Van Der Pijl-->
   <info>
-    <title>Associação Brasileira de Normas Técnicas (Portuguese - Brazil)</title>
-    <title-short>ABNT</title-short>
-    <id>http://www.zotero.org/styles/associacao-brasileira-de-normas-tecnicas</id>
-    <link href="http://www.zotero.org/styles/associacao-brasileira-de-normas-tecnicas" rel="self"/>
+    <title>Scientia Agraria (Portuguese - Brazil)</title>
+    <title-short>SA</title-short>
+    <id>http://www.zotero.org/styles/scientia-agraria</id>
+    <link href="http://www.zotero.org/styles/scientia-agraria" rel="self"/>
     <link href="https://forums.zotero.org/discussion/22148/how-to-apply-disambiguation-in-citation-just-when-works-of-different-authors-are-in-the-same-year/?Focus=147094#Comment_147094" rel="documentation"/>
     <author>
       <name>Juliana Geyna Régis</name>
