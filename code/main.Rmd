@@ -59,15 +59,15 @@ panderOptions('table.alignment.default', 'left')
 # panderOptions('table.caption.prefix', 'Table: ')
 
 # Opções para figuras
-a <- trellis.par.get("axis.text")
-a$fontfamily <- "serif"
-trellis.par.set(name = "axis.text", value = a)
-a <- trellis.par.get('par.xlab.text')
-a$fontfamily <- "serif"
-trellis.par.set(name = 'par.xlab.text', value = a)
-a <- trellis.par.get('par.ylab.text')
-a$fontfamily <- "serif"
-trellis.par.set(name = 'par.ylab.text', value = a)
+# a <- trellis.par.get("axis.text")
+# a$fontfamily <- "serif"
+# trellis.par.set(name = "axis.text", value = a)
+# a <- trellis.par.get('par.xlab.text')
+# a$fontfamily <- "serif"
+# trellis.par.set(name = 'par.xlab.text', value = a)
+# a <- trellis.par.get('par.ylab.text')
+# a$fontfamily <- "serif"
+# trellis.par.set(name = 'par.ylab.text', value = a)
 ```
 
 <!-- 
@@ -192,7 +192,7 @@ The two sample splitting methods -- manual and splitter -- were evaluated in a c
 # perfil <- febr::layers("ctb0013", which.cols = "all", progress = FALSE)[[1]]
 # save(perfil, file = '../data/perfil.rda')
 load('../data/perfil.rda')
-perfil$Profundidade <- glue::glue("{perfil$profund_sup}-{perfil$profund_inf}")
+perfil$Depth <- glue::glue("{perfil$profund_sup}-{perfil$profund_inf}")
 attr(perfil, 'units') <- c(attr(perfil, 'units'), "cm")
 attr(perfil, 'units') <- gsub("unitless", "-", attr(perfil, 'units'))
 attr(perfil, 'units') <- gsub("g/cm^3", "g cm^-3^", attr(perfil, 'units'), fixed = TRUE)
@@ -200,17 +200,17 @@ attr(perfil, 'units') <- gsub("m^3/m^3", "m^3^ m^-3^", attr(perfil, 'units'), fi
 attr(perfil, 'units') <- gsub("g/kg", "g kg^-1^", attr(perfil, 'units'), fixed = TRUE)
 attr(perfil, 'units') <- gsub("cmolc/kg", "cmol~c~ kg^-1^", attr(perfil, 'units'), fixed = TRUE)
 attr(perfil, 'units') <- gsub("mg/L", "mg L^-1^", attr(perfil, 'units'), fixed = TRUE)
-attr(perfil, 'units') <- glue::glue("({attr(perfil, 'units')})")
+# attr(perfil, 'units') <- glue::glue("({attr(perfil, 'units')})")
 
 # Preparar tabela com dados físicos perfil
 # colnames(perfil)
 idx <- c(4, 23, 9:15)
 perfil_fis <- perfil[, idx]
-col_nam <- c('ID', 'Limites', 'Areia grossa', 'Areia fina', 'Argila total', 'Densidade do solo', 'Densidade de partícula', 'Macro-porosidade', 'Micro-porosidade')
+col_nam <- c('ID', 'Bounds', 'Coarse sand', 'Fine sand', 'Clay', 'Bulk density', 'Particle density', 'Macro-porosity', 'Micro-porosity')
 colnames(perfil_fis) <- glue::glue("{col_nam} {attr(perfil, 'units')[idx]}")
 pander::panderOptions('digits', c(0, 0, 0, 0, 0, 3, 3, 4, 4))
 pander::panderOptions('table.split.cells', rep(100 / ncol(perfil_fis), ncol(perfil_fis)))
-pander::pander(perfil_fis, caption = '(\\#tab:perfil-fisica) Variáveis físicas dos horizontes do perfil do solo [@Lauermann2007].')
+pander::pander(perfil_fis, caption = '(\\#tab:perfil-fisica) Physical properties of the soil profile horizons.')
 ```
 
 ```{r perfil-quimica, echo=FALSE, message=FALSE, warning=FALSE}
@@ -218,11 +218,11 @@ pander::pander(perfil_fis, caption = '(\\#tab:perfil-fisica) Variáveis físicas
 # colnames(perfil)
 idx <- c(4, 23, 16:22)
 perfil_qui <- perfil[, idx]
-col_nam <- c('ID', 'Limites', 'pH', "Ca^2+^", "Mg^2+^", "K^+^", "H+Al", "P~2~O~5~", "Matéria orgânica")
+col_nam <- c('ID', 'Bounds', 'pH', "Ca^2+^", "Mg^2+^", "K^+^", "H+Al", "P~2~O~5~", "Organic matter")
 colnames(perfil_qui) <- glue::glue("{col_nam} {attr(perfil, 'units')[idx]}")
 pander::panderOptions('digits', c(0, 0, 2, 3, 2, 2, 3, 3, 1))
 pander::panderOptions('table.split.cells', rep(100 / ncol(perfil_qui), ncol(perfil_qui)))
-pander::pander(perfil_qui, caption = '(\\#tab:perfil-quimica) Variáveis químicas dos horizontes do perfil do solo [@Lauermann2007].')
+pander::pander(perfil_qui, caption = '(\\#tab:perfil-quimica) Chemical properties of the soil profile horizons.')
 ```
 
 ```{r solos-do-rs, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Área do estado do Rio Grande do Sul com camada superficial do solo de textura similar ao material do solo usado neste estudo, coletado no local indicado pelo ponto vermelho.", fig.align='center', dpi=600, fig.asp=1}
@@ -245,7 +245,7 @@ idx <-
   grepl("Espodossolo", rs$SOLO_EMBRA) - grepl("Neossolo", rs$SOLO_EMBRA) - grepl("Cambissolo", rs$SOLO_EMBRA)
 
 # Número mínimo de critérios aos quais um polígono precisa atender
-rs$col <- "gray95"
+rs$col <- "gray90"
 rs$col[idx >= 2] <- "gray25"
 sp::spplot(
   rs, "id", grid = TRUE, col = NA, col.regions = rs$col,
