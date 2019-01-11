@@ -7,30 +7,11 @@ output:
     reference_docx: ../docs/template.docx
 bibliography: biblio.bib
 # csl: scientia-agraria.csl
-csl: /home/alessandrorosa/projects/RefBib/csl/scientia-agricola.csl
+csl: '`r path.expand("~/projects/RefBib/csl/scientia-agricola.csl")`'
 # lang: pt
 editor_options:
   chunk_output_type: inline
 ---
-
-<!-- ====================================================================================================== -->
-<!-- DOCUMENT SETUP ======================================================================================= -->
-<!-- ====================================================================================================== -->
-<!-- ATTENTION: DO NOT USE THE 'KNIT' BUTTON TO RENDER THIS FILE! ========================================= -->
-<!-- The following code chunk will render the document using rmarkdown::render(). ========================= -->
-<!-- ====================================================================================================== -->
-```{r render, eval=FALSE, echo=FALSE}
-rmarkdown::render('main.Rmd', encoding = 'UTF-8', output_dir = "../docs")
-```
-<!-- ====================================================================================================== -->
-<!-- The following code chunk will update the exiting document on Google Drive. =========================== -->
-<!-- ====================================================================================================== -->
-```{r googledocs, eval=FALSE, echo=FALSE}
-id <- "1l09a5x98YTJmME1DMojzlkXqkAZjCiLy1rKzFCe5sgU"
-googledrive::drive_update(file = googledrive::as_id(id), media = "../docs/main.docx")
-```
-<!-- ====================================================================================================== -->
-<!-- ====================================================================================================== -->
 
 <!-- Primeira versão: -->
 <!-- Revista Brasileira de Ciência do Solo -->
