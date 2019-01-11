@@ -3,8 +3,9 @@
 # subtitle: "Accuracy and variability of runoff sampling methods"
 title: ""
 output: 
-  bookdown::word_document2:
-    reference_docx: ../docs/template.docx
+  # bookdown::word_document2:
+  #   reference_docx: ../docs/template.docx
+  bookdown::html_document2:
 bibliography: biblio.bib
 # csl: scientia-agraria.csl
 csl: '`r path.expand("~/projects/RefBib/csl/scientia-agricola.csl")`'
