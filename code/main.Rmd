@@ -265,15 +265,11 @@ areia <- dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = m
 argila <- dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = mean(argila_total)) %>% round()
 ```
 
-O material coletado do solo foi caracterizado quanto à distribuição do tamanho de partículas. Para isso ele foi
-seco ao ar, destorroado e passado em peneira com malha de dois milímetros de abertura. O conteúdo de argila 
-(diâmetro < 0,002 mm) na fração terra fina seca ao ar (TFSA) resultante foi estimado usando o método da pipeta 
-após dispersão química de ~20 g de TFSA com hidróxido de sódio (NaOH) -- na concentração de 1 mol L^-1^ -- e 
-desagregação mecânica -- usando duas esferas de náilon (diâmetro do 1,71 cm, massa de 3,04 g, densidade de 
-1,11 g cm^-1^) e agitação horizontal por 4 horas a 120 ciclos por minuto. Já o conteúdo de areia (diâmetro 
-entre 0,053 e 2,00 mm) foi determinado via tamisamento úmido. Segundo essas análises, a distribuição do tamanho
-de partículas do material de solo consta de `r areia[[1]]` g kg^-1^ de areia e `r argila[[1]]` g kg^-1^ de 
-argila.
+<!--
+O material coletado do solo foi caracterizado quanto à distribuição do tamanho de partículas. Para isso ele foi seco ao ar, destorroado e passado em peneira com malha de dois milímetros de abertura. O conteúdo de argila (diâmetro < 0,002 mm) na fração terra fina seca ao ar (TFSA) resultante foi estimado usando o método da pipeta após dispersão química de ~20 g de TFSA com hidróxido de sódio (NaOH) -- na concentração de 1 mol L^-1^ -- e desagregação mecânica -- usando duas esferas de náilon (diâmetro do 1,71 cm, massa de 3,04 g, densidade de 1,11 g cm^-1^) e agitação horizontal por 4 horas a 120 ciclos por minuto. Já o conteúdo de areia (diâmetro entre 0,053 e 2,00 mm) foi determinado via tamisamento úmido. Segundo essas análises, a distribuição do tamanho de partículas do material de solo consta de `r areia[[1]]` g kg^-1^ de areia e `r argila[[1]]` g kg^-1^ de argila.
+-->
+
+The collected soil material was air-dried, crushed and passed through a 2-mm sieve. The particle size distribution of the resulting fine soil material was determined using three samples of about 20 g each. The total clay content (<0.002 mm diameter) was determined via the pipet method after chemical dispersion and mechanical disintegration. The first was achieved using 1 mol L^-1^ sodium hydroxide (NaOH). The latter consisted of horizontal stirring for 4 hours at 120 cycles per minute in the presence of two nylon spheres (diameter: 1.71 cm; mass: 3.04 g; density 1.11 g cm^-1). The total sand content (0.053--2.00 mm diameter) was determined via wet sieving. The total silt (0.002--0.053 mm diameter) content was determined by difference. According to these analyzes, the particle size distribution of the fine soil material consists of `r areia[[1]]` g kg^-1^ of total sand, `r argila[[1]]` g kg^-1^ of total sand, and `r 1000 - argila[[1]] - areia[[1]]` g kg^-1^ of total silt.
 
 ## Método manual
 
