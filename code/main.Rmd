@@ -31,6 +31,7 @@ library(magrittr)
 library(dplyr)
 library(pander)
 library(lattice)
+library(sf)
 source("helper.R")
 
 # Opções para tabelas
@@ -208,7 +209,7 @@ pander::pander(perfil_qui, caption = '(\\#tab:perfil-quimica) Chemical propertie
 ```
 
 ```{r solos-do-rs, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Área do estado do Rio Grande do Sul com camada superficial do solo de textura similar ao material do solo usado neste estudo, coletado no local indicado pelo ponto vermelho.", fig.align='center', dpi=600, fig.asp=1}
-rs <- raster::shapefile("../data/solo-rs.shp")
+rs <- sf::st_read("../data/vector/solo-rs.shp")
 
 # Criar variável do tipo fator para construção do gráfico. Cada polígono recebe um valor único.
 rs$id <- 1:nrow(rs) %>% as.factor()
