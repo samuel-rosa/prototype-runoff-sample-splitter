@@ -248,8 +248,8 @@ rs$col[idx >= 2] <- "gray50"
 
 # Plot
 plot(
-  brasil[brasil$NomUF == "Rio Grande do Sul", "NomUF"], reset = FALSE, main = "", axes = TRUE, col = "gray98",
-  graticule = TRUE)
+  brasil[brasil$NomUF == "Rio Grande do Sul", "NomUF"], reset = FALSE, main = "", axes = TRUE, 
+  col = "gray98", graticule = TRUE)
 plot(rs["id"], border = "transparent", col = rs$col, reset = FALSE, add = TRUE)
 plot(brasil, add = TRUE, reset = FALSE, col = "transparent")
 points(-53.71327, -29.71289, pch = 3)
@@ -290,12 +290,23 @@ O primeiro teste realizado foi quanto à capacidade do método manual produzir u
 
 The first experiment carried out aimed at assessing the efficiency of the manual method, that is, its ability to produce representative samples of the artificial suspensions (runoff). The samples were expected to have a concentration of total solids (sediment) approximately equivalent to that of the suspension from which they were obtained. Three concentrations of total solids were used: 2, 10 and 50 g L^-1^. They were prepared by adding the necessary mass of fine soil material to 3 L of distilled water in 10 L plastic containers (buckets). Five buckets (replicates) were prepared for each concentration. In each bucket, one person homogenized/stirred the suspension with one hand. After 10 seconds, without stopping the homogenization, another person collected a sample by immersing a 250 mL beaker into the suspension. The concentration of total solids in the samples of each suspension was determined as a function of the sample volume and the mass of total solids measured after oven drying at 105 °C until complete evaporation of the water.
 
-A diferença entre o valor real/conhecido, *y*, e estimado por uma amostra *i*, *ŷ~i~*, da concentração de 
-sólidos totais numa suspensão *j*, foi definido como sendo o erro de estimação, *e~ij~* = *ŷ~ij~* - *y~j~*. A 
-partir do erro de estimação, calculou-se a razão *e~ij~*/*y~j~* que, multiplicada por 100, informa a magnitude
-percentual do erro de estimação em relação ao valor real da concentração de sólidos totais numa suspensão. 
-Finalmente, os erros de estimação foram submetidos ao teste *t* bicaudal para a média de uma amostra, onde a 
-hipótese alternativa testada foi de que a média verdadeira seria diferente de zero.
+<!--
+A diferença entre o valor real/conhecido, *y*, e estimado por uma amostra *i*, *ŷ~i~*, da concentração de sólidos totais numa suspensão *j*, foi definido como sendo o erro de estimação, *e~ij~* = *ŷ~ij~* - *y~j~*. A partir do erro de estimação, calculou-se a razão *e~ij~*/*y~j~* que, multiplicada por 100, informa a magnitude percentual do erro de estimação em relação ao valor real da concentração de sólidos totais numa suspensão. Finalmente, os erros de estimação foram submetidos ao teste *t* bicaudal para a média de uma amostra, onde a hipótese alternativa testada foi de que a média verdadeira seria diferente de zero.
+-->
+
+The five samples from each of the three artificial suspensions were sumarized by computing the meam, standard deviation, and coeficient of variation. The estimation error, _e~ij~_, was computed as the difference between the concentration of total solids in a suspension _j_ as estimated by a sample _i_, _ŷ~ij~_, and the true concentration, _y~j~_, that is,
+
+_e~ij~_ = _ŷ~ij~_ - _y~j~_
+
+where _i_ = 1, 2, ..., _n_, with _n_ = 5, and _j_ is one of the three artificial suspensions. The percentual mean estimation error (ME), defined as the percentage magnitude of the estimation error in relation to the true concentration in a suspension _j_, was calculated with
+
+$ME_j = \sum_{i = 1}^{n = 5} e_{ij}/y_j \times 100$
+
+Finally, the estimation errors were submitted to a one sample, two-tailed _t_-test to test if its mean was equal to zero (H~0~: $\mu$ = 0) or, alternatively, less or greater than zero (H~1~: $\neq$ 0). The _t_-statistic was given by 
+
+$t_j = \frac{\bar{e}_j}{s_j\sqrt{5}}$
+
+where _s~j~_ is the sample standard deviation of the estimation error. The exact _P_-value of the _t_-test, the probability of finding a difference equal or more extreme than that observed when the null hypothesis is true, was obtained from the Student's t distribution function with _n_ - 1 degree of freedom.
 
 ## Método do fracionador
 
