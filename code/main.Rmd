@@ -208,7 +208,7 @@ pander::panderOptions('table.split.cells', rep(100 / ncol(perfil_qui), ncol(perf
 pander::pander(perfil_qui, caption = '(\\#tab:perfil-quimica) Chemical properties of the soil profile horizons.')
 ```
 
-```{r solos-do-rs, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Área do estado do Rio Grande do Sul com camada superficial do solo de textura similar ao material do solo usado neste estudo, coletado no local indicado pelo ponto vermelho.", fig.align='center', dpi=600, fig.asp=1}
+```{r solos-do-rs, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Area of the state of Rio Grande do Sul with a superficial soil layer similar in texture to the soil material used in this study. The cross near the center of the state indicates the location where the soil material was collected.", fig.align='center', dpi=600, fig.asp=1}
 # Download limits of Brazilian states from IBGE
 if (!file.exists("../data/vector/brasil.shp")) {
   gdalUtils::ogr2ogr(
@@ -219,21 +219,7 @@ if (!file.exists("../data/vector/brasil.shp")) {
 } else {
   brasil <- sf::st_read("../data/vector/brasil.shp")
 }
-# Download limits of neighbouring South American countries
-if (!file.exists("../data/vector/america.shp")) {
-  gdalUtils::ogr2ogr(
-    src_datasource_name = "WFS:http://www.geoservicos.ibge.gov.br:80/geoserver/wfs", 
-    dst_datasource_name = "../data/vector/america.shp",
-    layer = "CGEO:AtlasMar_AmericaDoSul")
-  america <- 
-    sf::st_read("../data/vector/america.shp") %>% 
-    sf::st_transform(sf::st_crs(brasil))
-} else {
-  america <- 
-    sf::st_read("../data/vector/america.shp") %>% 
-    sf::st_transform(sf::st_crs(brasil))
-}
-brasil %<>% mutate(col = ifelse(NomUF == "Rio Grande do Sul", "gray25", "white"))
+brasil %<>% mutate(col = ifelse(NomUF == "Rio Grande do Sul", "gray50", "white"))
 
 # Load soil map
 rs <- 
@@ -257,17 +243,16 @@ idx <-
   grepl("Espodossolo", rs$SOLO_EMBRA) - grepl("Neossolo", rs$SOLO_EMBRA) - grepl("Cambissolo", rs$SOLO_EMBRA)
 
 # Número mínimo de critérios aos quais um polígono precisa atender
-rs$col <- "gray90"
-rs$col[idx >= 2] <- "gray25"
+rs$col <- "gray98"
+rs$col[idx >= 2] <- "gray50"
 
 # Plot
 plot(
-  brasil[brasil$NomUF == "Rio Grande do Sul", "NomUF"], reset = FALSE, main = "", axes = TRUE, col = "gray90",
+  brasil[brasil$NomUF == "Rio Grande do Sul", "NomUF"], reset = FALSE, main = "", axes = TRUE, col = "gray98",
   graticule = TRUE)
 plot(rs["id"], border = "transparent", col = rs$col, reset = FALSE, add = TRUE)
 plot(brasil, add = TRUE, reset = FALSE, col = "transparent")
-# plot(america, add = TRUE, reset = FALSE, col = "transparent")
-points(-53.71327, -29.71289, pch = 20, col = "red")
+points(-53.71327, -29.71289, pch = 3)
 text(x = -56.1, y = -28.1, labels = "Argentina", srt = 50)
 text(x = -55.5, y = -31.7, labels = "Uruguay", srt = -43)
 text(x = -50.5, y = -27.7, labels = "Santa Catarina", srt = -38)
