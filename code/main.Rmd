@@ -209,7 +209,36 @@ pander::pander(perfil_qui, caption = '(\\#tab:perfil-quimica) Chemical propertie
 ```
 
 ```{r solos-do-rs, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Área do estado do Rio Grande do Sul com camada superficial do solo de textura similar ao material do solo usado neste estudo, coletado no local indicado pelo ponto vermelho.", fig.align='center', dpi=600, fig.asp=1}
-rs <- sf::st_read("../data/vector/solo-rs.shp")
+# Download limits of Brazilian states from IBGE
+if (!file.exists("../data/vector/brasil.shp")) {
+  gdalUtils::ogr2ogr(
+    src_datasource_name = "WFS:http://www.geoservicos.ibge.gov.br:80/geoserver/wfs", 
+    dst_datasource_name = "../data/vector/brasil.shp",
+    layer = "CGEO:C02_limite_estadual_2010")
+  brasil <- sf::st_read("../data/vector/brasil.shp")
+} else {
+  brasil <- sf::st_read("../data/vector/brasil.shp")
+}
+# Download limits of neighbouring South American countries
+if (!file.exists("../data/vector/america.shp")) {
+  gdalUtils::ogr2ogr(
+    src_datasource_name = "WFS:http://www.geoservicos.ibge.gov.br:80/geoserver/wfs", 
+    dst_datasource_name = "../data/vector/america.shp",
+    layer = "CGEO:AtlasMar_AmericaDoSul")
+  america <- 
+    sf::st_read("../data/vector/america.shp") %>% 
+    sf::st_transform(sf::st_crs(brasil))
+} else {
+  america <- 
+    sf::st_read("../data/vector/america.shp") %>% 
+    sf::st_transform(sf::st_crs(brasil))
+}
+brasil %<>% mutate(col = ifelse(NomUF == "Rio Grande do Sul", "gray25", "white"))
+
+# Load soil map
+rs <- 
+  sf::st_read("../data/vector/solo-rs.shp") %>% 
+  sf::st_transform(sf::st_crs(brasil))
 
 # Criar variável do tipo fator para construção do gráfico. Cada polígono recebe um valor único.
 rs$id <- 1:nrow(rs) %>% as.factor()
@@ -230,14 +259,28 @@ idx <-
 # Número mínimo de critérios aos quais um polígono precisa atender
 rs$col <- "gray90"
 rs$col[idx >= 2] <- "gray25"
-sp::spplot(
-  rs, "id", grid = TRUE, col = NA, col.regions = rs$col,
-  colorkey = FALSE, scales = list(draw = TRUE), ylab = "Latitude", xlab = "Longitude",
-  panel = function (...) {
-    sp::panel.polygonsplot(...)
-    lattice::panel.grid(v = -1, h = -1)
-    lattice::panel.points(-53.71327, -29.71289, pch = 20, col = "red")
-  })
+
+# Plot
+plot(
+  brasil[brasil$NomUF == "Rio Grande do Sul", "NomUF"], reset = FALSE, main = "", axes = TRUE, col = "gray90",
+  graticule = TRUE)
+plot(rs["id"], border = "transparent", col = rs$col, reset = FALSE, add = TRUE)
+plot(brasil, add = TRUE, reset = FALSE, col = "transparent")
+# plot(america, add = TRUE, reset = FALSE, col = "transparent")
+points(-53.71327, -29.71289, pch = 20, col = "red")
+text(x = -56.1, y = -28.1, labels = "Argentina", srt = 50)
+text(x = -55.5, y = -31.7, labels = "Uruguay", srt = -43)
+text(x = -50.5, y = -27.7, labels = "Santa Catarina", srt = -38)
+text(x = -50.3, y = -31.1, labels = "Atlantic Ocean", srt = 54)
+ybottom <- st_bbox(rs)[c(2, 4)] %>% extendrange() %>% .[1]
+xright <- st_bbox(rs)[c(1, 3)] %>% extendrange() %>% .[2]
+rect(
+  xleft = xright - 2.4, ybottom = ybottom, xright = xright - 0.1, ytop = ybottom + 2.00,
+  col = "white", border = "black")
+x1 <- 0.82; y1 <- 0.06; p <- 0.05; r <- bboxRatio(brasil)
+par(fig = c(x1 = x1, x2 = x1 + p * r, y1 = y1, y2 = y1 + p), new = TRUE, pin = c(7, 7), 
+    plt = c(0, 1, 0, 1))
+plot(brasil, add = TRUE, col = brasil$col)
 ```
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
