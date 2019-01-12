@@ -1,3 +1,11 @@
+# Função para calcular a razão das dimensões em x e y de um mapa
+bboxRatio <-
+  function (obj) {
+    dx <- sf::st_bbox(obj)[c(1, 3)] %>% diff()
+    dy <- sf::st_bbox(obj)[c(2, 4)] %>% diff()
+    res <- dx / dy
+    return (unname(res))
+  }
 # Função para organizar os dados para tabela 1
 my_reshape <- function (x, y) {
   x <- t(x) %>% as.data.frame()
