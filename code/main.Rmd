@@ -215,15 +215,15 @@ if (!file.exists("../data/vector/brasil.shp")) {
     src_datasource_name = "WFS:http://www.geoservicos.ibge.gov.br:80/geoserver/wfs", 
     dst_datasource_name = "../data/vector/brasil.shp",
     layer = "CGEO:C02_limite_estadual_2010")
-  brasil <- sf::st_read("../data/vector/brasil.shp")
+  brasil <- sf::st_read("../data/vector/brasil.shp", quiet = TRUE)
 } else {
-  brasil <- sf::st_read("../data/vector/brasil.shp")
+  brasil <- sf::st_read("../data/vector/brasil.shp", quiet = TRUE)
 }
 brasil %<>% mutate(col = ifelse(NomUF == "Rio Grande do Sul", "gray50", "white"))
 
 # Load soil map
 rs <- 
-  sf::st_read("../data/vector/solo-rs.shp") %>% 
+  sf::st_read("../data/vector/solo-rs.shp", quiet = TRUE) %>% 
   sf::st_transform(sf::st_crs(brasil))
 
 # Criar variável do tipo fator para construção do gráfico. Cada polígono recebe um valor único.
@@ -288,7 +288,7 @@ The collected soil material was air-dried, crushed and passed through a 2-mm sie
 O primeiro teste realizado foi quanto à capacidade do método manual produzir uma amostra representativa da suspensão (enxurrada), ou seja, que possua concentração de sólidos totais (sedimentos) aproximadamente equivalente àquela da suspensão de onde foi obtida. Para isso foram utilizados recipientes plásticos com capacidade para 10 L, dentro dos quais foram adicionados 3 L de água destilada e a quantidade de TFSA necessária para atingir as concentrações de 2, 10 e 50 g L^-1^ de sólidos totais. Para cada concentração foram preparadas cinco repetições (baldes). Em cada balde, uma pessoa homogeneizou a suspensão com uma das mãos. Após 10 segundos, sem parar a homogeneização, outra pessoa coletou uma amostra mergulhando, no seio da suspensão, um béquer de 250 mL. A concentração de sólidos totais nas amostras de cada suspensão foi determinada em função do seu volume e da massa de sólidos totais mensurada após secagem em estufa à temperatura de 105°C até completa evaporação da água.
 -->
 
-The first experiment carried out aimed at assessing the efficiency of the manual method, that is, its ability to produce representative samples of the artificial suspensions (runoff). The samples were expected to have a concentration of total solids (sediment) approximately equivalent to that of the suspension from which they were obtained. Three concentrations of total solids were used: 2, 10 and 50 g L^-1^. They were prepared by adding the necessary mass of fine soil material to 3 L of distilled water in 10 L plastic containers (buckets). Five buckets (replicates) were prepared for each concentration. In each bucket, one person homogenized/stirred the suspension with one hand. After 10 seconds, without stopping the homogenization, another person collected a sample by immersing a 250 mL beaker into the suspension. The concentration of total solids in the samples of each suspension was determined as a function of the sample volume and the mass of total solids measured after oven drying at 105 °C until complete evaporation of the water.
+The first experiment carried out aimed at assessing the efficiency of the manual method, that is, its ability to produce representative samples of the artificial suspensions (runoff). The samples were expected to have a concentration of total solids (sediment) approximately equivalent to that of the suspension from which they were obtained. Three concentrations of total solids were used: 2, 10 and 50 g L^-1^. They were prepared by adding the necessary mass of fine soil material to 3 L of distilled water in 10 L plastic containers (buckets), that is, 6, 30, and 150 g, respectively. Five buckets (replicates) were prepared for each concentration. In each bucket, one person homogenized/stirred the suspension with one hand. After 10 seconds, without stopping the homogenization, another person collected a sample by immersing a 250 mL beaker into the suspension. The concentration of total solids in the samples of each suspension was determined as a function of the sample volume and the mass of total solids measured after oven drying at 105 °C until complete evaporation of the water.
 
 <!--
 A diferença entre o valor real/conhecido, *y*, e estimado por uma amostra *i*, *ŷ~i~*, da concentração de sólidos totais numa suspensão *j*, foi definido como sendo o erro de estimação, *e~ij~* = *ŷ~ij~* - *y~j~*. A partir do erro de estimação, calculou-se a razão *e~ij~*/*y~j~* que, multiplicada por 100, informa a magnitude percentual do erro de estimação em relação ao valor real da concentração de sólidos totais numa suspensão. Finalmente, os erros de estimação foram submetidos ao teste *t* bicaudal para a média de uma amostra, onde a hipótese alternativa testada foi de que a média verdadeira seria diferente de zero.
@@ -300,11 +300,11 @@ _e~ij~_ = _ŷ~ij~_ - _y~j~_
 
 where _i_ = 1, 2, ..., _n_, with _n_ = 5, and _j_ is one of the three artificial suspensions. The percentual mean estimation error (ME), defined as the percentage magnitude of the estimation error in relation to the true concentration in a suspension _j_, was calculated with
 
-$ME_j = \sum_{i = 1}^{n = 5} e_{ij}/y_j \times 100$
+$\textit{ME}_j = \sum_{i = 1}^{n = 5} e_{ij}/y_j \times 100$
 
-Finally, the estimation errors were submitted to a one sample, two-tailed _t_-test to test if its mean was equal to zero (H~0~: $\mu$ = 0) or, alternatively, less or greater than zero (H~1~: $\neq$ 0). The _t_-statistic was given by 
+Finally, the estimation errors were submitted to a one sample, two-tailed _t_-test to test if its mean was equal to zero (H~0~: $\mu$ = 0) or, alternatively, less or greater than zero (H~1~: $\neq$ 0). The _t_-statistic was given by
 
-$t_j = \frac{\bar{e}_j}{s_j/\sqrt{5}}$
+$t_j = \frac{\bar{e_j}}{s_j/\sqrt{5}}$
 
 where _s~j~_ is the sample standard deviation of the estimation error. The exact _p_-value of the _t_-test was obtained from the Student's _t_ cumulative distribution function (CDF) with _n_ - 1 degree of freedom.
 
@@ -314,7 +314,7 @@ where _s~j~_ is the sample standard deviation of the estimation error. The exact
 O protótipo de equipamento utilizado no método do fracionador foi construído com peças de policloreto de polivinila (PVC, do inglês *polyvinyl chloride*) (Figura \@ref(fig:sample-splitter)). O fracionador é composto de um reservatório para a suspensão, localizado na parte superior, o qual consiste num cano de 300 mm de comprimento e 75 mm de diâmetro, com capacidade para 1 L de suspensão. O fundo desse reservatório possui formato de funil para direcionar a suspensão a um cano conectado à sua extremidade inferior, cano esse que possui 300 mm de comprimento e 15 mm de diâmetro. A função desse cano de menor diâmetro é dirigir a suspensão em fluxo contínuo e concentrado até o dispositivo fracionador da suspensão, que possui formato de Y invertido e que está conectado à extremidade inferior do primeiro. Todas as peças são fixadas umas às outras utilizando material adesivo específico para PVC. Como o fracionador possui duas saídas, A e B, ele produz duas amostras da suspensão a cada operação de fracionamento. O nivelamento do equipamento fracionador com os planos horizontal e vertical é feito via fixação em plataforma de madeira. O investimento necessário para construção do equipamento fracionador é de aproximadamente R$ 150,00.
 -->
 
-The sample splitter was constructed with polyvinyl chloride (PVC) and wooden parts (Figure \@ref(fig:sample-splitter)). It is composed of a suspension reservoir, located on the upper part, which consists of a 300-mm long, 75-mm diameter PVC platic pipe with a maximum net capacity of 1 L of suspension. The bottom of the reservoir consists of a PVC internal domed end cap. A 15-mm diameter hole was drilled on the center of the cap to connect a 300-mm long, 15-mm diameter PVC platic pipe. The dome shaped end cap helps directing the reservoir suspension to the smaller diameter pipe connected to the lower end. The function of this smaller diameter pipe is to direct the suspension in a continuous and concentrated flow to the splitting device, a Y-connector placed at its lower end. All parts are glued to each other using PVC-specific adhesive material. Since the splitter has two outlets, A and B, it produces two samples of the suspension at each splitting operation. Finnaly, the PVC parts were fixated on a wooden platform, leveled with both horizontal and vertical planes. The investment made to build the splitter was about 40 US dollars.
+The prototype sample splitter was constructed with polyvinyl chloride (PVC) and wooden parts (Figure \@ref(fig:sample-splitter)). It is composed of a suspension reservoir, located on the upper part, which consists of a 300-mm long, 75-mm diameter PVC platic pipe with a maximum net capacity of 1 L of suspension. The bottom of the reservoir consists of a PVC internal domed end cap. A 15-mm diameter hole was drilled on the center of the cap to connect a 300-mm long, 15-mm diameter PVC platic pipe. The dome shaped end cap helps directing the reservoir suspension to the smaller diameter pipe connected to the lower end. The function of this smaller diameter pipe is to direct the suspension in a continuous and concentrated flow to the splitting device, a Y-connector placed at its lower end. All parts are glued to each other using PVC-specific adhesive material. Since the splitter has two outlets, A and B, it produces two samples of the suspension at each splitting operation. Finnaly, the PVC parts were fixated on a wooden platform, leveled with both horizontal and vertical planes. The investment made to build the splitter was about 40 US dollars.
 
 <!--
 O método do fracionador foi submetido a três testes. O primeiro deles teve como objetivo avaliar se o volume da suspensão sendo fracionada afeta o desempenho do fracionador, especificamente, sua capacidade de produzir pares de amostras com volumes aproximadamente equivalentes. Quatro volumes de água destilada foram avaliados, 100, 300, 500 e 1000 mL, em cinco repetições. Em cada repetição, o respectivo volume total de água destilada foi vertido de uma só vez no reservatório do fracionador. Também como descrito acima, os erros de estimação foram submetidos ao teste *t* bicaudal. Adicionalmente, os erros de estimação das saídas A e B para cada um dos quatro volumes testados foram comparados usando o teste *t* bicaudal para a média de duas amostras pareadas.
@@ -322,29 +322,23 @@ O método do fracionador foi submetido a três testes. O primeiro deles teve com
 
 The sample splitter method was submitted to three tests. The first test aimed at evaluating if the volume of the suspension affects the performance of the splitter, specifically, its capacity to produce pairs of samples with approximately equivalent volumes. Four volumes of distilled water were evaluate -- 100, 300, 500, and 1000 mL -- using five replicates. At each repetition, the total volume of distilled water was poured into the splitter's reservoir at one time. The two resulting samples, A and B, were collected in beakers and their volume determined using calibrated graduated cylinders. The estimation error and its ratio to the true value (half of the total volume of distilled water), both defined above, were calculated for both samples. Estimation errors were submitted to the one sample, two-tailed _t_-test as described for the manual method. In addition, the estimation errors of outlets A and B were tested fom equality using the paired samples, two-tailed _t_-test. The _t_-statistic was given by
 
-$t_j = \frac{\bar{d}_{j}}{s_{dj}/\sqrt{5}}$
+$t_j = \frac{\bar{d_{j}}}{{s_{dj}/\sqrt{5}}}$
 
-where $\bar{d}$ is the mean of differences between estimation errors of outlets A and B, _s~dj~_ is the sample standard deviation of the differences, and _j_ is one of the four volumes tested.
+where $\bar{d_{j}}$ is the mean of differences between estimation errors of outlets A and B, _s~dj~_ is the sample standard deviation of the differences, and _j_ is one of the four volumes tested.
 
-O segundo teste conduzido com o método do fracionador foi o mesmo aplicado ao método manual, qual seja, a 
-capacidade do método do fracionador produzir uma amostra representativa da suspensão. As mesmas concentrações 
-usadas para avaliar o método manual foram usadas, também com cinco repetições cada uma. As suspensões foram 
-preparadas em recipientes plásticos de 500 mL, que foram agitados vigorosamente por 10 segundos, e então a 
-suspensão foi vertida no reservatório do fracionador de uma só vez. O fracionador foi lavado com água destilada
-após cada repetição. As duas amostras, A e B, produzidas em cada repetição foram coletadas em copos de béquer 
-de 250 mL e em seguida determinada a concentração de sólidos totais conforme descrito para o método manual. Os
-erros de estimação foram submetidos ao teste *t* bicaudal para a média de uma amostra e ao teste *t* bicaudal
-para a média de duas amostras pareadas conforme acima.
+<!--
+O segundo teste conduzido com o método do fracionador foi o mesmo aplicado ao método manual, qual seja, a capacidade do método do fracionador produzir uma amostra representativa da suspensão. As mesmas concentrações usadas para avaliar o método manual foram usadas, também com cinco repetições cada uma. As suspensões foram preparadas em recipientes plásticos de 500 mL, que foram agitados vigorosamente por 10 segundos, e então a suspensão foi vertida no reservatório do fracionador de uma só vez. O fracionador foi lavado com água destilada após cada repetição. As duas amostras, A e B, produzidas em cada repetição foram coletadas em copos de béquer de 250 mL e em seguida determinada a concentração de sólidos totais conforme descrito para o método manual. Os erros de estimação foram submetidos ao teste *t* bicaudal para a média de uma amostra e ao teste *t* bicaudal para a média de duas amostras pareadas conforme acima.
+-->
 
-Finalmente, os sólidos totais contidos nas amostras produzidas pelas saídas A e B do fracionador foram 
-analisados quanto à distribuição do tamanho de partículas. Para isso fora empregado o mesmo método descrito 
-acima para a análise do material do solo utilizado para produzir as suspensões. O objetivo desse teste foi 
-avaliar a capacidade do fracionador produzir amostras onde os sólidos totais possuam distribuição do tamanho de 
-aproximadamente equivalente àquela observada nos sólidos totais da suspensão fracionada. O teste *t* bicaudal 
-para a média de uma amostra e o teste *t* bicaudal para a média de duas amostras pareadas foram empregados para
-avaliar os erros de estimação do conteúdo de argila e areia.
+The second test to which the splitter method was submitted was the same applied to the manual method, that is, regarding its ability to produce a representative sample of a suspension. The same concentrations used to evaluate the manual method were employed, also with five replicates each. The artificial suspensions were prepared in 500-mL plastic containers. After vigorous shaking for 10 seconds, each suspension was poured into the splitter's reservoir at one time and both samples, A and B, collected in 250-mL beakers. The splitter was washed with distilled water after each repetition. The concentration of total solids in the samples was determined as described for the manual method. The estimation errors were submitted to one and paired samples, two-tailed _t_-tests as above.
 
-```{r sample-splitter, echo=FALSE, fig.cap="Protótipo de equipamento fracionador de amostras de enxurrada.", fig.align='center'}
+<!--
+Finalmente, os sólidos totais contidos nas amostras produzidas pelas saídas A e B do fracionador foram analisados quanto à distribuição do tamanho de partículas. Para isso fora empregado o mesmo método descrito acima para a análise do material do solo utilizado para produzir as suspensões. O objetivo desse teste foi avaliar a capacidade do fracionador produzir amostras onde os sólidos totais possuam distribuição do tamanho de aproximadamente equivalente àquela observada nos sólidos totais da suspensão fracionada. O teste *t* bicaudal para a média de uma amostra e o teste *t* bicaudal para a média de duas amostras pareadas foram empregados para avaliar os erros de estimação do conteúdo de argila e areia.
+-->
+
+Finally, the total solids contained in the samples produced by outlets A and B of the splitter were analyzed for particle size distribution. The same method used for the analysis of the soil material employed to produce the suspensions was used. The aim of this test was to evaluate the capacity of the splitter to produce samples where the total solids have a size distribution approximately equivalent to that observed in the total solids of the suspension. The one and paired samples, two-tailed _t_-tests were used to evaluate the estimation errors of the clay and sand content.
+
+```{r sample-splitter, echo=FALSE, fig.cap="Prototype sample splitter compared to the manual method. The constituent PVC and wooden parts and their dimensions (unscalled) are shown in detail.", fig.align='center'}
 knitr::include_graphics("../images/fracionador-medidas.jpg")
 ```
 
