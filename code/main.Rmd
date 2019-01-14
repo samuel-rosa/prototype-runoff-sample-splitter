@@ -304,37 +304,27 @@ $ME_j = \sum_{i = 1}^{n = 5} e_{ij}/y_j \times 100$
 
 Finally, the estimation errors were submitted to a one sample, two-tailed _t_-test to test if its mean was equal to zero (H~0~: $\mu$ = 0) or, alternatively, less or greater than zero (H~1~: $\neq$ 0). The _t_-statistic was given by 
 
-$t_j = \frac{\bar{e}_j}{s_j\sqrt{5}}$
+$t_j = \frac{\bar{e}_j}{s_j/\sqrt{5}}$
 
-where _s~j~_ is the sample standard deviation of the estimation error. The exact _P_-value of the _t_-test, the probability of finding a difference equal or more extreme than that observed when the null hypothesis is true, was obtained from the Student's t distribution function with _n_ - 1 degree of freedom.
+where _s~j~_ is the sample standard deviation of the estimation error. The exact _p_-value of the _t_-test was obtained from the Student's _t_ cumulative distribution function (CDF) with _n_ - 1 degree of freedom.
 
-## Método do fracionador
+## Sample splitter method
 
-O protótipo de equipamento utilizado no método do fracionador foi construído com peças de policloreto de 
-polivinila (PVC, do inglês *polyvinyl chloride*) (Figura \@ref(fig:sample-splitter)). O fracionador é composto 
-de um reservatório para a suspensão, localizado na parte superior, o qual consiste num cano de 300 mm de 
-comprimento e 75 mm de diâmetro, com capacidade para 1 L de suspensão. O fundo desse reservatório possui 
-formato de funil para direcionar a suspensão a um cano de conectado à sua extremidade inferior, cano esse que
-possui 300 mm de comprimento e 15 mm de diâmetro. A função desse cano de menor diâmetro é dirigir a suspensão 
-em fluxo contínuo e concentrado até o dispositivo fracionador da suspensão, que possui formato de Y invertido e
-que está conectado à extremidade inferior do primeiro. Todas as peças são fixadas umas às outras utilizando
-material adesivo específico para PVC. Como o fracionador possui duas saídas, A e B, ele produz duas amostras da 
-suspensão a cada operação de fracionamento. O nivelamento do equipamento fracionador com os planos horizontal e 
-vertical é feito via fixação em plataforma de madeira. O investimento necessário para construção do equipamento 
-fracionador é de aproximadamente R$ 150,00.
+<!--
+O protótipo de equipamento utilizado no método do fracionador foi construído com peças de policloreto de polivinila (PVC, do inglês *polyvinyl chloride*) (Figura \@ref(fig:sample-splitter)). O fracionador é composto de um reservatório para a suspensão, localizado na parte superior, o qual consiste num cano de 300 mm de comprimento e 75 mm de diâmetro, com capacidade para 1 L de suspensão. O fundo desse reservatório possui formato de funil para direcionar a suspensão a um cano conectado à sua extremidade inferior, cano esse que possui 300 mm de comprimento e 15 mm de diâmetro. A função desse cano de menor diâmetro é dirigir a suspensão em fluxo contínuo e concentrado até o dispositivo fracionador da suspensão, que possui formato de Y invertido e que está conectado à extremidade inferior do primeiro. Todas as peças são fixadas umas às outras utilizando material adesivo específico para PVC. Como o fracionador possui duas saídas, A e B, ele produz duas amostras da suspensão a cada operação de fracionamento. O nivelamento do equipamento fracionador com os planos horizontal e vertical é feito via fixação em plataforma de madeira. O investimento necessário para construção do equipamento fracionador é de aproximadamente R$ 150,00.
+-->
 
-O método do fracionador foi submetido a três testes. O primeiro dele teve como objetivo avaliar se o volume da 
-suspensão sendo fracionada afeta o desempenho do fracionador, especificamente, sua capacidade de produzir pares
-de amostras com volumes aproximadamente equivalentes. Quatro volumes de água destilada foram avaliados, 100, 
-300, 500 e 1000 mL, em cinco repetições. Em cada repetição, o respectivo volume total de água destilada foi
-vertido de uma só vez no reservatório do fracionador. As duas amostras produzidas foram coletadas em copos de 
-béquer e o seu volume determinado usando provetas graduadas previamente calibradas. O erro de estimação e sua 
-razão em relação ao valor real, ambos definidos acima, foram calculados para cada uma das saídas do fracionador 
-em todas as repetições dos quatro volumes testados. Também como descrito acima, os erros de estimação foram 
-submetidos ao teste *t* bicaudal. Adicionalmente, os erros de estimação das saídas A e B para cada um dos 
-quatro volumes testados foram comparados usando o teste *t* bicaudal para a média de duas amostras pareadas. A 
-hipótese alternativa testada foi de que a diferença verdadeira entre as médias das duas amostras seria 
-diferente de zero.
+The sample splitter was constructed with polyvinyl chloride (PVC) and wooden parts (Figure \@ref(fig:sample-splitter)). It is composed of a suspension reservoir, located on the upper part, which consists of a 300-mm long, 75-mm diameter PVC platic pipe with a maximum net capacity of 1 L of suspension. The bottom of the reservoir consists of a PVC internal domed end cap. A 15-mm diameter hole was drilled on the center of the cap to connect a 300-mm long, 15-mm diameter PVC platic pipe. The dome shaped end cap helps directing the reservoir suspension to the smaller diameter pipe connected to the lower end. The function of this smaller diameter pipe is to direct the suspension in a continuous and concentrated flow to the splitting device, a Y-connector placed at its lower end. All parts are glued to each other using PVC-specific adhesive material. Since the splitter has two outlets, A and B, it produces two samples of the suspension at each splitting operation. Finnaly, the PVC parts were fixated on a wooden platform, leveled with both horizontal and vertical planes. The investment made to build the splitter was about 40 US dollars.
+
+<!--
+O método do fracionador foi submetido a três testes. O primeiro deles teve como objetivo avaliar se o volume da suspensão sendo fracionada afeta o desempenho do fracionador, especificamente, sua capacidade de produzir pares de amostras com volumes aproximadamente equivalentes. Quatro volumes de água destilada foram avaliados, 100, 300, 500 e 1000 mL, em cinco repetições. Em cada repetição, o respectivo volume total de água destilada foi vertido de uma só vez no reservatório do fracionador. Também como descrito acima, os erros de estimação foram submetidos ao teste *t* bicaudal. Adicionalmente, os erros de estimação das saídas A e B para cada um dos quatro volumes testados foram comparados usando o teste *t* bicaudal para a média de duas amostras pareadas.
+-->
+
+The sample splitter method was submitted to three tests. The first test aimed at evaluating if the volume of the suspension affects the performance of the splitter, specifically, its capacity to produce pairs of samples with approximately equivalent volumes. Four volumes of distilled water were evaluate -- 100, 300, 500, and 1000 mL -- using five replicates. At each repetition, the total volume of distilled water was poured into the splitter's reservoir at one time. The two resulting samples, A and B, were collected in beakers and their volume determined using calibrated graduated cylinders. The estimation error and its ratio to the true value (half of the total volume of distilled water), both defined above, were calculated for both samples. Estimation errors were submitted to the one sample, two-tailed _t_-test as described for the manual method. In addition, the estimation errors of outlets A and B were tested fom equality using the paired samples, two-tailed _t_-test. The _t_-statistic was given by
+
+$t_j = \frac{\bar{d}_{j}}{s_{dj}/\sqrt{5}}$
+
+where $\bar{d}$ is the mean of differences between estimation errors of outlets A and B, _s~dj~_ is the sample standard deviation of the differences, and _j_ is one of the four volumes tested.
 
 O segundo teste conduzido com o método do fracionador foi o mesmo aplicado ao método manual, qual seja, a 
 capacidade do método do fracionador produzir uma amostra representativa da suspensão. As mesmas concentrações 
