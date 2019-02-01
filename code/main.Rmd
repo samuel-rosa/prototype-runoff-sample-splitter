@@ -190,7 +190,7 @@ attr(perfil, 'units') <- gsub("mg/L", "mg L^-1^", attr(perfil, 'units'), fixed =
 idx <- c(4, 23, 9:15)
 perfil_fis <- perfil[, idx]
 col_nam <- c('ID', 'Bounds', 'Coarse sand', 'Fine sand', 'Clay', 'Bulk density', 'Particle density', 'Macro-porosity', 'Micro-porosity')
-colnames(perfil_fis) <- glue::glue("{col_nam} {attr(perfil, 'units')[idx]}")
+colnames(perfil_fis) <- glue::glue("{col_nam}<br>{attr(perfil, 'units')[idx]}")
 pander::panderOptions('digits', c(0, 0, 0, 0, 0, 3, 3, 4, 4))
 pander::panderOptions('table.split.cells', rep(100 / ncol(perfil_fis), ncol(perfil_fis)))
 pander::pander(perfil_fis, caption = '(\\#tab:perfil-fisica) Physical properties of the soil profile horizons.')
@@ -202,7 +202,7 @@ pander::pander(perfil_fis, caption = '(\\#tab:perfil-fisica) Physical properties
 idx <- c(4, 23, 16:22)
 perfil_qui <- perfil[, idx]
 col_nam <- c('ID', 'Bounds', 'pH', "Ca^2+^", "Mg^2+^", "K^+^", "H+Al", "P~2~O~5~", "Organic matter")
-colnames(perfil_qui) <- glue::glue("{col_nam} {attr(perfil, 'units')[idx]}")
+colnames(perfil_qui) <- glue::glue("{col_nam}<br>{attr(perfil, 'units')[idx]}")
 pander::panderOptions('digits', c(0, 0, 2, 3, 2, 2, 3, 3, 1))
 pander::panderOptions('table.split.cells', rep(100 / ncol(perfil_qui), ncol(perfil_qui)))
 pander::pander(perfil_qui, caption = '(\\#tab:perfil-quimica) Chemical properties of the soil profile horizons.')
@@ -282,7 +282,7 @@ O material coletado do solo foi caracterizado quanto à distribuição do tamanh
 
 The collected soil material was air-dried, crushed and passed through a 2-mm sieve. The particle size distribution of the resulting fine soil material was determined using three samples of about 20 g each. The total clay content (<0.002 mm diameter) was determined via the pipet method after chemical dispersion and mechanical disintegration. The first was achieved using 1 mol L^-1^ sodium hydroxide (NaOH). The latter consisted of horizontal stirring for 4 hours at 120 cycles per minute in the presence of two nylon spheres (diameter: 1.71 cm; mass: 3.04 g; density 1.11 g cm^-1). The total sand content (0.053--2.00 mm diameter) was determined via wet sieving. The total silt (0.002--0.053 mm diameter) content was determined by difference. According to these analyzes, the particle size distribution of the fine soil material consists of `r areia[[1]]` g kg^-1^ of total sand, `r argila[[1]]` g kg^-1^ of total sand, and `r 1000 - argila[[1]] - areia[[1]]` g kg^-1^ of total silt.
 
-## Manual method
+## Manual sampling method
 
 <!--
 O primeiro teste realizado foi quanto à capacidade do método manual produzir uma amostra representativa da suspensão (enxurrada), ou seja, que possua concentração de sólidos totais (sedimentos) aproximadamente equivalente àquela da suspensão de onde foi obtida. Para isso foram utilizados recipientes plásticos com capacidade para 10 L, dentro dos quais foram adicionados 3 L de água destilada e a quantidade de TFSA necessária para atingir as concentrações de 2, 10 e 50 g L^-1^ de sólidos totais. Para cada concentração foram preparadas cinco repetições (baldes). Em cada balde, uma pessoa homogeneizou a suspensão com uma das mãos. Após 10 segundos, sem parar a homogeneização, outra pessoa coletou uma amostra mergulhando, no seio da suspensão, um béquer de 250 mL. A concentração de sólidos totais nas amostras de cada suspensão foi determinada em função do seu volume e da massa de sólidos totais mensurada após secagem em estufa à temperatura de 105°C até completa evaporação da água.
@@ -298,11 +298,11 @@ The five samples from each of the three artificial suspensions were sumarized by
 
 _e~ij~_ = _ŷ~ij~_ - _y~j~_
 
-where _i_ = 1, 2, ..., _n_, with _n_ = 5, and _j_ is one of the three artificial suspensions. The percentual mean estimation error (ME), defined as the percentage magnitude of the estimation error in relation to the true concentration in a suspension _j_, was calculated with
+where _i_ = 1, 2, ..., _n_, with _n_ = 5, and _j_ is one of the three artificial suspensions. The percentual mean estimation error (pME), defined as the percentage magnitude of the estimation error in relation to the true concentration in a suspension _j_, was calculated with
 
-$\textit{ME}_j = \sum_{i = 1}^{n = 5} e_{ij}/y_j \times 100$
+$\text{pME}_j = \sum_{i = 1}^{n = 5} e_{ij}/y_j \times 100$
 
-Finally, the estimation errors were submitted to a one sample, two-tailed _t_-test to test if its mean was equal to zero (H~0~: $\mu$ = 0) or, alternatively, less or greater than zero (H~1~: $\neq$ 0). The _t_-statistic was given by
+Finally, the estimation errors were submitted to a one sample, two-tailed _t_-test to test if its mean was equal to zero (H~0~: $\mu$ = 0) or, alternatively, less or greater than zero (H~1~: $\mu \neq$ 0). The _t_-statistic was given by
 
 $t_j = \frac{\bar{e_j}}{s_j/\sqrt{5}}$
 
@@ -344,25 +344,19 @@ knitr::include_graphics("../images/fracionador-medidas.jpg")
 
 # RESULTS AND DISCUSSION
 
-## Método manual
+## Manual sampling method
 
-O teste realizado com o método manual mostrou que as amostras obtidas não foram representativas das suspensões 
-usadas (Tabela \@ref(tab:mergulho-solidos)). Uma subestimativa estatisticamente significativa de 30% ou mais da
-concentração de sólidos totais foi observada em todas as três concentrações avaliadas. Além disso, observamos 
-uma variação considerável entre as cinco repetições. Esses resultados corroboram a hipótese inicial sobre a 
-inconsistência do método manual usado Brasil que fora levantada a partir dos relatos apresentados em trabalhos 
-similares desenvolvidos em outras partes do mundo [@Lang1992; @ZoebischEtAl1996; @CiesiolkaEtAl2006; 
-@TodiscoEtAl2012; @Kinnell2016].
+<!--
+O teste realizado com o método manual mostrou que as amostras obtidas não foram representativas das suspensões usadas (Tabela \@ref(tab:mergulho-solidos)). Uma subestimativa estatisticamente significativa de 30% ou mais da concentração de sólidos totais foi observada em todas as três concentrações avaliadas. Além disso, observamos uma variação considerável entre as cinco repetições. Esses resultados corroboram a hipótese inicial sobre a inconsistência do método manual usado Brasil que fora levantada a partir dos relatos apresentados em trabalhos similares desenvolvidos em outras partes do mundo [@Lang1992; @ZoebischEtAl1996; @CiesiolkaEtAl2006; @TodiscoEtAl2012; @Kinnell2016].
+-->
 
-A subestimativa da concentração de sólidos totais deve ter ocorrido principalmente devido ao fenômeno da 
-sedimentação diferencial, marcada pela rápida decantação das partículas de areia e, assim, levando à amostragem
-seletiva das partículas mais finas, nesse caso, silte e argila [@CiesiolkaEtAl2006]. Durante a realização do 
-teste, observamos que, por mais cuidado que fosse tomado, a homogeneização manual não resultava em uma suspensão
-visualmente homogênea, com as partículas de areia sedimentando rapidamente. Ademais, também verificamos que 
-movimentos circulares durante a homogeneização faziam com que, devido à força centrífuga, as partículas de areia
-fossem arremessadas na direção das paredes laterais do recipiente. Assim sendo, é razoável supor que a 
-distribuição do tamanho de partículas e, consequentemente, a composição química do sedimento das amostras 
-obtidas via método manual, sejam consideravelmente diversas da suspensão amostrada.
+The test performed with the manual runoff sampling method showed that the resulting samples were not representative of the artificial suspensions used (Table \@ref(tab:mergulho-solidos)). A statistically significant underestimate of 30% or more of the concentration of total solids was observed for all three suspensions evaluated (2, 10 and 50 g L^-1^). In addition, we observed a somewhat large variation among the five replicates. These empirical findings corroborate the initial hypothesis of the present study -- raised from the reports presented in similar works developed in other parts of the world [@Lang1992; @ZoebischEtAl1996; @CiesiolkaEtAl2006; @TodiscoEtAl2012; @Kinnell2016] -- that the manual runoff sampling method used in Brazil is inconsistent and inefficient.
+
+<!--
+A subestimativa da concentração de sólidos totais deve ter ocorrido principalmente devido ao fenômeno da sedimentação diferencial. Esta é marcada pela rápida decantação das partículas de areia e, assim, levando à amostragem seletiva das partículas mais finas, nesse caso, silte e argila [@CiesiolkaEtAl2006]. Durante a realização do teste, observamos que, por mais cuidadosos que fôssemos, a homogeneização manual não resultava em uma suspensão visualmente homogênea, com as partículas de areia sedimentando rapidamente. Ademais, também verificamos que movimentos circulares durante a homogeneização faziam com que, devido à força centrífuga, as partículas de areia fossem arremessadas na direção das paredes laterais do recipiente. Assim sendo, é razoável esperar que a distribuição do tamanho de partículas e, consequentemente, a composição química do sedimento das amostras obtidas via método manual, sejam consideravelmente diversas da suspensão amostrada.
+-->
+
+The underestimation of the concentration of total solids in the suspensions likely occurred due to the phenomenon of differential sedimentation. This phenomenon is marked by the rapid decantation of higher density particles, i.e. sand, thus resulting in the selective sampling of the finer, lower density particles that still remain suspended after 10 seconds, in this case, silt and clay [@CiesiolkaEtAl2006]. During the tests, we observed that, however careful we were, the manual homogenization did not produce a visually homogeneous suspension, with the sand particles settling rapidly. In addition, we also observed that any circular movements during the manual homogenization caused the sand particles to be thrown towards the lateral walls of the container due to the centrifugal force. Thus, it is reasonable to expect that the particle size distribution and hence the chemical composition of the solids in the samples obtained by manual sampling method are considerably different from the suspension.
 
 ```{r mergulho-solidos, echo=FALSE, results='markup'}
 # Preparar dados
@@ -376,10 +370,10 @@ d <-
 e <- 
   mutate(d, erro = erro / entrada * 100) %>% 
   group_by(entrada) %>% 
-  summarise('Média (g L^-1^)' = mean(solidos_totais) %>% round(2), 
-            'DP (g L^-1^)' = sd(solidos_totais) %>% round(2), 
+  summarise('Mean (g L^-1^)' = mean(solidos_totais) %>% round(2), 
+            'SD (g L^-1^)' = sd(solidos_totais) %>% round(2), 
             'CV (%)' = (sd(solidos_totais) / mean(solidos_totais) * 100) %>% round(2), 
-            'EM (%)' = mean(erro) %>% round(2))
+            'pME (%)' = mean(erro) %>% round(2))
 
 # Teste t para a média de uma amostra
 t <- teste_t1(d, fracionador = FALSE)
@@ -394,44 +388,27 @@ rownames(d) <- NULL
 panderOptions('round', rep(4, ncol(d)))
 panderOptions('digits', rep(4, ncol(d)))
 panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
-pander(d, caption = '(\\#tab:mergulho-solidos) Concentração de sólidos totais nas amostras obtidas, usando o método manual, de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- desvio padrão, CV -- coeficiente de variação, EM -- erro médio, *t*~1~ -- estatística do teste *t* para uma amostra, *P*~1~ -- valor *P* do teste *t*~1~.')
+# '(\\#tab:mergulho-solidos) Concentração de sólidos totais nas amostras obtidas, usando o método manual, de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- desvio padrão, CV -- coeficiente de variação, EM -- erro médio, *t*~1~ -- estatística do teste *t* para uma amostra, *P*~1~ -- valor *P* do teste *t*~1~.'
+pander(d, caption = '(\\#tab:mergulho-solidos) Concentration of total solids in samples obtained using the manual sampling method from three artificial suspensions with a known concentration of total solids of 2, 10 and 50 g L^-1^. Statistics: SD -- standard deviation, CV -- coeficient of variation, pME -- percentual mean estimation error, *t*~1~ -- one-sample _t_-test statistic, _P_~1~ -- _P_-value of the _t_~1~-test.')
 ```
 
-A partir dos resultados obtidos, pode-se supor que as perdas anuais de solo em áreas com solo de granulometria 
-similar àquela estudada sejam até 30% superiores aos valores encontrados na literatura. Por exemplo, segundo 
-@LanzanovaEtAl2013, após 16 anos de monitoramento, foram perdidos cerca de 2,5 Gg ha^-1^ de solo de uma parcela
-(largura = 3,5 m; comprimento = 22 m; declividade = 0.055 m m^-1^) com solo exposto, localizada próximo do 
-local onde coletamos o material do solo para esse estudo. Com base em nossos resultados, a quantidade de solo 
-perdida nessa parcela seria de cerca de 3,5 Gg ha^-1^. Contudo, há que se atentar para o fato de que nosso 
-resultado se baseia numa amostragem realizada por uma única pessoa, o que tente a produzir repetições similares.
-Em comparação, @ZoebischEtAl1996 avaliaram cinco profissionais experientes em amostragem de enxurrada e
-observaram erros na estimativa de perda de solo entre 5 e 83%.
+<!--
+A partir dos resultados obtidos, pode-se supor que as perdas anuais de solo em áreas com solo de granulometria similar àquela estudada sejam até 30% superiores aos valores encontrados na literatura. Por exemplo, segundo @LanzanovaEtAl2013, após 16 anos de monitoramento, foram perdidos cerca de 2,5 Gg ha^-1^ de solo de uma parcela (largura = 3,5 m; comprimento = 22 m; declividade = 0.055 m m^-1^) com solo exposto, localizada próximo do local onde coletamos o material do solo para esse estudo. Com base em nossos resultados, a quantidade de solo perdida nessa parcela seria de cerca de 3,5 Gg ha^-1^. Contudo, há que se atentar para o fato de que nosso resultado se baseia numa amostragem realizada por uma única pessoa, o que tente a produzir repetições similares. Em comparação, @ZoebischEtAl1996 avaliaram cinco profissionais experientes em amostragem de enxurrada e observaram erros na estimativa de perda de solo entre 5 e 83%.
+-->
 
-## Método do fracionador
+Our findings suggest that the annual soil losses in areas of southern Brazil with coarse texture soil -- < 100 g kg^-1^ of clay and > 500 g kg^-1^ of sand -- could be up to 30% higher than the values reported in the literature. For example, according to @LanzanovaEtAl2013, a standard (bare) soil erosion monitoring plot (width = 3.5 m, length = 22 m, slope = 0.055 m m^-1^) located near the place where we collected the soil material for this study lost about 2.5 Gg ha^-1^ of soil in 16 years. Based on the results of our study, the most likely amount of soil lost in this plot could be 3.6 Gg ha^-1^. However, attention must be paid to the fact that our results are based on one-person sampling. @ZoebischEtAl1996 evaluated five experienced professionals and observed estimation errors between 5 and 83%. This means that our tests need to be repeated by others to produce more representative results -- although the variation observed by @ZoebischEtAl1996 agrees with our results.
 
-Os resultados do primeiro teste realizado com o protótipo do equipamento fracionador que desenvolvemos mostraram
-que a eficiência do mesmo não é afetada pelo volume de água (Tabela \@ref(tab:fracionador-agua)). Ambas as 
-saídas A e B produziram amostras com volumes similares. Contudo, o processo de fracionamento parece tornar-se 
-menos eficiente com a diminuição do volume de água. Os maiores erros percentuais, (negativos ou positivos) 
-observados quando o volume de amostra era pequeno (100 mL), possivelmente resultaram do efeito turbilhão da 
-água no interior do cano de 15 mm de diâmetro localizado abaixo do reservatório. A função desse cano é dirigir 
-a água em um fluxo constante até o dispositivo fracionador. Aparentemente esse objetivo só foi efetivamente 
-atingido quando o volume de água era superior a 100 mL. Assim, é razoável que o fracionador seja utilizado 
-apenas com suspensões de volume superior a 250-300 mL.
+## Sample splitter method
 
-O teste do fracionador usando suspensões com diferentes concentrações de sólidos totais mostrou que, 
-independente da saída A ou B, o mesmo foi eficiente em produzir amostras representativas da suspensão 
-fracionada (Tabela \@ref(tab:fracionador-solidos)). Comparado ao método manual, os erros percentuais absolutos 
-são consideravelmente
-pequenos (EM < |5%|), assim como a variação entre as repetições (CV < 3%). A existência de uma tendência 
-consistente e estável de erros negativos, indicada inclusive nas estatísticas do teste *t*, significa que 
-é possível corrigir as estimativas da concentração de sólidos totais com elevado grau de confiança. Ademais, 
-essa subestimativa pode ser evitada ou minimizada via adoção de cuidados durante o fracionamento. Segundo 
-verificamos, durante o vertimento da suspensão para dentro do reservatório do fracionador, partículas de maior 
-diâmetro tendem a permanecer no interior do recipiente onde a suspensão estava armazenada. Para evitar ou 
-minimizar isso é preciso agitar vigorosamente o recipiente e verter a suspensão rapidamente. Uma solução 
-adicional é 
-realizar a lavagem do recipiente usando volume de água conhecido e então verter a nova suspensão no fracionador.
+<!--
+Os resultados do primeiro teste realizado com o protótipo do equipamento fracionador que desenvolvemos mostraram que a eficiência do mesmo não é afetada pelo volume de água (Tabela \@ref(tab:fracionador-agua)). Ambas as saídas A e B produziram amostras com volumes similares. Contudo, o processo de fracionamento parece tornar-se menos eficiente com a diminuição do volume de água. Os maiores erros percentuais, (negativos ou positivos) observados quando o volume de amostra era pequeno (100 mL), possivelmente resultaram do efeito turbilhão da água no interior do cano de 15 mm de diâmetro localizado abaixo do reservatório. A função desse cano é dirigir a água em um fluxo constante até o dispositivo fracionador. Aparentemente esse objetivo só foi efetivamente atingido quando o volume de água era superior a 100 mL. Assim, é razoável que o fracionador seja utilizado apenas com suspensões de volume superior a 250-300 mL.
+-->
+
+The results of the first test performed with the prototype sample splitter showed that its efficiency is not affected by the volume of water (Table \@ref(tab:fracionador-agua)). Both outputs A and B produced samples with similar volumes. However, the splitting process seems to become less efficient as the volume of water decreased. The largest pME were observed when the volume of water was 100 mL, possibly due to the swirling effect of the water inside the 15-mm diameter PVC platic pipe connected to the lower end of the reservoir. The function of this pipe is to direct the water in a continuous and concentrated flow to the splitting device (Y-connector). Apparently this objective was only effectively reached when the volume of water was greater than 100 mL. Thus, it is reasonable that the sample splitter be used only with suspensions of volume greater than 250-300 mL.
+
+
+
+O teste do fracionador usando suspensões com diferentes concentrações de sólidos totais mostrou que, independente da saída A ou B, o mesmo foi eficiente em produzir amostras representativas da suspensão fracionada (Tabela \@ref(tab:fracionador-solidos)). Comparado ao método manual, os erros percentuais absolutos são consideravelmente pequenos (EM < |5%|), assim como a variação entre as repetições (CV < 3%). A existência de uma tendência consistente e estável de erros negativos, indicada inclusive nas estatísticas do teste *t*, significa que é possível corrigir as estimativas da concentração de sólidos totais com elevado grau de confiança. Ademais, essa subestimativa pode ser evitada ou minimizada via adoção de cuidados durante o fracionamento. Segundo verificamos, durante o vertimento da suspensão para dentro do reservatório do fracionador, partículas de maior diâmetro tendem a permanecer no interior do recipiente onde a suspensão estava armazenada. Para evitar ou minimizar isso é preciso agitar vigorosamente o recipiente e verter a suspensão rapidamente. Uma solução adicional é realizar a lavagem do recipiente usando volume de água conhecido e então verter a nova suspensão no fracionador.
 
 A produção de amostras com concentração de sólidos totais virtualmente equivalente àquela da suspensão 
 fracionada esteve relacionada à reprodução do conteúdo de areia no sedimento das amostras (Tabela 
@@ -482,7 +459,7 @@ d <-
   mutate(entrada = entrada * 2) %>% 
   tidyr::unite(ent_sai, entrada, saida) %>%
   tidyr::spread(ent_sai, volume_agua) %>% 
-  select(1, 4:9, 2:3)
+  select(1, 2:3, 6:9, 4:5)
 colnames(t2) <- colnames(d)
 d[, -1] <- round(d[, -1], 1)
 d <- rbind(
