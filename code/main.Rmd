@@ -6,6 +6,8 @@ output:
   # bookdown::word_document2:
   #   reference_docx: ../docs/template.docx
   bookdown::html_document2:
+    mathjax: NULL
+    pandoc_args: ["--webtex"]
 bibliography: biblio.bib
 # csl: scientia-agraria.csl
 csl: '`r path.expand("~/projects/RefBib/csl/scientia-agricola.csl")`'
@@ -101,7 +103,7 @@ PAGEBREAK
 
 __ACCURACY AND VARIABILITY OF RUNOFF SAMPLING METHODS__
 
-# ABSTRACT (maximum of 250 words)
+__ABSTRACT__ (maximum of 250 words)
 
 The method used to obtain runoff samples in soil erosion monitoring studies is an important source of data variability. In this study, we evaluated the manual sampling method used in Brazil. We present as an alternative the prototype of a sample splitter for suspensions with high concentration of total solids. Using soil material with 583 g kg^-1^ of sand and 89 g kg^-1^ of clay, the manual method and the sample splitter were tested for their ability to produce representative samples of suspensions with a concentration of 2, 10 and 50 g L ^-1^ of total solids. An underestimation of 30% or more of the total solids concentration was observed using the manual method, with a variation of the same magnitude (CV between 20 and 45%). The splitter was efficient in producing samples representative of the suspension -- even without altering the granulometry of the total solids. Both absolute percentage errors (|<5%|) and the variation between replicates (CV <3%) were small. The problems with the manual method are due to the inefficient homogenization that facilitates the differential sedimentation of the particles of different sizes. If these problems are also found in other studies, then the prototype that we developed is a reasonable alternative.
 
@@ -109,7 +111,7 @@ __Keywords:__ Erosion monitoring, Soil loss, Sandy soil, Sample splitter, Uncert
 
 PAGEBREAK
 
-# INTRODUCTION (30 lines)
+__INTRODUCTION__ (30 lines)
 
 A erosão do solo constitui, há muitas décadas, uma das maiores preocupações dos cientistas do solo 
 [@PanagosEtAl2017]. Prova disso são as milhares de parcelas de monitoramento da erosão, instaladas sob os mais
@@ -160,9 +162,9 @@ fracionada. Nesse contexto, o segundo objetivo desse estudo foi desenvolver e te
 equipamento fracionador de suspensões com grande concentração de sólidos totais, característica de enxurradas 
 coletadas em parcelas de monitoramento da erosão.
 
-# MATERIAL AND METHODS
+__MATERIAL AND METHODS__
 
-## Soil material
+__Soil material__
 
 <!-- 
 Os dois métodos de fracionamento -- método manual e método do fracionador -- foram avaliados usando um experimento laboratorial que utilizou suspensões compostas de água destilada e material do solo. O material do solo foi coletado da parte superficial (0--20 cm de profundidade) do horizonte A de perfil do solo derivado de rochas sedimentares da Formação Santa Maria, sem uso antrópico aparente, localizado no *campus* da Universidade Federal de Santa Maria a latitude -29°42'47,01"N e longitude -53°42'43.36"E. Esse perfil fora classificado como um  da edição de 2006 do Sistema Brasileiro de Classificação de Solos [@Lauermann2007]. Ele possui uma sequência de horizontes A-E-Bt-C, com conteúdo de argila muito baixo em superfície, mas que aumenta consideravelmente em profundidade -- com efeito direto sobre a densidade e a porosidade do solo. O baixo conteúdo de cátions básicos, fósforo e matéria orgânica refletem a pobreza de nutrientes no material de origem (Tabelas \@ref(tab:perfil-fisica) e \@ref(tab:perfil-quimica)) -- os dados analíticos estão disponíveis no Repositório Brasileiro Livre para Dados Abertos do Solo (febr, www.ufsm.br/febr), conjunto de dados `ctb0013`. Características similares são encontradas na camada superficial do solo de grande parte da região da Depressão Central do estado do Rio Grande do Sul (Figura \@ref(fig:solos-do-rs)) [@StreckEtAl2008], tendo sido alvo de muitos estudos de monitoramento da erosão [@CogoEtAl1984; @EltzEtAl2001; @AmadoEtAl2002a; @VolkEtAl2009].
@@ -208,11 +210,11 @@ pander::panderOptions('table.split.cells', rep(100 / ncol(perfil_qui), ncol(perf
 pander::pander(perfil_qui, caption = '(\\#tab:perfil-quimica) Chemical properties of the soil profile horizons.')
 ```
 
-```{r solos-do-rs, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Area of the state of Rio Grande do Sul with a superficial soil layer similar in texture to the soil material used in this study. The cross near the center of the state indicates the location where the soil material was collected.", fig.align='center', dpi=600, fig.asp=1}
+```{r solos-do-rs, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Area of the state of Rio Grande do Sul with a superficial soil layer similar in texture to the soil material used in this study. The cross near the center of the state indicates the location where the soil material was collected.", fig.align='center', dpi=600, fig.asp=1, out.width='16.5cm'}
 # Download limits of Brazilian states from IBGE
 if (!file.exists("../data/vector/brasil.shp")) {
   gdalUtils::ogr2ogr(
-    src_datasource_name = "WFS:http://www.geoservicos.ibge.gov.br:80/geoserver/wfs", 
+    src_datasource_name = "WFS:https://geoservicos.ibge.gov.br/geoserver/wfs", 
     dst_datasource_name = "../data/vector/brasil.shp",
     layer = "CGEO:C02_limite_estadual_2010")
   brasil <- sf::st_read("../data/vector/brasil.shp", quiet = TRUE)
@@ -282,7 +284,7 @@ O material coletado do solo foi caracterizado quanto à distribuição do tamanh
 
 The collected soil material was air-dried, crushed and passed through a 2-mm sieve. The particle size distribution of the resulting fine soil material was determined using three samples of about 20 g each. The total clay content (<0.002 mm diameter) was determined via the pipet method after chemical dispersion and mechanical disintegration. The first was achieved using 1 mol L^-1^ sodium hydroxide (NaOH). The latter consisted of horizontal stirring for 4 hours at 120 cycles per minute in the presence of two nylon spheres (diameter: 1.71 cm; mass: 3.04 g; density 1.11 g cm^-1). The total sand content (0.053--2.00 mm diameter) was determined via wet sieving. The total silt (0.002--0.053 mm diameter) content was determined by difference. According to these analyzes, the particle size distribution of the fine soil material consists of `r areia[[1]]` g kg^-1^ of total sand, `r argila[[1]]` g kg^-1^ of total sand, and `r 1000 - argila[[1]] - areia[[1]]` g kg^-1^ of total silt.
 
-## Manual sampling method
+__Manual sampling method__
 
 <!--
 O primeiro teste realizado foi quanto à capacidade do método manual produzir uma amostra representativa da suspensão (enxurrada), ou seja, que possua concentração de sólidos totais (sedimentos) aproximadamente equivalente àquela da suspensão de onde foi obtida. Para isso foram utilizados recipientes plásticos com capacidade para 10 L, dentro dos quais foram adicionados 3 L de água destilada e a quantidade de TFSA necessária para atingir as concentrações de 2, 10 e 50 g L^-1^ de sólidos totais. Para cada concentração foram preparadas cinco repetições (baldes). Em cada balde, uma pessoa homogeneizou a suspensão com uma das mãos. Após 10 segundos, sem parar a homogeneização, outra pessoa coletou uma amostra mergulhando, no seio da suspensão, um béquer de 250 mL. A concentração de sólidos totais nas amostras de cada suspensão foi determinada em função do seu volume e da massa de sólidos totais mensurada após secagem em estufa à temperatura de 105°C até completa evaporação da água.
@@ -308,7 +310,7 @@ $t_j = \frac{\bar{e_j}}{s_j/\sqrt{5}}$
 
 where _s~j~_ is the sample standard deviation of the estimation error. The exact _p_-value of the _t_-test was obtained from the Student's _t_ cumulative distribution function (CDF) with _n_ - 1 degree of freedom.
 
-## Sample splitter method
+__Sample splitter method__
 
 <!--
 O protótipo de equipamento utilizado no método do fracionador foi construído com peças de policloreto de polivinila (PVC, do inglês *polyvinyl chloride*) (Figura \@ref(fig:sample-splitter)). O fracionador é composto de um reservatório para a suspensão, localizado na parte superior, o qual consiste num cano de 300 mm de comprimento e 75 mm de diâmetro, com capacidade para 1 L de suspensão. O fundo desse reservatório possui formato de funil para direcionar a suspensão a um cano conectado à sua extremidade inferior, cano esse que possui 300 mm de comprimento e 15 mm de diâmetro. A função desse cano de menor diâmetro é dirigir a suspensão em fluxo contínuo e concentrado até o dispositivo fracionador da suspensão, que possui formato de Y invertido e que está conectado à extremidade inferior do primeiro. Todas as peças são fixadas umas às outras utilizando material adesivo específico para PVC. Como o fracionador possui duas saídas, A e B, ele produz duas amostras da suspensão a cada operação de fracionamento. O nivelamento do equipamento fracionador com os planos horizontal e vertical é feito via fixação em plataforma de madeira. O investimento necessário para construção do equipamento fracionador é de aproximadamente R$ 150,00.
@@ -338,13 +340,13 @@ Finalmente, os sólidos totais contidos nas amostras produzidas pelas saídas A 
 
 Finally, the total solids contained in the samples produced by outlets A and B of the splitter were analyzed for particle size distribution. The same method used for the analysis of the soil material employed to produce the suspensions was used. The aim of this test was to evaluate the capacity of the splitter to produce samples where the total solids have a size distribution approximately equivalent to that observed in the total solids of the suspension. The one and paired samples, two-tailed _t_-tests were used to evaluate the estimation errors of the clay and sand content.
 
-```{r sample-splitter, echo=FALSE, fig.cap="Prototype sample splitter compared to the manual method. The constituent PVC and wooden parts and their dimensions (unscalled) are shown in detail.", fig.align='center'}
+```{r sample-splitter, echo=FALSE, fig.cap="Prototype sample splitter compared to the manual method. The constituent PVC and wooden parts and their dimensions (unscalled) are shown in detail.", fig.align='center', out.width='16.5cm'}
 knitr::include_graphics("../images/fracionador-medidas.jpg")
 ```
 
-# RESULTS AND DISCUSSION
+__RESULTS AND DISCUSSION__
 
-## Manual sampling method
+__Manual sampling method__
 
 <!--
 O teste realizado com o método manual mostrou que as amostras obtidas não foram representativas das suspensões usadas (Tabela \@ref(tab:mergulho-solidos)). Uma subestimativa estatisticamente significativa de 30% ou mais da concentração de sólidos totais foi observada em todas as três concentrações avaliadas. Além disso, observamos uma variação considerável entre as cinco repetições. Esses resultados corroboram a hipótese inicial sobre a inconsistência do método manual usado Brasil que fora levantada a partir dos relatos apresentados em trabalhos similares desenvolvidos em outras partes do mundo [@Lang1992; @ZoebischEtAl1996; @CiesiolkaEtAl2006; @TodiscoEtAl2012; @Kinnell2016].
@@ -398,7 +400,7 @@ A partir dos resultados obtidos, pode-se supor que as perdas anuais de solo em �
 
 Our findings suggest that the annual soil losses in areas of southern Brazil with coarse texture soil -- < 100 g kg^-1^ of clay and > 500 g kg^-1^ of sand -- could be up to 30% higher than the values reported in the literature. For example, according to @LanzanovaEtAl2013, a standard (bare) soil erosion monitoring plot (width = 3.5 m, length = 22 m, slope = 0.055 m m^-1^) located near the place where we collected the soil material for this study lost about 2.5 Gg ha^-1^ of soil in 16 years. Based on the results of our study, the most likely amount of soil lost in this plot could be 3.6 Gg ha^-1^. However, attention must be paid to the fact that our results are based on one-person sampling. @ZoebischEtAl1996 evaluated five experienced professionals and observed estimation errors between 5 and 83%. This means that our tests need to be repeated by others to produce more representative results -- although the variation observed by @ZoebischEtAl1996 agrees with our results.
 
-## Sample splitter method
+__Sample splitter method__
 
 <!--
 Os resultados do primeiro teste realizado com o protótipo do equipamento fracionador que desenvolvemos mostraram que a eficiência do mesmo não é afetada pelo volume de água (Tabela \@ref(tab:fracionador-agua)). Ambas as saídas A e B produziram amostras com volumes similares. Contudo, o processo de fracionamento parece tornar-se menos eficiente com a diminuição do volume de água. Os maiores erros percentuais, (negativos ou positivos) observados quando o volume de amostra era pequeno (100 mL), possivelmente resultaram do efeito turbilhão da água no interior do cano de 15 mm de diâmetro localizado abaixo do reservatório. A função desse cano é dirigir a água em um fluxo constante até o dispositivo fracionador. Aparentemente esse objetivo só foi efetivamente atingido quando o volume de água era superior a 100 mL. Assim, é razoável que o fracionador seja utilizado apenas com suspensões de volume superior a 250-300 mL.
@@ -618,7 +620,7 @@ panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
 pander(d, caption = '(\\#tab:fracionador-argila) Conteúdo de argila nos sólidos totais das amostras obtidas, usando o fracionador, de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- desvio padrão, CV -- coeficiente de variação, EM -- erro médio, *t*~1~ e *t*~2~ -- estatística do teste *t* para uma amostra e duas amostras pareadas, *P*~1~ e *P*~2~ -- valor *P* do teste *t*~1~ e *t*~2~.')
 ```
 
-# CONCLUSION
+__CONCLUSION__
 
 Os testes que realizamos mostraram que o método manual usado no Brasil é inadequado para a amostragem de 
 suspensões contendo sólidos totais com granulometria grosseira, especificamente, cerca de `r areia[[1]]` g 
@@ -638,8 +640,8 @@ Avaliações adicionais do fracionador deverão ser realizadas usando um interva
 totais e distribuição do tamanho de partículas a fim de verificar sua adequabilidade a condições diversas 
 daquelas que avaliamos nesse estudo.
 
-# FIGURES
+__FIGURES__
 
-# TABLES
+__TABLES__
 
-# REFERENCES
+__REFERENCES__
