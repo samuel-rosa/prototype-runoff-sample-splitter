@@ -2,14 +2,13 @@ p {
   text-align: justify;
   line-height: 1.15;
 }
-p + p { 
-  margin-top: 0.5em;
-} 
 h1 { 
   font-size: medium;
   font-weight: bold;
+  line-height: 1.15;
 }
 h2 { 
   font-size: medium;
   font-weight: bold;
+  line-height: 1.15;
 }
