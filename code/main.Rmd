@@ -8,6 +8,7 @@ output:
   bookdown::html_document2:
     mathjax: NULL
     pandoc_args: ["--webtex"]
+css: style.css
 bibliography: biblio.bib
 # csl: scientia-agraria.csl
 csl: '`r path.expand("~/projects/RefBib/csl/scientia-agricola.csl")`'
@@ -111,7 +112,7 @@ __Keywords:__ Erosion monitoring, Soil loss, Sandy soil, Sample splitter, Uncert
 
 PAGEBREAK
 
-__INTRODUCTION__ (30 lines)
+# INTRODUCTION (30 lines)
 
 A erosão do solo constitui, há muitas décadas, uma das maiores preocupações dos cientistas do solo 
 [@PanagosEtAl2017]. Prova disso são as milhares de parcelas de monitoramento da erosão, instaladas sob os mais
@@ -162,9 +163,9 @@ fracionada. Nesse contexto, o segundo objetivo desse estudo foi desenvolver e te
 equipamento fracionador de suspensões com grande concentração de sólidos totais, característica de enxurradas 
 coletadas em parcelas de monitoramento da erosão.
 
-__MATERIAL AND METHODS__
+# MATERIAL AND METHODS
 
-__Soil material__
+## Soil material
 
 <!-- 
 Os dois métodos de fracionamento -- método manual e método do fracionador -- foram avaliados usando um experimento laboratorial que utilizou suspensões compostas de água destilada e material do solo. O material do solo foi coletado da parte superficial (0--20 cm de profundidade) do horizonte A de perfil do solo derivado de rochas sedimentares da Formação Santa Maria, sem uso antrópico aparente, localizado no *campus* da Universidade Federal de Santa Maria a latitude -29°42'47,01"N e longitude -53°42'43.36"E. Esse perfil fora classificado como um  da edição de 2006 do Sistema Brasileiro de Classificação de Solos [@Lauermann2007]. Ele possui uma sequência de horizontes A-E-Bt-C, com conteúdo de argila muito baixo em superfície, mas que aumenta consideravelmente em profundidade -- com efeito direto sobre a densidade e a porosidade do solo. O baixo conteúdo de cátions básicos, fósforo e matéria orgânica refletem a pobreza de nutrientes no material de origem (Tabelas \@ref(tab:perfil-fisica) e \@ref(tab:perfil-quimica)) -- os dados analíticos estão disponíveis no Repositório Brasileiro Livre para Dados Abertos do Solo (febr, www.ufsm.br/febr), conjunto de dados `ctb0013`. Características similares são encontradas na camada superficial do solo de grande parte da região da Depressão Central do estado do Rio Grande do Sul (Figura \@ref(fig:solos-do-rs)) [@StreckEtAl2008], tendo sido alvo de muitos estudos de monitoramento da erosão [@CogoEtAl1984; @EltzEtAl2001; @AmadoEtAl2002a; @VolkEtAl2009].
