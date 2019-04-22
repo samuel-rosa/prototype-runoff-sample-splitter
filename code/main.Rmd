@@ -75,6 +75,43 @@ como uma alternativa bastante razoável.
 **PALAVRAS-CHAVE** -- monitoramento da erosão, perda de solo, solo arenoso, fracionador amostral, incerteza.
  -->
 
+<!-- Five preferred reviewers -->
+
+<!-- First/Given Name: Panos -->
+<!-- Last/Family Name: Panagos -->
+<!-- Email: panos.panagos@ec.europa.eu -->
+<!-- Institution: Joint Research Centre - European Soil Data Centre -->
+<!-- Preference: I recommend this Reviewer -->
+<!-- Reason: He has a PhD in soil erosion modelling and developed various studies on soil erosion factors. -->
+
+<!-- First/Given Name:  -->
+<!-- Last/Family Name:  -->
+<!-- Email:  -->
+<!-- Institution:  -->
+<!-- Preference: I recommend this Reviewer -->
+<!-- Reason:  -->
+
+<!-- First/Given Name:  -->
+<!-- Last/Family Name:  -->
+<!-- Email:  -->
+<!-- Institution:  -->
+<!-- Preference: I recommend this Reviewer -->
+<!-- Reason:  -->
+
+<!-- First/Given Name:  -->
+<!-- Last/Family Name:  -->
+<!-- Email:  -->
+<!-- Institution:  -->
+<!-- Preference: I recommend this Reviewer -->
+<!-- Reason:  -->
+
+<!-- First/Given Name:  -->
+<!-- Last/Family Name:  -->
+<!-- Email:  -->
+<!-- Institution:  -->
+<!-- Preference: I recommend this Reviewer -->
+<!-- Reason:  -->
+
 __Running title:__ Accuracy of runoff sampling methods
 
 __Manuscript category:__ Soils and Plant Nutrition
