@@ -75,6 +75,43 @@ como uma alternativa bastante razoável.
 **PALAVRAS-CHAVE** -- monitoramento da erosão, perda de solo, solo arenoso, fracionador amostral, incerteza.
  -->
 
+<!-- Five preferred reviewers -->
+
+<!-- First/Given Name: Panos -->
+<!-- Last/Family Name: Panagos -->
+<!-- Email: panos.panagos@ec.europa.eu -->
+<!-- Institution: European Comission Joint Research Centre European Soil Data Centre -->
+<!-- Preference: I recommend this Reviewer -->
+<!-- Reason: He has a PhD in soil erosion modelling and developed various studies on soil erosion factors. -->
+
+<!-- First/Given Name: José María -->
+<!-- Last/Family Name: García-Ruiz -->
+<!-- Email: humberto@ipe.csic.es -->
+<!-- Institution: Instituto Pirenaico de Ecologia -->
+<!-- Preference: I recommend this Reviewer -->
+<!-- Reason: Coordinator of a network of experimental stations for monitoring and evaluation of erosion. -->
+
+<!-- First/Given Name: Jamil Alexandre Ayach -->
+<!-- Last/Family Name: Anache -->
+<!-- Email: jamil.anache@usp.br -->
+<!-- Institution: Universidade de São Paulo Escola de Engenharia de São Carlos -->
+<!-- Preference: I recommend this Reviewer -->
+<!-- Reason: Developed studies on erosion monitoring plots throughout Brazil. -->
+
+<!-- First/Given Name: Mark A.  -->
+<!-- Last/Family Name: Nearing -->
+<!-- Email: mark.nearing@ars.usda.gov -->
+<!-- Institution: USDA-ARS Southwest Watershed Research Center -->
+<!-- Preference: I recommend this Reviewer -->
+<!-- Reason: Recognized as an international leader in the areas of erosion processes and erosion modeling. -->
+
+<!-- First/Given Name: Jean Paolo Gomes -->
+<!-- Last/Family Name: Minella -->
+<!-- Email: jminella@gmail.com -->
+<!-- Institution: Universidade Federal de Santa Maria Centro de Ciencias Rurais -->
+<!-- Preference: I recommend this Reviewer -->
+<!-- Reason: Reference in Brazil in the monitoring and modeling of erosive processes in watersheds. -->
+
 __Running title:__ Accuracy of runoff sampling methods
 
 __Manuscript category:__ Soils and Plant Nutrition
