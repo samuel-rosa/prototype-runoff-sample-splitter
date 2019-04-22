@@ -80,7 +80,7 @@ como uma alternativa bastante razoável.
 <!-- First/Given Name: Panos -->
 <!-- Last/Family Name: Panagos -->
 <!-- Email: panos.panagos@ec.europa.eu -->
-<!-- Institution: European Comission Joint Research Centre European Soil Data Centre -->
+<!-- Institution: European Comission Joint Research Centre -->
 <!-- Preference: I recommend this Reviewer -->
 <!-- Reason: He has a PhD in soil erosion modelling and developed various studies on soil erosion factors. -->
 
