@@ -4,7 +4,7 @@
 title: ""
 output: 
   # bookdown::word_document2:
-  #   reference_docx: ../docs/template.docx
+    # reference_docx: ../docs/template.docx
   bookdown::html_document2:
     number_sections: no
     # mathjax: NULL
@@ -301,7 +301,7 @@ argila <- dplyr::filter(dados, objeto_id == "TFSA") %>% dplyr::summarise(mean = 
 O material coletado do solo foi caracterizado quanto à distribuição do tamanho de partículas. Para isso ele foi seco ao ar, destorroado e passado em peneira com malha de dois milímetros de abertura. O conteúdo de argila (diâmetro < 0,002 mm) na fração terra fina seca ao ar (TFSA) resultante foi estimado usando o método da pipeta após dispersão química de ~20 g de TFSA com hidróxido de sódio (NaOH) -- na concentração de 1 mol L^-1^ -- e desagregação mecânica -- usando duas esferas de náilon (diâmetro do 1,71 cm, massa de 3,04 g, densidade de 1,11 g cm^-1^) e agitação horizontal por 4 horas a 120 ciclos por minuto. Já o conteúdo de areia (diâmetro entre 0,053 e 2,00 mm) foi determinado via tamisamento úmido. Segundo essas análises, a distribuição do tamanho de partículas do material de solo consta de `r areia[[1]]` g kg^-1^ de areia e `r argila[[1]]` g kg^-1^ de argila.
 -->
 
-The collected soil material was air-dried, crushed and passed through a 2-mm sieve. The particle size distribution of the resulting fine soil material was determined using three samples of about 20 g each. The total clay content (<0.002 mm diameter) was determined via the pipette method after chemical dispersion and mechanical disintegration. The first was achieved using 1 mol L^-1^ sodium hydroxide (NaOH). The latter consisted of horizontal stirring for 4 hours at 120 cycles per minute in the presence of two nylon spheres (diameter: 1.71 cm; mass: 3.04 g; density 1.11 g cm^-1). The total sand content (0.053--2.00 mm diameter) was determined via wet sieving. The total silt (0.002--0.053 mm diameter) content was determined by difference. According to these analyzes, the particle size distribution of the fine soil material (0--20 cm) consists of `r areia[[1]]` g kg^-1^ of total sand, `r argila[[1]]` g kg^-1^ of total sand, and `r 1000 - argila[[1]] - areia[[1]]` g kg^-1^ of total silt.
+The collected soil material was air-dried, crushed and passed through a 2-mm sieve. The particle size distribution of the resulting fine soil material was determined using three samples of about 20 g each. The total clay content (<0.002 mm diameter) was determined via the pipette method after chemical dispersion and mechanical disintegration. The first was achieved using 1 mol L^-1^ sodium hydroxide (NaOH). The latter consisted of horizontal stirring for 4 hours at 120 cycles per minute in the presence of two nylon spheres (diameter: 1.71 cm; mass: 3.04 g; density 1.11 g cm^-1^). The total sand content (0.053--2.00 mm diameter) was determined via wet sieving. The total silt (0.002--0.053 mm diameter) content was determined by difference. According to these analyzes, the particle size distribution of the fine soil material (0--20 cm) consists of `r areia[[1]]` g kg^-1^ of total sand, `r argila[[1]]` g kg^-1^ of total sand, and `r 1000 - argila[[1]] - areia[[1]]` g kg^-1^ of total silt.
 
 ## Manual sampling method
 
@@ -412,7 +412,7 @@ panderOptions('round', rep(4, ncol(d)))
 panderOptions('digits', rep(4, ncol(d)))
 panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
 # '(\\#tab:mergulho-solidos) Concentração de sólidos totais nas amostras obtidas, usando o método manual, de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- desvio padrão, CV -- coeficiente de variação, EM -- erro médio, *t*~1~ -- estatística do teste *t* para uma amostra, *P*~1~ -- valor *P* do teste *t*~1~.'
-pander(d, caption = '(\\#tab:mergulho-solidos) Concentration of total solids in samples obtained using the manual sampling method from three artificial suspensions with a known concentration of total solids of 2, 10 and 50 g L^-1^. Statistics: SD -- standard deviation, CV -- coefficient of variation, pME -- percentage mean estimation error, _t_~1~ -- one-sample _t_-test statistic, _P_~1~ -- _P_-value of the _t_~1~-test.')
+pander(d, caption = '(\\#tab:mergulho-solidos) Concentration of total solids in five samples obtained using the manual sampling method from three artificial suspensions with a known concentration of total solids of 2, 10 and 50 g L^-1^. Statistics: SD -- standard deviation, CV -- coefficient of variation, pME -- percentage mean estimation error, _t_~1~ -- one-sample _t_-test statistic, _p_~1~ -- _p_-value of the _t_~1~-test.')
 ```
 
 <br>
@@ -498,7 +498,7 @@ panderOptions('round', rep(4, ncol(d)))
 panderOptions('digits', rep(4, ncol(d)))
 panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
 # '(\\#tab:fracionador-agua) Volume de água das amostras produzidas pelas saídas A e B do fracionador para volumes iniciais de 100, 300, 500 e 1000 mL. Estatísticas: DP -- desvio padrão, CV -- coeficiente de variação, EM -- erro médio, *t*~1~ e *t*~2~ -- estatística do teste *t* para uma amostra e duas amostras pareadas, *P*~1~ e *P*~2~ -- valor *P* do teste *t*~1~ e *t*~2~.'
-pander(d, caption = '(\\#tab:fracionador-agua) Volume of the samples produced by outlets A and B of the sample splitter for initial volumes of 100, 300, 500 and 1000 mL. Statistics: SD -- standard deviation, CV -- coefficient of variation, pME -- percentage mean estimation error, _t_~1~ and _t_~2~ -- one and two-sample _t_-test statistic, _P_~1~ and _P_~2~ -- _P_-value of the _t_~1~ and _t_~2~-test.')
+pander(d, caption = '(\\#tab:fracionador-agua) Volume of the five samples produced by outlets A and B of the sample splitter for initial volumes of 100, 300, 500 and 1000 mL. Statistics: SD -- standard deviation, CV -- coefficient of variation, pME -- percentage mean estimation error, _t_~1~ and _t_~2~ -- one and two-sample _t_-test statistic, _p_~1~ and _p_~2~ -- _p_-value of the _t_~1~ and _t_~2~-test.')
 ```
 
 <br>
@@ -548,7 +548,7 @@ panderOptions('round', rep(4, ncol(d)))
 panderOptions('digits', rep(4, ncol(d)))
 panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
 # '(\\#tab:fracionador-solidos) Concentração de sólidos totais nas amostras obtidas, usando o fracionador, de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- desvio padrão, CV -- coeficiente de variação, EM -- erro médio, *t*~1~ e *t*~2~ -- estatística do teste *t* para uma amostra e duas amostras pareadas, *P*~1~ e *P*~2~ -- valor *P* do teste *t*~1~ e *t*~2~.'
-pander(d, caption = '(\\#tab:fracionador-solidos) Concentration of total solids in samples obtained using the prototype sample splitter from three artificial suspensions with a known concentration of total solids of 2, 10 and 50 g L^-1^. Statistics: SD -- standard deviation, CV -- coefficient of variation, pME -- percentage mean estimation error, _t_~1~ and _t_~2~ -- one and two-sample _t_-test statistic, _P_~1~ and _P_~2~ -- _P_-value of the _t_~1~ and _t_~2~-test.')
+pander(d, caption = '(\\#tab:fracionador-solidos) Concentration of total solids in five samples obtained using the prototype sample splitter from three artificial suspensions with a known concentration of total solids of 2, 10 and 50 g L^-1^. Statistics: SD -- standard deviation, CV -- coefficient of variation, pME -- percentage mean estimation error, _t_~1~ and _t_~2~ -- one and two-sample _t_-test statistic, _p_~1~ and _p_~2~ -- _p_-value of the _t_~1~ and _t_~2~-test.')
 ```
 
 <br>
@@ -598,7 +598,7 @@ panderOptions('round', rep(4, ncol(d)))
 panderOptions('digits', rep(4, ncol(d)))
 panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
 # (\\#tab:fracionador-areia) Conteúdo de areia nos sólidos totais das amostras obtidas, usando o fracionador, de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- desvio padrão, CV -- coeficiente de variação, EM -- erro médio, *t*~1~ e *t*~2~ -- estatística do teste *t* para uma amostra e duas amostras pareadas, *P*~1~ e *P*~2~ -- valor *P* do teste *t*~1~ e *t*~2~.
-pander(d, caption = '(\\#tab:fracionador-areia) Sand content in the total solids of samples obtained using the prototype sample splitter from three artificial suspensions with a known concentration of total solids of 2, 10 and 50 g L^-1^. Statistics: SD -- standard deviation, CV -- coefficient of variation, pME -- percentage mean estimation error, _t_~1~ and _t_~2~ -- one and two-sample _t_-test statistic, _P_~1~ and _P_~2~ -- _P_-value of the _t_~1~ and _t_~2~-test.')
+pander(d, caption = '(\\#tab:fracionador-areia) Sand content in the total solids of five samples obtained using the prototype sample splitter from three artificial suspensions with a known concentration of total solids of 2, 10 and 50 g L^-1^. Statistics: SD -- standard deviation, CV -- coefficient of variation, pME -- percentage mean estimation error, _t_~1~ and _t_~2~ -- one and two-sample _t_-test statistic, _p_~1~ and _p_~2~ -- _p_-value of the _t_~1~ and _t_~2~-test.')
 ```
 
 <br>
@@ -647,7 +647,7 @@ panderOptions('round', rep(4, ncol(d)))
 panderOptions('digits', rep(4, ncol(d)))
 panderOptions('table.split.cells', rep(100 / ncol(d), ncol(d)))
 # '(\\#tab:fracionador-argila) Conteúdo de argila nos sólidos totais das amostras obtidas, usando o fracionador, de três suspensões com concentração de sólidos totais de 2, 10 e 50 g L^-1^. Estatísticas: DP -- desvio padrão, CV -- coeficiente de variação, EM -- erro médio, *t*~1~ e *t*~2~ -- estatística do teste *t* para uma amostra e duas amostras pareadas, *P*~1~ e *P*~2~ -- valor *P* do teste *t*~1~ e *t*~2~.'
-pander(d, caption = '(\\#tab:fracionador-argila) Clay content in the total solids of samples obtained using the prototype sample splitter from three artificial suspensions with a known concentration of total solids of 10 and 50 g L^-1^. Statistics: SD -- standard deviation, CV -- coefficient of variation, pME -- percentage mean estimation error, _t_~1~ and _t_~2~ -- one and two-sample _t_-test statistic, _P_~1~ and _P_~2~ -- _P_-value of the _t_~1~ and _t_~2~-test.')
+pander(d, caption = '(\\#tab:fracionador-argila) Clay content in the total solids of five samples obtained using the prototype sample splitter from three artificial suspensions with a known concentration of total solids of 10 and 50 g L^-1^. Statistics: SD -- standard deviation, CV -- coefficient of variation, pME -- percentage mean estimation error, _t_~1~ and _t_~2~ -- one and two-sample _t_-test statistic, _p_~1~ and _p_~2~ -- _p_-value of the _t_~1~ and _t_~2~-test.')
 ```
 
 <br>
