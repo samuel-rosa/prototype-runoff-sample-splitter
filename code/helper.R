@@ -19,11 +19,11 @@ teste_t1 <-
     if (fracionador) {
       group_by(d, entrada, saida) %>% 
         summarise('_t_~1~' = t.test(erro, mu = 0, alternative = alternative)$statistic %>% round(3),
-                  '_P_~1~' = t.test(erro, mu = 0, alternative = alternative)$p.value %>% round(4))
+                  '_p_~1~' = t.test(erro, mu = 0, alternative = alternative)$p.value %>% round(4))
     } else {
       group_by(d, entrada) %>% 
         summarise('_t_~1~' = t.test(erro, mu = 0, alternative = "two.sided")$statistic,
-                  '_P_~1~' = t.test(erro, mu = 0, alternative = "two.sided")$p.value) 
+                  '_p_~1~' = t.test(erro, mu = 0, alternative = "two.sided")$p.value) 
     }
   }
 # Função para computar o teste t para a média de duas amostras pareadas
@@ -37,7 +37,7 @@ teste_t1 <-
     names(tmp) <- gsub(" ", "", names(tmp))
     summarise(tmp,
               '_t_~2~' = t.test(A, B, mu = 0, alternative = "two.sided", paired = TRUE)$statistic %>% round(3),
-              '_P_~2~' = t.test(A, B, mu = 0, alternative = "two.sided", paired = TRUE)$p.value %>% round(4))
+              '_p_~2~' = t.test(A, B, mu = 0, alternative = "two.sided", paired = TRUE)$p.value %>% round(4))
   }
 teste_t2 <-
   function (x = d) {
@@ -46,7 +46,7 @@ teste_t2 <-
     t2 <- t2[, rep(1:nrow(i), each = 2)] %>% 
       apply(2, as.numeric) %>% 
       as.data.frame()
-    cbind(r = c('_t_~2~', '_P_~2~'), t2)
+    cbind(r = c('_t_~2~', '_p_~2~'), t2)
   }
 # Função auxiliar para preparar dados para análise
 preparar_dados <- 
