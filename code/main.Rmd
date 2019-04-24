@@ -105,12 +105,12 @@ como uma alternativa bastante razoável.
 <!-- Preference: I recommend this Reviewer -->
 <!-- Reason: Recognized as an international leader in the areas of erosion processes and erosion modeling. -->
 
-<!-- First/Given Name: Jean Paolo Gomes -->
-<!-- Last/Family Name: Minella -->
-<!-- Email: jminella@gmail.com -->
-<!-- Institution: Universidade Federal de Santa Maria Centro de Ciencias Rurais -->
+<!-- First/Given Name: Peter -->
+<!-- Last/Family Name: Kinnell -->
+<!-- Email: peter.kinnell@canberra.edu.au -->
+<!-- Institution: University of Canberra -->
 <!-- Preference: I recommend this Reviewer -->
-<!-- Reason: Reference in Brazil in the monitoring and modeling of erosive processes in watersheds. -->
+<!-- Reason: Has large experience with the design and operation of runoff and soil loss plots. -->
 
 __Running title:__ Accuracy of runoff sampling methods
 
@@ -669,5 +669,9 @@ The prototype sample splitter that we developed proved to be efficient in produc
 # FIGURES
 
 # TABLES
+
+# Authors’ Contributions
+
+Conceptualization: Samuel-Rosa, A. Data acquisition: Samuel-Rosa, A.; Moura-Bueno, J.M. Data analysis: Samuel-Rosa, A.; Moura-Bueno, J.M. Design of Methodology: Samuel-Rosa, A. Software development: Samuel-Rosa, A. Writing and editing: Samuel-Rosa, A.; Moura-Bueno, J.M.; Dalmolin, R.S.D.
 
 # REFERENCES
