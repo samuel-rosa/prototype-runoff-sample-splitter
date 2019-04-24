@@ -125,21 +125,22 @@ __Accuracy and variability of runoff sampling methods__
 Alessandro Samuel-Rosa^1\*^, Jean Michel Moura-Bueno^2^, Ricardo Simão Diniz Dalmolin^3^
 <br>
 
-^1^ Universidade Tecnológica Federal do Paraná -- Coordenação do Curso de Agronomia -- Prolongamento da Rua Cerejeira, s/n --
+^1^ Universidade Tecnológica Federal do Paraná -- Prolongamento da Rua Cerejeira, s/n --
 85892-000 -- Santa Helena, PR -- Brasil.
 
-^2^ Universidade Federal de Pelotas -- Programa de Pós-Graduação em Manejo e Conservação do Solo e da Água -- Campus Universitário, s/n -- 96010-610 -- Capão do Leão, RS -- Brasil.
+^2^ Universidade Federal de Pelotas -- Campus Universitário, s/n -- 96010-610 -- Capão do Leão, RS -- Brasil.
 
-^3^ Universidade Federal de Santa Maria -- Departamento de Solos -- Av. Roraima 1000, Prédio 42, Sala 3309 --
+^3^ Universidade Federal de Santa Maria -- Av. Roraima 1000, Prédio 42, Sala 3309 --
 97105-900 -- Santa Maria, RS -- Brasil.
 
-\* Corresponding author <alessandrorosa@utfpr.edu.br>
+\* Corresponding author <<alessandrorosa@utfpr.edu.br>>
 
 PAGEBREAK
 
 __ACCURACY AND VARIABILITY OF RUNOFF SAMPLING METHODS__
 
-__ABSTRACT__ (maximum of 250 words)
+__ABSTRACT__
+<!-- (maximum of 250 words) -->
 
 The method used to obtain runoff samples in soil erosion monitoring studies is an important source of data variability. In this study, we evaluated the manual sampling method used in Brazil. We present as an alternative the prototype of a sample splitter for suspensions with high concentration of total solids. Using soil material with 583 g kg^-1^ of sand and 89 g kg^-1^ of clay, the manual method and the sample splitter were tested for their ability to produce representative samples of suspensions with a concentration of 2, 10 and 50 g L ^-1^ of total solids. An underestimation of 30% or more of the concentration of total solids was observed using the manual method, with a variation of the same magnitude (CV between 20 and 45%). The splitter was efficient in producing samples representative of the suspension -- even without altering the particle size distribution of the total solids. Both absolute percentage errors (|<5%|) and the variation between replicates (CV <3%) were small. The problems with the manual method are due to the inefficient homogenization that facilitates the differential sedimentation of the particles of different sizes. If these problems are also found in other studies, then the prototype that we developed is a reasonable alternative.
 
@@ -147,7 +148,8 @@ __Keywords:__ Erosion monitoring, Soil loss, Sandy soil, Sample splitter, Uncert
 
 PAGEBREAK
 
-# INTRODUCTION (30 lines)
+# INTRODUCTION
+<!-- (30 lines) -->
 
 <!--
 A erosão do solo constitui, há muitas décadas, uma das maiores preocupações dos cientistas do solo [@PanagosEtAl2017]. Prova disso são as milhares de parcelas de monitoramento da erosão, instaladas sob os mais diferentes tipos de solo e usos da terra, distribuídas ao redor de todo o planeta [@Garcia-RuizEtAl2015; @AnacheEtAl2017]. Uma das principais dificuldades encontradas na pesquisa em erosão do solo é a grande variabilidade dos dados [@NearingEtAl1999]. Essa variabilidade advém da diversidade de métodos e estratégias de monitoramento utilizados [@Boix-FayosEtAl2006; @Garcia-RuizEtAl2015]. Pesa negativamente também a falta de recursos para condução do monitoramento por período de tempo maior do que 5-10 anos necessário para obtenção de dados mais consistentes [@AnacheEtAl2017]. Distúrbios indesejados causado no solo durante a instalação e/ou condução do monitoramento da erosão são uma fonte de variação difícil de identificar [@Boix-FayosEtAl2006; @Kinnell2016]. Finalmente, há a complexidade do processo erosivo e a interação dos fatores determinantes que estão completamente fora do controle devido a limitações operacionais e de conhecimento [@Boix-FayosEtAl2006]. Na prática, quanto maior a variabilidade dos dados, maior a nossa incerteza sobre a magnitude das perdas de solo [@Garcia-RuizEtAl2015].
