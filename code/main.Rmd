@@ -125,7 +125,7 @@ __Accuracy and variability of runoff sampling methods__
 Alessandro Samuel-Rosa^1\*^, Jean Michel Moura-Bueno^2^, Ricardo Simão Diniz Dalmolin^3^
 <br>
 
-^1^ Universidade Tecnológica Federal do Paraná -- Curso de Agronomia -- Prolongamento da Rua Cerejeira, s/n --
+^1^ Universidade Tecnológica Federal do Paraná -- Coordenação do Curso de Agronomia -- Prolongamento da Rua Cerejeira, s/n --
 85892-000 -- Santa Helena, PR -- Brasil.
 
 ^2^ Universidade Federal de Pelotas -- Programa de Pós-Graduação em Manejo e Conservação do Solo e da Água -- Campus Universitário, s/n -- 96010-610 -- Capão do Leão, RS -- Brasil.
