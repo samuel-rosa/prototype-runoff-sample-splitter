@@ -29,7 +29,7 @@ found in other studies, then the prototype that we developed is a reasonable alt
 
 __Keywords:__ Erosion monitoring, Soil loss, Sandy soil, Sample splitter, Uncertainty.
 
-Manuscript submitted to [_Scientia Agricola_](sa) on 24-Apr-2019 and recommended form publication -- after two
+Manuscript submitted to [_Scientia Agricola_](sa) on 24-Apr-2019 and recommended for publication -- after two
 revision rounds -- on 06-Oct-2019 under the title "Replacing the (inefficient) manual runoff sampling method
 used in Brazil – a prototype sample splitter".
 
