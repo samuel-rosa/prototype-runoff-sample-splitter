@@ -1,7 +1,7 @@
 ---
 # title: "ACURÁCIA E VARIABILIDADE DE MÉTODOS DE AMOSTRAGEM DE ENXURRADA"
 # subtitle: "Accuracy and variability of runoff sampling methods"
-title: ""
+title: "DELETE"
 output: 
   # bookdown::word_document2:
     # reference_docx: ../docs/template.docx
@@ -12,7 +12,7 @@ output:
 css: style.css
 bibliography: biblio.bib
 # csl: scientia-agraria.csl
-csl: '`r path.expand("~/projects/RefBib/csl/scientia-agricola.csl")`'
+csl: scientia-agricola.csl
 editor_options:
   chunk_output_type: inline
 ---
@@ -280,11 +280,12 @@ rs$col <- "gray98"
 rs$col[idx >= 2] <- "gray50"
 
 # Plot
+# png('../res/location.png', width = 16.5, height = 16.5, units = 'cm', res = 600)
 plot(
   brasil[brasil$NomUF == "Rio Grande do Sul", "NomUF"], reset = FALSE, main = "", axes = TRUE, 
   col = "gray98", graticule = TRUE)
 plot(rs["id"], border = "transparent", col = rs$col, reset = FALSE, add = TRUE)
-plot(brasil, add = TRUE, reset = FALSE, col = "transparent")
+plot(brasil["NomUF"], add = TRUE, reset = FALSE, col = "transparent")
 points(-53.71327, -29.71289, pch = 3)
 text(x = -56.1, y = -28.1, labels = "Argentina", srt = 50)
 text(x = -55.5, y = -31.7, labels = "Uruguay", srt = -43)
@@ -298,7 +299,10 @@ rect(
 x1 <- 0.82; y1 <- 0.06; p <- 0.05; r <- bboxRatio(brasil)
 par(fig = c(x1 = x1, x2 = x1 + p * r, y1 = y1, y2 = y1 + p), new = TRUE, pin = c(7, 7), 
     plt = c(0, 1, 0, 1))
-plot(brasil, add = TRUE, col = brasil$col)
+plot(brasil["NomUF"], add = TRUE, col = brasil$col)
+prettymapr::addnortharrow(pos = 'topleft', padin = c(0.5, 0.35))
+prettymapr::addscalebar(pos = 'bottomleft', plotepsg = 4674, padin = c(0.5, 0.5))
+# dev.off()
 ```
 
 <br>
@@ -376,7 +380,7 @@ Finally, the total solids contained in the samples produced by outlets A and B o
 <br>
 
 ```{r sample-splitter, echo=FALSE, fig.cap="Prototype sample splitter compared to the manual method. The constituent PVC and wooden parts and their dimensions (unscaled) are shown in detail.", fig.align='center', out.width='16.5cm'}
-knitr::include_graphics("../images/fracionador-medidas-eng.png")
+knitr::include_graphics("../img/fracionador-medidas-eng.png")
 ```
 
 # RESULTS AND DISCUSSION
